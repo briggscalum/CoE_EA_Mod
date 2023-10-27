@@ -3,9 +3,11 @@ icon "banner.png"
 description "Norb"
 
 
+
+# Todo, Test attavi Village
 newritual     "Maya Herding"
 ritpow                 	67 # Rak
-level                 	2
+level                 	1
 free
 cost					0 10 # 10 gold
 cost					4 10 # 10 slaves
@@ -13,6 +15,24 @@ planereq				0
 terr                 	-103 # Plain-alikes
 aiwhere					0
 alterloc             	7  # Hamlet
-nonearby1req			-29
+nonearby1req			-29  # Hamlet or Larger 
+nearby1req 				-100 # Forest and Jungle like
 soundfx               	57
-descr "The Raksharaja Spends a month spreding tails and illusions of wild beasts and demons rampaging the surrounding provinces while setting up a small hamlet for the population to gather in for protection. Once gathered they are much easier to tax and sift through for suitable sacrifices. Will not work if there is already and adjacnet settlment"
+descr "The Raksharaja Spends a month spreding tails and illusions of wild beasts and demons rampaging the surrounding forests while setting up a small hamlet for the population to gather in for protection. Once gathered they are much easier to tax and sift through for suitable sacrifices. Will not work if there is an adjacent settlement"
+
+
+newritual     "Maya Corralling"
+ritpow                 	67 # Rak
+level                 	2
+free
+cost					0 5 # 5 gold
+cost					4 15 # 15 slaves
+planereq				0
+terr                 	-41 # Hamlet, villages, tent villages
+aiwhere					7
+alterloc             	199  # Motte and Baily
+nonearby1req			-31  # Fortified Locations
+nearby1req 				115 # Forest and Jungle like
+soundfx               	57
+descr "The Raksharaja Spreds even more powerful illusions of monsters in the adjacent jungle. After providing the citizens with a small amount of resources, they swiftly build a wall around their hamlet or village. Will not work if there is an adjacent fortified settlement"
+
