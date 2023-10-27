@@ -1,0 +1,7 @@
+1. Install Notepad++.
+2. Start Notepad++ once, then close it.
+3. Navigate to your Notepad++ userDefineLangs folder.  On my Windows 10 machine, it's "C:\Users\<username>\AppData\Roaming\Notepad++\userDefineLangs".
+4. In the zip archive with this file is a file called "c5m.xml".  Drag it into the userDefineLangs folder.
+5. Open a CoE data file ending in ".c5m" using Notepad++.  Notepad++ may automatically detect and apply the syntax highlighting at this point; if it does, you're done.
+6. Otherwise, on the top menu bar, click "Language".
+7. Near the bottom of the pulldown, click "c5m".  The syntax highlighting should be applied.

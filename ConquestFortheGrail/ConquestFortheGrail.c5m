@@ -1,0 +1,18 @@
+icon "banner.png"
+
+description "Norb"
+
+
+newritual     "Maya Herding"
+ritpow                 	67 # Rak
+level                 	2
+free
+cost					0 10 # 10 gold
+cost					4 10 # 10 slaves
+planereq				0
+terr                 	-103 # Plain-alikes
+aiwhere					0
+alterloc             	7  # Hamlet
+nonearby1req			-29
+soundfx               	57
+descr "The Raksharaja Spends a month spreding tails and illusions of wild beasts and demons rampaging the surrounding provinces while setting up a small hamlet for the population to gather in for protection. Once gathered they are much easier to tax and sift through for suitable sacrifices. Will not work if there is already and adjacnet settlment"
