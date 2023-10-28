@@ -3,6 +3,77 @@ icon "banner.png"
 description "Norb"
 
 
+# I think I can just call this a bunch and its fine. 
+# Should just unlock new ritual paths
+# Populates ritpower 68-100
+
+newritpow 
+newritpow 
+newritpow 
+newritpow 
+newritpow 
+newritpow 
+newritpow 
+newritpow 
+newritpow 
+newritpow 
+newritpow 
+newritpow 
+newritpow 
+newritpow 
+newritpow 
+newritpow 
+newritpow 
+newritpow 
+newritpow 
+newritpow 
+newritpow 
+newritpow 
+newritpow
+newritpow 
+newritpow 
+newritpow 
+newritpow 
+newritpow 
+newritpow 
+newritpow 
+newritpow 
+newritpow 
+newritpow
+newritpow 
+
+# Gives Farms Weed
+selectterr 				5
+weed 					1
+
+
+
+# Yogini Weed
+newritual     "Butanese Shadow Garden"
+
+ritpow 90
+level                 	1
+free
+cost              		0 5 # 5 gold
+terr                 	-103 # Plain-alikes
+alterloc            	5 # Farm
+soundfx               	57
+descr "The Yongini forms a Farm in the shadow of a nearby mountain"
+
+
+
+
+# Give Yogini The abilty to gather weed
+selectmonster "Yogini"
+gatherweed
+power 					90 1
+
+
+#29 Raksharaja
+selectclass 			29
+addstartcom "Yogini"
+
+
 
 # Todo, Test attavi Village
 newritual     "Maya Herding"
@@ -32,7 +103,24 @@ terr                 	-41 # Hamlet, villages, tent villages
 aiwhere					7
 alterloc             	199  # Motte and Baily
 nonearby1req			-31  # Fortified Locations
-nearby1req 				115 # Forest and Jungle like
+nearby1req 				115 # Jungle
 soundfx               	57
 descr "The Raksharaja Spreds even more powerful illusions of monsters in the adjacent jungle. After providing the citizens with a small amount of resources, they swiftly build a wall around their hamlet or village. Will not work if there is an adjacent fortified settlement"
+
+
+newritual     "Maya Confinement"
+ritpow                 	67 # Rak
+level                 		
+free
+cost					0 10 # 5 gold
+cost					4 15 # 15 slaves
+planereq				0
+terr                 	206 # Market Village
+aiwhere					7
+alterloc             	17  # Town
+nonearby1req			-31  # Fortified Locations
+nearby3req 				-15 # Ancient Forrest and old battlefield
+soundfx               	57
+descr "The Raksharaja Finds a prosperous trading town and spreads tails and illusions of great evil about nearby threats coming from outsides the town. He then provides resources to the population to wall the town against these threats. thThe inhabitants of trading towns are usually less timorous than those of small hamlets so there must be a powerful threat such as an ancient forest or battlefield nearby."
+
 
