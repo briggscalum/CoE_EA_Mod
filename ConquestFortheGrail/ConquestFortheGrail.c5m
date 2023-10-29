@@ -46,6 +46,10 @@ newritpow
 selectterr 				5
 weed 					1
 
+# Gives Farms Weed
+selectterr 				6
+weed 					1
+
 # Gives Atavi Tribe Village Weed
 selectterr      348 # Atavi Tribe Village
 weed 					1
@@ -145,20 +149,9 @@ ritpow 90
 level                 	1
 free
 cost              		0 5 # 5 gold
-terr                 	-103 # Plain-alikes
-alterloc            	5 # Farm
-soundfx               	57
-descr "The Yongini forms a Farm in the shadow of a nearby mountain"
-
-# Yogini Weed
-newritual     "Butanese Shadow Garden"
-
-ritpow 90
-level                 	1
-free
-cost              		0 5 # 5 gold
 cost					6 5 # 5 weed 
 terr                 	-103 # Plain-alikes
+nearby1req 				12  # Mountain
 nearby3req 				-100  # forest or jungle like
 
 alterloc            	5 # Farm
@@ -178,11 +171,10 @@ addstring     "1d10*Deer"
 addstring     "1d3*Giant Ant"
 addstring     "1d5+1*Fire Ant"
 addstring     "1d6*Serpent"
-addstring     "1d2*Tiger"
 addstring     "1d6*Boar"
 
 
-newritual     "Forest Summoning"                                          # 273
+newritual     "Jungle Summoning"                                          # 273
 descr "With the help of magical weed a powerful Yogini is able to control some beasts of the jungle by tricking them into eating the delicious magic mixture."
 ritpow                90 # Yogini Weed
 level                  2
@@ -192,7 +184,7 @@ summoning                # The ritual will summon the monsters specified in a ra
 addstring     "1d3*Elephant"
 addstring     "3d6*ape"
 addstring     "5d6*monkey"
-addstring     "2d4+1*Fire Ant"
+addstring     "3d4+1*Fire Ant"
 addstring     "2d4*Great Ape"
 addstring     "2d3*Tiger"
 
@@ -223,10 +215,12 @@ free
 cost              		6 10 # 10 weed 
 apcost					2
 
-terr                 	4 # Forest
+terr                 	2 # Forest
+nearby5req			    -27  # The South
+
 alterloc            	115 # Jungle
 soundfx               	57
-descr "By use of magical weed,The Yogini entices alters the makup of a forest to make it more suitable for the growing of weed and inhabitation by the monkey people"
+descr "By use of magical weed,The Yogini entices alters the makup of a forest to make it more suitable for the growing of weed and inhabitation by the monkey people. This ritual can only be performed near the southern part of the world"
 
 
 # Yogini Weed
