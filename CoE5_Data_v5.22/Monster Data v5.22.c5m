@@ -105,7 +105,9 @@ goldbonus                     25 # 25% bonus to all gold income for the player t
 ironbonus                     25 # 25% bonus to all iron income for the player that owns this unit while it exists.
 leadership                     2 # +2 Morale for units commanded by this unit.
 nametype                       2 # Anglo-Saxon male.
-mastery                        3 # A mastery effect will change this monster to the type defined 3 after this one; i.e. monster #3: King.
+mastery                        3 # A mastery effect will change this
+
+ monster to the type defined 3 after this one; i.e. monster #3: King.
 
 
 newmonster    "High Lord"                                                #    1
