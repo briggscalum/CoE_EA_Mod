@@ -2,6 +2,8 @@ icon "banner.png"
 
 description "Norb"
 
+# Load first so clearrec does not impact other mods
+modprio 1 
 
 # I think I can just call this a bunch and its fine. 
 # Should just unlock new ritual paths
@@ -53,6 +55,18 @@ weed 					1
 # Gives Atavi Tribe Village Weed
 selectterr      348 # Atavi Tribe Village
 weed 					1
+
+# Makes City of the First Men good
+selectterr      284
+weed 			4
+citadel 
+town2
+batmap           39 
+
+
+
+
+
 
 newmonster "Blood Vine Abomination"
 descr "The ultimate comination of Maya and Primal Magic, The Blood Vine Abomination evicerates anything near it while the power of blood magic keeps its vines regrowing at an alarming rate"
@@ -169,8 +183,6 @@ setmaincom "Raksharaja"
 
 addstartterr 5
 
-
-
 clearrec
 #                                               % No gold die iron
 addunitrec  "Markata"                         100 15   50   0    0
@@ -209,6 +221,9 @@ reclimiter  "=Possessed Soulless Bandar"      # The preceding offer can only be 
 addunitrec  "Possessed Longdead Bandar Warrior"100  3    0   0   10
 reclimiter  "=Possessed Longdead Bandar"      # The preceding offer can only be used to upgrade Possessed Longdead Bandar unit(s).
 
+# Extraplanar
+addunitrec  "Fir Bolg Spearman"                100  5   75   0    0 
+recterr     284
 
 # Yogini Weed
 newritual     "Butanese Shadow Garden"
@@ -237,7 +252,7 @@ summoning                # The ritual will summon the monsters specified in a ra
 addstring     "1d8*Wolf"
 addstring     "1d10*Deer"
 addstring     "1d3*Giant Ant"
-addstring     "1d5+1*Fire Ant"
+addstring     "2d5+1*Fire Ant"
 addstring     "1d6*Serpent"
 addstring     "1d6*Boar"
 
@@ -291,9 +306,9 @@ descr "By use of magical weed,The Yogini entices alters the makup of a forest to
 
 # Yogini Weed
 newritual     "Infuse Forest"
-ritpow 90
-level                 	
-cost              		6 10 # 10 weed 
+ritpow                  90
+level                 	3
+cost              		6 1 # 10 weed 
 apcost					2
 
 terr                 	-38 # Forests and Jungles
@@ -405,10 +420,22 @@ descr "The Yogini now infused with bloody power now has an insatiable lust for t
 ritpow					90 # Bandar Weed
 level					3
 free
-cost					6 200
+cost					6 1 #200 Weed
 terr					4
 aiwhere					4
 portalroom				238 # Primal Forest
+noportalreq				1
+closewin
+
+newritual "Journey For Test"
+descr "The Yogini now infused with bloody power now has an insatiable lust for the mystical weed. Reaching out beyond the Elyisan sphere, She locates a powerful source of Primal Energy where more weed can be found and creates a portal to its center"
+ritpow					90 # Bandar Weed
+level					3
+free
+cost					6 1 #200 Weed
+terr					-1
+aiwhere					4
+portalroom				286 # Primal Forest
 noportalreq				1
 closewin
 
@@ -460,8 +487,10 @@ str                            6 # Strength.
 mor                            5 # Morale.
 mr                             5 # Magic Resistance.
 rank                           1 # Front rank.
-meleeweapon                5  11 # Bite: d2 Slash damage.
-meleeweapon               10 517 # Sleep Touch: Sleep.
+meleeweapon               10  11 # Bite: d10 Slash damage.
+meleeweapon               6  "Claw" # Claw: d6 Slash damage.
+meleeweapon               6  "Claw" # Claw: d6 Slash damage.
+
 flying                          
 jungle2                          # Likes jungles (if an independent or stupid commander, will not move more than 1 square away from its liked terrains).
 animal                           # Vulnerable to weapons and spells that only affect animals; leaves an animal corpse on death.
@@ -470,22 +499,24 @@ animal                           # Vulnerable to weapons and spells that only af
 newritual "Corrupt Primal Animals"
 ritpow					90 # Bandar Weed
 level					3
-cost              	    6 20 # 20 Weed
-cost              	    4 20 # 20 Sacrifices
+cost              	    6 1 # 20 Weed
+cost              	    4 1 # 20 Sacrifices
 terr 					294 # Wild Forest
+alterloc                283 # Spider Thicket
 summoning                # The ritual will summon the monsters specified in a random string.
 addstring     "2d4*False Hound"
-addstring	  "3d4*Muder Monkey"
-addstring     "2d2*Blood Widow"
+addstring	  "4d4*Murder Monkey"
+addstring     "1d3+2*Blood Widow"
 
-descr "The Demonic Yogini Combines the power of the Primal forest and the False World to create powerful and bloodythirsty creatures"
+descr "The Demonic Yogini Combines the power of the Primal forest and the False World to create powerful and bloodythirsty creatures, the Maya magic involved in this ritual turns the forest into a drained, evil place."
 
 
 newritual "Create Blood Vine Behemoth"
 ritpow					90 # Bandar Weed
+defctrl 				75
 level					3
-cost              	    6 200 # 100 Weed
-cost              	    4 100 # 100 Sacrifices
+cost              	    6 1 # 100 Weed
+cost              	    4 1 # 100 Sacrifices
 terr 					238 #Primal Forest
 summoning
 addstring "1*Blood Vine Abomination"
