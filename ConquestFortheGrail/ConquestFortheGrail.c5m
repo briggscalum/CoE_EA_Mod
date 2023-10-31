@@ -2,8 +2,8 @@ icon "sprites/banner.png"
 
 description "Norb"
 
-# Load first so clearrec does not impact other mods
-modprio 1 
+# Load Second so clearrec does not impact other mods but so it loads after Overhaul
+modprio 2 
 
 # I think I can just call this a bunch and its fine. 
 # Should just unlock new ritual paths

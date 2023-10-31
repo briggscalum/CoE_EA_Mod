@@ -1,0 +1,62 @@
+icon "sprites/banner.png"
+
+description "Norb"
+
+# Load Third so It loads after Main Mod
+modprio 3
+
+
+# Turn the Awake Dragon Back into Normal Dragon After 3 turns
+
+playerevent
++minturnnbr 1  			#Any turn
+	+class -2 "Kobold King"
+	+hasunit -2 "Awakened Fire Dragon"
+	+chance 100
+	promoteunits -2 1 "Red Kobold Slinger" "Warlock of Earth"
+	message -2 "Dragon Done"
+endevent
+
+newmonster "Awakened Fire Dragon"
+descr "Who has not seen the head of a dragon hanging above some two-penny count's hearth? The Fire Dragon is the dragon most often hunted by knights, and also the dragon that thrives best on mankind. The Fire Dragon is the most prolific of all dragons, and it may be that a nutritious diet of knights and the occasional kidnapped princess gives their hatchlings a good start in life. Though many knights are lured into hunting dragons by the promise of obtaining their immeasurable treasures, it is often a false quest. Some survivors have confessed that what they had believed to be gold was just the ember lights from the dragon's fire reflected on its red scales and their caves of red sandstone."
+copyspr "Fire Dragon"
+armor                          3 # Armor.
+hp                           105 # Hit Points.
+str                            9 # Strength.
+mor                            7 # Morale.
+mr                             9 # Magic Resistance.
+rank                           1 # Front rank.
+rangedweapon50s           10  85 # Fiery Breath: d10 Fire damage.
+meleeweapon               25  11 # Bite: d25 Slash damage.
+meleeweapon               20  12 # Claw: d20 Slash damage.
+meleeweapon                5 485 # Tail Sweep: d5 Blunt damage.
+flying                          
+huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
+fireres                      100 # Fire immunity.
+acutesenses                      # Can see units with Stealth or Forest Stealth.
+fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
+nametype                      15 # Old Nordic male.
+randommisc                    50 # 50% chance to spawn with a random misc magic item.
+dragon                         1 # Non-elder dragon.
+greedy                         1 # This unit will never give away its magic items voluntarily.
+
+
+newritual     "Summon Dragon"                                             # 471
+descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
+ritpow                52 # Kobold, Red
+level                  2
+cost              0   1 # 50 Gold
+cost             16   1 # 25 Kobolds
+terr                 -1 # Required terrain: proper mines.
+# fx1031             431 # Unhandled trait 1031 with argument 431.
+summoning                # The ritual will summon the monsters specified in a random string.
+aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
+addstring     "c*Fire Dragon"
+
+newritual     "Awaken Dragon"   
+ritpow                 52 # Kobold, Red
+level					1
+cost					0 1 # 75 gold
+promotion				1
+addstring "Fire Dragon"
+addstring "Awakened Fire Dragon"                                          # 471
