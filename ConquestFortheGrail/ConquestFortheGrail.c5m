@@ -1,4 +1,4 @@
-icon "banner.png"
+icon "sprites/banner.png"
 
 description "Norb"
 
@@ -64,14 +64,10 @@ town2
 batmap           39 
 
 
-
-
-
-
 newmonster "Blood Vine Abomination"
 descr "The ultimate comination of Maya and Primal Magic, The Blood Vine Abomination evicerates anything near it while the power of blood magic keeps its vines regrowing at an alarming rate"
-spr1 "bloodvine.png"
-spr2 "bloodvine1.png"
+spr1 "sprites/bloodvine.png"
+spr2 "sprites/bloodvine1.png"
 ctrlchance 75
 armor                          1 # Armor.
 hp                           150 # Hit Points.
@@ -97,9 +93,65 @@ meleeweapon                15 332 # Tangle Vines: d5 Blunt damage.
 regeneration
 
 
+
+newmonster    "False Hound"     
+spr1 "sprites/falsehound.png"
+spr2 "sprites/falsehound1.png"
+
+descr "The False Hounds are corruptions of the black hounds of the primal plane. They do not possess the mirror images of false worlders, but an illusion has been placed upon them to make them harder to hit. The Raksharaja places them at the front ranks to make best use of their fearsome powers"
+# sprite number            13140
+armor                          0 # Armor.
+hp                            32 # Hit Points.
+str                            7 # Strength.
+mor                            7 # Morale.
+mr                             5 # Magic Resistance.
+rank                           1 # Back rank.
+meleeweapon               15  11 # Bite: d15 Slash damage.
+fast                             # The monster has 4 AP and also moves twice on the battlefield per turn in combat.
+animal                           # Vulnerable to weapons and spells that only affect animals; leaves an animal corpse on death.
+acutesenses                      # Can see units with Stealth or Forest Stealth.
+evasion 					   1
+fear                           1 # Causes Fear (1d7 vs morale) within 1 square.
+
+
+newmonster "Blood Widow"
+spr1 "sprites/bloodwidow.png"
+spr2 "sprites/bloodwidow1.png"
+
+armor                          1 # Armor.
+hp                            44 # Hit Points.
+str                            5 # Strength.
+mor                            6 # Morale.
+mr                             3 # Magic Resistance.
+rank                           1 # Front rank.
+rangedweapon      4294967296 666 # Web: Special damage: Stuck in Net.
+meleeweapon                5  42 # Venomous Bite: d5 Slash damage.
+wall                             # Can climb walls.
+animal                           # Vulnerable to weapons and spells that only affect animals; leaves an animal
+descr "Blood Widows are the result of giant primal spiders being fed with the magical sacrifical blood that powers Raksharaja magic"
+
+newmonster    "Murder Monkey"        
+spr1 "sprites/murdermonkey.png"   
+spr2 "sprites/murdermonkey1.png"                                 #  176
+descr "Winged Monkeys are the creations of some twisted magic. The Raksharaja found them not twisted enough."
+# sprite number             5098
+armor                          0 # Armor.
+hp                             6 # Hit Points.
+str                            6 # Strength.
+mor                            5 # Morale.
+mr                             5 # Magic Resistance.
+rank                           1 # Front rank.
+meleeweapon               10  11 # Bite: d10 Slash damage.
+meleeweapon               6  "Claw" # Claw: d6 Slash damage.
+meleeweapon               6  "Claw" # Claw: d6 Slash damage.
+
+flying                          
+jungle2                          # Likes jungles (if an independent or stupid commander, will not move more than 1 square away from its liked terrains).
+animal                           # Vulnerable to weapons and spells that only affect animals; leaves an animal corpse on death.
+
 newmonster "Yogini Aspirant"
-spr1 "yoginiaspirant.png"
-spr2 "yoginiaspirant1.png"
+spr1 "sprites/yoginiaspirant.png"
+spr2 "sprites/yoginiaspirant1.png"
 gatherweed
 power 					     90 1 # Level 1 Bandar Weed
 descr "While most monkeys of the Rakshasa Kingdom have abandoned the wisdom of the White Ones for the false truths of the Rakshasas, there are some who have taken their own path to find the truth. Mimicking the asceticism of the White Ones, some female Bandar have abandoned civilization to live with the atavi tribes in search of ancient truths not found under the yoke of the Rakshasa Kings. Little do they understand that Maya takes many forms, and atavism is just another route to depravity and the downfall of your soul."
@@ -121,8 +173,8 @@ mastery 						1
 
 newmonster "Yogini Adept"  
 descr "While most monkeys of the Rakshasa Kingdom have abandoned the wisdom of the White Ones for the false truths of the Rakshasas, there are some who have taken their own path to find the truth. Mimicking the asceticism of the White Ones, some female Bandar have abandoned civilization to live with the atavi tribes in search of ancient truths not found under the yoke of the Rakshasa Kings. Little do they understand that Maya takes many forms, and atavism is just another route to depravity and the downfall of your soul."
-spr1 "yoginiadept.png"
-spr2 "yoginiadept1.png"
+spr1 "sprites/yoginiadept.png"
+spr2 "sprites/yoginiadept1.png"
 gatherweed
 power 					90     2 # Bandar Weed
 armor                          0 # Armor.
@@ -141,13 +193,12 @@ nametype                      30 # Indian female.
 mastery 						1
 
 
-descr "While most monkeys of the Rakshasa Kingdom have abandoned the wisdom of the White Ones for the false truths of the Rakshasas, there are some who have taken their own path to find the truth. Mimicking the asceticism of the White Ones, some female Bandar have abandoned civilization to live with the atavi tribes in search of ancient truths not found under the yoke of the Rakshasa Kings. Little do they understand that Maya takes many forms, and atavism is just another route to depravity and the downfall of your soul."
 
 
 newmonster "Yogini Rakshasi"
-spr1 "yoginirakshasi.png"
-spr2 "yoginirakshasi1.png"
-descr "The white ones and their wisdom from the Celestial Realm has abandoned the followers of the Raksharaja. However through a pact with the Lord of the False World, they are able to combine their dominion over the natural world with the power of Maya and tranform into a powerful Demon"
+spr1 "sprites/yoginirakshasi.png"
+spr2 "sprites/yoginirakshasi1.png"
+descr "The ultimate wisdom of the Celestial Realm are unavailable to the followers of the Raksharaja. However through a pact with the Lord of the False World, an ambitious Yognini are able to tranform into a powerful Demon, augmenting their power over the natural world and gaining the power of Maya"
 # sprite number            41028
 armor                          0 # Armor.
 hp                            23 # Hit Points.
@@ -164,7 +215,6 @@ fireres                      -50 # 50 Fire Vulnerability.
 gatherweed                     1 # A commander with this ability will enable the player to gather sacrifices.
 power 					90     3 # Bandar Weed
 mirrorimages                   2 # Constant Mirror Images (2): start each battle with 2 mirror images.
-# fx1083                      20 # [mirrorcloaking]: Disguises up to 20 size 1 units as ordinary apes.
 nametype                      30 # Indian female.
 
 # Redo Entire Raksharaja Class
@@ -221,13 +271,49 @@ reclimiter  "=Possessed Soulless Bandar"      # The preceding offer can only be 
 addunitrec  "Possessed Longdead Bandar Warrior"100  3    0   0   10
 reclimiter  "=Possessed Longdead Bandar"      # The preceding offer can only be used to upgrade Possessed Longdead Bandar unit(s).
 
-# Extraplanar
-addunitrec  "Fir Bolg Spearman"                100  5   75   0    0 
-recterr     284
 
-# Yogini Weed
+#########################
+# Yogini Weed Rituals
+#########################
+
+
+newritual     "Lesser Ritual of Mastery"                                  #  18
+ritpow                 90 # Bandar Weed
+level                  1
+cost              	   6 50 # 150 Weed
+newrit                 1 # Caster will learn a new ritual of level 2.
+levelup                1 # Level up to new monster (determined by mastery command on monster) if below level 2.
+soundfx               57 # Sound effect when the ritual is cast: orchhit.smp (Summoning).
+rebatelvl              1 # Ritual can be cast for half price if caster's power level is greater than or equal to 2.
+free                     # Always start with this ritual in addition to the others.
+descr "This ritual grants the caster a new first level ritual."
+
+
+newritual     "Ritual of Mastery"                                  #  18
+ritpow                 90 # Bandar Weed
+level                  1
+cost              	   6 150 # 150 Weed
+newrit                 2 # Caster will learn a new ritual of level 2.
+levelup                2 # Level up to new monster (determined by mastery command on monster) if below level 2.
+soundfx               57 # Sound effect when the ritual is cast: orchhit.smp (Summoning).
+rebatelvl              2 # Ritual can be cast for half price if caster's power level is greater than or equal to 2.
+free                     # Always start with this ritual in addition to the others.
+descr "This ritual grants the caster a new second level ritual."
+
+newritual     "Ritual of Bloody Mastery"                                  #  18
+ritpow                 90 # Bandar Weed
+level                  1
+cost              	   6 250 # 240 Weed
+cost              	   4 250 # 240 Sacrifices
+newrit                 3 # Caster will learn a new ritual of level 2.
+levelup                3 # Level up to new monster (determined by mastery command on monster) if below level 2.
+soundfx               57 # Sound effect when the ritual is cast: orchhit.smp (Summoning).
+rebatelvl              3 # Ritual can be cast for half price if caster's power level is greater than or equal to 2.
+free                     # Always start with this ritual in addition to the others.
+descr "This ritual grants the caster a new thrid level ritual."
+
+
 newritual     "Butanese Shadow Garden"
-
 ritpow 90
 level                 	1
 free
@@ -243,7 +329,6 @@ descr "The Yogini starts a Farm in the shadow of a nearby mountain using ancient
 
 
 newritual     "Forest Summoning"                                          # 273
-descr "With the help of magical weed the Yogini is able to control some beasts of the forest by tricking them into eating the delicious magic mixture."
 ritpow                90 # Yogini Weed
 level                  1
 cost              6   15 # 15 Weed
@@ -255,10 +340,9 @@ addstring     "1d3*Giant Ant"
 addstring     "2d5+1*Fire Ant"
 addstring     "1d6*Serpent"
 addstring     "1d6*Boar"
-
+descr "With the help of magical weed the Yogini is able to control some beasts of the forest by tricking them into eating the delicious magic mixture."
 
 newritual     "Jungle Summoning"                                          # 273
-descr "With the help of magical weed a powerful Yogini is able to control some beasts of the jungle by tricking them into eating the delicious magic mixture."
 ritpow                90 # Yogini Weed
 level                  2
 cost              6   35 # 15 Weed
@@ -270,87 +354,93 @@ addstring     "5d6*monkey"
 addstring     "4d4+1*Fire Ant"
 addstring     "2d4*Great Ape"
 addstring     "2d3*Tiger"
+descr "With the help of magical weed a powerful Yogini is able to control some beasts of the jungle by tricking them into eating the delicious magic mixture."
 
-# Yogini Weed
+
 newritual     "Cultivate new crops"
-
-ritpow 90
+ritpow 					90   # Yogini Weed
 level                 	2
 free
 cost              		0 10 # 10 gold gold
 cost              		6 10 # 10 weed 
-apcost					3
-
+apcost					1
 terr                 	115 # Jungle
 nearby3req 				-100  # forest or jungle like
-nonearby1req			348  # Fortified Locations
-
-alterloc            	348 # Atavi Tribe village
+nonearby1req			348   # Atavi Tribe villag
+alterloc            	348   # Atavi Tribe village
 soundfx               	57
 descr "The Yogini entices the denizens of the jungle with powerful weed, promising it will put them on the path to enlightenment. When enough have gathered to partake, the Yogini assists in setting up crop of both the new weed as well as mundane fruits to create a new monkey village. This will not work if there is already an adjacent Atavi Tribe Village"
 
 # Yogini Weed
 newritual     "Enrich Forest"
-ritpow 90
+ritpow 					90   # Yogini Weed
 level                 	1
 free
 cost              		6 10 # 10 weed 
-apcost					2
-
+apcost					1
 terr                 	2 # Forest
 nearby5req			    -27  # The South
-
 alterloc            	115 # Jungle
 soundfx               	57
 descr "By use of magical weed,The Yogini entices alters the makup of a forest to make it more suitable for the growing of weed and inhabitation by the monkey people. This ritual can only be performed near the southern part of the world"
 
-# Yogini Weed
 newritual     "Infuse Forest"
-ritpow                  90
+ritpow 					90   # Yogini Weed
 level                 	3
-cost              		6 1 # 10 weed 
+cost              		6 10 # 10 weed 
 apcost					2
-
 terr                 	-38 # Forests and Jungles
 nearby3req			    4   # Ancient Forest
-
 alterloc            	294 # Wild Forest
 soundfx               	57
 descr "Using greater mastery of of magical weed, The Yogini infuses a forest or jungle with primal magic such that it will produce magical weed on its own. The forest must be withing 3 provinces of an ancient forest "
 
-newritual     "Lesser Ritual of Mastery"                                  #  18
-descr "This ritual grants the caster a new first level ritual."
-ritpow                 90 # Bandar Weed
-level                  1
-cost              	   6 50 # 150 Weed
-newrit                 1 # Caster will learn a new ritual of level 2.
-levelup                1 # Level up to new monster (determined by mastery command on monster) if below level 2.
-soundfx               57 # Sound effect when the ritual is cast: orchhit.smp (Summoning).
-rebatelvl              1 # Ritual can be cast for half price if caster's power level is greater than or equal to 2.
-free                     # Always start with this ritual in addition to the others.
 
-newritual     "Ritual of Mastery"                                  #  18
-descr "This ritual grants the caster a new first level ritual."
-ritpow                 90 # Bandar Weed
-level                  1
-cost              	   6 1 # 150 Weed
-newrit                 2 # Caster will learn a new ritual of level 2.
-levelup                2 # Level up to new monster (determined by mastery command on monster) if below level 2.
-soundfx               57 # Sound effect when the ritual is cast: orchhit.smp (Summoning).
-rebatelvl              2 # Ritual can be cast for half price if caster's power level is greater than or equal to 2.
-free                     # Always start with this ritual in addition to the others.
+newritual "Journey For Weed"
+ritpow					90 # Bandar Weed
+level					3
+free
+cost					6 200 #200 Weed
+terr					4
+aiwhere					4
+portalroom				238 # Primal Forest
+noportalreq				1
+closewin
+descr "The Yogini now infused with bloody power now has an insatiable lust for the mystical weed. Reaching out beyond the Elyisan sphere, She locates a powerful source of Primal Energy where more weed can be found and creates a portal to its center"
 
-newritual     "Ritual of Bloody Mastery"                                  #  18
-descr "This ritual grants the caster a new first level ritual."
-ritpow                 90 # Bandar Weed
-level                  1
-cost              	   6 1 # 240 Weed
-cost              	   4 1 # 240 Sacrifices
-newrit                 3 # Caster will learn a new ritual of level 2.
-levelup                3 # Level up to new monster (determined by mastery command on monster) if below level 2.
-soundfx               57 # Sound effect when the ritual is cast: orchhit.smp (Summoning).
-rebatelvl              3 # Ritual can be cast for half price if caster's power level is greater than or equal to 2.
-free                     # Always start with this ritual in addition to the others.
+newritual "Corrupt Primal Animals"
+ritpow					90 # Bandar Weed
+level					3
+cost              	    6 30 # 20 Weed
+cost              	    4 30 # 20 Sacrifices
+terr 					294 # Wild Forest
+alterloc                283 # Spider Thicket
+summoning                # The ritual will summon the monsters specified in a random string.
+addstring     "3d4*False Hound"
+addstring	  "6d4*Murder Monkey"
+addstring     "1d3+2*Blood Widow"
+descr "The Demonic Yogini Combines the power of the Primal forest and the False World to create powerful and bloodythirsty creatures, the Maya magic involved in this ritual turns the forest into a drained, evil place."
+
+
+
+
+newritual "Create Blood Vine Behemoth"
+ritpow					90 # Bandar Weed
+defctrl 				75
+level					3
+cost              	    6 200 # 200 Weed
+cost              	    4 100 # 100 Sacrifices
+terr 					238 #Primal Forest
+summoning
+addstring "1*Blood Vine Abomination"
+descr "The Demonic Yogini brings the Maya of the false world to the center of primal power and attempts to summon an ultimate being of Blood and Vine. The Primal Forest will try and resist, and the Yogini could find herself fighting the very creature she is trying to create"
+
+
+
+
+#########################
+# Raksharaja Rituals
+#########################
 
 # Todo, Test atavi Village
 newritual     "Maya Herding"
@@ -359,19 +449,20 @@ level                 	1
 free
 cost					0 10 # 10 gold
 cost					4 10 # 10 slaves
+apcost					2
 planereq				0
 terr                 	-103 # Plain-alikes
 aiwhere					0
 alterloc             	7  # Hamlet
-nonearby1req			-29  # Hamlet or Larger 
+nonearby1req			-41  # Hamlet or Larger 
 nearby1req 				-100 # Forest and Jungle like
 soundfx               	57
 descr "The Raksharaja Spends a month spreding tails and illusions of wild beasts and demons rampaging the surrounding forests while setting up a small hamlet for the population to gather in for protection. Once gathered they are much easier to tax and sift through for suitable sacrifices. Will not work if there is an adjacent settlement"
 
-
 newritual     "Maya Corralling"
 ritpow                 	67 # Rak
 level                 	2
+apcost 					2
 free
 cost					0 5 # 5 gold
 cost					4 15 # 15 slaves
@@ -384,14 +475,14 @@ nearby1req 				115 # Jungle
 soundfx               	57
 descr "The Raksharaja Spreds even more powerful illusions of monsters in the adjacent jungle. After providing the citizens with a small amount of resources, they swiftly build a wall around their hamlet or village. Will not work if there is an adjacent fortified settlement"
 
-
 newritual     "Maya Confinement"
 ritpow                 	67 # Rak
 level                   2      		
 free
 cost					0 10 # 5 gold
-cost                    1 10
+cost                    1 10 # 10 Reources
 cost					4 15 # 15 slaves
+apcost					2
 planereq				0
 terr                 	206 # Market Village
 aiwhere					7
@@ -401,129 +492,15 @@ nearby3req 				-15 # Ancient Forrest and old battlefield
 soundfx               	57
 descr "The Raksharaja Finds a prosperous trading town and spreads tails and illusions of great evil about nearby threats coming from outsides the town. He then provides resources to the population to wall the town against these threats. thThe inhabitants of trading towns are usually less timorous than those of small hamlets so there must be a powerful threat such as an ancient forest or battlefield nearby."
 
-
 newritual 		"Monkey Buisness"
-descr "The Raksharaja goes to a tribe of monkeys and attempts to bring them the ways of civilization, teaching them to sell their weed to others and to make good roads through their lands so that traders can travel. The Raj also encourages nearby human merchants to trade with and settle with the monkeys of the village to create a flourishing new market vilage. Note that most humans are not very enthusiastic to live with the Atavi, and will not move in if there is an adjacent place of commerce."
 ritpow 					67 #Rak
-level 2
+level                   2
 free
 cost					0 10 # 5 gold
 cost 					1 10
-terr      				348			#atavi Vilage
+terr      				348  # Atavi Vilage
 alterloc             	206  # Market Vilage
-nearby1req				-92  # Sites of trade
-apcost					3
+nonearby1req			-92  # Sites of trade
+apcost					2
 soundfx               	57
-
-newritual "Journey For Weed"
-descr "The Yogini now infused with bloody power now has an insatiable lust for the mystical weed. Reaching out beyond the Elyisan sphere, She locates a powerful source of Primal Energy where more weed can be found and creates a portal to its center"
-ritpow					90 # Bandar Weed
-level					3
-free
-cost					6 1 #200 Weed
-terr					4
-aiwhere					4
-portalroom				238 # Primal Forest
-noportalreq				1
-closewin
-
-newritual "Journey For Test"
-descr "The Yogini now infused with bloody power now has an insatiable lust for the mystical weed. Reaching out beyond the Elyisan sphere, She locates a powerful source of Primal Energy where more weed can be found and creates a portal to its center"
-ritpow					90 # Bandar Weed
-level					3
-free
-cost					6 1 #200 Weed
-terr					-1
-aiwhere					4
-portalroom				286 # Primal Forest
-noportalreq				1
-closewin
-
-
-newmonster    "False Hound"     
-spr1 "falsehound.png"
-spr2 "falsehound1.png"
-
-descr "The False Hounds are corruptions of the black hounds of the primal plane. They do not possess the mirror images of false worlders, but an illusion has been placed upon them to make them harder to hit. The Raksharaja places them at the front ranks to make best use of their fearsome powers"
-# sprite number            13140
-armor                          0 # Armor.
-hp                            32 # Hit Points.
-str                            7 # Strength.
-mor                            7 # Morale.
-mr                             5 # Magic Resistance.
-rank                           1 # Back rank.
-meleeweapon               15  11 # Bite: d15 Slash damage.
-fast                             # The monster has 4 AP and also moves twice on the battlefield per turn in combat.
-animal                           # Vulnerable to weapons and spells that only affect animals; leaves an animal corpse on death.
-acutesenses                      # Can see units with Stealth or Forest Stealth.
-evasion 					   1
-fear                           1 # Causes Fear (1d7 vs morale) within 1 square.
-
-
-newmonster "Blood Widow"
-spr1 "bloodwidow.png"
-spr2 "bloodwidow1.png"
-
-armor                          1 # Armor.
-hp                            44 # Hit Points.
-str                            5 # Strength.
-mor                            6 # Morale.
-mr                             3 # Magic Resistance.
-rank                           1 # Front rank.
-rangedweapon      4294967296 666 # Web: Special damage: Stuck in Net.
-meleeweapon                5  42 # Venomous Bite: d5 Slash damage.
-wall                             # Can climb walls.
-animal                           # Vulnerable to weapons and spells that only affect animals; leaves an animal
-descr "Blood Widows are the result of giant primal spiders being fed with the magical sacrifical blood that powers Raksharaja magic"
-
-newmonster    "Murder Monkey"        
-spr1 "murdermonkey.png"   
-spr2 "murdermonkey1.png"                                 #  176
-descr "Winged Monkeys are the creations of some twisted magic. The Raksharaja found them not twisted enough."
-# sprite number             5098
-armor                          0 # Armor.
-hp                             6 # Hit Points.
-str                            6 # Strength.
-mor                            5 # Morale.
-mr                             5 # Magic Resistance.
-rank                           1 # Front rank.
-meleeweapon               10  11 # Bite: d10 Slash damage.
-meleeweapon               6  "Claw" # Claw: d6 Slash damage.
-meleeweapon               6  "Claw" # Claw: d6 Slash damage.
-
-flying                          
-jungle2                          # Likes jungles (if an independent or stupid commander, will not move more than 1 square away from its liked terrains).
-animal                           # Vulnerable to weapons and spells that only affect animals; leaves an animal corpse on death.
-
-
-newritual "Corrupt Primal Animals"
-ritpow					90 # Bandar Weed
-level					3
-cost              	    6 1 # 20 Weed
-cost              	    4 1 # 20 Sacrifices
-terr 					294 # Wild Forest
-alterloc                283 # Spider Thicket
-summoning                # The ritual will summon the monsters specified in a random string.
-addstring     "2d4*False Hound"
-addstring	  "4d4*Murder Monkey"
-addstring     "1d3+2*Blood Widow"
-
-descr "The Demonic Yogini Combines the power of the Primal forest and the False World to create powerful and bloodythirsty creatures, the Maya magic involved in this ritual turns the forest into a drained, evil place."
-
-
-newritual "Create Blood Vine Behemoth"
-ritpow					90 # Bandar Weed
-defctrl 				75
-level					3
-cost              	    6 1 # 100 Weed
-cost              	    4 1 # 100 Sacrifices
-terr 					238 #Primal Forest
-summoning
-addstring "1*Blood Vine Abomination"
-
-descr "The Demonic Yogini brings the Maya of the false world to the center of primal power and attempts to summon an ultimate being of Blood and Vine. The Primal Forest will try and resist, and the Yogini could find herself fighting the very creature she is trying to create"
-
-
-
-
-
+descr "The Raksharaja goes to a tribe of monkeys and attempts to bring them the ways of civilization, teaching them to sell their weed to others and to make good roads through their lands so that traders can travel. The Raj also encourages nearby human merchants to trade with and settle with the monkeys of the village to create a flourishing new market vilage. Note that most humans are not very enthusiastic to live with the Atavi, and will not move in if there is an adjacent place of commerce."
