@@ -8,13 +8,13 @@ modprio 3
 
 # Turn the Awake Dragon Back into Normal Dragon After 3 turns
 
-playerevent
+squareevent
 +minturnnbr 1  			#Any turn
 	+class -2 "Kobold King"
-	+hasunit -2 "Awakened Fire Dragon"
+	+hasunithere -2 "Awakened Fire Dragon"
 	+chance 100
-	promoteunits -2 1 "Red Kobold Slinger" "Warlock of Earth"
-	message -2 "Dragon Done"
+	promoteunits -2 1 "Awakened Fire Dragon" "Fire Dragon"
+	message -2 "Dragon Sleepy"
 endevent
 
 newmonster "Awakened Fire Dragon"
@@ -58,5 +58,5 @@ ritpow                 52 # Kobold, Red
 level					1
 cost					0 1 # 75 gold
 promotion				1
-addstring "Fire Dragon"
-addstring "Awakened Fire Dragon"                                          # 471
+addstring "Red Kobold Chief"
+addstring "Fire Dragon"                                          # 471
