@@ -44,6 +44,9 @@ newritpow
 newritpow
 newritpow 
 
+###########
+# Terrain #
+###########
 
 
 # Gives Farms Weed
@@ -67,10 +70,6 @@ batmap           39
 
 # New Terrain, Frozen Swamp
 
-# selectterr 107
-# invseason
-# apcost2
-
 selectterr      700
 name "Frozen Swamp"
 spr "sprites/frozenswamp.tga"
@@ -82,6 +81,12 @@ nosight             # The terrain does not provide vision into adjacent squares 
 apcost 1            # Action Point cost for moving through the terrain: 3
 
 
+
+##########
+# Events #
+##########
+
+
 # Make Swamps Freeze in the Winter
 squareevent
 	+minturnnbr 1  			#Any turn
@@ -91,7 +96,7 @@ squareevent
 	alterterrain 700  # Freeze Swamp
 endevent
 
-# And thaw in the Spring
+# And Thaw in the Spring
 squareevent
 	+minturnnbr 1  			#Any turn
 	-terrain  -101 "Snowey"
@@ -99,6 +104,10 @@ squareevent
 	+chance 100
 	alterterrain 107 # Back to swamp
 endevent
+
+############
+# Monsters #
+############
 
 newmonster "Blood Vine Abomination"
 descr "The ultimate comination of Maya and Primal Magic, The Blood Vine Abomination evicerates anything near it while the power of blood magic keeps its vines regrowing at an alarming rate"
@@ -129,13 +138,9 @@ meleeweapon                15 332 # Tangle Vines: d5 Blunt damage.
 regeneration
 
 
-
 newmonster    "False Hound"     
 spr1 "sprites/falsehound.png"
 spr2 "sprites/falsehound1.png"
-
-descr "The False Hounds are corruptions of the black hounds of the primal plane. They do not possess the mirror images of false worlders, but an illusion has been placed upon them to make them harder to hit. The Raksharaja places them at the front ranks to make best use of their fearsome powers"
-# sprite number            13140
 armor                          0 # Armor.
 hp                            32 # Hit Points.
 str                            7 # Strength.
@@ -148,12 +153,12 @@ animal                           # Vulnerable to weapons and spells that only af
 acutesenses                      # Can see units with Stealth or Forest Stealth.
 evasion 					   1
 fear                           1 # Causes Fear (1d7 vs morale) within 1 square.
+descr "The False Hounds are corruptions of the black hounds of the primal plane. They do not possess the mirror images of false worlders, but an illusion has been placed upon them to make them harder to hit. The Raksharaja places them at the front ranks to make best use of their fearsome powers"
 
 
 newmonster "Blood Widow"
 spr1 "sprites/bloodwidow.png"
 spr2 "sprites/bloodwidow1.png"
-
 armor                          1 # Armor.
 hp                            44 # Hit Points.
 str                            5 # Strength.
@@ -169,7 +174,6 @@ descr "Blood Widows are the result of giant primal spiders being fed with the ma
 newmonster    "Murder Monkey"        
 spr1 "sprites/murdermonkey.png"   
 spr2 "sprites/murdermonkey1.png"                                 #  176
-descr "Winged Monkeys are the creations of some twisted magic. The Raksharaja found them not twisted enough."
 # sprite number             5098
 armor                          0 # Armor.
 hp                             6 # Hit Points.
@@ -180,6 +184,7 @@ rank                           1 # Front rank.
 meleeweapon               10  11 # Bite: d10 Slash damage.
 meleeweapon               6  "Claw" # Claw: d6 Slash damage.
 meleeweapon               6  "Claw" # Claw: d6 Slash damage.
+descr "Winged Monkeys are the creations of some twisted magic. The Raksharaja found them not twisted enough."
 
 flying                          
 jungle2                          # Likes jungles (if an independent or stupid commander, will not move more than 1 square away from its liked terrains).
@@ -190,7 +195,6 @@ spr1 "sprites/yoginiaspirant.png"
 spr2 "sprites/yoginiaspirant1.png"
 gatherweed
 power 					     90 1 # Level 1 Bandar Weed
-descr "While most monkeys of the Rakshasa Kingdom have abandoned the wisdom of the White Ones for the false truths of the Rakshasas, there are some who have taken their own path to find the truth. Mimicking the asceticism of the White Ones, some female Bandar have abandoned civilization to live with the atavi tribes in search of ancient truths not found under the yoke of the Rakshasa Kings. Little do they understand that Maya takes many forms, and atavism is just another route to depravity and the downfall of your soul."
 # sprite number            41004
 armor                          0 # Armor.
 hp                            12 # Hit Points.
@@ -206,9 +210,10 @@ foreststealth                    # When in a forest or jungle, can only be seen 
 ape                            3 # Becomes a bandar sized ape corpse when killed. Also sets Nametype = 29 (Indian Male).
 nametype                      30 # Indian female.
 mastery 						1
+descr "While most monkeys of the Rakshasa Kingdom have abandoned the wisdom of the White Ones for the false truths of the Rakshasas, there are some who have taken their own path to find the truth. Mimicking the asceticism of the White Ones, some female Bandar have abandoned civilization to live with the atavi tribes in search of ancient truths not found under the yoke of the Rakshasa Kings. Little do they understand that Maya takes many forms, and atavism is just another route to depravity and the downfall of your soul."
+
 
 newmonster "Yogini Adept"  
-descr "While most monkeys of the Rakshasa Kingdom have abandoned the wisdom of the White Ones for the false truths of the Rakshasas, there are some who have taken their own path to find the truth. Mimicking the asceticism of the White Ones, some female Bandar have abandoned civilization to live with the atavi tribes in search of ancient truths not found under the yoke of the Rakshasa Kings. Little do they understand that Maya takes many forms, and atavism is just another route to depravity and the downfall of your soul."
 spr1 "sprites/yoginiadept.png"
 spr2 "sprites/yoginiadept1.png"
 gatherweed
@@ -227,14 +232,11 @@ foreststealth                    # When in a forest or jungle, can only be seen 
 ape                            3 # Becomes a bandar sized ape corpse when killed. Also sets Nametype = 29 (Indian Male).
 nametype                      30 # Indian female.
 mastery 						1
-
-
-
+descr "While most monkeys of the Rakshasa Kingdom have abandoned the wisdom of the White Ones for the false truths of the Rakshasas, there are some who have taken their own path to find the truth. Mimicking the asceticism of the White Ones, some female Bandar have abandoned civilization to live with the atavi tribes in search of ancient truths not found under the yoke of the Rakshasa Kings. Little do they understand that Maya takes many forms, and atavism is just another route to depravity and the downfall of your soul."
 
 newmonster "Yogini Rakshasi"
 spr1 "sprites/yoginirakshasi.png"
 spr2 "sprites/yoginirakshasi1.png"
-descr "The ultimate wisdom of the Celestial Realm are unavailable to the followers of the Raksharaja. However through a pact with the Lord of the False World, an ambitious Yognini are able to tranform into a powerful Demon, augmenting their power over the natural world and gaining the power of Maya"
 # sprite number            41028
 armor                          0 # Armor.
 hp                            23 # Hit Points.
@@ -252,6 +254,7 @@ gatherweed                     1 # A commander with this ability will enable the
 power 					90     3 # Bandar Weed
 mirrorimages                   2 # Constant Mirror Images (2): start each battle with 2 mirror images.
 nametype                      30 # Indian female.
+descr "The ultimate wisdom of the Celestial Realm are unavailable to the followers of the Raksharaja. However through a pact with the Lord of the False World, an ambitious Yognini are able to tranform into a powerful Demon, augmenting their power over the natural world and gaining the power of Maya"
 
 # Redo Entire Raksharaja Class
 selectclass 29 # Raksharaja
