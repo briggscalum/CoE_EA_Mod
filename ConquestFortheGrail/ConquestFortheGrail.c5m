@@ -67,12 +67,14 @@ batmap           39
 
 # New Terrain, Frozen Swamp
 
+# selectterr 107
+# invseason
+# apcost2
+
 selectterr      700
 name "Frozen Swamp"
-spr "frozenswamp.png"
+spr "sprites/frozenswamp.tga"
 apcost 1
-
-
 
 
 # Make Swamps Freeze in the Winter

@@ -9,19 +9,21 @@ modprio 3
 # Variables used
 # Dragon Invortion
 # 600 - Variable Set to zero
-# 700 - Red Dragon Currently Invigorated
-# 701 - Red Dragon Garunteed turns of Invigoration
-# 
-# 
-# 
+# 700 - Fire Dragon Currently Invigorated
+# 701 - Fire Dragon Guaranteed turns of Invigoration
+# 702 - Frost Dragon Currently Invigorated
+# 703 - Frost Dragon Guaranteed turns of Invigoration
+# 704 - Storm Dragon Currently Invigorated
+# 705 - Storm Dragon Guaranteed turns of Invigoration
+# 706 - Bile Dragon Currently Invigorated
+# 707 - Bile Dragon Guaranteed turns of Invigoration
+# 708 - Dusk Dragon Currently Invigorated
+# 709 - Dusk Dragon Guaranteed turns of Invigoration
 
 
-playerevent
-	+turnnbr -1
-	
-	setvar 600 0
-endevent
-
+####
+# Fire Dragon Events
+####
 
 # Counts Down Turns
 playerevent
@@ -33,7 +35,6 @@ playerevent
 	addvar 701 -1
 endevent
 
-
 # Turn the Awake Dragon Back into a Spent Dragon After 3 or more turns
 squareevent
 	+minturnnbr 1  			#Any turn
@@ -43,7 +44,7 @@ squareevent
 	+varvarequal 701 600 # If it has been 3 turn
 	setvar 700 0
 	promoteunits -2 1 "Invigorated Fire Dragon" "Spent Fire Dragon"
-	message -2 "The effects of your invigoration ritual have worn off, your Dragon will return to its mostly sedentary existance"
+	message -2 "The effects of your invigoration ritual have worn off, your Fire Dragon will return to its mostly sedentary existance"
 endevent
 
 # Spent Dragon will slowly fly back to base
@@ -55,6 +56,157 @@ squareevent
 	+terrain -12 #Greater Mine, Basically Home province
 	promoteunits -2 1 "Spent Fire Dragon" "Fire Dragon"
 endevent
+
+
+####
+# Frost Dragon Events
+####
+
+# Counts Down Turns
+playerevent
+	+minturnnbr 1  			#Any turn
+	+class -2 "Kobold King"
+	+hasunit -2 "Invigorated Frost Dragon"
+	+varvargreater 703 600
+	+chance 100
+	addvar 703 -1
+endevent
+
+# Turn the Awake Dragon Back into a Spent Dragon After 3 or more turns
+squareevent
+	+minturnnbr 1  			#Any turn
+	+class -2 "Kobold King"
+	+hasunithere -2 "Invigorated Frost Dragon"
+	+chance 35
+	+varvarequal 701 600 # If it has been 3 turn
+	setvar 702 0
+	promoteunits -2 1 "Invigorated Frost Dragon" "Spent Frost Dragon"
+	message -2 "The effects of your invigoration ritual have worn off, your Frost Dragon will return to its mostly sedentary existance"
+endevent
+
+# Spent Dragon will slowly fly back to base
+squareevent
+	+minturnnbr 1  			#Any turn
+	+class -2 "Kobold King"
+	+hasunithere -2 "Spent Frost Dragon"
+	+chance 100
+	+terrain -12 #Greater Mine, Basically Home province
+	promoteunits -2 1 "Spent Frost Dragon" "Frost Dragon"
+endevent
+
+####
+# Storm Dragon Events
+####
+
+# Counts Down Turns
+playerevent
+	+minturnnbr 1  			#Any turn
+	+class -2 "Kobold King"
+	+hasunit -2 "Invigorated Storm Dragon"
+	+varvargreater 705 600
+	+chance 100
+	addvar 705 -1
+endevent
+
+# Turn the Awake Dragon Back into a Spent Dragon After 3 or more turns
+squareevent
+	+minturnnbr 1  			#Any turn
+	+class -2 "Kobold King"
+	+hasunithere -2 "Invigorated Storm Dragon"
+	+chance 35
+	+varvarequal 705 600 # If it has been 3 turn
+	setvar 704 0
+	promoteunits -2 1 "Invigorated Storm Dragon" "Spent Storm Dragon"
+	message -2 "The effects of your invigoration ritual have worn off, your Storm Dragon will return to its mostly sedentary existance"
+endevent
+
+# Spent Dragon will slowly fly back to base
+squareevent
+	+minturnnbr 1  			#Any turn
+	+class -2 "Kobold King"
+	+hasunithere -2 "Spent Storm Dragon"
+	+chance 100
+	+terrain -12 #Greater Mine, Basically Home province
+	promoteunits -2 1 "Spent Storm Dragon" "Storm Dragon"
+endevent
+
+
+####
+# Bile Dragon Events
+####
+
+# Counts Down Turns
+playerevent
+	+minturnnbr 1  			#Any turn
+	+class -2 "Kobold King"
+	+hasunit -2 "Invigorated Bile Dragon"
+	+varvargreater 707 600
+	+chance 100
+	addvar 707 -1
+endevent
+
+
+# Turn the Awake Dragon Back into a Spent Dragon After 3 or more turns
+squareevent
+	+minturnnbr 1  			#Any turn
+	+class -2 "Kobold King"
+	+hasunithere -2 "Invigorated Bile Dragon"
+	+chance 35
+	+varvarequal 707 600 # If it has been 3 turn
+	setvar 706 0
+	promoteunits -2 1 "Invigorated Bile Dragon" "Spent Bile Dragon"
+	message -2 "The effects of your invigoration ritual have worn off, your Bile Dragon will return to its mostly sedentary existance"
+endevent
+
+# Spent Dragon will slowly fly back to base
+squareevent
+	+minturnnbr 1  			#Any turn
+	+class -2 "Kobold King"
+	+hasunithere -2 "Spent Bile Dragon"
+	+chance 100
+	+terrain -12 #Greater Mine, Basically Home province
+	promoteunits -2 1 "Spent Bile Dragon" "Bile Dragon"
+endevent
+
+####
+# Dusk Dragon Events
+####
+
+# Counts Down Turns
+playerevent
+	+minturnnbr 1  			#Any turn
+	+class -2 "Kobold King"
+	+hasunit -2 "Invigorated Dusk Dragon"
+	+varvargreater 709 600
+	+chance 100
+	addvar 709 -1
+endevent
+
+# Turn the Awake Dragon Back into a Spent Dragon After 3 or more turns
+squareevent
+	+minturnnbr 1  			#Any turn
+	+class -2 "Kobold King"
+	+hasunithere -2 "Invigorated Dusk Dragon"
+	+chance 35
+	+varvarequal 709 600 # If it has been 3 turn
+	setvar 708 0
+	promoteunits -2 1 "Invigorated Dusk Dragon" "Spent Dusk Dragon"
+	message -2 "The effects of your invigoration ritual have worn off, your Dusk Dragon will return to its mostly sedentary existance"
+endevent
+
+# Spent Dragon will slowly fly back to base
+squareevent
+	+minturnnbr 1  			#Any turn
+	+class -2 "Kobold King"
+	+hasunithere -2 "Spent Dusk Dragon"
+	+chance 100
+	+terrain -12 #Greater Mine, Basically Home province
+	promoteunits -2 1 "Spent Dusk Dragon" "Dusk Dragon"
+endevent
+
+###
+# Dragons
+###
 
 newmonster "Awakened Fire Dragon"
 descr "Who has not seen the head of a dragon hanging above some two-penny count's hearth? The Fire Dragon is the dragon most often hunted by knights, and also the dragon that thrives best on mankind. The Fire Dragon is the most prolific of all dragons, and it may be that a nutritious diet of knights and the occasional kidnapped princess gives their hatchlings a good start in life. Though many knights are lured into hunting dragons by the promise of obtaining their immeasurable treasures, it is often a false quest. Some survivors have confessed that what they had believed to be gold was just the ember lights from the dragon's fire reflected on its red scales and their caves of red sandstone."
