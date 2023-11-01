@@ -74,7 +74,12 @@ batmap           39
 selectterr      700
 name "Frozen Swamp"
 spr "sprites/frozenswamp.tga"
-apcost 1
+herbs             1 # Herbs:  1
+fungus            3 # Fungus:  3
+lifeforce        20 # 2 Lifeforce can be drained from this square per turn.
+invisible           # Terrain on top of the background is not drawn, but the grass will still be drawn.
+nosight             # The terrain does not provide vision into adjacent squares when owned.
+apcost 1            # Action Point cost for moving through the terrain: 3
 
 
 # Make Swamps Freeze in the Winter
