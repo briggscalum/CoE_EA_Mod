@@ -44,6 +44,8 @@ newritpow
 newritpow
 newritpow 
 
+
+
 # Gives Farms Weed
 selectterr 				5
 weed 					1
@@ -63,6 +65,33 @@ citadel
 town2
 batmap           39 
 
+# New Terrain, Frozen Swamp
+
+selectterr      700
+name "Frozen Swamp"
+spr "frozenswamp.png"
+apcost 1
+
+
+
+
+# Make Swamps Freeze in the Winter
+squareevent
+	+minturnnbr 1  			#Any turn
+	+terrain  -101 "Snowey"
+	+terrain   107 "Swamp"
+	+chance 100
+	alterterrain 700  # Freeze Swamp
+endevent
+
+# And thaw in the Spring
+squareevent
+	+minturnnbr 1  			#Any turn
+	-terrain  -101 "Snowey"
+	+terrain   700 "Frozen Swamp"
+	+chance 100
+	alterterrain 107 # Back to swamp
+endevent
 
 newmonster "Blood Vine Abomination"
 descr "The ultimate comination of Maya and Primal Magic, The Blood Vine Abomination evicerates anything near it while the power of blood magic keeps its vines regrowing at an alarming rate"

@@ -6,15 +6,54 @@ description "Norb"
 modprio 3
 
 
-# Turn the Awake Dragon Back into Normal Dragon After 3 turns
+# Variables used
+# Dragon Invortion
+# 600 - Variable Set to zero
+# 700 - Red Dragon Currently Invigorated
+# 701 - Red Dragon Garunteed turns of Invigoration
+# 
+# 
+# 
 
-squareevent
-+minturnnbr 1  			#Any turn
+
+playerevent
+	+turnnbr -1
+	
+	setvar 600 0
+endevent
+
+
+# Counts Down Turns
+playerevent
+	+minturnnbr 1  			#Any turn
 	+class -2 "Kobold King"
-	+hasunithere -2 "Awakened Fire Dragon"
+	+hasunit -2 "Invigorated Fire Dragon"
+	+varvargreater 701 600
 	+chance 100
-	promoteunits -2 1 "Awakened Fire Dragon" "Fire Dragon"
-	message -2 "Dragon Sleepy"
+	addvar 701 -1
+endevent
+
+
+# Turn the Awake Dragon Back into a Spent Dragon After 3 or more turns
+squareevent
+	+minturnnbr 1  			#Any turn
+	+class -2 "Kobold King"
+	+hasunithere -2 "Invigorated Fire Dragon"
+	+chance 35
+	+varvarequal 701 600 # If it has been 3 turn
+	setvar 700 0
+	promoteunits -2 1 "Invigorated Fire Dragon" "Spent Fire Dragon"
+	message -2 "The effects of your invigoration ritual have worn off, your Dragon will return to its mostly sedentary existance"
+endevent
+
+# Spent Dragon will slowly fly back to base
+squareevent
+	+minturnnbr 1  			#Any turn
+	+class -2 "Kobold King"
+	+hasunithere -2 "Spent Fire Dragon"
+	+chance 100
+	+terrain -12 #Greater Mine, Basically Home province
+	promoteunits -2 1 "Spent Fire Dragon" "Fire Dragon"
 endevent
 
 newmonster "Awakened Fire Dragon"
@@ -40,6 +79,24 @@ randommisc                    50 # 50% chance to spawn with a random misc magic 
 dragon                         1 # Non-elder dragon.
 greedy                         1 # This unit will never give away its magic items voluntarily.
 
+newmonster "Invigorated Fire Dragon"
+descr "This Fire Dragon has been enlived by the Kobolds with fresh meat and magical gems. It is faster and more active than most of its kin, but will eventually return to its mostly sedentary state"
+copyspr "Fire Dragon"
+copystats "Fire Dragon"
+wanderrest                    0 # Always Be Consuming
+lairgoldpen                   0 # While the Dragon is away... 
+fast							# Gotta Go Fast
+float							# I expect issues with water
+wandermaxdist                 7 # Far Far Away
+
+newmonster "Spent Fire Dragon"
+descr "This Fire Dragon's Invigoration has worn off. Once it finishes its mission it will slowly return to its home"
+copyspr "Fire Dragon"
+copystats "Fire Dragon"
+wanderrest                  100 # Always Be Sleeping
+slow							# Gotta Go Slow
+float							# I expect issues with water
+
 
 newritual     "Summon Dragon"                                             # 471
 descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
@@ -58,5 +115,22 @@ ritpow                 52 # Kobold, Red
 level					1
 cost					0 1 # 75 gold
 promotion				1
-addstring "Red Kobold Chief"
-addstring "Fire Dragon"                                          # 471
+addstring "Fire Dragon"
+addstring "Awakened Fire Dragon" 
+
+
+newritual     "Invigorate Dragon"   
+descr "By feeding a dragon a few Kobolds and gems, it becomes invigorated, becoming much faster and more aggressive as well as more likely to venture further. This effect will last for at least a season, but could last longer. You may only invigorate one dragon of each type at a time "
+ritpow                 52 # Kobold, Red
+noeventvarreq         700 # There must not be any currently invigorated Red Dragon
+seteventvar			  700
+seteventvar			  701
+addeventvar           701 # Sets event var to 3. Dragon should last at minimum 3 turns
+addeventvar           701
+addeventvar           701
+free
+level					1
+cost					0 1 # 75 gold
+promotion				1
+addstring "Fire Dragon"
+addstring "Invigorated Fire Dragon"
