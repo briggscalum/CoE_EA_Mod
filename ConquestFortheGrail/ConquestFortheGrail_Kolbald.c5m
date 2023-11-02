@@ -232,7 +232,7 @@ dragon                         1 # Non-elder dragon.
 greedy                         1 # This unit will never give away its magic items voluntarily.
 
 newmonster "Invigorated Fire Dragon"
-descr "This Fire Dragon has been enlived by the Kobolds with fresh meat and magical gems. It is faster and more active than most of its kin, but will eventually return to its mostly sedentary state"
+descr "This Fire Dragon has been enlivened by the Kobolds with fresh meat and magical gems. It is faster and more active than most of its kin, but will eventually return to its mostly sedentary state"
 copyspr "Fire Dragon"
 copystats "Fire Dragon"
 wanderrest                    0 # Always Be Consuming
@@ -250,10 +250,185 @@ slow							# Gotta Go Slow
 float							# I expect issues with water
 
 
-newritual     "Summon Dragon"                                             # 471
+newmonster "Awakened Frost Dragon"
+descr "Just like knights hunt the Fire Dragons in our part of the realm, barbarians in the northern wastes will try to hunt down their fabled Frost Dragons. In stark contrast to the Fire Dragon's diet of bold knights, the northern barbarians are less of a treat for the Frost Dragons. This is most likely due to their custom of smearing themselves with thick layers of rancid seal blubber to protect against the cold.
+copyspr "Frost Dragon"
+# sprite number            21004
+armor                          3 # Armor.
+hp                           105 # Hit Points.
+str                            9 # Strength.
+mor                            7 # Morale.
+mr                             9 # Magic Resistance.
+rank                           1 # Front rank.
+rangedweapon50s           10 276 # Icy Breath: d10 Cold damage.
+meleeweapon               25  11 # Bite: d25 Slash damage.
+meleeweapon               20  12 # Claw: d20 Slash damage.
+meleeweapon                5 485 # Tail Sweep: d5 Blunt damage.
+flying                          
+huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
+coldres                      100 # Cold immunity.
+acutesenses                      # Can see units with Stealth or Forest Stealth.
+fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
+nametype                      15 # Old Nordic male.
+randommisc                    50 # 50% chance to spawn with a random misc magic item.
+dragon                         1 # Non-elder dragon.
+lairgoldpen                   50 # 50% Gold income penalty for this monster's home square.
+greedy                         1 # This unit will never give away its magic items voluntarily.
+
+
+newmonster "Invigorated Frost Dragon"
+descr "This Frost Dragon has been enlivened by the Kobolds with fresh meat and magical gems. It is faster and more active than most of its kin, but will eventually return to its mostly sedentary state"
+copyspr "Fire Dragon"
+copystats "Fire Dragon"
+wanderrest                    0 # Always Be Consuming
+lairgoldpen                   0 # While the Dragon is away... 
+fast							# Gotta Go Fast
+float							# I expect issues with water
+wandermaxdist                 7 # Far Far Away
+
+newmonster "Spent Frost Dragon"
+descr "This Frost Dragon's Invigoration has worn off. Once it finishes its mission it will slowly return to its home"
+copyspr "Frost Dragon"
+copystats "Frost Dragon"
+wanderrest                  100 # Always Be Sleeping
+slow							# Gotta Go Slow
+float							# I expect issues with water
+
+
+newmonster "Awakened Storm Dragon"
+descr "The Storm Dragon is associated with air, and sharing the same domain as the Cloud Lords, they have become a great nuisance in the cloud realms of late. While the rest of dragon kind is too cumbersome to travel the clouds without falling through, the Storm Dragon hunts and nests there with ease. It is reported that their nests are made up with feathers from cloud people, so it is assumed that they are also their preferred prey. Some attempts have been made to ascertain the diet of the Storm Dragons, but so far the Cloud Lords have refused whatever reasonable requests to borrow some of his subjects to try out the theory. He even refuses to tell us how many from his realm have been taken by dragons."
+copyspr "Storm Dragon"
+descr  # sprite number            21022
+armor                          3 # Armor.
+hp                           110 # Hit Points.
+str                            9 # Strength.
+mor                            7 # Morale.
+mr                             9 # Magic Resistance.
+rank                           1 # Front rank.
+rangedweapon50s           10 858 # Lightning Breath: d10 Shock damage.
+meleeweapon               25  11 # Bite: d25 Slash damage.
+meleeweapon               20  12 # Claw: d20 Slash damage.
+meleeweapon                5 485 # Tail Sweep: d5 Blunt damage.
+flying                          
+huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
+shockres                     100 # Shock immunity.
+acutesenses                      # Can see units with Stealth or Forest Stealth.
+fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
+nametype                      15 # Old Nordic male.
+randommisc                    50 # 50% chance to spawn with a random misc magic item.
+dragon                         1 # Non-elder dragon.
+lairgoldpen                   50 # 50% Gold income penalty for this monster's home square.
+greedy                         1 # This unit will never give away its magic items voluntarily.
+
+newmonster "Invigorated Storm Dragon"
+descr "This Storm Dragon has been enlivened by the Kobolds with fresh meat and magical gems. It is faster and more active than most of its kin, but will eventually return to its mostly sedentary state"
+copyspr "Storm Dragon"
+copystats "Storm Dragon"
+wanderrest                    0 # Always Be Consuming
+lairgoldpen                   0 # While the Dragon is away... 
+fast							# Gotta Go Fast
+float							# I expect issues with water
+wandermaxdist                 7 # Far Far Away
+
+newmonster "Spent Storm Dragon"
+descr "This Storm Dragon's Invigoration has worn off. Once it finishes its mission it will slowly return to its home"
+copyspr "Storm Dragon"
+copystats "Storm Dragon"
+wanderrest                  100 # Always Be Sleeping
+slow							# Gotta Go Slow
+float							# I expect issues with water
+
+newmonster "Awakened Bile Dragon"
+descr "In some of the deepest marshes, within clouds of dense miasma, dwells the Bile Dragon. It breathes poison and seems to thrive in the vile humors promoted in the swamps. It is uncertain what their immature form looks like, but in my opinion it is clear that the poison and miasma they exude indicates a twisted association to the element of earth. Some studies of defeated Bile Dragons have shown that they have wide cracks and large chafings in their otherwise thick and stone-like hide, and Basilea suggests in her Opus Draconica that the mud of the marshes may ease the itches the Bile Dragons suffer from, but that the vile humors of the swamp will seep into the cracks and be absorbed by the flesh beneath."
+copyspr "Bile Dragon"
+armor                          3 # Armor.
+hp                           105 # Hit Points.
+str                            9 # Strength.
+mor                            7 # Morale.
+mr                             9 # Magic Resistance.
+rank                           1 # Front rank.
+rangedweapon50s           10  38 # Poison Breath: d10 Poison damage.
+meleeweapon               25  11 # Bite: d25 Slash damage.
+meleeweapon               20  12 # Claw: d20 Slash damage.
+meleeweapon                5 485 # Tail Sweep: d5 Blunt damage.
+flying                          
+huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
+poisonres                    100 # Poison immunity.
+acutesenses                      # Can see units with Stealth or Forest Stealth.
+fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
+nametype                      15 # Old Nordic male.
+randommisc                    50 # 50% chance to spawn with a random misc magic item.
+dragon                         1 # Non-elder dragon.
+lairgoldpen                   50 # 50% Gold income penalty for this monster's home square.
+greedy                         1 # This unit will never give away its magic items voluntarily.
+
+
+newmonster "Invigorated Bile Dragon"
+descr "This Bile Dragon has been enlivened by the Kobolds with fresh meat and magical gems. It is faster and more active than most of its kin, but will eventually return to its mostly sedentary state"
+copyspr "Bile Dragon"
+copystats "Bile Dragon"
+wanderrest                    0 # Always Be Consuming
+lairgoldpen                   0 # While the Dragon is away... 
+fast							# Gotta Go Fast
+float							# I expect issues with water
+wandermaxdist                 7 # Far Far Away
+
+newmonster "Spent Bile Dragon"
+descr "This Bile Dragon's Invigoration has worn off. Once it finishes its mission it will slowly return to its home"
+copyspr "Bile Dragon"
+copystats "Bile Dragon"
+wanderrest                  100 # Always Be Sleeping
+slow							# Gotta Go Slow
+float							# I expect issues with water
+
+newmonster "Awakened Dusk Dragon"
+descr "Made from shadow and regret, the darkest dragon of them all is the Dusk Dragon. It comes in the night and calls forth tearing shadows and manifest darkness. Still like most dragons it can be defeated by the valiant knights of the realm. Their scales are highly fashionable, and most nobles in the southern trade cities pay dearly for a Dusk Dragon scale mail, and it really is a must for the many masquerades in Ravezia. Much so that the prices have soared, and some sell sooted sturgeon scales, as those of the Dusk Dragon."
+copyspr "Dusk Dragon"
+armor                          3 # Armor.
+hp                           105 # Hit Points.
+str                            9 # Strength.
+mor                            7 # Morale.
+mr                             9 # Magic Resistance.
+rank                           1 # Front rank.
+spellweapon50s             9   2 # Dark Magic at level 2.
+meleeweapon               25  11 # Bite: d25 Slash damage.
+meleeweapon               20  12 # Claw: d20 Slash damage.
+meleeweapon                5 485 # Tail Sweep: d5 Blunt damage.
+flying                          
+huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
+acutesenses                      # Can see units with Stealth or Forest Stealth.
+stealth                          # Can only be seen by units with Acute Senses or Spirit Sight.
+fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
+nametype                      15 # Old Nordic male.
+randommisc                    50 # 50% chance to spawn with a random misc magic item.
+dragon                         1 # Non-elder dragon.
+lairgoldpen                   50 # 50% Gold income penalty for this monster's home square.
+greedy                         1 # This unit will never give away its magic items voluntarily.
+
+newmonster "Invigorated Dusk Dragon"
+descr "This Dusk Dragon has been enlivened by the Kobolds with fresh meat and magical gems. It is faster and more active than most of its kin, but will eventually return to its mostly sedentary state"
+copyspr "Dusk Dragon"
+copystats "Dusk Dragon"
+wanderrest                    0 # Always Be Consuming
+lairgoldpen                   0 # While the Dragon is away... 
+fast							# Gotta Go Fast
+float							# I expect issues with water
+wandermaxdist                 7 # Far Far Away
+
+newmonster "Spent Dusk Dragon"
+descr "This Dusk Dragon's Invigoration has worn off. Once it finishes its mission it will slowly return to its home"
+copyspr "Dusk Dragon"
+copystats "Dusk Dragon"
+wanderrest                  100 # Always Be Sleeping
+slow							# Gotta Go Slow
+float							# I expect issues with water
+
+
+newritual     "Summon Fire Dragon"                                             # 471
 descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
 ritpow                52 # Kobold, Red
 level                  2
+free
 cost              0   1 # 50 Gold
 cost             16   1 # 25 Kobolds
 terr                 -1 # Required terrain: proper mines.
@@ -262,16 +437,111 @@ summoning                # The ritual will summon the monsters specified in a ra
 aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
 addstring     "c*Fire Dragon"
 
-newritual     "Awaken Dragon"   
+newritual     "Summon Frost Dragon"                                             # 471
+descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
+ritpow                52 # Kobold, Red
+level                  2
+free
+cost              0   1 # 50 Gold
+cost             16   1 # 25 Kobolds
+terr                 -1 # Required terrain: proper mines.
+# fx1031             431 # Unhandled trait 1031 with argument 431.
+summoning                # The ritual will summon the monsters specified in a random string.
+aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
+addstring     "c*Frost Dragon"
+
+
+newritual     "Summon Storm Dragon"                                             # 471
+descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
+ritpow                52 # Kobold, Red
+level                  2
+free
+cost              0   1 # 50 Gold
+cost             16   1 # 25 Kobolds
+terr                 -1 # Required terrain: proper mines.
+# fx1031             431 # Unhandled trait 1031 with argument 431.
+summoning                # The ritual will summon the monsters specified in a random string.
+aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
+addstring     "c*Storm Dragon"
+
+
+
+newritual     "Summon Bile Dragon"                                             # 471
+descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
+ritpow                52 # Kobold, Red
+level                  2
+free
+cost              0   1 # 50 Gold
+cost             16   1 # 25 Kobolds
+terr                 -1 # Required terrain: proper mines.
+# fx1031             431 # Unhandled trait 1031 with argument 431.
+summoning                # The ritual will summon the monsters specified in a random string.
+aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
+addstring     "c*Bile Dragon"
+
+
+
+newritual     "Summon Dusk Dragon"                                             # 471
+descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
+ritpow                52 # Kobold, Red
+level                  2
+free
+cost              0   1 # 50 Gold
+cost             16   1 # 25 Kobolds
+terr                 -1 # Required terrain: proper mines.
+# fx1031             431 # Unhandled trait 1031 with argument 431.
+summoning                # The ritual will summon the monsters specified in a random string.
+aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
+addstring     "c*Dusk Dragon"
+
+
+newritual     "Awaken Fire Dragon"   
 ritpow                 52 # Kobold, Red
+free 
 level					1
 cost					0 1 # 75 gold
 promotion				1
 addstring "Fire Dragon"
 addstring "Awakened Fire Dragon" 
 
+newritual     "Awaken Frost Dragon"   
+ritpow                 52 # Kobold, Red
+free 
+level					1
+cost					0 1 # 75 gold
+promotion				1
+addstring "Frost Dragon"
+addstring "Awakened Frost Dragon" 
 
-newritual     "Invigorate Dragon"   
+newritual     "Awaken Storm Dragon"   
+ritpow                 52 # Kobold, Red
+free 
+level					1
+cost					0 1 # 75 gold
+promotion				1
+addstring "Storm Dragon"
+addstring "Awakened Storm Dragon" 
+
+newritual     "Awaken Bile Dragon"   
+ritpow                 52 # Kobold, Red
+free 
+level					1
+cost					0 1 # 75 gold
+promotion				1
+addstring "Bile Dragon"
+addstring "Awakened Bile Dragon" 
+
+newritual     "Awaken Dusk Dragon"   
+ritpow                 52 # Kobold, Red
+free 
+level					1
+cost					0 1 # 75 gold
+promotion				1
+addstring "Dusk Dragon"
+addstring "Awakened Dusk Dragon" 
+
+
+newritual     "Invigorate Fire Dragon"   
 descr "By feeding a dragon a few Kobolds and gems, it becomes invigorated, becoming much faster and more aggressive as well as more likely to venture further. This effect will last for at least a season, but could last longer. You may only invigorate one dragon of each type at a time "
 ritpow                 52 # Kobold, Red
 noeventvarreq         700 # There must not be any currently invigorated Red Dragon
@@ -286,3 +556,69 @@ cost					0 1 # 75 gold
 promotion				1
 addstring "Fire Dragon"
 addstring "Invigorated Fire Dragon"
+
+newritual     "Invigorate Frost Dragon"   
+descr "By feeding a dragon a few Kobolds and gems, it becomes invigorated, becoming much faster and more aggressive as well as more likely to venture further. This effect will last for at least a season, but could last longer. You may only invigorate one dragon of each type at a time "
+ritpow                 52 # Kobold, Red
+noeventvarreq         702 # There must not be any currently invigorated Red Dragon
+seteventvar			  702
+seteventvar			  703
+addeventvar           703 # Sets event var to 3. Dragon should last at minimum 3 turns
+addeventvar           703
+addeventvar           703
+free
+level					1
+cost					0 1 # 75 gold
+promotion				1
+addstring "Frost Dragon"
+addstring "Invigorated Frost Dragon"
+
+newritual     "Invigorate Storm Dragon"   
+descr "By feeding a dragon a few Kobolds and gems, it becomes invigorated, becoming much faster and more aggressive as well as more likely to venture further. This effect will last for at least a season, but could last longer. You may only invigorate one dragon of each type at a time "
+ritpow                 52 # Kobold, Red
+noeventvarreq         704 # There must not be any currently invigorated Red Dragon
+seteventvar			  704
+seteventvar			  705
+addeventvar           705 # Sets event var to 3. Dragon should last at minimum 3 turns
+addeventvar           705
+addeventvar           705
+free
+level					1
+cost					0 1 # 75 gold
+promotion				1
+addstring "Storm Dragon"
+addstring "Invigorated Storm Dragon"
+
+
+newritual     "Invigorate Bile Dragon"   
+descr "By feeding a dragon a few Kobolds and gems, it becomes invigorated, becoming much faster and more aggressive as well as more likely to venture further. This effect will last for at least a season, but could last longer. You may only invigorate one dragon of each type at a time "
+ritpow                 52 # Kobold, Red
+noeventvarreq         706 # There must not be any currently invigorated Red Dragon
+seteventvar			  706
+seteventvar			  707
+addeventvar           707 # Sets event var to 3. Dragon should last at minimum 3 turns
+addeventvar           707
+addeventvar           707
+free
+level					1
+cost					0 1 # 75 gold
+promotion				1
+addstring "Bile Dragon"
+addstring "Invigorated Bile Dragon"
+
+
+newritual     "Invigorate Dusk Dragon"   
+descr "By feeding a dragon a few Kobolds and gems, it becomes invigorated, becoming much faster and more aggressive as well as more likely to venture further. This effect will last for at least a season, but could last longer. You may only invigorate one dragon of each type at a time "
+ritpow                 52 # Kobold, Red
+noeventvarreq         708 # There must not be any currently invigorated Red Dragon
+seteventvar			  708
+seteventvar			  709
+addeventvar           709 # Sets event var to 3. Dragon should last at minimum 3 turns
+addeventvar           709
+addeventvar           709
+free
+level					1
+cost					0 1 # 75 gold
+promotion				1
+addstring "Dusk Dragon"
+addstring "Invigorated Dusk Dragon"
