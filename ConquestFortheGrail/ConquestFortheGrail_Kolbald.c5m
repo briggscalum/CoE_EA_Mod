@@ -47,6 +47,17 @@ squareevent
 	message -2 "The effects of your invigoration ritual have worn off, your Fire Dragon will return to its mostly sedentary existance"
 endevent
 
+# If your Fire Dragon Dies while its active
+playerevent
+	+minturnnbr 1  			#Any turn
+	+class -2 "Kobold King"
+	-hasunit -2 "Invigorated Fire Dragon"
+	+varvarequal 700 1 # If it has been 3 turn
+	+chance 100
+	setvar 700 0
+	message -2 "Your Fire Dragon has burnt itself out"
+endevent
+
 # Spent Dragon will slowly fly back to base
 squareevent
 	+minturnnbr 1  			#Any turn
@@ -84,6 +95,16 @@ squareevent
 	message -2 "The effects of your invigoration ritual have worn off, your Frost Dragon will return to its mostly sedentary existance"
 endevent
 
+playerevent
+	+minturnnbr 1  			#Any turn
+	+class -2 "Kobold King"
+	-hasunit -2 "Invigorated Frost Dragon"
+	+varvarequal 702 1 # Frost Dragon active 
+	+chance 100
+	setvar 702 0
+	message -2 "Your Frost Dragon has been iced"
+endevent
+
 # Spent Dragon will slowly fly back to base
 squareevent
 	+minturnnbr 1  			#Any turn
@@ -118,6 +139,16 @@ squareevent
 	setvar 704 0
 	promoteunits -2 1 "Invigorated Storm Dragon" "Spent Storm Dragon"
 	message -2 "The effects of your invigoration ritual have worn off, your Storm Dragon will return to its mostly sedentary existance"
+endevent
+
+playerevent
+	+minturnnbr 1  			#Any turn
+	+class -2 "Kobold King"
+	-hasunit -2 "Invigorated Storm Dragon"
+	+varvarequal 704 1 # If it has been 3 turn
+	+chance 100
+	setvar 704 0
+	message -2 "Your Storm Dragon has been blown away"
 endevent
 
 # Spent Dragon will slowly fly back to base
@@ -158,6 +189,16 @@ squareevent
 	message -2 "The effects of your invigoration ritual have worn off, your Bile Dragon will return to its mostly sedentary existance"
 endevent
 
+playerevent
+	+minturnnbr 1  			#Any turn
+	+class -2 "Kobold King"
+	-hasunit -2 "Invigorated Bile Dragon"
+	+varvarequal 706 1 # If it has been 3 turn
+	+chance 100
+	setvar 706 0
+	message -2 "Your Bile Dragon is disolved"
+endevent
+
 # Spent Dragon will slowly fly back to base
 squareevent
 	+minturnnbr 1  			#Any turn
@@ -194,6 +235,17 @@ squareevent
 	message -2 "The effects of your invigoration ritual have worn off, your Dusk Dragon will return to its mostly sedentary existance"
 endevent
 
+playerevent
+	+minturnnbr 1  			#Any turn
+	+class -2 "Kobold King"
+	-hasunit -2 "Invigorated Dusk Dragon"
+	+varvarequal 708 1 # If it has been 3 turn
+	+chance 100
+	setvar 708 0
+	message -2 "Your Dusk Dragon has given up the ghost"
+endevent
+
+
 # Spent Dragon will slowly fly back to base
 squareevent
 	+minturnnbr 1  			#Any turn
@@ -204,9 +256,38 @@ squareevent
 	promoteunits -2 1 "Spent Dusk Dragon" "Dusk Dragon"
 endevent
 
+
+
 ###
 # Dragons
 ###
+
+newweapon     "Torrent of Water"                               # 132
+trgrank              1 # Target: any enemy in range.
+range                5
+init                 7
+dmgtype              2 # Blunt.
+dmg                 15 # Base damage (added to dmg value where this weapon is used).
+aoe               2010 # Area: narrow cone, 10 squares.
+look                17
+sound               88 # water1.wav (Water)
+nextwep            118 # Extra effect if target is affected: 118: aff (str-resistable).
+nextdmg             64 # Stun
+
+newmonster "Dragon Turtle"
+
+descr "A much rarer relative of the Sea Dragon, the Dragon turtle has much more draconic blood in its veins, giving it access to a powerful breath weapon. Like other Dragons it does not take orders from non-dragons but can be peruaded to join the cause of the Kolbolds by a powerful storm mage"
+copystats "Sea Dragon"
+spr1 "sprites/dragonturtle.png"
+spr2 "sprites/dragonturtle1.png"
+rangedweapon50s "Torrent of Water"
+dragon                         1 # Non-elder dragon.
+greedy                         1 # This unit will never give away its magic items voluntarily.
+stupid
+wanderrest                    0 # Always Be Consuming
+wander 						  18 # Yar Har
+wandermaxdist                 7 # Far Far Away
+fast							 # Gotta Go Fast
 
 newmonster "Awakened Fire Dragon"
 descr "Who has not seen the head of a dragon hanging above some two-penny count's hearth? The Fire Dragon is the dragon most often hunted by knights, and also the dragon that thrives best on mankind. The Fire Dragon is the most prolific of all dragons, and it may be that a nutritious diet of knights and the occasional kidnapped princess gives their hatchlings a good start in life. Though many knights are lured into hunting dragons by the promise of obtaining their immeasurable treasures, it is often a false quest. Some survivors have confessed that what they had believed to be gold was just the ember lights from the dragon's fire reflected on its red scales and their caves of red sandstone."
@@ -256,9 +337,10 @@ dragon                         1 # Non-elder dragon.
 greedy                         1 # This unit will never give away its magic items voluntarily.
 stupid
 wanderrest                    0 # Always Be Consuming
+wandermaxdist                 7 # Far Far Away
 fast							# Gotta Go Fast
 float							# I expect issues with water
-wander                        19 # Will try to fulfill this objective if it is a commander: Dragon.
+wander                        18 # Will try to fulfill this objective if it is a commander: Dragon.
 
 newmonster "Spent Fire Dragon"
 descr "This Fire Dragon's Invigoration has worn off. Once it finishes its mission it will slowly return to its home"
@@ -322,7 +404,7 @@ wanderrest                    0 # Always Be Consuming
 fast							# Gotta Go Fast
 float							# I expect issues with water
 wandermaxdist                 7 # Far Far Away
-wander                       19 # Will try to fulfill this objective if it is a commander: Dragon.
+wander                       18 # Will try to fulfill this objective if it is a commander: Dragon.
 
 
 newmonster "Spent Frost Dragon"
@@ -387,7 +469,7 @@ wanderrest                    0 # Always Be Consuming
 fast							# Gotta Go Fast
 float							# I expect issues with water
 wandermaxdist                 7 # Far Far Away
-wander                       19 # Will try to fulfill this objective if it is a commander: Dragon.
+wander                       18 # Will try to fulfill this objective if it is a commander: Dragon.
 
 
 
@@ -449,7 +531,7 @@ wanderrest                     0 # Always Be Consuming
 fast							 # Gotta Go Fast
 float							 # I expect issues with water
 wandermaxdist                  7 # Far Far Away
-wander                        19 # Will try to fulfill this objective if it is a commander: Dragon.
+wander                        18 # Will try to fulfill this objective if it is a commander: Dragon.
 
 
 newmonster "Spent Bile Dragon"
@@ -511,7 +593,7 @@ wanderrest                    0 # Always Be Consuming
 fast							# Gotta Go Fast
 float							# I expect issues with water
 wandermaxdist                 7 # Far Far Away
-wander                       19 # Will try to fulfill this objective if it is a commander: Dragon.
+wander                       18 # Will try to fulfill this objective if it is a commander: Dragon.
 
 
 newmonster "Spent Dusk Dragon"
@@ -593,6 +675,18 @@ summoning                # The ritual will summon the monsters specified in a ra
 aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
 addstring     "c*Dusk Dragon"
 
+newritual     "Summon Dragon Turtle"                                             # 471
+descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
+ritpow                52 # Kobold, Red
+level                  2
+free
+cost              0   1 # 50 Gold
+cost             16   1 # 25 Kobolds
+terr                 -1 # Required terrain: proper mines.
+# fx1031             431 # Unhandled trait 1031 with argument 431.
+summoning                # The ritual will summon the monsters specified in a random string.
+aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
+addstring     "c*Dragon Turtle"
 
 newritual     "Awaken Fire Dragon"   
 ritpow                 52 # Kobold, Red
@@ -692,7 +786,7 @@ addstring "Invigorated Storm Dragon"
 newritual     "Invigorate Bile Dragon"   
 descr "By feeding a dragon a few Kobolds and gems, it becomes invigorated, becoming much faster and more aggressive as well as more likely to venture further. This effect will last for at least a season, but could last longer. You may only invigorate one dragon of each type at a time "
 ritpow                 52 # Kobold, Red
-noeventvarreq         706 # There must not be any currently invigorated Red Dragon
+noeventvarreq         706 # There must not be any currently invigorated Bile Dragon
 seteventvar			  706
 seteventvar			  707
 addeventvar           707 # Sets event var to 3. Dragon should last at minimum 3 turns
