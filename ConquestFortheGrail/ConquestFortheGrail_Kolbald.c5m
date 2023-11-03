@@ -262,7 +262,7 @@ endevent
 # Dragons
 ###
 
-newweapon     "Torrent of Water"                               # 132
+newweapon     "Jet of Water"                               # 132
 trgrank              1 # Target: any enemy in range.
 range                5
 init                 7
@@ -274,19 +274,20 @@ sound               88 # water1.wav (Water)
 nextwep            118 # Extra effect if target is affected: 118: aff (str-resistable).
 nextdmg             64 # Stun
 
-newmonster "Dragon Turtle"
 
+newmonster "Dragon Turtle"
 descr "A much rarer relative of the Sea Dragon, the Dragon turtle has much more draconic blood in its veins, giving it access to a powerful breath weapon. Like other Dragons it does not take orders from non-dragons but can be peruaded to join the cause of the Kolbolds by a powerful storm mage"
 copystats "Sea Dragon"
 spr1 "sprites/dragonturtle.png"
 spr2 "sprites/dragonturtle1.png"
-rangedweapon50s "Torrent of Water"
+
+rangedweapon50s "Jet of Water"
 dragon                         1 # Non-elder dragon.
 greedy                         1 # This unit will never give away its magic items voluntarily.
 stupid
 wanderrest                    0 # Always Be Consuming
-wander 						  18 # Yar Har
-wandermaxdist                 7 # Far Far Away
+wander 						  9 # Yar Har
+wandermaxdist                99 # Far Far Away
 fast							 # Gotta Go Fast
 
 newmonster "Awakened Fire Dragon"
