@@ -78,7 +78,7 @@ squareevent
 	+class -2 "Kobold King"
 	+hasunithere -2 "Invigorated Frost Dragon"
 	+chance 35
-	+varvarequal 701 600 # If it has been 3 turn
+	+varvarequal 703 600 # If it has been 3 turn
 	setvar 702 0
 	promoteunits -2 1 "Invigorated Frost Dragon" "Spent Frost Dragon"
 	message -2 "The effects of your invigoration ritual have worn off, your Frost Dragon will return to its mostly sedentary existance"
@@ -234,12 +234,31 @@ greedy                         1 # This unit will never give away its magic item
 newmonster "Invigorated Fire Dragon"
 descr "This Fire Dragon has been enlivened by the Kobolds with fresh meat and magical gems. It is faster and more active than most of its kin, but will eventually return to its mostly sedentary state"
 copyspr "Fire Dragon"
-copystats "Fire Dragon"
+
+armor                          3 # Armor.
+hp                           105 # Hit Points.
+str                            9 # Strength.
+mor                            7 # Morale.
+mr                             9 # Magic Resistance.
+rank                           1 # Front rank.
+rangedweapon50s           10  85 # Fiery Breath: d10 Fire damage.
+meleeweapon               25  11 # Bite: d25 Slash damage.
+meleeweapon               20  12 # Claw: d20 Slash damage.
+meleeweapon                5 485 # Tail Sweep: d5 Blunt damage.
+flying                          
+huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
+fireres                      100 # Fire immunity.
+acutesenses                      # Can see units with Stealth or Forest Stealth.
+fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
+nametype                      15 # Old Nordic male.
+randommisc                    50 # 50% chance to spawn with a random misc magic item.
+dragon                         1 # Non-elder dragon.
+greedy                         1 # This unit will never give away its magic items voluntarily.
+stupid
 wanderrest                    0 # Always Be Consuming
-lairgoldpen                   0 # While the Dragon is away... 
 fast							# Gotta Go Fast
 float							# I expect issues with water
-wandermaxdist                 7 # Far Far Away
+wander                        19 # Will try to fulfill this objective if it is a commander: Dragon.
 
 newmonster "Spent Fire Dragon"
 descr "This Fire Dragon's Invigoration has worn off. Once it finishes its mission it will slowly return to its home"
@@ -251,7 +270,7 @@ float							# I expect issues with water
 
 
 newmonster "Awakened Frost Dragon"
-descr "Just like knights hunt the Fire Dragons in our part of the realm, barbarians in the northern wastes will try to hunt down their fabled Frost Dragons. In stark contrast to the Fire Dragon's diet of bold knights, the northern barbarians are less of a treat for the Frost Dragons. This is most likely due to their custom of smearing themselves with thick layers of rancid seal blubber to protect against the cold.
+descr "Just like knights hunt the Fire Dragons in our part of the realm, barbarians in the northern wastes will try to hunt down their fabled Frost Dragons. In stark contrast to the Fire Dragon's diet of bold knights, the northern barbarians are less of a treat for the Frost Dragons. This is most likely due to their custom of smearing themselves with thick layers of rancid seal blubber to protect against the cold."
 copyspr "Frost Dragon"
 # sprite number            21004
 armor                          3 # Armor.
@@ -278,13 +297,33 @@ greedy                         1 # This unit will never give away its magic item
 
 newmonster "Invigorated Frost Dragon"
 descr "This Frost Dragon has been enlivened by the Kobolds with fresh meat and magical gems. It is faster and more active than most of its kin, but will eventually return to its mostly sedentary state"
-copyspr "Fire Dragon"
-copystats "Fire Dragon"
+copyspr "Frost Dragon"
+
+armor                          3 # Armor.
+hp                           105 # Hit Points.
+str                            9 # Strength.
+mor                            7 # Morale.
+mr                             9 # Magic Resistance.
+rank                           1 # Front rank.
+rangedweapon50s           10 276 # Icy Breath: d10 Cold damage.
+meleeweapon               25  11 # Bite: d25 Slash damage.
+meleeweapon               20  12 # Claw: d20 Slash damage.
+meleeweapon                5 485 # Tail Sweep: d5 Blunt damage.
+flying                          
+huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
+coldres                      100 # Cold immunity.
+acutesenses                      # Can see units with Stealth or Forest Stealth.
+fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
+nametype                      15 # Old Nordic male.
+randommisc                    50 # 50% chance to spawn with a random misc magic item.
+greedy                         1 # This unit will never give away its magic items voluntarily.
+stupid
 wanderrest                    0 # Always Be Consuming
-lairgoldpen                   0 # While the Dragon is away... 
 fast							# Gotta Go Fast
 float							# I expect issues with water
 wandermaxdist                 7 # Far Far Away
+wander                       19 # Will try to fulfill this objective if it is a commander: Dragon.
+
 
 newmonster "Spent Frost Dragon"
 descr "This Frost Dragon's Invigoration has worn off. Once it finishes its mission it will slowly return to its home"
@@ -323,12 +362,34 @@ greedy                         1 # This unit will never give away its magic item
 newmonster "Invigorated Storm Dragon"
 descr "This Storm Dragon has been enlivened by the Kobolds with fresh meat and magical gems. It is faster and more active than most of its kin, but will eventually return to its mostly sedentary state"
 copyspr "Storm Dragon"
-copystats "Storm Dragon"
+
+descr  # sprite number            21022
+armor                          3 # Armor.
+hp                           110 # Hit Points.
+str                            9 # Strength.
+mor                            7 # Morale.
+mr                             9 # Magic Resistance.
+rank                           1 # Front rank.
+rangedweapon50s           10 858 # Lightning Breath: d10 Shock damage.
+meleeweapon               25  11 # Bite: d25 Slash damage.
+meleeweapon               20  12 # Claw: d20 Slash damage.
+meleeweapon                5 485 # Tail Sweep: d5 Blunt damage.
+flying                          
+huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
+shockres                     100 # Shock immunity.
+acutesenses                      # Can see units with Stealth or Forest Stealth.
+fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
+stupid
+nametype                      15 # Old Nordic male.
+randommisc                    50 # 50% chance to spawn with a random misc magic item.
+greedy                         1 # This unit will never give away its magic items voluntarily.
 wanderrest                    0 # Always Be Consuming
-lairgoldpen                   0 # While the Dragon is away... 
 fast							# Gotta Go Fast
 float							# I expect issues with water
 wandermaxdist                 7 # Far Far Away
+wander                       19 # Will try to fulfill this objective if it is a commander: Dragon.
+
+
 
 newmonster "Spent Storm Dragon"
 descr "This Storm Dragon's Invigoration has worn off. Once it finishes its mission it will slowly return to its home"
@@ -359,19 +420,37 @@ fear                             # Causes Fear (1d7 vs morale) in adjacent squar
 nametype                      15 # Old Nordic male.
 randommisc                    50 # 50% chance to spawn with a random misc magic item.
 dragon                         1 # Non-elder dragon.
-lairgoldpen                   50 # 50% Gold income penalty for this monster's home square.
 greedy                         1 # This unit will never give away its magic items voluntarily.
 
 
 newmonster "Invigorated Bile Dragon"
 descr "This Bile Dragon has been enlivened by the Kobolds with fresh meat and magical gems. It is faster and more active than most of its kin, but will eventually return to its mostly sedentary state"
 copyspr "Bile Dragon"
-copystats "Bile Dragon"
-wanderrest                    0 # Always Be Consuming
-lairgoldpen                   0 # While the Dragon is away... 
-fast							# Gotta Go Fast
-float							# I expect issues with water
-wandermaxdist                 7 # Far Far Away
+armor                          3 # Armor.
+hp                           105 # Hit Points.
+str                            9 # Strength.
+mor                            7 # Morale.
+mr                             9 # Magic Resistance.
+rank                           1 # Front rank.
+rangedweapon50s           10  38 # Poison Breath: d10 Poison damage.
+meleeweapon               25  11 # Bite: d25 Slash damage.
+meleeweapon               20  12 # Claw: d20 Slash damage.
+meleeweapon                5 485 # Tail Sweep: d5 Blunt damage.
+flying                          
+huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
+stupid                           # Cannot be controlled by players and will move automatically like an independent unit.
+poisonres                    100 # Poison immunity.
+acutesenses                      # Can see units with Stealth or Forest Stealth.
+fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
+nametype                      15 # Old Nordic male.
+randommisc                    50 # 50% chance to spawn with a random misc magic item.
+greedy                         1 # This unit will never give away its magic items voluntarily.
+wanderrest                     0 # Always Be Consuming
+fast							 # Gotta Go Fast
+float							 # I expect issues with water
+wandermaxdist                  7 # Far Far Away
+wander                        19 # Will try to fulfill this objective if it is a commander: Dragon.
+
 
 newmonster "Spent Bile Dragon"
 descr "This Bile Dragon's Invigoration has worn off. Once it finishes its mission it will slowly return to its home"
@@ -408,12 +487,32 @@ greedy                         1 # This unit will never give away its magic item
 newmonster "Invigorated Dusk Dragon"
 descr "This Dusk Dragon has been enlivened by the Kobolds with fresh meat and magical gems. It is faster and more active than most of its kin, but will eventually return to its mostly sedentary state"
 copyspr "Dusk Dragon"
-copystats "Dusk Dragon"
+armor                          3 # Armor.
+hp                           105 # Hit Points.
+str                            9 # Strength.
+mor                            7 # Morale.
+mr                             9 # Magic Resistance.
+rank                           1 # Front rank.
+spellweapon50s             9   2 # Dark Magic at level 2.
+meleeweapon               25  11 # Bite: d25 Slash damage.
+meleeweapon               20  12 # Claw: d20 Slash damage.
+meleeweapon                5 485 # Tail Sweep: d5 Blunt damage.
+flying                          
+huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
+stupid                           # Cannot be controlled by players and will move automatically like an independent unit.
+acutesenses                      # Can see units with Stealth or Forest Stealth.
+stealth                          # Can only be seen by units with Acute Senses or Spirit Sight.
+fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
+nametype                      15 # Old Nordic male.
+randommisc                    50 # 50% chance to spawn with a random misc magic item.
+lairgoldpen                   50 # 50% Gold income penalty for this monster's home square.
+greedy                         1 # This unit will never give away its magic items voluntarily.
 wanderrest                    0 # Always Be Consuming
-lairgoldpen                   0 # While the Dragon is away... 
 fast							# Gotta Go Fast
 float							# I expect issues with water
 wandermaxdist                 7 # Far Far Away
+wander                       19 # Will try to fulfill this objective if it is a commander: Dragon.
+
 
 newmonster "Spent Dusk Dragon"
 descr "This Dusk Dragon's Invigoration has worn off. Once it finishes its mission it will slowly return to its home"
