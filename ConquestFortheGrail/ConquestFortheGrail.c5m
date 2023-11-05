@@ -96,6 +96,7 @@ meleeweapon                15 332 # Tangle Vines: d5 Blunt damage.
 meleeweapon                15 332 # Tangle Vines: d5 Blunt damage.
 meleeweapon                15 332 # Tangle Vines: d5 Blunt damage.
 meleeweapon                15 332 # Tangle Vines: d5 Blunt damage.
+semistupid
 regeneration
 
 
@@ -324,7 +325,7 @@ newritual     "Lesser Ritual of Mastery"                                  #  18
 descr "This ritual grants the caster a new first level ritual."
 ritpow                 90 # Bandar Weed
 level                  1
-cost              	   6 50 # 150 Weed
+cost              	   6 50 # 50 Weed
 newrit                 1 # Caster will learn a new ritual of level 2.
 levelup                1 # Level up to new monster (determined by mastery command on monster) if below level 2.
 soundfx               57 # Sound effect when the ritual is cast: orchhit.smp (Summoning).
@@ -335,7 +336,7 @@ newritual     "Ritual of Mastery"                                  #  18
 descr "This ritual grants the caster a new first level ritual."
 ritpow                 90 # Bandar Weed
 level                  1
-cost              	   6 1 # 150 Weed
+cost              	   6 150 # 150 Weed
 newrit                 2 # Caster will learn a new ritual of level 2.
 levelup                2 # Level up to new monster (determined by mastery command on monster) if below level 2.
 soundfx               57 # Sound effect when the ritual is cast: orchhit.smp (Summoning).
@@ -346,8 +347,8 @@ newritual     "Ritual of Bloody Mastery"                                  #  18
 descr "This ritual grants the caster a new first level ritual."
 ritpow                 90 # Bandar Weed
 level                  1
-cost              	   6 1 # 240 Weed
-cost              	   4 1 # 240 Sacrifices
+cost              	   6 240 # 240 Weed
+cost              	   4 240 # 240 Sacrifices
 newrit                 3 # Caster will learn a new ritual of level 2.
 levelup                3 # Level up to new monster (determined by mastery command on monster) if below level 2.
 soundfx               57 # Sound effect when the ritual is cast: orchhit.smp (Summoning).
@@ -422,25 +423,12 @@ descr "The Yogini now infused with bloody power now has an insatiable lust for t
 ritpow					90 # Bandar Weed
 level					3
 free
-cost					6 1 #200 Weed
+cost					6 200 #200 Weed
 terr					4
 aiwhere					4
 portalroom				238 # Primal Forest
 noportalreq				1
 closewin
-
-newritual "Journey For Test"
-descr "The Yogini now infused with bloody power now has an insatiable lust for the mystical weed. Reaching out beyond the Elyisan sphere, She locates a powerful source of Primal Energy where more weed can be found and creates a portal to its center"
-ritpow					90 # Bandar Weed
-level					3
-free
-cost					6 1 #200 Weed
-terr					-1
-aiwhere					4
-portalroom				286 # Primal Forest
-noportalreq				1
-closewin
-
 
 newmonster    "False Hound"     
 spr1 "sprites/falsehound.png"
@@ -501,8 +489,8 @@ animal                           # Vulnerable to weapons and spells that only af
 newritual "Corrupt Primal Animals"
 ritpow					90 # Bandar Weed
 level					3
-cost              	    6 1 # 20 Weed
-cost              	    4 1 # 20 Sacrifices
+cost              	    6 20 # 20 Weed
+cost              	    4 20 # 20 Sacrifices
 terr 					294 # Wild Forest
 alterloc                283 # Spider Thicket
 summoning                # The ritual will summon the monsters specified in a random string.
@@ -513,28 +501,28 @@ addstring     "1d3+2*Blood Widow"
 descr "The Demonic Yogini Combines the power of the Primal forest and the False World to create powerful and bloodythirsty creatures, the Maya magic involved in this ritual turns the forest into a drained, evil place."
 
 
-newritual "Create Blood Vine Behemoth"
-ritpow					90 # Bandar Weed
-defctrl 				75
-level					3
-cost              	    6 1 # 100 Weed
-cost              	    4 1 # 100 Sacrifices
-terr 					238 #Primal Forest
-summoning
-addstring "1*Blood Vine Abomination"
-
-descr "The Demonic Yogini brings the Maya of the false world to the center of primal power and attempts to summon an ultimate being of Blood and Vine. The Primal Forest will try and resist, and the Yogini could find herself fighting the very creature she is trying to create"
-
-
-newritual "Manifest the False World"
-ritpow					90 # Bandar Weed
-defctrl 				75
-level					1
-free
-cost 					0 1
+# newritual "Create Blood Vine Behemoth"
+# ritpow					90 # Bandar Weed
+# defctrl 				75
+# level					3
 # cost              	    6 1 # 100 Weed
 # cost              	    4 1 # 100 Sacrifices
 # terr 					238 #Primal Forest
+# summoning
+# addstring "1*Blood Vine Abomination"
+# descr "The Demonic Yogini brings the Maya of the false world to the center of primal power and attempts to summon an ultimate being of Blood and Vine. The Primal Forest will try and resist, and the Yogini could find herself fighting the very creature she is trying to create"
+
+
+newritual "Manifest the False World"
+ritpow					67 # Bandar Weed
+defctrl 				75
+level					1
+minmonreq               1
+addstring               "(&)Yogini Rakshasi"
+# cost 					0 1
+cost              	    6 500 # 500 Weed
+cost              	    4 500 # 500 Sacrifices
+terr 					238 #Primal Forest
 alterloc				600
 
 descr "In the ultimate ritual of Maya, The Raksharaja kills many sacrifcies around the Primal tree and hangs their bodies from the branches. Working with a Demonic Yogini, they together strip the branches and fill Tree with powerful Enchantments in order to serve as a gateway to the False World. Once complete the false world begins to manifest on the primal plane and it soon fills with the demons of Maya."
@@ -569,7 +557,7 @@ playerevent
 	+ownsloctarg -2 600 # The False Tree
 	+class -2 "Raksharaja"
 	+chance 35
-	newunits -2 "2d2*Rakshasa"
+	newunits -2 "3d3*Rakshasa"
 endevent
 
 playerevent
@@ -577,7 +565,7 @@ playerevent
 	+ownsloctarg -2 600 # The False Tree
 	+class -2 "Raksharaja"
 	+chance 35
-	newunits -2 "2d2*Rakshasa Warrior"
+	newunits -2 "2d4*Rakshasa Warrior"
 endevent
 
 playerevent
@@ -585,9 +573,8 @@ playerevent
 	+ownsloctarg -2 600 # The False Tree
 	+class -2 "Raksharaja"
 	+chance 30
-	newunits -2 "2d2*Sandhyabala"
+	newunits -2 "4d2*Sandhyabala"
 endevent
-
 
 playerevent
 	+minturnnbr 1
@@ -595,7 +582,6 @@ playerevent
 	+class -2 "Raksharaja"
 	+chance 15
 	newunits -2 "c*Danava"
-
 endevent
 
 playerevent

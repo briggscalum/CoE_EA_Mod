@@ -270,6 +270,80 @@ endevent
 # Dragons
 ###
 
+newmonster "Great Wyrm of Conflagration"
+unique    1
+hp                           177 # Hit Points.
+str                            9 # Strength.
+mor                           10 # Morale.
+mr                            11 # Magic Resistance.
+rank                           2 # Mid rank.
+meleeweapon               20  11 # Bite: d33 Slash damage.
+spellweapon                3   3 # Pyromancy at level 3.
+huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
+mines1                           # Loves mines (if an independent or stupid commander, will not leave its loved terrains).
+poisonres                    100 # Poison immunity.
+fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
+
+newmonster "Great Wyrm of Rime"
+unique    					   1
+hp                           177 # Hit Points.
+str                            9 # Strength.
+mor                           10 # Morale.
+mr                            11 # Magic Resistance.
+rank                           2 # Mid rank.
+meleeweapon               20  11 # Bite: d20 Slash damage.
+spellweapon               27   3 # Frost Magic at level 3.
+huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
+mines1                           # Loves mines (if an independent or stupid commander, will not leave its loved terrains).
+poisonres                    100 # Poison immunity.
+fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
+
+newmonster "Great Wyrm of Tumult"
+unique                         1
+hp                           177 # Hit Points.
+str                            9 # Strength.
+mor                           10 # Morale.
+mr                            11 # Magic Resistance.
+rank                           2 # Mid rank.
+spellweaponbonus           5   3 # Storm Magic at level 3.
+meleeweapon               20  11 # Bite: d20 Slash damage.
+huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
+mines1                           # Loves mines (if an independent or stupid commander, will not leave its loved terrains).
+poisonres                    100 # Poison immunity.
+fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
+
+newmonster "Great Wyrm of Firmament"
+unique                         1
+hp                           177 # Hit Points.
+str                            9 # Strength.
+mor                           10 # Morale.
+mr                            11 # Magic Resistance.
+rank                           2 # Mid rank.
+spellweapon                6   3 # Geomancy at level 3.
+
+meleeweapon               20  11 # Bite: d20 Slash damage.
+huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
+mines1                           # Loves mines (if an independent or stupid commander, will not leave its loved terrains).
+poisonres                    100 # Poison immunity.
+fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
+
+newmonster "Great Wyrm of Desolation"
+
+unique                         1
+hp                           177 # Hit Points.
+str                            9 # Strength.
+mor                           10 # Morale.
+mr                            11 # Magic Resistance.
+rank                           2 # Mid rank.
+meleeweapon               20  11 # Bite: d20 Slash damage.
+spellweapon                9   3 # Shadow at level 3.
+
+huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
+mines1                           # Loves mines (if an independent or stupid commander, will not leave its loved terrains).
+poisonres                    100 # Poison immunity.
+fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
+
+
 newmonster "Silver Dragon"
 copystats "Frost Dragon"
 descr "The Silver Dragon a great deal of resistance to both physical and magic damage. In addition to its cold breath, it has access to silver arcana. Legends say that the Silver Dragon is actually unrelated to the elemental dragons and is actually associated with the Celestial Realm"
@@ -741,9 +815,12 @@ descr "This ritual summons a dragon to a greater mine. The dragon demands gold a
 ritpow                53 # Kobold, Blue
 level                  2
 free
-cost              0   1 # 50 Gold
-cost             16   1 # 25 Kobolds
-terr                 -1 # Required terrain: proper mines.
+cost              0   50 # 50 Gold
+cost             16   25 # 25 Kobolds
+cost             15   25 # 25 Gems
+nomonhomereq
+addstring "(-)Dragon Turtle"
+terr                 -93 # Ports
 # fx1031             431 # Unhandled trait 1031 with argument 431.
 summoning                # The ritual will summon the monsters specified in a random string.
 aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
@@ -877,31 +954,43 @@ promotion				1
 addstring "Dusk Dragon"
 addstring "Invigorated Dusk Dragon"
 
+
 newritual     "Summon Silver Dragon"                                             # 480
 descr "This ritual summons a Silver Dragon to a Silver mine. The dragon demands gold, saphires, and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
-nomonhomereq "Silver Dragon"
-nomonhomereq "Fire Dragon"
-nomonhomereq "Frost Dragon"
-nomonhomereq "Storm Dragon"
-nomonhomereq "Bile Dragon"
-nomonhomereq "Dusk Dragon"
-nomonhomereq "Invigorated Silver Dragon"
-nomonhomereq "Invigorated Fire Dragon"
-nomonhomereq "Invigorated Frost Dragon"
-nomonhomereq "Invigorated Storm Dragon"
-nomonhomereq "Invigorated Bile Dragon"
-nomonhomereq "Invigorated Dusk Dragon"
+nomonhomereq
+addstring "(&)Silver Dragon"
+addstring "(&)Fire Dragon"
+addstring "(&)Frost Dragon"
+addstring "(&)Storm Dragon"
+addstring "(&)Bile Dragon"
+addstring "(&)Dusk Dragon"
+addstring "(&)Invigorated Silver Dragon"
+addstring "(&)Invigorated Fire Dragon"
+addstring "(&)Invigorated Frost Dragon"
+addstring "(&)Invigorated Storm Dragon"
+addstring "(&)Invigorated Bile Dragon"
+addstring "(&)Invigorated Dusk Dragon"
 
-ritpow                53 # Kobold, Blue
-level                  2
-cost             0   100 # 100 Gold
-cost             16   25 # 25 Kobolds
-cost             8    50 # 50 Saphires
-terr                 15  # Required terrain: Silver Mine
+newritual     "Call Tiamat"
+minmonreq               1
+addstring               "(&)Great Wyrm of Conflagration"
+minmonreq               1
+addstring               "(&)Great Wyrm of Rime"
+minmonreq               1
+addstring               "(&)Great Wyrm of Tumult"
+minmonreq               1
+addstring               "(&)Great Wyrm of Firmament"
+minmonreq               1
+addstring               "(&)Great Wyrm of Desolation"
+
+ritpow                52 # Kobold, Fire
+level                  3
+cost             16  500 # 500 Kobolds
+cost             15  500 # 500 Saphires
+terr                 223 # Required terrain: Silver Mine
 # fx1031             431 # Unhandled trait 1031 with argument 431.
 summoning                # The ritual will summon the monsters specified in a random string.
-aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
-addstring     "c*Silver Dragon"
+addstring     "c*Tiamat"
 
 
 selectclass 27
