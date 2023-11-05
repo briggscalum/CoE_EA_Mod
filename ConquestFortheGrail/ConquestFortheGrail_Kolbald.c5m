@@ -9,6 +9,7 @@ modprio 3
 # Variables used
 # Dragon Invortion
 # 600 - Variable Set to zero
+# 601 - Variable Set to one
 # 700 - Fire Dragon Currently Invigorated
 # 701 - Fire Dragon Guaranteed turns of Invigoration
 # 702 - Frost Dragon Currently Invigorated
@@ -21,6 +22,13 @@ modprio 3
 # 709 - Dusk Dragon Guaranteed turns of Invigoration
 
 
+
+playerevent
+	+minturnnbr 1  			#Any turn
+	+class -2 "Kobold King"
+	setvar 600 0
+endevent
+
 ####
 # Fire Dragon Events
 ####
@@ -30,7 +38,7 @@ playerevent
 	+minturnnbr 1  			#Any turn
 	+class -2 "Kobold King"
 	+hasunit -2 "Invigorated Fire Dragon"
-	+varvargreater 701 600
+	+vargreater 701 0
 	+chance 100
 	addvar 701 -1
 endevent
@@ -41,7 +49,7 @@ squareevent
 	+class -2 "Kobold King"
 	+hasunithere -2 "Invigorated Fire Dragon"
 	+chance 35
-	+varvarequal 701 600 # If it has been 3 turn
+	+varvequal 701 0 # If it has been 3 turn
 	setvar 700 0
 	promoteunits -2 1 "Invigorated Fire Dragon" "Spent Fire Dragon"
 	message -2 "The effects of your invigoration ritual have worn off, your Fire Dragon will return to its mostly sedentary existance"
@@ -52,7 +60,7 @@ playerevent
 	+minturnnbr 1  			#Any turn
 	+class -2 "Kobold King"
 	-hasunit -2 "Invigorated Fire Dragon"
-	+varvarequal 700 1 # If it has been 3 turn
+	+varequal 700 1 # If I have an Invigorated Fire Dragon
 	+chance 100
 	setvar 700 0
 	message -2 "Your Fire Dragon has burnt itself out"
@@ -78,7 +86,7 @@ playerevent
 	+minturnnbr 1  			#Any turn
 	+class -2 "Kobold King"
 	+hasunit -2 "Invigorated Frost Dragon"
-	+varvargreater 703 600
+	+vargreater 703 0
 	+chance 100
 	addvar 703 -1
 endevent
@@ -89,7 +97,7 @@ squareevent
 	+class -2 "Kobold King"
 	+hasunithere -2 "Invigorated Frost Dragon"
 	+chance 35
-	+varvarequal 703 600 # If it has been 3 turn
+	+varequal 703 0 # If it has been 3 turn
 	setvar 702 0
 	promoteunits -2 1 "Invigorated Frost Dragon" "Spent Frost Dragon"
 	message -2 "The effects of your invigoration ritual have worn off, your Frost Dragon will return to its mostly sedentary existance"
@@ -99,7 +107,7 @@ playerevent
 	+minturnnbr 1  			#Any turn
 	+class -2 "Kobold King"
 	-hasunit -2 "Invigorated Frost Dragon"
-	+varvarequal 702 1 # Frost Dragon active 
+	+varequal 702 1 # Frost Dragon active 
 	+chance 100
 	setvar 702 0
 	message -2 "Your Frost Dragon has been iced"
@@ -124,7 +132,7 @@ playerevent
 	+minturnnbr 1  			#Any turn
 	+class -2 "Kobold King"
 	+hasunit -2 "Invigorated Storm Dragon"
-	+varvargreater 705 600
+	+vargreater 705 0
 	+chance 100
 	addvar 705 -1
 endevent
@@ -135,7 +143,7 @@ squareevent
 	+class -2 "Kobold King"
 	+hasunithere -2 "Invigorated Storm Dragon"
 	+chance 35
-	+varvarequal 705 600 # If it has been 3 turn
+	+varequal 705 0 # If it has been 3 turn
 	setvar 704 0
 	promoteunits -2 1 "Invigorated Storm Dragon" "Spent Storm Dragon"
 	message -2 "The effects of your invigoration ritual have worn off, your Storm Dragon will return to its mostly sedentary existance"
@@ -145,7 +153,7 @@ playerevent
 	+minturnnbr 1  			#Any turn
 	+class -2 "Kobold King"
 	-hasunit -2 "Invigorated Storm Dragon"
-	+varvarequal 704 1 # If it has been 3 turn
+	+varequal 704 1 # If it has been 3 turn
 	+chance 100
 	setvar 704 0
 	message -2 "Your Storm Dragon has been blown away"
@@ -171,7 +179,7 @@ playerevent
 	+minturnnbr 1  			#Any turn
 	+class -2 "Kobold King"
 	+hasunit -2 "Invigorated Bile Dragon"
-	+varvargreater 707 600
+	+vargreater 707 0
 	+chance 100
 	addvar 707 -1
 endevent
@@ -183,7 +191,7 @@ squareevent
 	+class -2 "Kobold King"
 	+hasunithere -2 "Invigorated Bile Dragon"
 	+chance 35
-	+varvarequal 707 600 # If it has been 3 turn
+	+varequal 707 0 # If it has been 3 turn
 	setvar 706 0
 	promoteunits -2 1 "Invigorated Bile Dragon" "Spent Bile Dragon"
 	message -2 "The effects of your invigoration ritual have worn off, your Bile Dragon will return to its mostly sedentary existance"
@@ -193,7 +201,7 @@ playerevent
 	+minturnnbr 1  			#Any turn
 	+class -2 "Kobold King"
 	-hasunit -2 "Invigorated Bile Dragon"
-	+varvarequal 706 1 # If it has been 3 turn
+	+varequal 706 1 # If Dragon is set to be done
 	+chance 100
 	setvar 706 0
 	message -2 "Your Bile Dragon is disolved"
@@ -218,7 +226,7 @@ playerevent
 	+minturnnbr 1  			#Any turn
 	+class -2 "Kobold King"
 	+hasunit -2 "Invigorated Dusk Dragon"
-	+varvargreater 709 600
+	+vargreater 709 0
 	+chance 100
 	addvar 709 -1
 endevent
@@ -229,7 +237,7 @@ squareevent
 	+class -2 "Kobold King"
 	+hasunithere -2 "Invigorated Dusk Dragon"
 	+chance 35
-	+varvarequal 709 600 # If it has been 3 turn
+	+varequal 709 0 # If it has been 3 turn
 	setvar 708 0
 	promoteunits -2 1 "Invigorated Dusk Dragon" "Spent Dusk Dragon"
 	message -2 "The effects of your invigoration ritual have worn off, your Dusk Dragon will return to its mostly sedentary existance"
@@ -239,7 +247,7 @@ playerevent
 	+minturnnbr 1  			#Any turn
 	+class -2 "Kobold King"
 	-hasunit -2 "Invigorated Dusk Dragon"
-	+varvarequal 708 1 # If it has been 3 turn
+	+varequal 708 1 # If it has been 3 turn
 	+chance 100
 	setvar 708 0
 	message -2 "Your Dusk Dragon has given up the ghost"
@@ -261,6 +269,22 @@ endevent
 ###
 # Dragons
 ###
+
+newmonster "Silver Dragon"
+copystats "Frost Dragon"
+descr "The Silver Dragon a great deal of resistance to both physical and magic damage. In addition to its cold breath, it has access to silver arcana. Legends say that the Silver Dragon is actually unrelated to the elemental dragons and is actually associated with the Celestial Realm"
+spr1 "sprites/silverdragon.png"
+spr2 "sprites/silverdragon1.png"
+
+hp                           150 # Hit Points.
+armor                          4 # Armor.
+mr                             11 # Magic Resistance.
+
+spellweapon               53   2 # Silver Arcana at level 2.
+wanderrest 70
+
+
+
 
 newweapon     "Jet of Water"                               # 132
 trgrank              1 # Target: any enemy in range.
@@ -606,6 +630,42 @@ slow							# Gotta Go Slow
 float							# I expect issues with water
 
 
+newweapon     "Silver Swordword"                                                #   8
+trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
+range                1
+init                 3
+dmgtype              1 # Slash.
+dmg                  6 # Base damage (added to dmg value where this weapon is used).
+aoe                  0 # Area: single target.
+undkill
+sound                8 # sword.wav (Sword)
+
+newmonster    "Silver Dragon Spawn"                                        # 1364
+descr "In each batch of eggs one or two will develop some small wings, allowing them to fly. Such a kobold is called a Dragon Spawn and is considered to be holy and only below the king and the shaman in caste. As most kobolds lack the ability to fly, they have some problems teaching their new hatchlings to how to do so. Their solution is as always very crude and wasteful, in the manner they solve most things. Each year all Dragon Spawn that are considered  mature enough are taken to a special cliff and simply thrown off of it. Those who survive will be part of an elite guard, while those that don’t will become a tasty meal for the rest of the tribe. Though they have taken the name from the dragons themselves, the Dragon Spawn, in my opinion, are proof that the kobolds are not descended from dragons. Some of our local taxidermists/approved necromancers have received a few dead Dragon Spawn that they have deboned and reconstructed. It should be obvious to anyone examining their skeletons that their wings are not joined to the spine in the same manner as they would be on a dragon. Though some critics will claim that the lack of deboned dragons may prove a problem for this claim, it is obvious when looking at any sketch of a dragon."
+# copyspr "Red Dragon Spawn"
+spr1 "sprites/silverdragonspawn.png"
+spr2 "sprites/silverdragonspawn1.png"
+# sprite number            39072
+armor                          3 # Armor.
+hp                             6 # Hit Points.
+str                            5 # Strength.
+mor                            3 # Morale.
+mr                             7 # Magic Resistance.
+rank                           1 # Front rank.
+meleeweapon                0   "Silver Swordword" 
+flying                          
+snow                             # -1 AP to enter snow-covered squares.
+coldres                      100 # Cold immunity.
+# res13                          # Small: if a Longdead, Soulless, or Ghoul is made from this unit, it will be a "Little" version.
+shield                           # Reduces damage from most weapons by 0-1; 0-2 against ranged weapons.
+allitemslots                     # Has the full set of item slots.
+
+#####
+# Rituals
+#####
+
+
+
 newritual     "Summon Fire Dragon"                                             # 471
 descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
 ritpow                52 # Kobold, Red
@@ -678,7 +738,7 @@ addstring     "c*Dusk Dragon"
 
 newritual     "Summon Dragon Turtle"                                             # 471
 descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
-ritpow                52 # Kobold, Red
+ritpow                53 # Kobold, Blue
 level                  2
 free
 cost              0   1 # 50 Gold
@@ -816,3 +876,37 @@ cost					0 1 # 75 gold
 promotion				1
 addstring "Dusk Dragon"
 addstring "Invigorated Dusk Dragon"
+
+newritual     "Summon Silver Dragon"                                             # 480
+descr "This ritual summons a Silver Dragon to a Silver mine. The dragon demands gold, saphires, and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
+nomonhomereq "Silver Dragon"
+nomonhomereq "Fire Dragon"
+nomonhomereq "Frost Dragon"
+nomonhomereq "Storm Dragon"
+nomonhomereq "Bile Dragon"
+nomonhomereq "Dusk Dragon"
+nomonhomereq "Invigorated Silver Dragon"
+nomonhomereq "Invigorated Fire Dragon"
+nomonhomereq "Invigorated Frost Dragon"
+nomonhomereq "Invigorated Storm Dragon"
+nomonhomereq "Invigorated Bile Dragon"
+nomonhomereq "Invigorated Dusk Dragon"
+
+ritpow                53 # Kobold, Blue
+level                  2
+cost             0   100 # 100 Gold
+cost             16   25 # 25 Kobolds
+cost             8    50 # 50 Saphires
+terr                 15  # Required terrain: Silver Mine
+# fx1031             431 # Unhandled trait 1031 with argument 431.
+summoning                # The ritual will summon the monsters specified in a random string.
+aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
+addstring     "c*Silver Dragon"
+
+
+selectclass 27
+
+addunitrec  "Silver Dragon Spawn"    100  10   125   0    0 # only where Emerald income.
+recxcost     8  10                            # 10 Sapphires additional cost.
+recterr      15
+reclimiter  "+Silver Dragon"           # Owning a Green Kobold Prophet enables the preceding offer.
