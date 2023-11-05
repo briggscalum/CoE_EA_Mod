@@ -545,6 +545,7 @@ squareevent
 	+minturnnbr 1
 	+terrain 600 # The False Tree
 	+squareowner -2
+	+chance 100
 	-class -2 "Raksharaja"
 	alterterrain 283
 endevent
