@@ -20,255 +20,46 @@ modprio 3
 # 707 - Bile Dragon Guaranteed turns of Invigoration
 # 708 - Dusk Dragon Currently Invigorated
 # 709 - Dusk Dragon Guaranteed turns of Invigoration
-
-
-
-playerevent
-	+minturnnbr 1  			#Any turn
-	+class -2 "Kobold King"
-	setvar 600 0
-endevent
-
-####
-# Fire Dragon Events
-####
-
-# Counts Down Turns
-playerevent
-	+minturnnbr 1  			#Any turn
-	+class -2 "Kobold King"
-	+hasunit -2 "Invigorated Fire Dragon"
-	+vargreater 701 0
-	+chance 100
-	addvar 701 -1
-endevent
-
-# Turn the Awake Dragon Back into a Spent Dragon After 3 or more turns
-squareevent
-	+minturnnbr 1  			#Any turn
-	+class -2 "Kobold King"
-	+hasunithere -2 "Invigorated Fire Dragon"
-	+chance 35
-	+varvequal 701 0 # If it has been 3 turn
-	setvar 700 0
-	promoteunits -2 1 "Invigorated Fire Dragon" "Spent Fire Dragon"
-	message -2 "The effects of your invigoration ritual have worn off, your Fire Dragon will return to its mostly sedentary existance"
-endevent
-
-# If your Fire Dragon Dies while its active
-playerevent
-	+minturnnbr 1  			#Any turn
-	+class -2 "Kobold King"
-	-hasunit -2 "Invigorated Fire Dragon"
-	+varequal 700 1 # If I have an Invigorated Fire Dragon
-	+chance 100
-	setvar 700 0
-	message -2 "Your Fire Dragon has burnt itself out"
-endevent
-
-# Spent Dragon will slowly fly back to base
-squareevent
-	+minturnnbr 1  			#Any turn
-	+class -2 "Kobold King"
-	+hasunithere -2 "Spent Fire Dragon"
-	+chance 100
-	+terrain -12 #Greater Mine, Basically Home province
-	promoteunits -2 1 "Spent Fire Dragon" "Fire Dragon"
-endevent
-
-
-####
-# Frost Dragon Events
-####
-
-# Counts Down Turns
-playerevent
-	+minturnnbr 1  			#Any turn
-	+class -2 "Kobold King"
-	+hasunit -2 "Invigorated Frost Dragon"
-	+vargreater 703 0
-	+chance 100
-	addvar 703 -1
-endevent
-
-# Turn the Awake Dragon Back into a Spent Dragon After 3 or more turns
-squareevent
-	+minturnnbr 1  			#Any turn
-	+class -2 "Kobold King"
-	+hasunithere -2 "Invigorated Frost Dragon"
-	+chance 35
-	+varequal 703 0 # If it has been 3 turn
-	setvar 702 0
-	promoteunits -2 1 "Invigorated Frost Dragon" "Spent Frost Dragon"
-	message -2 "The effects of your invigoration ritual have worn off, your Frost Dragon will return to its mostly sedentary existance"
-endevent
-
-playerevent
-	+minturnnbr 1  			#Any turn
-	+class -2 "Kobold King"
-	-hasunit -2 "Invigorated Frost Dragon"
-	+varequal 702 1 # Frost Dragon active 
-	+chance 100
-	setvar 702 0
-	message -2 "Your Frost Dragon has been iced"
-endevent
-
-# Spent Dragon will slowly fly back to base
-squareevent
-	+minturnnbr 1  			#Any turn
-	+class -2 "Kobold King"
-	+hasunithere -2 "Spent Frost Dragon"
-	+chance 100
-	+terrain -12 #Greater Mine, Basically Home province
-	promoteunits -2 1 "Spent Frost Dragon" "Frost Dragon"
-endevent
-
-####
-# Storm Dragon Events
-####
-
-# Counts Down Turns
-playerevent
-	+minturnnbr 1  			#Any turn
-	+class -2 "Kobold King"
-	+hasunit -2 "Invigorated Storm Dragon"
-	+vargreater 705 0
-	+chance 100
-	addvar 705 -1
-endevent
-
-# Turn the Awake Dragon Back into a Spent Dragon After 3 or more turns
-squareevent
-	+minturnnbr 1  			#Any turn
-	+class -2 "Kobold King"
-	+hasunithere -2 "Invigorated Storm Dragon"
-	+chance 35
-	+varequal 705 0 # If it has been 3 turn
-	setvar 704 0
-	promoteunits -2 1 "Invigorated Storm Dragon" "Spent Storm Dragon"
-	message -2 "The effects of your invigoration ritual have worn off, your Storm Dragon will return to its mostly sedentary existance"
-endevent
-
-playerevent
-	+minturnnbr 1  			#Any turn
-	+class -2 "Kobold King"
-	-hasunit -2 "Invigorated Storm Dragon"
-	+varequal 704 1 # If it has been 3 turn
-	+chance 100
-	setvar 704 0
-	message -2 "Your Storm Dragon has been blown away"
-endevent
-
-# Spent Dragon will slowly fly back to base
-squareevent
-	+minturnnbr 1  			#Any turn
-	+class -2 "Kobold King"
-	+hasunithere -2 "Spent Storm Dragon"
-	+chance 100
-	+terrain -12 #Greater Mine, Basically Home province
-	promoteunits -2 1 "Spent Storm Dragon" "Storm Dragon"
-endevent
-
-
-####
-# Bile Dragon Events
-####
-
-# Counts Down Turns
-playerevent
-	+minturnnbr 1  			#Any turn
-	+class -2 "Kobold King"
-	+hasunit -2 "Invigorated Bile Dragon"
-	+vargreater 707 0
-	+chance 100
-	addvar 707 -1
-endevent
-
-
-# Turn the Awake Dragon Back into a Spent Dragon After 3 or more turns
-squareevent
-	+minturnnbr 1  			#Any turn
-	+class -2 "Kobold King"
-	+hasunithere -2 "Invigorated Bile Dragon"
-	+chance 35
-	+varequal 707 0 # If it has been 3 turn
-	setvar 706 0
-	promoteunits -2 1 "Invigorated Bile Dragon" "Spent Bile Dragon"
-	message -2 "The effects of your invigoration ritual have worn off, your Bile Dragon will return to its mostly sedentary existance"
-endevent
-
-playerevent
-	+minturnnbr 1  			#Any turn
-	+class -2 "Kobold King"
-	-hasunit -2 "Invigorated Bile Dragon"
-	+varequal 706 1 # If Dragon is set to be done
-	+chance 100
-	setvar 706 0
-	message -2 "Your Bile Dragon is disolved"
-endevent
-
-# Spent Dragon will slowly fly back to base
-squareevent
-	+minturnnbr 1  			#Any turn
-	+class -2 "Kobold King"
-	+hasunithere -2 "Spent Bile Dragon"
-	+chance 100
-	+terrain -12 #Greater Mine, Basically Home province
-	promoteunits -2 1 "Spent Bile Dragon" "Bile Dragon"
-endevent
-
-####
-# Dusk Dragon Events
-####
-
-# Counts Down Turns
-playerevent
-	+minturnnbr 1  			#Any turn
-	+class -2 "Kobold King"
-	+hasunit -2 "Invigorated Dusk Dragon"
-	+vargreater 709 0
-	+chance 100
-	addvar 709 -1
-endevent
-
-# Turn the Awake Dragon Back into a Spent Dragon After 3 or more turns
-squareevent
-	+minturnnbr 1  			#Any turn
-	+class -2 "Kobold King"
-	+hasunithere -2 "Invigorated Dusk Dragon"
-	+chance 35
-	+varequal 709 0 # If it has been 3 turn
-	setvar 708 0
-	promoteunits -2 1 "Invigorated Dusk Dragon" "Spent Dusk Dragon"
-	message -2 "The effects of your invigoration ritual have worn off, your Dusk Dragon will return to its mostly sedentary existance"
-endevent
-
-playerevent
-	+minturnnbr 1  			#Any turn
-	+class -2 "Kobold King"
-	-hasunit -2 "Invigorated Dusk Dragon"
-	+varequal 708 1 # If it has been 3 turn
-	+chance 100
-	setvar 708 0
-	message -2 "Your Dusk Dragon has given up the ghost"
-endevent
-
-
-# Spent Dragon will slowly fly back to base
-squareevent
-	+minturnnbr 1  			#Any turn
-	+class -2 "Kobold King"
-	+hasunithere -2 "Spent Dusk Dragon"
-	+chance 100
-	+terrain -12 #Greater Mine, Basically Home province
-	promoteunits -2 1 "Spent Dusk Dragon" "Dusk Dragon"
-endevent
-
+# 710 - Tiamat Summoning
 
 
 ###
 # Dragons
 ###
+
+
+newmonster "Tiamat"
+spr1 "sprites/tiamat.png"
+unique    1
+hp                           236 # Hit Points.
+str                           20 # Strength.
+mor                           20 # Morale.
+mr                            20 # Magic Resistance.
+rank                           2 # Mid rank.
+meleeweapon               25  11 # Bite: d33 Slash damage.
+meleeweapon               25  11 # Bite: d33 Slash damage.
+meleeweapon               25  11 # Bite: d33 Slash damage.
+meleeweapon               25  11 # Bite: d33 Slash damage.
+meleeweapon               25  11 # Bite: d33 Slash damage.
+spellweapon                3   3 # Pyromancy at level 3.
+spellweapon               27   3 # Frost Magic at level 3.
+spellweapon                6   3 # Geomancy at level 3.
+spellweaponbonus           5   3 # Storm Magic at level 3.
+spellweapon                9   3 # Shadow at level 3.
+
+
+huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
+fireres                      100 # Fire immunity.
+coldres					     100
+shockres                     100
+airshield					  50
+fireaura
+coldaura
+shockaura
+unaging
+fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
+flying
+
 
 newmonster "Great Wyrm of Conflagration"
 unique    1
@@ -337,7 +128,6 @@ mr                            11 # Magic Resistance.
 rank                           2 # Mid rank.
 meleeweapon               20  11 # Bite: d20 Slash damage.
 spellweapon                9   3 # Shadow at level 3.
-
 huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
 mines1                           # Loves mines (if an independent or stupid commander, will not leave its loved terrains).
 poisonres                    100 # Poison immunity.
@@ -844,6 +634,21 @@ promotion				1
 addstring "Frost Dragon"
 addstring "Awakened Frost Dragon" 
 
+
+newritual     "Summon Tiamat"                                             # 471
+descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
+ritpow                52 # Kobold, Red
+level                  2
+free
+cost              0   1 # 50 Gold
+cost             16   1 # 25 Kobolds
+terr                 -1 # Required terrain: proper mines.
+# fx1031             431 # Unhandled trait 1031 with argument 431.
+summoning                # The ritual will summon the monsters specified in a random string.
+aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
+addstring     "c*Tiamat"
+
+
 newritual     "Awaken Storm Dragon"   
 ritpow                 52 # Kobold, Red
 free 
@@ -971,27 +776,17 @@ addstring "(&)Invigorated Storm Dragon"
 addstring "(&)Invigorated Bile Dragon"
 addstring "(&)Invigorated Dusk Dragon"
 
-newritual     "Call Tiamat"
-minmonreq               1
-addstring               "(&)Great Wyrm of Conflagration"
-minmonreq               1
-addstring               "(&)Great Wyrm of Rime"
-minmonreq               1
-addstring               "(&)Great Wyrm of Tumult"
-minmonreq               1
-addstring               "(&)Great Wyrm of Firmament"
-minmonreq               1
-addstring               "(&)Great Wyrm of Desolation"
-
+newritual     "Call the Great Dragon"
+descr "Ascend to the Nexus with all five of the great Wyrms and reach out into the Universe. Be careful, when the Universe responds it might not be happy. Make sure to turn off the dimensional shields."
 ritpow                52 # Kobold, Fire
 level                  3
 cost             16  500 # 500 Kobolds
-cost             15  500 # 500 Saphires
-terr                 223 # Required terrain: Silver Mine
+cost             15  500 # 500 Gems
+terr                 223 # Required terrain: The Nexus
+killtarg            9999 # Automatically kills target unit (caster).
 # fx1031             431 # Unhandled trait 1031 with argument 431.
-summoning                # The ritual will summon the monsters specified in a random string.
-addstring     "c*Tiamat"
-
+# addstring     "c*Tiamat"
+seteventvar 710 #Tiamat Time
 
 selectclass 27
 
@@ -999,3 +794,267 @@ addunitrec  "Silver Dragon Spawn"    100  10   125   0    0 # only where Emerald
 recxcost     8  10                            # 10 Sapphires additional cost.
 recterr      15
 reclimiter  "+Silver Dragon"           # Owning a Green Kobold Prophet enables the preceding offer.
+
+# Summon Tiamat
+playerevent
+	+minturnnbr 1  			#Any turn
+	+class -2 "Kobold King"
+	+varequal 710 1 # Has Tiamat Been called?
+    +ownsloctarg -2 223
+	+hasunithere -2 "Great Wyrm of Conflagration"
+	+hasunithere -2 "Great Wyrm of Rime"
+	+hasunithere -2 "Great Wyrm of Tumult"
+	+hasunithere -2 "Great Wyrm of Firmament"
+	+hasunithere -2 "Great Wyrm of Desolation"
+	-squareactivated
+	killsquare
+	alterterrain 185
+	
+	newunits -2 "c*Tiamat"
+	setvar 710 0
+endevent
+
+
+playerevent
+	+minturnnbr 1  			#Any turn
+	+class -2 "Kobold King"
+	setvar 600 0
+endevent
+
+####
+# Fire Dragon Events
+####
+
+# Counts Down Turns
+playerevent
+	+minturnnbr 1  			#Any turn
+	+class -2 "Kobold King"
+	+hasunit -2 "Invigorated Fire Dragon"
+	+vargreater 701 0
+	+chance 100
+	addvar 701 -1
+endevent
+
+# Turn the Awake Dragon Back into a Spent Dragon After 3 or more turns
+squareevent
+	+minturnnbr 1  			#Any turn
+	+class -2 "Kobold King"
+	+hasunithere -2 "Invigorated Fire Dragon"
+	+chance 35
+	+varequal 701 0 # If it has been 3 turn
+	setvar 700 0
+	promoteunits -2 1 "Invigorated Fire Dragon" "Spent Fire Dragon"
+	message -2 "The effects of your invigoration ritual have worn off, your Fire Dragon will return to its mostly sedentary existance"
+endevent
+
+# If your Fire Dragon Dies while its active
+playerevent
+	+minturnnbr 1  			#Any turn
+	+class -2 "Kobold King"
+	-hasunit -2 "Invigorated Fire Dragon"
+	+varequal 700 1 # If I have an Invigorated Fire Dragon
+	+chance 100
+	setvar 700 0
+	message -2 "Your Fire Dragon has burnt itself out"
+endevent
+
+# Spent Dragon will slowly fly back to base
+squareevent
+	+minturnnbr 1  			#Any turn
+	+class -2 "Kobold King"
+	+hasunithere -2 "Spent Fire Dragon"
+	+chance 100
+	+terrain -12 #Greater Mine, Basically Home province
+	promoteunits -2 1 "Spent Fire Dragon" "Fire Dragon"
+endevent
+
+
+####
+# Frost Dragon Events
+####
+
+# Counts Down Turns
+playerevent
+	+minturnnbr 1  			#Any turn
+	+class -2 "Kobold King"
+	+hasunit -2 "Invigorated Frost Dragon"
+	+vargreater 703 0
+	+chance 100
+	addvar 703 -1
+endevent
+
+# Turn the Awake Dragon Back into a Spent Dragon After 3 or more turns
+squareevent
+	+minturnnbr 1  			#Any turn
+	+class -2 "Kobold King"
+	+hasunithere -2 "Invigorated Frost Dragon"
+	+chance 35
+	+varequal 703 0 # If it has been 3 turn
+	setvar 702 0
+	promoteunits -2 1 "Invigorated Frost Dragon" "Spent Frost Dragon"
+	message -2 "The effects of your invigoration ritual have worn off, your Frost Dragon will return to its mostly sedentary existance"
+endevent
+
+playerevent
+	+minturnnbr 1  			#Any turn
+	+class -2 "Kobold King"
+	-hasunit -2 "Invigorated Frost Dragon"
+	+varequal 702 1 # Frost Dragon active 
+	+chance 100
+	setvar 702 0
+	message -2 "Your Frost Dragon has been iced"
+endevent
+
+# Spent Dragon will slowly fly back to base
+squareevent
+	+minturnnbr 1  			#Any turn
+	+class -2 "Kobold King"
+	+hasunithere -2 "Spent Frost Dragon"
+	+chance 100
+	+terrain -12 #Greater Mine, Basically Home province
+	promoteunits -2 1 "Spent Frost Dragon" "Frost Dragon"
+endevent
+
+####
+# Storm Dragon Events
+####
+
+# Counts Down Turns
+playerevent
+	+minturnnbr 1  			#Any turn
+	+class -2 "Kobold King"
+	+hasunit -2 "Invigorated Storm Dragon"
+	+vargreater 705 0
+	+chance 100
+	addvar 705 -1
+endevent
+
+# Turn the Awake Dragon Back into a Spent Dragon After 3 or more turns
+squareevent
+	+minturnnbr 1  			#Any turn
+	+class -2 "Kobold King"
+	+hasunithere -2 "Invigorated Storm Dragon"
+	+chance 35
+	+varequal 705 0 # If it has been 3 turn
+	setvar 704 0
+	promoteunits -2 1 "Invigorated Storm Dragon" "Spent Storm Dragon"
+	message -2 "The effects of your invigoration ritual have worn off, your Storm Dragon will return to its mostly sedentary existance"
+endevent
+
+playerevent
+	+minturnnbr 1  			#Any turn
+	+class -2 "Kobold King"
+	-hasunit -2 "Invigorated Storm Dragon"
+	+varequal 704 1 # If it has been 3 turn
+	+chance 100
+	setvar 704 0
+	message -2 "Your Storm Dragon has been blown away"
+endevent
+
+# Spent Dragon will slowly fly back to base
+squareevent
+	+minturnnbr 1  			#Any turn
+	+class -2 "Kobold King"
+	+hasunithere -2 "Spent Storm Dragon"
+	+chance 100
+	+terrain -12 #Greater Mine, Basically Home province
+	promoteunits -2 1 "Spent Storm Dragon" "Storm Dragon"
+endevent
+
+
+####
+# Bile Dragon Events
+####
+
+# Counts Down Turns
+playerevent
+	+minturnnbr 1  			#Any turn
+	+class -2 "Kobold King"
+	+hasunit -2 "Invigorated Bile Dragon"
+	+vargreater 707 0
+	+chance 100
+	addvar 707 -1
+endevent
+
+
+# Turn the Awake Dragon Back into a Spent Dragon After 3 or more turns
+squareevent
+	+minturnnbr 1  			#Any turn
+	+class -2 "Kobold King"
+	+hasunithere -2 "Invigorated Bile Dragon"
+	+chance 35
+	+varequal 707 0 # If it has been 3 turn
+	setvar 706 0
+	promoteunits -2 1 "Invigorated Bile Dragon" "Spent Bile Dragon"
+	message -2 "The effects of your invigoration ritual have worn off, your Bile Dragon will return to its mostly sedentary existance"
+endevent
+
+playerevent
+	+minturnnbr 1  			#Any turn
+	+class -2 "Kobold King"
+	-hasunit -2 "Invigorated Bile Dragon"
+	+varequal 706 1 # If Dragon is set to be done
+	+chance 100
+	setvar 706 0
+	message -2 "Your Bile Dragon is disolved"
+endevent
+
+# Spent Dragon will slowly fly back to base
+squareevent
+	+minturnnbr 1  			#Any turn
+	+class -2 "Kobold King"
+	+hasunithere -2 "Spent Bile Dragon"
+	+chance 100
+	+terrain -12 #Greater Mine, Basically Home province
+	promoteunits -2 1 "Spent Bile Dragon" "Bile Dragon"
+endevent
+
+####
+# Dusk Dragon Events
+####
+
+# Counts Down Turns
+playerevent
+	+minturnnbr 1  			#Any turn
+	+class -2 "Kobold King"
+	+hasunit -2 "Invigorated Dusk Dragon"
+	+vargreater 709 0
+	+chance 100
+	addvar 709 -1
+endevent
+
+# Turn the Awake Dragon Back into a Spent Dragon After 3 or more turns
+squareevent
+	+minturnnbr 1  			#Any turn
+	+class -2 "Kobold King"
+	+hasunithere -2 "Invigorated Dusk Dragon"
+	+chance 35
+	+varequal 709 0 # If it has been 3 turn
+	setvar 708 0
+	promoteunits -2 1 "Invigorated Dusk Dragon" "Spent Dusk Dragon"
+	message -2 "The effects of your invigoration ritual have worn off, your Dusk Dragon will return to its mostly sedentary existance"
+endevent
+
+playerevent
+	+minturnnbr 1  			#Any turn
+	+class -2 "Kobold King"
+	-hasunit -2 "Invigorated Dusk Dragon"
+	+varequal 708 1 # If it has been 3 turn
+	+chance 100
+	setvar 708 0
+	message -2 "Your Dusk Dragon has given up the ghost"
+endevent
+
+
+# Spent Dragon will slowly fly back to base
+squareevent
+	+minturnnbr 1  			#Any turn
+	+class -2 "Kobold King"
+	+hasunithere -2 "Spent Dusk Dragon"
+	+chance 100
+	+terrain -12 #Greater Mine, Basically Home province
+	promoteunits -2 1 "Spent Dusk Dragon" "Dusk Dragon"
+endevent
+
+
+
