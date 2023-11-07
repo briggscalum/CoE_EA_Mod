@@ -779,11 +779,9 @@ recterr      15
 reclimiter  "+Silver Dragon"           # Owning a Green Kobold Prophet enables the preceding offer.
 
 addcomrec   "Kobold Grease Fetcher"  6    45  10    0 # once per offer; extra.
-# [nogathererrec]                             # +6% to chance if player doesn't own any unit (with some exceptions) that gathers a special resource.
 libraryrec                                    # +2% to chance per library point owned, to a max of +20% for 10+ library points.
 
 addcomrec   "Kobold Make Thinger"    1    120  10    0 # once per offer; extra.
-# [nogathererrec]                             # +6% to chance if player doesn't own any unit (with some exceptions) that gathers a special resource.
 libraryrec                                    # +2% to chance per library point owned, to a max of +20% for 10+ library points.
 
 #####

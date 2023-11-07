@@ -80,12 +80,9 @@ invisible           # Terrain on top of the background is not drawn, but the gra
 nosight             # The terrain does not provide vision into adjacent squares when owned.
 apcost 1            # Action Point cost for moving through the terrain: 3
 
-
-
 ##########
 # Events #
 ##########
-
 
 # Make Swamps Freeze in the Winter
 squareevent
