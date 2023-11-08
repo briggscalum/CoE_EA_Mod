@@ -82,15 +82,50 @@ apcost 1            # Action Point cost for moving through the terrain: 3
 
 
 
+
 ############
 # Monsters #
 ############
 
-newmonster "Militia Commander"
-descr "The head of the local defense force, mostly they deal with the stray animals and brigands who might come their way"
+# The milita commander is stupid 
+newmonster "Militia Captain"
+descr "The head of the local defense force, mostly they deal with the stray animals and brigands who might come their way. The militia commander may occationally attack nearby weak force"
 copyspr   "Captain"
 copystats "Captain"
+stationary
+
+newmonster "Field Captain"
+descr "The head of the local defense force, mostly they deal with the stray animals and brigands who might come their way. The militia commander may occationally attack nearby weak force"
+copyspr   "Captain"
+copystats "Captain"
+
+newmonster "Done Captain"
+descr "The head of the local defense force, mostly they deal with the stray animals and brigands who might come their way. The militia commander may occationally attack nearby weak force"
+copyspr   "Captain"
+copystats "Captain"
+alone 100
+
+
+newmonster "Town Militia"
+descr "A simple until recently farmer whose job now involes little more than squinting at out of towners and playing rocks"
+copyspr   "Militia"
+copystats "Militia"
+stationary
+
+newmonster "Wandering Militia"
+descr "A simple until recently farmer whose job now involes little more than squinting at out of towners and playing rocks"
+copyspr   "Militia"
+copystats "Militia"
+stupid
+lovesterr  -14
+
+newmonster "Captain of the Guard"
+descr "The head of the the natianal defense force. In charge of calling up armies in their nation's time of need."
+copyspr   "Tower Guard"
+copystats "Tower Guard"
 power					89  1
+
+
 
 
 newmonster "Blood Vine Abomination"
@@ -303,6 +338,12 @@ newritual   "Raise the Alarm"
 ritpow 				   89
 level 					1
 soundfx                114 # Horn
+apcost 				   17  # Twice Per year
+setvar      599
+addeventvar 599
+addeventvar 599
+addeventvar 599
+
 descr "Ring the bell, blow the horn, the river has forzen and the wolves have come"
 
 
@@ -561,12 +602,71 @@ squareevent
 endevent
 
 
-# Spawn Millitia Commander 
+# Spawn Militia Peeps 
+squareevent
+	+terrain   -14   # Any Human Settlment
+    +minturnnbr 1    # Any turn
+	+squareowner -2
+	+humanplayer -2
+	+varequal 599 0
+	newunits -2 "Town Militia"
+endevent
 
+# Raise the Levies
+squareevent
+	+class -2 "Baron"
+	+minturnnbr 1    # Any turn
+	+varequal 599 3
+	promoteunits -2 1   "Town Militia""Field Captain"
+	promote 1 "Field Captain"
+	promoteunits -2 100 "Town Militia" "Militia"
+endevent
+
+# Unraise the Levies
+
+# Make Militia stay still
 squareevent
 	+minturnnbr 1    # Any turn
-	+terrain   -14   # Any Human Settlment
-	+squareowner -2
-	-hasunithere -2 "Militia Commander"
-	newunits -2 "c*Militia Commander"
+	+class -2 "Baron"
+	+varequal 599 0
+	promoteunits -2 100  "Militia" "Wandering Militia"
 endevent
+
+# Make Captian Die
+squareevent
+	+minturnnbr 1    # Any turn
+	+class -2 "Baron"
+	+varequal 599 0
+	+hasunithere "Field Captain"
+	promoteunits -2 100  "Field Captain" "Done Captain"
+endevent
+
+# Make Captian Die
+squareevent
+	+minturnnbr 1    # Any turn
+	+class -2 "Baron"
+	+varequal 599 0
+	+hasunithere "Done Captain"
+	killunit 999
+endevent
+
+# New Home
+squareevent
+	+minturnnbr 1    # Any turn
+	+class -2 "Baron"
+	+hasunithere "Wandering Militia"
+	+terrain -14
+	promoteunits -2 100  "Wandering Militia" "Militia" 
+
+endevent
+
+
+playerevent
+	+minturnnbr 1    # Any turn
+	+class -2 "Baron"
+	+vargreater 599 0
+	addvar 599 -1
+endevent
+
+selectclass 1
+addstartcom "Captain of the Guard"
