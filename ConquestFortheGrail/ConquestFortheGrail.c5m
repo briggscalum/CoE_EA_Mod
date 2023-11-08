@@ -80,31 +80,18 @@ invisible           # Terrain on top of the background is not drawn, but the gra
 nosight             # The terrain does not provide vision into adjacent squares when owned.
 apcost 1            # Action Point cost for moving through the terrain: 3
 
-##########
-# Events #
-##########
 
-# Make Swamps Freeze in the Winter
-squareevent
-	+minturnnbr 1  			#Any turn
-	+terrain  -101 "Snowey"
-	+terrain   107 "Swamp"
-	+chance 100
-	alterterrain 700  # Freeze Swamp
-endevent
-
-# And Thaw in the Spring
-squareevent
-	+minturnnbr 1  			#Any turn
-	-terrain  -101 "Snowey"
-	+terrain   700 "Frozen Swamp"
-	+chance 100
-	alterterrain 107 # Back to swamp
-endevent
 
 ############
 # Monsters #
 ############
+
+newmonster "Militia Commander"
+descr "The head of the local defense force, mostly they deal with the stray animals and brigands who might come their way"
+copyspr   "Captain"
+copystats "Captain"
+power					89  1
+
 
 newmonster "Blood Vine Abomination"
 descr "The ultimate comination of Maya and Primal Magic, The Blood Vine Abomination evicerates anything near it while the power of blood magic keeps its vines regrowing at an alarming rate"
@@ -306,6 +293,17 @@ addunitrec  "Possessed Armored Soulless Bandar"100  3    0   0   10
 reclimiter  "=Possessed Soulless Bandar"      # The preceding offer can only be used to upgrade Possessed Soulless Bandar unit(s).
 addunitrec  "Possessed Longdead Bandar Warrior"100  3    0   0   10
 reclimiter  "=Possessed Longdead Bandar"      # The preceding offer can only be used to upgrade Possessed Longdead Bandar unit(s).
+
+
+#######
+## Misc Rituals
+#######
+
+newritual   "Raise the Alarm"
+ritpow 				   89
+level 					1
+soundfx                114 # Horn
+descr "Ring the bell, blow the horn, the river has forzen and the wolves have come"
 
 
 #########################
@@ -538,3 +536,37 @@ nonearby1req			-92  # Sites of trade
 apcost					2
 soundfx               	57
 descr "The Raksharaja goes to a tribe of monkeys and attempts to bring them the ways of civilization, teaching them to sell their weed to others and to make good roads through their lands so that traders can travel. The Raj also encourages nearby human merchants to trade with and settle with the monkeys of the village to create a flourishing new market vilage. Note that most humans are not very enthusiastic to live with the Atavi, and will not move in if there is an adjacent place of commerce."
+
+
+##########
+# Events #
+##########
+
+# Make Swamps Freeze in the Winter
+squareevent
+	+minturnnbr 1  			#Any turn
+	+terrain  -101 "Snowey"
+	+terrain   107 "Swamp"
+	+chance 100
+	alterterrain 700  # Freeze Swamp
+endevent
+
+# And Thaw in the Spring
+squareevent
+	+minturnnbr 1  			#Any turn
+	-terrain  -101 "Snowey"
+	+terrain   700 "Frozen Swamp"
+	+chance 100
+	alterterrain 107 # Back to swamp
+endevent
+
+
+# Spawn Millitia Commander 
+
+squareevent
+	+minturnnbr 1    # Any turn
+	+terrain   -14   # Any Human Settlment
+	+squareowner -2
+	-hasunithere -2 "Militia Commander"
+	newunits -2 "c*Militia Commander"
+endevent
