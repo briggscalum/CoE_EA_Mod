@@ -104,10 +104,18 @@ copyspr   "Militia"
 copystats "Militia"
 stupid
 
+newmonster "Active Duty Militia"
+descr "A simple until recently farmer whose job now involes little more than squinting at out of towners and playing rocks"
+copyspr   "Militia"
+copystats "Militia"
+semistupid
+
+
 newmonster "Field Captain"
 descr "The head of the local defense force, mostly they deal with the stray animals and brigands who might come their way. The militia commander may occationally attack nearby weak force"
 copyspr   "Captain"
 copystats "Captain"
+
 
 # newmonster "Done Captain"
 # descr "The head of the local defense force, mostly they deal with the stray animals and brigands who might come their way. The militia commander may occationally attack nearby weak force"
@@ -345,7 +353,7 @@ addeventvar 599
 addeventvar 599
 addeventvar 599
 
-descr "Ring the bell, blow the horn, the river has forzen and the wolves have come"
+descr "Ring the bell, blow the horn, the river has frozen and the wolves have come"
 
 
 #########################
@@ -621,7 +629,7 @@ squareevent
 	+varequal 599 7
 	promoteunits -2 1   "Militia Captain""Field Captain"
 	promote 1 "Field Captain"
-	promoteunits -2 100 "Town Militia" "Militia"
+	promoteunits -2 100 "Town Militia" "Active Duty Militia"
 endevent
 
 # Unraise the Levies
@@ -630,7 +638,7 @@ squareevent
 	+minturnnbr 1    # Any turn
 	+class -2 "Baron"
 	+hasunithere 599 4
-	promoteunits -2 100  "Militia" "Town Militia"
+	promoteunits -2 100  "Active Duty Militia" "Town Militia"
 endevent
 
 squareevent
