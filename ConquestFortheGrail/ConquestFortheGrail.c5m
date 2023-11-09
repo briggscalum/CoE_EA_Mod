@@ -92,38 +92,35 @@ newmonster "Militia Captain"
 descr "The head of the local defense force, mostly they deal with the stray animals and brigands who might come their way. The militia commander may occationally attack nearby weak force"
 copyspr   "Captain"
 copystats "Captain"
-stationary
+stupid
+wander                        14
+wanderrest                   100
+wandermaxdist                  0 
+spawnmon                     100
+
+newmonster "Town Militia"
+descr "A simple until recently farmer whose job now involes little more than squinting at out of towners and playing rocks"
+copyspr   "Militia"
+copystats "Militia"
+stupid
 
 newmonster "Field Captain"
 descr "The head of the local defense force, mostly they deal with the stray animals and brigands who might come their way. The militia commander may occationally attack nearby weak force"
 copyspr   "Captain"
 copystats "Captain"
 
-newmonster "Done Captain"
-descr "The head of the local defense force, mostly they deal with the stray animals and brigands who might come their way. The militia commander may occationally attack nearby weak force"
-copyspr   "Captain"
-copystats "Captain"
-alone 100
+# newmonster "Done Captain"
+# descr "The head of the local defense force, mostly they deal with the stray animals and brigands who might come their way. The militia commander may occationally attack nearby weak force"
+# copyspr   "Captain"
+# copystats "Captain"
 
-
-newmonster "Town Militia"
-descr "A simple until recently farmer whose job now involes little more than squinting at out of towners and playing rocks"
-copyspr   "Militia"
-copystats "Militia"
-stationary
-
-newmonster "Wandering Militia"
-descr "A simple until recently farmer whose job now involes little more than squinting at out of towners and playing rocks"
-copyspr   "Militia"
-copystats "Militia"
-stupid
-lovesterr  -14
 
 newmonster "Captain of the Guard"
 descr "The head of the the natianal defense force. In charge of calling up armies in their nation's time of need."
 copyspr   "Tower Guard"
 copystats "Tower Guard"
 power					89  1
+rank -1
 
 
 
@@ -340,6 +337,10 @@ level 					1
 soundfx                114 # Horn
 apcost 				   17  # Twice Per year
 setvar      599
+addeventvar 599
+addeventvar 599
+addeventvar 599
+addeventvar 599
 addeventvar 599
 addeventvar 599
 addeventvar 599
@@ -602,64 +603,43 @@ squareevent
 endevent
 
 
-# Spawn Militia Peeps 
+# Spawn Commander
 squareevent
 	+terrain   -14   # Any Human Settlment
     +minturnnbr 1    # Any turn
 	+squareowner -2
 	+humanplayer -2
 	+varequal 599 0
-	newunits -2 "Town Militia"
+	-hasunithere -2 "Militia Captain"
+	newunits -2 "c*Militia Captain"
 endevent
 
 # Raise the Levies
 squareevent
 	+class -2 "Baron"
 	+minturnnbr 1    # Any turn
-	+varequal 599 3
-	promoteunits -2 1   "Town Militia""Field Captain"
+	+varequal 599 7
+	promoteunits -2 1   "Militia Captain""Field Captain"
 	promote 1 "Field Captain"
 	promoteunits -2 100 "Town Militia" "Militia"
 endevent
 
 # Unraise the Levies
 
-# Make Militia stay still
 squareevent
 	+minturnnbr 1    # Any turn
 	+class -2 "Baron"
-	+varequal 599 0
-	promoteunits -2 100  "Militia" "Wandering Militia"
+	+hasunithere 599 4
+	promoteunits -2 100  "Militia" "Town Militia"
 endevent
 
-# Make Captian Die
 squareevent
 	+minturnnbr 1    # Any turn
 	+class -2 "Baron"
-	+varequal 599 0
+	+varequal 599 4
 	+hasunithere "Field Captain"
-	promoteunits -2 100  "Field Captain" "Done Captain"
+	promoteunits -2 100  "Field Captain" "Militia Captain"
 endevent
-
-# Make Captian Die
-squareevent
-	+minturnnbr 1    # Any turn
-	+class -2 "Baron"
-	+varequal 599 0
-	+hasunithere "Done Captain"
-	killunit 999
-endevent
-
-# New Home
-squareevent
-	+minturnnbr 1    # Any turn
-	+class -2 "Baron"
-	+hasunithere "Wandering Militia"
-	+terrain -14
-	promoteunits -2 100  "Wandering Militia" "Militia" 
-
-endevent
-
 
 playerevent
 	+minturnnbr 1    # Any turn
