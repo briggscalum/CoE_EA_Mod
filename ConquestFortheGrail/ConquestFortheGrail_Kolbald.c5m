@@ -57,9 +57,7 @@ newritpow
 newritpow
 newritpow 
 
-###
-# Dragons
-###
+
 
 
 newmonster "Kobold Grease Fetcher"
@@ -91,6 +89,44 @@ power                          91 3 # Level 1 Kobold Krafts
 fireres 		               0
 armor                          2 # Armor.
 
+
+newweapon "Kobold Loader"
+trgrank              0 # Target: Selfdmgtype              3
+dmg                  1
+# range 50
+
+newweapon "Kobold Launcher"
+mutate
+trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
+range                50
+init                 2
+dmgtype              3 # Pierce.
+dmg                  4 # Base damage (added to dmg value where this weapon is used).
+aoe                  0 # Area: single target.
+lob                    # Arcing trajectory.
+rangepen               # Does half damage if distance >= half range.
+flymode              1 # Missile sprite, one for each strike or square hit.
+flysound            14 # pil.smp (Bow)
+
+
+newmonster "Kobolpult"
+copystats "Catapult"
+copyspr   "Catapult"
+hp                         30 # Hit Points.
+rangedweapon               100  "Kobold Launcher" 
+rangedweapon    		   0   "Kobold Loader"
+firstshape 
+noheal
+# fastheal
+healonterr 				  -12  # Heals if brought back to a mine
+
+newmonster "Kobold Ammo"
+copystats "Red Kobold"
+copyspr   "Red Kobold"
+
+###
+# Dragons
+###
 
 newmonster "Tiamat"
 spr1 "sprites/tiamat.png"
@@ -772,6 +808,8 @@ ritpow               91
 selectclass 27
 
 addstartcom "Kobold Grease Fetcher"
+addstartcom "Kobolpult"
+
 
 addunitrec  "Silver Dragon Spawn"    100  10   125   0    0 # only where Emerald income.
 recxcost     8  10                            # 10 Sapphires additional cost.
