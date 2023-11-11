@@ -116,8 +116,8 @@ spr2 "sprites/kobolpult1.png"
 hp                             30 # Hit Points.
 rangedweapon                   20  "Kobold Launcher" 
 rangedweapon    		       0   "Kobold Loader"
-firstshape 
 noheal
+fastheal
 armor                          0 # Armor.
 str                            4 # Strength.
 mor                            4 # Morale.
@@ -128,15 +128,11 @@ immobile                         # Immobile (cannot move in battle).
 slow                             # The monster only has 2 AP.
 size2x2                          # Takes up 2x2 squares on the battlefield (overrides sprite size).
 
-healonterr 				  -12  # Heals if brought back to a mine
-
 
 newmonster "Kobold Ammo"
 spr1 "sprites/koboldammo.png"
 spr2 "sprites/koboldammo1.png"
 descr "The most fanatical of all Kobolds are loaded with as much armor as the nation can muster and shot out of a catapult into the enemy ranks"
-
-
 armor                          3 # Armor.
 hp                             3 # Hit Points.
 str                            3 # Strength.
@@ -173,7 +169,8 @@ mundane
 
 newmonster "Dragon inna Can"
 spr1 "sprites/dragoninnacan.png"
-
+descr "The best a Grease Fetcher can do in terms of a seige weapon. This weapon can fire a blob of ingited semi-congealed hydrocarbon a short distance and somehow still be ignited when it hits the ground. The ball then splashs all nearby surfaces with fire. Quite effective at attacking wooden structures although the device cannot shoot the ball far enough to be fired at seige range."
+fireexpl 6
 armor                          0 # Armor.
 hp                            10 # Hit Points.
 str                            4 # Strength.
@@ -183,8 +180,8 @@ rank                          -1 # Back rank.
 rangedweapon                   5 "Fire Blob" 
 meleeweapon                0   8 # Shortsword: d5 Slash damage.
 slow                             # The monster only has 2 AP.
-battleslow2                      # Moves only 1 square per 4 turns in combat.
-
+battleslow                       # Moves only 1 square per 2 turns in combat.
+ 
 
 
 ###
@@ -867,11 +864,25 @@ ritpow               91
 selectritual "Poison Gas Trap" 
 ritpow               91
 
+newritual "Find new Ammo"
+ritpow               91
+level                 1
+free
+
+cost            16   15 # 15 Kobolds
+cost             1   15 # 15 Iron
+promotion             1
+addstring "Kobolpult"
+addstring "Kobolpult"     
+
+descr "Finds a few likely lads to get into the catapult and fits them with the appropriate armor"
+
+
 selectclass 27
 
-# addstartcom "Kobold Grease Fetcher"
+addstartcom "Kobold Grease Fetcher"
 addstartcom "Black Kobold Slayer Shaman"
-addstartcom "Kobolpult"
+addstartunits "Kobolpult" 1
 addstartcom "Dragon inna Can"
 
 
