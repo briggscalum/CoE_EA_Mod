@@ -55,7 +55,8 @@ newritpow
 newritpow
 newritpow 
 
-
+selectmonster "Black Kobold Slayer Shaman"   
+sensedead 					1
 
 
 newmonster "Kobold Grease Fetcher"
@@ -95,6 +96,7 @@ dmg                  1
 
 newweapon "Kobold Launcher"
 mutate
+flymode              32
 trgrank              9 # Target: any enemy in range
 range                16
 init                 2
@@ -130,11 +132,12 @@ healonterr 				  -12  # Heals if brought back to a mine
 
 
 newmonster "Kobold Ammo"
-spr "sprites/koboldammo.png"
-spr "sprites/koboldammo1.png"
+spr1 "sprites/koboldammo.png"
+spr2 "sprites/koboldammo1.png"
 descr "The most fanatical of all Kobolds are loaded with as much armor as the nation can muster and shot out of a catapult into the enemy ranks"
 
-armor                          2 # Armor.
+
+armor                          3 # Armor.
 hp                             3 # Hit Points.
 str                            3 # Strength.
 mor                            4 # Morale.
@@ -152,28 +155,28 @@ kobold                         1 # This unit is an expendable kobold.
 newmonster "Tiamat"
 spr1 "sprites/tiamat.png"
 unique    1
+armor 						   2 # Armor
 hp                           236 # Hit Points.
 str                           20 # Strength.
 mor                           20 # Morale.
-mr                            20 # Magic Resistance.
+mr                            15 # Magic Resistance.
 rank                           2 # Mid rank.
-meleeweapon               25  11 # Bite: d33 Slash damage.
-meleeweapon               25  11 # Bite: d33 Slash damage.
-meleeweapon               25  11 # Bite: d33 Slash damage.
-meleeweapon               25  11 # Bite: d33 Slash damage.
-meleeweapon               25  11 # Bite: d33 Slash damage.
+meleeweapon               25  11 # Bite: d25 Slash damage.
+meleeweapon               25  11 # Bite: d25 Slash damage.
+meleeweapon               25  11 # Bite: d25 Slash damage.
+meleeweapon               25  11 # Bite: d25 Slash damage.
+meleeweapon               25  11 # Bite: d25 Slash damage.
 spellweapon                3   3 # Pyromancy at level 3.
 spellweapon               27   3 # Frost Magic at level 3.
 spellweapon                6   3 # Geomancy at level 3.
 spellweaponbonus           5   3 # Storm Magic at level 3.
 spellweapon                9   3 # Shadow at level 3.
 
-
 huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
 fireres                      100 # Fire immunity.
-coldres					     100
-shockres                     100
-airshield					  50
+coldres					      50
+shockres                      50
+poisonres                     50
 fireaura
 coldaura
 shockaura
@@ -224,15 +227,14 @@ mines1                           # Loves mines (if an independent or stupid comm
 poisonres                    100 # Poison immunity.
 fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
 
-newmonster "Great Wyrm of Firmament"
+newmonster "Great Wyrm of Decay"
 unique                         1
 hp                           177 # Hit Points.
 str                            9 # Strength.
 mor                           10 # Morale.
 mr                            11 # Magic Resistance.
 rank                           2 # Mid rank.
-spellweapon                6   3 # Geomancy at level 3.
-
+spellweapon               63   3 # Bile Magic at level 3.
 meleeweapon               20  11 # Bite: d20 Slash damage.
 huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
 mines1                           # Loves mines (if an independent or stupid commander, will not leave its loved terrains).
@@ -248,7 +250,7 @@ mor                           10 # Morale.
 mr                            11 # Magic Resistance.
 rank                           2 # Mid rank.
 meleeweapon               20  11 # Bite: d20 Slash damage.
-spellweapon                9   3 # Shadow at level 3.
+spellweapon                9   3 # Dark at level 3.
 huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
 mines1                           # Loves mines (if an independent or stupid commander, will not leave its loved terrains).
 poisonres                    100 # Poison immunity.
@@ -828,7 +830,8 @@ ritpow               91
 
 selectclass 27
 
-addstartcom "Kobold Grease Fetcher"
+# addstartcom "Kobold Grease Fetcher"
+addstartcom "Black Kobold Slayer Shaman"
 addstartcom "Kobolpult"
 
 
@@ -858,7 +861,7 @@ playerevent
 	+hasunithere -2 "Great Wyrm of Conflagration"
 	+hasunithere -2 "Great Wyrm of Rime"
 	+hasunithere -2 "Great Wyrm of Tumult"
-	+hasunithere -2 "Great Wyrm of Firmament"
+	+hasunithere -2 "Great Wyrm of Decay"
 	+hasunithere -2 "Great Wyrm of Desolation"
 	-squareactivated
 	killsquare
@@ -1030,7 +1033,7 @@ endevent
 # Turn the Awake Dragon Back into a  Dragon After 3 or more turns
 squareevent
 	+minturnnbr 1  			#Any turn
-	+class -2 "Kobold King"
+	+class -2 "Kobold King"	
 	+hasunithere -2 "Incentivised Dusk Dragon"
 	+chance 50
 	+varequal 709 0 # If it has been 3 turn
