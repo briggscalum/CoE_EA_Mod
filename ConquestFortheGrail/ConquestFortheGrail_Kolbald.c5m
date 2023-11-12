@@ -101,7 +101,7 @@ trgrank              9 # Target: any enemy in range
 range                16
 init                 2
 dmgtype              3 # Pierce.
-dmg                  4 # Base damage (added to dmg value where this weapon is used).
+dmg                 20 # Base damage (added to dmg value where this weapon is used).
 aoe                  0 # Area: single target.
 lob                    # Arcing trajectory.
 rangepen               # Does half damage if distance >= half range.
@@ -109,12 +109,13 @@ flymode              1 # Missile sprite, one for each strike or square hit.
 flysound            14 # pil.smp (Bow)
 
 
+
 newmonster "Kobolpult"
 spr1 "sprites/kobolpult.png"
 spr2 "sprites/kobolpult1.png"
 
 hp                             30 # Hit Points.
-rangedweapon                   20  "Kobold Launcher" 
+rangedweapon                   2   "Kobold Launcher" 
 rangedweapon    		       0   "Kobold Loader"
 noheal
 fastheal
@@ -183,6 +184,102 @@ slow                             # The monster only has 2 AP.
 battleslow                       # Moves only 1 square per 2 turns in combat.
  
 
+newweapon "Percussive Maintenance"
+trgrank              0 # Target: Selfdmgtype              3
+dmg                  1       
+
+newmonster "Ultimate War Machine"
+spr1 "sprites/koboldwarmachine.png"
+spr2 "sprites/koboldwarmachine1.png"
+
+huge
+armor                          0 # Armor.
+hp                            40 # Hit Points.
+str                            6 # Strength.
+mor                            4 # Morale.
+mr                             6 # Magic Resistance.
+rank                          -1 # Back rank.
+immobile
+siegeweapon               15 544 # Giant Earth Branded Arrow: d15 Pierce damage.
+rangedweapon              15 545 # Giant Earth Branded Arrow: d15 Pierce damage.
+siegeweapon               15 538 # Giant Rime Branded Arrow: d15 Pierce damage.
+rangedweapon              15 539 # Giant Rime Branded Arrow: d15 Pierce damage.
+siegeweapon               15 541 # Giant Flame Branded Arrow: d15 Pierce damage.
+rangedweapon              15 542 # Giant Flame Branded Arrow: d15 Pierce damage.
+siegeweapon               15 239 # Giant Arrow: d15 Pierce damage.
+rangedweapon              15 477 # Giant Arrow: d15 Pierce damage.
+siegeweapon               15 239 # Giant Arrow: d15 Pierce damage.
+rangedweapon              15 477 # Giant Arrow: d15 Pierce damage.
+siegeweapon               0 "Percussive Maintenance"
+rangedweapon    		  0  "Percussive Maintenance"
+shrinkhp 30
+healonterr -12
+
+
+newmonster "Scuffed War Machine"
+spr1 "sprites/scuffedwarmachine.png"
+spr2 "sprites/scuffedwarmachine1.png"
+
+huge
+armor                          0 # Armor.
+hp                            40 # Hit Points.
+str                            6 # Strength.
+mor                            4 # Morale.
+mr                             6 # Magic Resistance.
+rank                          -1 # Back rank.
+immobile
+
+siegeweapon               15 538 # Giant Rime Branded Arrow: d15 Pierce damage.
+rangedweapon              15 539 # Giant Rime Branded Arrow: d15 Pierce damage.
+siegeweapon               15 541 # Giant Flame Branded Arrow: d15 Pierce damage.
+rangedweapon              15 542 # Giant Flame Branded Arrow: d15 Pierce damage.
+siegeweapon               15 239 # Giant Arrow: d15 Pierce damage.
+rangedweapon              15 477 # Giant Arrow: d15 Pierce damage.
+siegeweapon               0 "Percussive Maintenance"
+rangedweapon    		  0  "Percussive Maintenance"
+noheal
+shrinkhp 20
+growhp 31
+healonterr -12
+
+
+newmonster "Damaged War Machine"
+spr1 "sprites/damagedwarmachine.png"
+spr2 "sprites/damagedwarmachine1.png"
+
+huge
+armor                          1 # Armor.
+hp                            40 # Hit Points.
+str                            6 # Strength.
+mor                            4 # Morale.
+mr                             6 # Magic Resistance.
+rank                          -1 # Back rank.
+immobile
+siegeweapon               15 541 # Giant Flame Branded Arrow: d15 Pierce damage.
+rangedweapon              15 542 # Giant Flame Branded Arrow: d15 Pierce damage.
+siegeweapon               0 "Percussive Maintenance"
+rangedweapon    		  0  "Percussive Maintenance"
+noheal
+
+growhp 21
+shrinkhp 10
+healonterr -12
+
+
+newmonster "Disabled War Machine"
+spr1 "sprites/disabledwarmachine.png"
+
+huge
+armor                          1 # Armor.
+hp                            40 # Hit Points.
+str                            6 # Strength.
+mor                            4 # Morale.
+mr                             6 # Magic Resistance.
+rank                          -1 # Back rank.
+immobile
+growhp 11
+noheal
+healonterr -12
 
 ###
 # Dragons
@@ -197,16 +294,16 @@ str                           20 # Strength.
 mor                           20 # Morale.
 mr                            15 # Magic Resistance.
 rank                           2 # Mid rank.
-meleeweapon               25  11 # Bite: d25 Slash damage.
-meleeweapon               25  11 # Bite: d25 Slash damage.
-meleeweapon               25  11 # Bite: d25 Slash damage.
-meleeweapon               25  11 # Bite: d25 Slash damage.
-meleeweapon               25  11 # Bite: d25 Slash damage.
-spellweapon                3   3 # Pyromancy at level 3.
-spellweapon               27   3 # Frost Magic at level 3.
-spellweapon                6   3 # Geomancy at level 3.
-spellweaponbonus           5   3 # Storm Magic at level 3.
-spellweapon                9   3 # Shadow at level 3.
+meleeweapon               20  11 # Bite: d25 Slash damage.
+meleeweapon               20  11 # Bite: d25 Slash damage.
+meleeweapon               20  11 # Bite: d25 Slash damage.
+meleeweapon               20  11 # Bite: d25 Slash damage.
+meleeweapon               20  11 # Bite: d25 Slash damage.
+spellweapon50s                3   3 # Pyromancy at level 3.
+spellweapon50s               27   3 # Frost Magic at level 3.
+spellweapon50s                6   3 # Geomancy at level 3.
+spellweapon50s                5   3 # Storm Magic at level 3.
+spellweapon50s                9   3 # Dark at level 3.
 
 huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
 fireres                      100 # Fire immunity.
@@ -883,8 +980,7 @@ selectclass 27
 addstartcom "Kobold Grease Fetcher"
 addstartcom "Black Kobold Slayer Shaman"
 addstartunits "Kobolpult" 1
-addstartcom "Dragon inna Can"
-
+addstartunits "Ultimate War Machine" 1
 
 addunitrec  "Silver Dragon Spawn"    100  10   125   0    0 # only where Emerald income.
 recxcost     8  10                            # 10 Sapphires additional cost.
