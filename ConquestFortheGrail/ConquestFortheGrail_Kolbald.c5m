@@ -107,13 +107,35 @@ lob                    # Arcing trajectory.
 rangepen               # Does half damage if distance >= half range.
 flymode              1 # Missile sprite, one for each strike or square hit.
 flysound            14 # pil.smp (Bow)
+flylook   			32 # boulder
 
+
+newmonster "Full Kobolpult"
+spr1 "sprites/kobolpult.png"
+spr2 "sprites/kobolpult1.png"
+descr "A millitary unit only kobolds would consider fielding. Some kobolds are born with a deathwish bordering on fearlessness and those are given a helmet and a breastplate and shot out of a catapult at high speeds. The Bombardiers try to break their fall by impailing an enemy on their sword, and if this is successful they pull it out of their enemies corpse and continue the fight. This one has plenty of Bombardiers and wont be restocked. The first shot of any new kobopult is done with a normal boulder to calibrate "
+
+hp                             30 # Hit Points.
+siegeweapon                    20 237 # Boulder: d20 Blunt damage.
+rangedweapon    		       0   "Kobold Loader"
+noheal
+fastheal
+armor                          0 # Armor.
+str                            4 # Strength.
+mor                            4 # Morale.
+mr                             5 # Magic Resistance.
+rank                          -1 # Back rank.
+meleeweapon                0   8 # Shortsword: d5 Slash damage.
+immobile                         # Immobile (cannot move in battle).
+slow                             # The monster only has 2 AP.
+size2x2                          # Takes up 2x2 squares on the battlefield (overrides sprite size).
+shrinkhp 				       29
 
 
 newmonster "Kobolpult"
 spr1 "sprites/kobolpult.png"
 spr2 "sprites/kobolpult1.png"
-
+descr "A millitary unit only kobolds would consider fielding. Some kobolds are born with a deathwish bordering on fearlessness and those are given a helmet and a breastplate and shot out of a catapult at high speeds. The Bombardiers try to break their fall by impailing an enemy on their sword, and if this is successful they pull it out of their enemies corpse and continue the fight."
 hp                             30 # Hit Points.
 rangedweapon                   2   "Kobold Launcher" 
 rangedweapon    		       0   "Kobold Loader"
@@ -167,83 +189,146 @@ aoe 5
 look 14
 mundane
 
+newmonster "New Mobile Kobold Wall"
+	spr1 "sprites/koboldshieldwall.png"
+	spr2 "sprites/koboldshieldwall1.png"
+	descr "The kobold's answer to opposing archer fire. This is little more than a large wooden plank that has been put on wheels and slowly rolled toward the enemy. A few ranged kobolds server to both push it and return a little bit of fire. Primarily used to protect those leading from the back from arrowfire once the front rank collapses. The reason its not places on the front rank itself is because its quite flamable and Kobold weapons are known for their fiery properties. The planks on this one are all at the right angles and no one has gotten a splinter yet. This wont be repaired"
+	fastheal
+	hp                            30 # Hit Points.
+	rangedweapon              -1 626 # Small Poison Bow: d2 Pierce damage.
+	rangedweapon              -1  27 # Sling: d1 Blunt damage.
+	noheal
+	shield
+	armor                          1 # Armor.
+	str                            4 # Strength.
+	mor                            4 # Morale.
+	mr                             5 # Magic Resistance.
+	rank                           1
+	rearpos
+	fireres                      -50 # Fire vulnerability
+	meleeweapon                -1  8 # Shortsword: d5 Slash damage.
+	battleslow2                      # Immobile (cannot move in battle).
+	slow                             # The monster only has 2 AP.
+	size2x2                          # Takes up 2x2 squares on the battlefield (overrides sprite size).
+	shrinkhp 				      29
+
 newmonster "Mobile Kobold Wall"
-spr1 "sprites/koboldshieldwall.png"
-spr2 "sprites/koboldshieldwall1.png"
-descr "The kobold's answer to opposing archer fire. This is little more than a large wooden plank that has been put on wheels and slowly rolled toward the enemy. A few ranged kobolds server to both push it and return a little bit of fire. Primarily used to protect those leading from the back from arrowfire once the front rank collapses. The reason its not places on the front rank itself is because its quite flamable and Kobold weapons are known for their fiery properties"
-hp                            30 # Hit Points.
-rangedweapon              -1 626 # Small Poison Bow: d2 Pierce damage.
-rangedweapon              -1  27 # Sling: d1 Blunt damage.
-noheal
-shield
-armor                          1 # Armor.
-str                            4 # Strength.
-mor                            4 # Morale.
-mr                             5 # Magic Resistance.
-rank                           1
-rearpos
-fireres                      -50 # Fire vulnerability
-meleeweapon                -1  8 # Shortsword: d5 Slash damage.
-battleslow2                      # Immobile (cannot move in battle).
-slow                             # The monster only has 2 AP.
-size2x2                          # Takes up 2x2 squares on the battlefield (overrides sprite size).
+	spr1 "sprites/koboldshieldwall.png"
+	spr2 "sprites/koboldshieldwall1.png"
+	descr "The kobold's answer to opposing archer fire. This is little more than a large wooden plank that has been put on wheels and slowly rolled toward the enemy. A few ranged kobolds server to both push it and return a little bit of fire. Primarily used to protect those leading from the back from arrowfire once the front rank collapses. The reason its not places on the front rank itself is because its quite flamable and Kobold weapons are known for their fiery properties"
+	hp                            30 # Hit Points.
+	rangedweapon              -1 626 # Small Poison Bow: d2 Pierce damage.
+	rangedweapon              -1  27 # Sling: d1 Blunt damage.
+	noheal
+	shield
+	armor                          1 # Armor.
+	str                            4 # Strength.
+	mor                            4 # Morale.
+	mr                             5 # Magic Resistance.
+	rank                           1
+	rearpos
+	fireres                      -50 # Fire vulnerability
+	meleeweapon                -1  8 # Shortsword: d5 Slash damage.
+	battleslow2                      # Immobile (cannot move in battle).
+	slow                             # The monster only has 2 AP.
+	size2x2                          # Takes up 2x2 squares on the battlefield (overrides sprite size).
 
 newweapon     "Fiery Battering Ram"                                              #  98
-trgrank              1 # Target: any enemy in range.
-range                1
-init                 3
-dmgtype              2 # Blunt.
-dmg                 15 # Base damage (added to dmg value where this weapon is used).
-aoe                  0 # Area: burst 1.
-reload2                # Takes 2 rounds to reload.
-mundane                # Non-magic. Ethereal units have a 75% chance to be unaffected.
-sound               11 # donk.smp (Heavy Blow)
-wallkill
-nextalways
-nextdmg    2
+	trgrank              1 # Target: any enemy in range.
+	range                1
+	init                 3
+	dmgtype              2 # Blunt.
+	dmg                 15 # Base damage (added to dmg value where this weapon is used).
+	aoe                  0 # Area: burst 1.
+	reload2                # Takes 2 rounds to reload.
+	mundane                # Non-magic. Ethereal units have a 75% chance to be unaffected.
+	sound               11 # donk.smp (Heavy Blow)
+	wallkill
+	nextalways
+	nextdmg    2
 
 newweapon "Fire Ram"
-dmgtype 4
-aoe 1
-look 14
-dmg                 5 
-mundane
+	dmgtype             4
+	aoe                 1
+	look                14
+	dmg                 5 
+	mundane
+
+newmonster "New Kobold Battering Ram"
+	spr1 "sprites/koboldram.png"
+	spr2 "sprites/koboldram1.png"
+	descr "The Journeykobold knows that not getting killed with arrows is not only a question of blocking them, but also about solving the problem of getting to the place where the arrows are coming from and stopping them from coming. The battering ram handily combines both goals into one lumbering metal box. As an added touch, the middle of the battering ram is filled with flamable liquid and a little sloshs out every time it is swung, doing serious damage to wood gates. The liquid on this one is topped up and the dragon head design is newly polished. It wont be repaired"
+	hp                            50 # Hit Points.
+	noheal
+	fastheal
+	shield
+	armor                          2 # Armor.
+	str                            6 # Strength.
+	mor                            6 # Morale.
+	mr                             5 # Magic Resistance.
+	rank                           1
+	frontpos
+	fireres                       50 # Fire resist
+	meleeweapon                4   "Fiery Battering Ram" # Shortsword: d5 Slash damage.
+	slow                             # The monster only has 2 AP.
+	size2x2                          # Takes up 2x2 squares on the battlefield (overrides sprite size).
+	shrinkhp 49
+
 
 newmonster "Kobold Battering Ram"
-spr1 "sprites/koboldram.png"
-spr2 "sprites/koboldram1.png"
-hp                            50 # Hit Points.
-noheal
-shield
-armor                          2 # Armor.
-str                            6 # Strength.
-mor                            6 # Morale.
-mr                             5 # Magic Resistance.
-rank                           1
-frontpos
-fireres                       50 # Fire resist
-meleeweapon                4   "Fiery Battering Ram" # Shortsword: d5 Slash damage.
-slow                             # The monster only has 2 AP.
-size2x2                          # Takes up 2x2 squares on the battlefield (overrides sprite size).
+	spr1 "sprites/koboldram.png"
+	spr2 "sprites/koboldram1.png"
+	descr "The Journeykobold knows that not getting killed with arrows is not only a question of blocking them, but also about solving the problem of getting to the place where the arrows are coming from and stopping them from coming. The battering ram handily combines both goals into one lumbering metal box. As an added touch, the middle of the battering ram is filled with flamable liquid and a little sloshs out of a fetching dragon shapped head every time it is swung, doing serious damage to wood gates."
+	hp                            50 # Hit Points.
+	noheal
+	shield
+	armor                          2 # Armor.
+	str                            6 # Strength.
+	mor                            6 # Morale.
+	mr                             5 # Magic Resistance.
+	rank                           1
+	frontpos
+	fireres                       50 # Fire resist
+	meleeweapon                4   "Fiery Battering Ram" # Shortsword: d5 Slash damage.
+	slow                             # The monster only has 2 AP.
+	size2x2                          # Takes up 2x2 squares on the battlefield (overrides sprite size).
 
+newmonster "New Dragon Can"
+	spr1 "sprites/dragoninnacan.png"
+	spr2 "sprites/dragoninnacan1.png"
+	descr "The best a Grease Fetcher can do in terms of a seige weapon. This weapon can fire a blob of ingited semi-congealed hydrocarbon a short distance and somehow still be ignited when it hits the ground. The ball then splashs all nearby surfaces with fire. Quite effective at attacking wooden structures although the device cannot shoot the ball far enough to be fired at seige range. The paint on this Dragon Can is shiney and new so it wont be repaired"
+	fireexpl 6
+	fastheal
+	armor                          0 # Armor.
+	hp                            10 # Hit Points.
+	str                            4 # Strength.
+	mor                            4 # Morale.
+	mr                             5 # Magic Resistance.
+	rank                          -1 # Back rank.
+	rangedweapon                   5 "Fire Blob" 
+	meleeweapon                0   8 # Shortsword: d5 Slash damage.
+	slow                             # The monster only has 2 AP.
+	battleslow                       # Moves only 1 square per 2 turns in combat.
+	shrinkhp 9
  
 newmonster "Dragon Can"
-spr1 "sprites/dragoninnacan.png"
-spr2 "sprites/dragoninnacan1.png"
+	spr1 "sprites/dragoninnacan.png"
+	spr2 "sprites/dragoninnacan1.png"
+	descr "The best a Grease Fetcher can do in terms of a seige weapon. This weapon can fire a blob of ingited semi-congealed hydrocarbon a short distance and somehow still be ignited when it hits the ground. The ball then splashs all nearby surfaces with fire. Quite effective at attacking wooden structures although the device cannot shoot the ball far enough to be fired at seige range."
+	fireexpl 6
+	armor                          0 # Armor.
+	hp                            10 # Hit Points.
+	str                            4 # Strength.
+	mor                            4 # Morale.
+	mr                             5 # Magic Resistance.
+	rank                          -1 # Back rank.
+	rangedweapon                   5 "Fire Blob" 
+	meleeweapon                0   8 # Shortsword: d5 Slash damage.
+	slow                             # The monster only has 2 AP.
+	battleslow                       # Moves only 1 square per 2 turns in combat.
 
-descr "The best a Grease Fetcher can do in terms of a seige weapon. This weapon can fire a blob of ingited semi-congealed hydrocarbon a short distance and somehow still be ignited when it hits the ground. The ball then splashs all nearby surfaces with fire. Quite effective at attacking wooden structures although the device cannot shoot the ball far enough to be fired at seige range."
-fireexpl 6
-armor                          0 # Armor.
-hp                            10 # Hit Points.
-str                            4 # Strength.
-mor                            4 # Morale.
-mr                             5 # Magic Resistance.
-rank                          -1 # Back rank.
-rangedweapon                   5 "Fire Blob" 
-meleeweapon                0   8 # Shortsword: d5 Slash damage.
-slow                             # The monster only has 2 AP.
-battleslow                       # Moves only 1 square per 2 turns in combat.
- 
+
+
 
 newweapon "Percussive Maintenance"
 trgrank              0 # Target: Selfdmgtype              3
@@ -297,6 +382,36 @@ newweapon     "Earth Arrow"                                 # 544
 	nextalwayswep      530 # Extra effect if target is hit: 546: Earth Blast.
 	nextdmg             64 # Stun
 
+
+newmonster "New Ultimate War Machine"
+spr1 "sprites/koboldwarmachine.png"
+spr2 "sprites/koboldwarmachine1.png"
+descr "The apex of Kobold Engineering, this machine boasts unparalleled firepower at the cost of any kind of armor or in fact even the structural integrety to maintain fire on its own battery of weapons. Requires constants maintenance from its large crew of technicians but in order to keep it running but it will slowly break down and needs a master artificer to occasionally repair it. It is so large and cumbersome that is requires a pair of stone drakes to pull. The paint on this one is new and the bolts have not even started to juggle. It will not be repaired"
+fastheal
+huge
+armor                          1 # Armor.
+hp                            40 # Hit Points.
+str                            6 # Strength.
+mor                            4 # Morale.
+mr                             6 # Magic Resistance.
+rank                          -1 # Back rank.
+noheal
+immobile
+siegeweapon               15 "Earth Arrow" # Giant Earth Branded Arrow: d15 Pierce damage.
+rangedweapon              15 "Earth Arrow" # Giant Earth Branded Arrow: d15 Pierce damage.
+siegeweapon               15 "Rime Arrow"  # Giant Rime Branded Arrow: d15 Pierce damage.
+rangedweapon              15 "Rime Arrow"  # Giant Rime Branded Arrow: d15 Pierce damage.
+siegeweapon               15 "Flame Arrow" # Giant Flame Branded Arrow: d15 Pierce damage.
+rangedweapon              15 "Flame Arrow" # Giant Flame Branded Arrow: d15 Pierce damage.
+siegeweapon               15 239 # Giant Arrow: d15 Pierce damage.
+rangedweapon              15 477 # Giant Arrow: d15 Pierce damage.
+siegeweapon               15 239 # Giant Arrow: d15 Pierce damage.
+rangedweapon              15 477 # Giant Arrow: d15 Pierce damage.
+meleeweapon                8  11 # Bite: d8 Slash damage.
+meleeweapon                8  11 # Bite: d8 Slash damage.
+siegeweapon               0 "Percussive Maintenance"
+rangedweapon    		  0 "Percussive Maintenance"
+shrinkhp 39
 
 newmonster "Ultimate War Machine"
 spr1 "sprites/koboldwarmachine.png"
@@ -1082,7 +1197,7 @@ newritual "Find new Ammo"
 	cost             1   15 # 15 Iron
 	promotion             1
 	addstring "Kobolpult"
-	addstring "Kobolpult"     
+	addstring "Full Kobolpult"     
 	descr "Finds a few likely lads to get into the catapult and fits them with the appropriate armor"
 
 newritual "Repair Basic Machine"
@@ -1091,9 +1206,9 @@ newritual "Repair Basic Machine"
 	free
 	promotion				1
 	addstring "Dragon Can"
-	addstring "Dragon Can"
+	addstring "New Dragon Can"
 	addstring "Mobile Kobold Wall"
-	addstring "Mobile Kobold Wall"
+	addstring "New Kobold Wall"
 
 
 newritual "Repair Advanced Machine"
@@ -1102,23 +1217,26 @@ newritual "Repair Advanced Machine"
 	free
 	promotion				1
 	addstring "Kobold Battering Ram"
-	addstring "Kobold Battering Ram"
+	addstring "New Kobold Battering Ram"
 	addstring "Damaged War Machine"
-	addstring "Ultimate War Machine"
+	addstring "New War Machine"
 	addstring "Scuffed War Machine"
-	addstring "Ultimate War Machine"
+	addstring "New War Machine"
 	addstring "Disabled War Machine"
+	addstring "New War Machine"
 	addstring "Ultimate War Machine"
-	addstring "Ultimate War Machine"
-	addstring "Ultimate War Machine"
+	addstring "New Ultimate War Machine"
 
 selectclass 27
 
 	addstartcom "Kobold Grease Fetcher"
 	addstartcom "Black Kobold Slayer Shaman"
-	addstartunits "Dragon Can" 10
-	addstartunits "Ultimate War Machine" 1
-	addstartunits "Kobold Battering Ram" 2
+	addstartunits "New Dragon Can" 10
+	addstartunits "New Ultimate War Machine" 1
+	addstartunits "New Kobold Battering Ram" 2
+	addstartunits "New Mobile Kobold Wall"   2
+	addstartunits "Full Kobolpult"   2
+	
 	addunitrec  "Silver Dragon Spawn"    100  10   125   0    0 # only where Emerald income.
 	recxcost     8  10                            # 10 Sapphires additional cost.
 	recterr      15
