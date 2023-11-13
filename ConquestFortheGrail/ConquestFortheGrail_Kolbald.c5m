@@ -167,7 +167,27 @@ aoe 5
 look 14
 mundane
 
-
+newmonster "Mobile Kobold Wall"
+spr1 "sprites/koboldshieldwall.png"
+spr2 "sprites/koboldshieldwall1.png"
+descr "The kobold's answer to opposing archer fire. This is little more than a large wooden plank that has been put on wheels and slowly rolled toward the enemy. A few ranged kobolds server to both push it and return a little bit of fire. Primarily used to protect those leading from the back from arrowfire once the front rank collapses. The reason its not places on the front rank itself is because its quite flamable and Kobold weapons are known for their fiery properties"
+hp                            30 # Hit Points.
+rangedweapon              -1 626 # Small Poison Bow: d2 Pierce damage.
+rangedweapon              -1  27 # Sling: d1 Blunt damage.
+noheal
+shield
+armor                          2 # Armor.
+str                            4 # Strength.
+mor                            4 # Morale.
+mr                             5 # Magic Resistance.
+rank                           1
+rearpos
+fireres                      -50 # Fire vulnerability
+meleeweapon                -1  8 # Shortsword: d5 Slash damage.
+battleslow2                      # Immobile (cannot move in battle).
+slow                             # The monster only has 2 AP.
+size2x2                          # Takes up 2x2 squares on the battlefield (overrides sprite size).
+ 
 newmonster "Dragon inna Can"
 spr1 "sprites/dragoninnacan.png"
 descr "The best a Grease Fetcher can do in terms of a seige weapon. This weapon can fire a blob of ingited semi-congealed hydrocarbon a short distance and somehow still be ignited when it hits the ground. The ball then splashs all nearby surfaces with fire. Quite effective at attacking wooden structures although the device cannot shoot the ball far enough to be fired at seige range."
@@ -981,6 +1001,7 @@ addstartcom "Kobold Grease Fetcher"
 addstartcom "Black Kobold Slayer Shaman"
 addstartunits "Kobolpult" 1
 addstartunits "Ultimate War Machine" 1
+addstartunits "Mobile Kobold Wall" 2
 
 addunitrec  "Silver Dragon Spawn"    100  10   125   0    0 # only where Emerald income.
 recxcost     8  10                            # 10 Sapphires additional cost.
