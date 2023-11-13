@@ -130,7 +130,7 @@ slow                             # The monster only has 2 AP.
 size2x2                          # Takes up 2x2 squares on the battlefield (overrides sprite size).
 
 
-newmonster "Kobold Ammo"
+newmonster "Kobold Bombardier"
 spr1 "sprites/koboldammo.png"
 spr2 "sprites/koboldammo1.png"
 descr "The most fanatical of all Kobolds are loaded with as much armor as the nation can muster and shot out of a catapult into the enemy ranks"
@@ -150,7 +150,7 @@ range     10
 init       1
 dmgtype    4
 nextalways
-nextdmg    5
+nextdmg    3
 reload2
 mundane
 scatter
@@ -209,7 +209,7 @@ noheal
 shield
 armor                          2 # Armor.
 str                            6 # Strength.
-mor                            6# Morale.
+mor                            6 # Morale.
 mr                             5 # Magic Resistance.
 rank                           1
 frontpos
@@ -242,7 +242,7 @@ dmg                  1
 newmonster "Ultimate War Machine"
 spr1 "sprites/koboldwarmachine.png"
 spr2 "sprites/koboldwarmachine1.png"
-descr "The apex of Kobold Engineering, this machine boasts unparalleled firepower at the cost of any kind of armor or in fact even the structural integrety to maintain fire on its own battery of weapons. Requires constants maintenance from its large crew of technicians but in order to keep it running but it will slowly break down and needs a master artificer to occasionally repair it"
+descr "The apex of Kobold Engineering, this machine boasts unparalleled firepower at the cost of any kind of armor or in fact even the structural integrety to maintain fire on its own battery of weapons. Requires constants maintenance from its large crew of technicians but in order to keep it running but it will slowly break down and needs a master artificer to occasionally repair it. It is so large and cumbersome that is requires a pair of stone drakes to pull."
 huge
 armor                          0 # Armor.
 hp                            40 # Hit Points.
@@ -262,8 +262,10 @@ siegeweapon               15 239 # Giant Arrow: d15 Pierce damage.
 rangedweapon              15 477 # Giant Arrow: d15 Pierce damage.
 siegeweapon               15 239 # Giant Arrow: d15 Pierce damage.
 rangedweapon              15 477 # Giant Arrow: d15 Pierce damage.
+meleeweapon                8  11 # Bite: d8 Slash damage.
+meleeweapon                8  11 # Bite: d8 Slash damage.
 siegeweapon               0 "Percussive Maintenance"
-rangedweapon    		  0  "Percussive Maintenance"
+rangedweapon    		  0 "Percussive Maintenance"
 shrinkhp 30
 
 newmonster "Scuffed War Machine"
@@ -284,6 +286,8 @@ siegeweapon               15 541 # Giant Flame Branded Arrow: d15 Pierce damage.
 rangedweapon              15 542 # Giant Flame Branded Arrow: d15 Pierce damage.
 siegeweapon               15 239 # Giant Arrow: d15 Pierce damage.
 rangedweapon              15 477 # Giant Arrow: d15 Pierce damage.
+meleeweapon                8  11 # Bite: d8 Slash damage.
+meleeweapon                8  11 # Bite: d8 Slash damage.
 siegeweapon               0 "Percussive Maintenance"
 rangedweapon    		  0  "Percussive Maintenance"
 noheal
@@ -305,6 +309,8 @@ rank                          -1 # Back rank.
 immobile
 siegeweapon               15 541 # Giant Flame Branded Arrow: d15 Pierce damage.
 rangedweapon              15 542 # Giant Flame Branded Arrow: d15 Pierce damage.
+meleeweapon                8  11 # Bite: d8 Slash damage.
+meleeweapon                8  11 # Bite: d8 Slash damage.
 siegeweapon               0 "Percussive Maintenance"
 rangedweapon    		  0  "Percussive Maintenance"
 noheal
@@ -322,6 +328,8 @@ str                            6 # Strength.
 mor                            4 # Morale.
 mr                             6 # Magic Resistance.
 rank                          -1 # Back rank.
+meleeweapon                8  11 # Bite: d8 Slash damage.
+meleeweapon                8  11 # Bite: d8 Slash damage.
 immobile
 growhp 11
 noheal
@@ -1047,22 +1055,19 @@ newritual "Repair Advanced Machine"
 
 selectclass 27
 
-addstartcom "Kobold Grease Fetcher"
-addstartcom "Black Kobold Slayer Shaman"
-addstartunits "Kobolpult" 1
-addstartunits "Ultimate War Machine" 1
-addstartunits "Kobold Battering Ram" 2
-
-addunitrec  "Silver Dragon Spawn"    100  10   125   0    0 # only where Emerald income.
-recxcost     8  10                            # 10 Sapphires additional cost.
-recterr      15
-reclimiter  "+Silver Dragon"           # Owning a Green Kobold Prophet enables the preceding offer.
-
-addcomrec   "Kobold Grease Fetcher"  6    45  10    0 # once per offer; extra.
-libraryrec                                    # +2% to chance per library point owned, to a max of +20% for 10+ library points.
-
-addcomrec   "Kobold Make Thinger"    1    120  10    0 # once per offer; extra.
-libraryrec                                    # +2% to chance per library point owned, to a max of +20% for 10+ library points.
+	addstartcom "Kobold Grease Fetcher"
+	addstartcom "Black Kobold Slayer Shaman"
+	addstartunits "Kobolpult" 1
+	addstartunits "Ultimate War Machine" 1
+	addstartunits "Kobold Battering Ram" 2
+	addunitrec  "Silver Dragon Spawn"    100  10   125   0    0 # only where Emerald income.
+	recxcost     8  10                            # 10 Sapphires additional cost.
+	recterr      15
+	reclimiter  "+Silver Dragon"           # Owning a Green Kobold Prophet enables the preceding offer.
+	addcomrec   "Kobold Grease Fetcher"  6    45  10    0 # once per offer; extra.
+	libraryrec                                    # +2% to chance per library point owned, to a max of +20% for 10+ library points.
+	addcomrec   "Kobold Make Thinger"    1    120  10    0 # once per offer; extra.
+	libraryrec                                    # +2% to chance per library point owned, to a max of +20% for 10+ library points.
 
 #####
 # Kobald Mage Rituals
@@ -1084,7 +1089,7 @@ playerevent
 	-squareactivated
 	killsquare
 	alterterrain 185
-	
+
 	newunits -2 "c*Tiamat"
 	setvar 710 0
 endevent
@@ -1100,6 +1105,7 @@ playerevent
 	+hasunit -2 "Incentivised Fire Dragon"
 	+vargreater 701 0
 	+chance 100
+	
 	addvar 701 -1
 endevent
 
@@ -1110,6 +1116,7 @@ squareevent
 	+hasunithere -2 "Incentivised Fire Dragon"
 	+chance 50
 	+varequal 701 0 # If it has been 3 turn
+	
 	setvar 700 0
 	promoteunits -2 1 "Incentivised Fire Dragon" "Fire Dragon"
 	message -2 "The effects of your incentivisation has worn off, your Fire Dragon will return to its mostly sedentary existance"
@@ -1122,6 +1129,7 @@ playerevent
 	-hasunit -2 "Incentivised Fire Dragon"
 	+varequal 700 1 # If I have an Incentivised Fire Dragon
 	+chance 100
+	
 	setvar 700 0
 	message -2 "Your Fire Dragon has burnt itself out"
 endevent
