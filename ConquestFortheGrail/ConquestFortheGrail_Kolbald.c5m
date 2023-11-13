@@ -242,7 +242,7 @@ dmg                  1
 newmonster "Ultimate War Machine"
 spr1 "sprites/koboldwarmachine.png"
 spr2 "sprites/koboldwarmachine1.png"
-
+descr "The apex of Kobold Engineering, this machine boasts unparalleled firepower at the cost of any kind of armor or in fact even the structural integrety to maintain fire on its own battery of weapons. Requires constants maintenance from its large crew of technicians but in order to keep it running but it will slowly break down and needs a master artificer to occasionally repair it"
 huge
 armor                          0 # Armor.
 hp                            40 # Hit Points.
@@ -250,6 +250,7 @@ str                            6 # Strength.
 mor                            4 # Morale.
 mr                             6 # Magic Resistance.
 rank                          -1 # Back rank.
+noheal
 immobile
 siegeweapon               15 544 # Giant Earth Branded Arrow: d15 Pierce damage.
 rangedweapon              15 545 # Giant Earth Branded Arrow: d15 Pierce damage.
@@ -277,7 +278,6 @@ mor                            4 # Morale.
 mr                             6 # Magic Resistance.
 rank                          -1 # Back rank.
 immobile
-
 siegeweapon               15 538 # Giant Rime Branded Arrow: d15 Pierce damage.
 rangedweapon              15 539 # Giant Rime Branded Arrow: d15 Pierce damage.
 siegeweapon               15 541 # Giant Flame Branded Arrow: d15 Pierce damage.
@@ -289,7 +289,6 @@ rangedweapon    		  0  "Percussive Maintenance"
 noheal
 shrinkhp 20
 growhp 31
-healonterr -12
 
 
 newmonster "Damaged War Machine"
@@ -309,10 +308,8 @@ rangedweapon              15 542 # Giant Flame Branded Arrow: d15 Pierce damage.
 siegeweapon               0 "Percussive Maintenance"
 rangedweapon    		  0  "Percussive Maintenance"
 noheal
-
 growhp 21
 shrinkhp 10
-healonterr -12
 
 
 newmonster "Disabled War Machine"
@@ -328,7 +325,6 @@ rank                          -1 # Back rank.
 immobile
 growhp 11
 noheal
-healonterr -12
 
 ###
 # Dragons
@@ -1041,11 +1037,11 @@ newritual "Repair Advanced Machine"
 	addstring "Kobold Battering Ram"
 	addstring "Kobold Battering Ram"
 	addstring "Damaged War Machine"
-	addstring "Damaged War Machine"
+	addstring "Ultimate War Machine"
 	addstring "Scuffed War Machine"
-	addstring "Scuffed War Machine"
+	addstring "Ultimate War Machine"
 	addstring "Disabled War Machine"
-	addstring "Disabled War Machine"
+	addstring "Ultimate War Machine"
 	addstring "Ultimate War Machine"
 	addstring "Ultimate War Machine"
 
