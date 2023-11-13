@@ -176,7 +176,7 @@ rangedweapon              -1 626 # Small Poison Bow: d2 Pierce damage.
 rangedweapon              -1  27 # Sling: d1 Blunt damage.
 noheal
 shield
-armor                          2 # Armor.
+armor                          1 # Armor.
 str                            4 # Strength.
 mor                            4 # Morale.
 mr                             5 # Magic Resistance.
@@ -207,7 +207,7 @@ descr "The kobold's answer to opposing archer fire. This is little more than a l
 hp                            50 # Hit Points.
 noheal
 shield
-armor                          3 # Armor.
+armor                          2 # Armor.
 str                            6 # Strength.
 mor                            6# Morale.
 mr                             5 # Magic Resistance.
@@ -219,7 +219,7 @@ slow                             # The monster only has 2 AP.
 size2x2                          # Takes up 2x2 squares on the battlefield (overrides sprite size).
 
  
-newmonster "Dragon inna Can"
+newmonster "Dragon Can"
 spr1 "sprites/dragoninnacan.png"
 descr "The best a Grease Fetcher can do in terms of a seige weapon. This weapon can fire a blob of ingited semi-congealed hydrocarbon a short distance and somehow still be ignited when it hits the ground. The ball then splashs all nearby surfaces with fire. Quite effective at attacking wooden structures although the device cannot shoot the ball far enough to be fired at seige range."
 fireexpl 6
@@ -264,8 +264,6 @@ rangedweapon              15 477 # Giant Arrow: d15 Pierce damage.
 siegeweapon               0 "Percussive Maintenance"
 rangedweapon    		  0  "Percussive Maintenance"
 shrinkhp 30
-healonterr -12
-
 
 newmonster "Scuffed War Machine"
 spr1 "sprites/scuffedwarmachine.png"
@@ -1013,18 +1011,43 @@ selectritual "Poison Gas Trap"
 ritpow               91
 
 newritual "Find new Ammo"
-ritpow               91
-level                 1
-free
+	ritpow               91
+	level                 1
+	free
 
-cost            16   15 # 15 Kobolds
-cost             1   15 # 15 Iron
-promotion             1
-addstring "Kobolpult"
-addstring "Kobolpult"     
+	cost            16   15 # 15 Kobolds
+	cost             1   15 # 15 Iron
+	promotion             1
+	addstring "Kobolpult"
+	addstring "Kobolpult"     
+	descr "Finds a few likely lads to get into the catapult and fits them with the appropriate armor"
 
-descr "Finds a few likely lads to get into the catapult and fits them with the appropriate armor"
+newritual "Repair Basic Machine"
+	ritpow               91
+	level                 1
+	free
+	promotion				1
+	addstring "Dragon Can"
+	addstring "Dragon Can"
+	addstring "Mobile Kobold Wall"
+	addstring "Mobile Kobold Wall"
 
+
+newritual "Repair Advanced Machine"
+	ritpow               91
+	level                 1
+	free
+	promotion				1
+	addstring "Kobold Battering Ram"
+	addstring "Kobold Battering Ram"
+	addstring "Damaged War Machine"
+	addstring "Damaged War Machine"
+	addstring "Scuffed War Machine"
+	addstring "Scuffed War Machine"
+	addstring "Disabled War Machine"
+	addstring "Disabled War Machine"
+	addstring "Ultimate War Machine"
+	addstring "Ultimate War Machine"
 
 selectclass 27
 
