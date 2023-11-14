@@ -500,9 +500,9 @@ cost              	    4 30 # 20 Sacrifices
 terr 					294 # Wild Forest
 alterloc                283 # Spider Thicket
 summoning                # The ritual will summon the monsters specified in a random string.
-addstring     "3d4*False Hound"
-addstring	  "6d4*Murder Monkey"
-addstring     "1d3+2*Blood Widow"
+addstring     "3d6*False Hound"
+addstring	  "6d6*Murder Monkey"
+addstring     "2d4+2*Blood Widow"
 descr "The Demonic Yogini Combines the power of the Primal forest and the False World to create powerful and bloodythirsty creatures, the Maya magic involved in this ritual turns the forest into a drained, evil place."
 
 
