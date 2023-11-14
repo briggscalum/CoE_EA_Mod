@@ -57,6 +57,18 @@ newritpow
 
 selectmonster "Black Kobold Slayer Shaman"   
 sensedead 					1
+acutesenses
+hadesres
+
+selectmonster "Black Kobold Slayer Prophet"  
+sensedead 					1
+planeshift 2
+acutesenses
+hadesres
+
+selectmonster "Black Dragon Spawn"   
+hadesres
+
 
 newmonster "Kobold Grease Fetcher"
 	copystats "Red Kobold Chief"
@@ -64,7 +76,6 @@ newmonster "Kobold Grease Fetcher"
 	spr2 "sprites/koboldtinker1.png"
 	fireres 					   0
 	armor                          0 # Armor.
-
 	power                          91 1 # Level 1 Kobold Krafts
 	mastery                        1
 
@@ -649,6 +660,69 @@ newmonster "Dragon Turtle"
 	wandermaxdist                99 # Far Far Away
 	fast							 # Gotta Go Fast
 
+newweapon     "Unlife Breath"                                             # 838
+	trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
+	range                5
+	init                 7
+	dmgtype              7 # Magic.
+	dmg                  5 # Base damage (added to dmg value where this weapon is used).
+	aoe               2010 # Area: narrow cone, 10 squares.
+	an                     # Armor negating.
+	mr
+	flymode              2 # Line, one for each strike or square hit.
+	flylook             42
+	flysound            18 # drain.smp (Life Drain)
+	reanimate
+	next
+	nextdmg 4
+	inanimate
+	undead
+
+
+newweapon     "Decay" 
+	dmgtype 12 # Decay.
+	trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
+	range                1
+	init                 4
+	dmgtype              12 # Cold.
+	dmg                  0 # Base damage (added to dmg value where this weapon is used).
+	aoe                  0 # Area: burst 1.
+	an                     # Armor negating.
+	mr
+	inanimate
+
+newmonster "Spectral Dragon"
+spr1 "sprites/spectraldragon.png"
+spr2 "sprites/spectraldragon1.png"
+
+armor                          0 # Armor.
+hp                           105 # Hit Points.
+str                            9 # Strength.
+mor                            7 # Morale.
+mr                             8 # Magic Resistance.
+rank                           1 # Front rank.
+
+rangedweapon50s           0  "Unlife Breath"
+meleeweapon               25  11 # Bite: d25 Slash damage.
+meleeweapon               20  12 # Claw: d20 Slash damage.
+meleeweapon                5 485 # Tail Sweep: d5 Blunt damage.
+float
+ethereal
+undead
+flying                          
+huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
+stupid                           # Cannot be controlled by players and will move automatically like an independent unit.
+acutesenses                      # Can see units with Stealth or Forest Stealth.
+fear                           2 # Causes Dread (1d8 vs morale) within 2 squares.
+nametype                      15 # Old Nordic male.
+randommisc                    50 # 50% chance to spawn with a random misc magic item.
+wander                         9 # Will try to fulfill this objective if it is a commander: Dragon.
+wanderrest                    70 # 70% chance for wandering monster to rest a turn instead of going on a mission.
+wandermaxdist                  5 # Maximum distance for raid missions for wanderers.
+dragon                         1 # Non-elder dragon.
+lairgoldpen                   50 # 50% Gold income penalty for this monster's home square.
+greedy                         1 # This unit will never give away its magic items voluntarily.
+
 # TODO
 #	 Carrion Dragon - Summoned on site of many corpses, Etherial, breaths unlife probably
 
@@ -991,6 +1065,19 @@ newritual     "Summon Dusk Dragon"                                             #
 	summoning                # The ritual will summon the monsters specified in a random string.
 	aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
 	addstring     "c*Dusk Dragon"
+
+newritual     "Summon Spectral Dragon"                                             # 471
+	descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
+	ritpow                91 # Kobold, Red
+	level                  1
+	free
+	cost              0   1 # 50 Gold
+	cost             16   1 # 25 Kobolds
+	terr                 -1 # Required terrain: proper mines.
+	# fx1031             431 # Unhandled trait 1031 with argument 431.
+	summoning                # The ritual will summon the monsters specified in a random string.
+	aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
+	addstring     "c*Spectral Dragon"
 
 #####
 # Rituals
