@@ -58,136 +58,133 @@ newritpow
 selectmonster "Black Kobold Slayer Shaman"   
 sensedead 					1
 
-
 newmonster "Kobold Grease Fetcher"
-copystats "Red Kobold Chief"
-spr1 "sprites/koboldtinker.png"
-spr2 "sprites/koboldtinker1.png"
-fireres 					   0
-armor                          0 # Armor.
+	copystats "Red Kobold Chief"
+	spr1 "sprites/koboldtinker.png"
+	spr2 "sprites/koboldtinker1.png"
+	fireres 					   0
+	armor                          0 # Armor.
 
-power                          91 1 # Level 1 Kobold Krafts
-mastery                        1
-
+	power                          91 1 # Level 1 Kobold Krafts
+	mastery                        1
 
 newmonster "Kobold Make Thinger"
-copystats "Red Kobold Chief"
-spr1 "sprites/koboldengineer.png"
-spr2 "sprites/koboldengineer1.png"
-power                          91 2 # Level 1 Kobold Krafts
-fireres 		               0
-armor                          1 # Armor.
-mastery                        1
-
+	copystats "Red Kobold Chief"
+	spr1 "sprites/koboldengineer.png"
+	spr2 "sprites/koboldengineer1.png"
+	power                          91 2 # Level 1 Kobold Krafts
+	fireres 		               0
+	armor                          1 # Armor.
+	mastery                        1
 
 newmonster "Kobold Big Boomer"
-copystats "Red Kobold Chief"
-spr1 "sprites/koboldinventer.png"
-spr2 "sprites/koboldinventer.png"
-power                          91 3 # Level 1 Kobold Krafts
-fireres 		               0
-armor                          2 # Armor.
+	copystats "Red Kobold Chief"
+	spr1 "sprites/koboldinventer.png"
+	spr2 "sprites/koboldinventer.png"
+	power                          91 3 # Level 1 Kobold Krafts
+	fireres 		               0
+	armor                          2 # Armor.
 
+#####
+# Kobold Krafts
+#####
 
-newweapon "Kobold Loader"
-trgrank              0 # Target: Selfdmgtype              3
-dmg                  1
-# range 50
+newweapon  "Kobold Loader"
+	trgrank              0 # Target: Selfdmgtype              3
+	dmg                  1
+	# range 50
 
-newweapon "Kobold Launcher"
-mutate
-flymode              32
-trgrank              9 # Target: any enemy in range
-range                16
-init                 2
-dmgtype              3 # Pierce.
-dmg                 20 # Base damage (added to dmg value where this weapon is used).
-aoe                  0 # Area: single target.
-lob                    # Arcing trajectory.
-rangepen               # Does half damage if distance >= half range.
-flymode              1 # Missile sprite, one for each strike or square hit.
-flysound            14 # pil.smp (Bow)
-flylook   			32 # boulder
-
+newweapon  "Kobold Launcher"
+	mutate
+	flymode              32
+	trgrank              9 # Target: any enemy in range
+	range                16
+	init                 2
+	dmgtype              3 # Pierce.
+	dmg                 20 # Base damage (added to dmg value where this weapon is used).
+	aoe                  0 # Area: single target.
+	lob                    # Arcing trajectory.
+	rangepen               # Does half damage if distance >= half range.
+	flymode              1 # Missile sprite, one for each strike or square hit.
+	flysound            14 # pil.smp (Bow)
+	flylook   			32 # boulder
 
 newmonster "Full Kobolpult"
-spr1 "sprites/kobolpult.png"
-spr2 "sprites/kobolpult1.png"
-descr "A millitary unit only kobolds would consider fielding. Some kobolds are born with a deathwish bordering on fearlessness and those are given a helmet and a breastplate and shot out of a catapult at high speeds. The Bombardiers try to break their fall by impailing an enemy on their sword, and if this is successful they pull it out of their enemies corpse and continue the fight. This one has plenty of Bombardiers and wont be restocked. The first shot of any new kobopult is done with a normal boulder to calibrate "
+	spr1 "sprites/kobolpult.png"
+	spr2 "sprites/kobolpult1.png"
+	descr "A millitary unit only kobolds would consider fielding. Some kobolds are born with a deathwish bordering on fearlessness and those are given a helmet and a breastplate and shot out of a catapult at high speeds. The Bombardiers try to break their fall by impailing an enemy on their sword, and if this is successful they pull it out of their enemies corpse and continue the fight. This one has plenty of Bombardiers and wont be restocked. The first shot of any new kobopult is done with a normal boulder to calibrate "
 
-hp                             30 # Hit Points.
-siegeweapon                    20 237 # Boulder: d20 Blunt damage.
-rangedweapon    		       0   "Kobold Loader"
-noheal
-fastheal
-armor                          0 # Armor.
-str                            4 # Strength.
-mor                            4 # Morale.
-mr                             5 # Magic Resistance.
-rank                          -1 # Back rank.
-meleeweapon                0   8 # Shortsword: d5 Slash damage.
-immobile                         # Immobile (cannot move in battle).
-slow                             # The monster only has 2 AP.
-size2x2                          # Takes up 2x2 squares on the battlefield (overrides sprite size).
-shrinkhp 				       29
-
+	hp                             30 # Hit Points.
+	siegeweapon                    20 237 # Boulder: d20 Blunt damage.
+	rangedweapon    		       0   "Kobold Loader"
+	noheal
+	fastheal
+	armor                          0 # Armor.
+	str                            4 # Strength.
+	mor                            4 # Morale.
+	mr                             5 # Magic Resistance.
+	rank                          -1 # Back rank.
+	meleeweapon                0   8 # Shortsword: d5 Slash damage.
+	immobile                         # Immobile (cannot move in battle).
+	slow                             # The monster only has 2 AP.
+	size2x2                          # Takes up 2x2 squares on the battlefield (overrides sprite size).
+	shrinkhp 				       29
 
 newmonster "Kobolpult"
-spr1 "sprites/kobolpult.png"
-spr2 "sprites/kobolpult1.png"
-descr "A millitary unit only kobolds would consider fielding. Some kobolds are born with a deathwish bordering on fearlessness and those are given a helmet and a breastplate and shot out of a catapult at high speeds. The Bombardiers try to break their fall by impailing an enemy on their sword, and if this is successful they pull it out of their enemies corpse and continue the fight."
-hp                             30 # Hit Points.
-rangedweapon                   2   "Kobold Launcher" 
-rangedweapon    		       0   "Kobold Loader"
-noheal
-fastheal
-armor                          0 # Armor.
-str                            4 # Strength.
-mor                            4 # Morale.
-mr                             5 # Magic Resistance.
-rank                          -1 # Back rank.
-meleeweapon                0   8 # Shortsword: d5 Slash damage.
-immobile                         # Immobile (cannot move in battle).
-slow                             # The monster only has 2 AP.
-size2x2                          # Takes up 2x2 squares on the battlefield (overrides sprite size).
-
+	spr1 "sprites/kobolpult.png"
+	spr2 "sprites/kobolpult1.png"
+	descr "A millitary unit only kobolds would consider fielding. Some kobolds are born with a deathwish bordering on fearlessness and those are given a helmet and a breastplate and shot out of a catapult at high speeds. The Bombardiers try to break their fall by impailing an enemy on their sword, and if this is successful they pull it out of their enemies corpse and continue the fight."
+	hp                             30 # Hit Points.
+	rangedweapon                   2   "Kobold Launcher" 
+	rangedweapon    		       0   "Kobold Loader"
+	noheal
+	fastheal
+	armor                          0 # Armor.
+	str                            4 # Strength.
+	mor                            4 # Morale.
+	mr                             5 # Magic Resistance.
+	rank                          -1 # Back rank.
+	meleeweapon                0   8 # Shortsword: d5 Slash damage.
+	immobile                         # Immobile (cannot move in battle).
+	slow                             # The monster only has 2 AP.
+	size2x2                          # Takes up 2x2 squares on the battlefield (overrides sprite size).
 
 newmonster "Kobold Bombardier"
-spr1 "sprites/koboldammo.png"
-spr2 "sprites/koboldammo1.png"
-descr "The most fanatical of all Kobolds are loaded with as much armor as the nation can muster and shot out of a catapult into the enemy ranks"
-armor                          3 # Armor.
-hp                             3 # Hit Points.
-str                            3 # Strength.
-mor                            4 # Morale.
-mr                             5 # Magic Resistance.
-rank                           1 # Front rank.
-meleeweapon                0   8 # Shortsword: d5 Slash damage.
-allitemslots                     # Has the full set of item slots.
-kobold                         1 # This unit is an expendable kobold.
+	spr1 "sprites/koboldammo.png"
+	spr2 "sprites/koboldammo1.png"
+	descr "The most fanatical of all Kobolds are loaded with as much armor as the nation can muster and shot out of a catapult into the enemy ranks"
+	armor                          3 # Armor.
+	hp                             3 # Hit Points.
+	str                            3 # Strength.
+	mor                            4 # Morale.
+	mr                             5 # Magic Resistance.
+	rank                           1 # Front rank.
+	meleeweapon                0   8 # Shortsword: d5 Slash damage.
+	allitemslots                     # Has the full set of item slots.
+	kobold                         1 # This unit is an expendable kobold.
 
-newweapon "Fire Blob"
-trgrank    1
-range     10
-init       1
-dmgtype    4
-nextalways
-nextdmg    3
-reload2
-mundane
-scatter
-lob
-stone
-flymode    1
-flylook   33
-flysound  45
-sound     68
+newweapon  "Fire Blob"
+	trgrank    1
+	range     10
+	init       1
+	dmgtype    4
+	nextalways
+	nextdmg    3
+	reload2
+	mundane
+	scatter
+	lob
+	stone
+	flymode    1
+	flylook   33
+	flysound  45
+	sound     68
 
-newweapon "Fire Burst"
-dmgtype 4
-aoe 5
-look 14
-mundane
+newweapon  "Fire Burst"
+	dmgtype 4
+	aoe 5
+	look 14
+	mundane
 
 newmonster "New Mobile Kobold Wall"
 	spr1 "sprites/koboldshieldwall.png"
@@ -233,7 +230,7 @@ newmonster "Mobile Kobold Wall"
 	slow                             # The monster only has 2 AP.
 	size2x2                          # Takes up 2x2 squares on the battlefield (overrides sprite size).
 
-newweapon     "Fiery Battering Ram"                                              #  98
+newweapon  "Fiery Battering Ram"                                              #  98
 	trgrank              1 # Target: any enemy in range.
 	range                1
 	init                 3
@@ -247,7 +244,7 @@ newweapon     "Fiery Battering Ram"                                             
 	nextalways
 	nextdmg    2
 
-newweapon "Fire Ram"
+newweapon  "Fire Ram"
 	dmgtype             4
 	aoe                 1
 	look                14
@@ -273,7 +270,6 @@ newmonster "New Kobold Battering Ram"
 	slow                             # The monster only has 2 AP.
 	size2x2                          # Takes up 2x2 squares on the battlefield (overrides sprite size).
 	shrinkhp 49
-
 
 newmonster "Kobold Battering Ram"
 	spr1 "sprites/koboldram.png"
@@ -327,12 +323,9 @@ newmonster "Dragon Can"
 	slow                             # The monster only has 2 AP.
 	battleslow                       # Moves only 1 square per 2 turns in combat.
 
-
-
-
 newweapon "Percussive Maintenance"
-trgrank              0 # Target: Selfdmgtype              3
-dmg                  1       
+	trgrank              0 # Target: Selfdmgtype              3
+	dmg                  1       
 
 newweapon     "Rime Arrow"                                  # 539
 	trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
@@ -364,7 +357,6 @@ newweapon     "Flame Arrow"                                 # 541
 	nextalwayswep      174 # Extra effect if target is hit: 543: Fire Blast.
 	nextdmg             10 # d7 Fire damage.
 
-
 newweapon     "Earth Arrow"                                 # 544
 	trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
 	range               12
@@ -382,811 +374,778 @@ newweapon     "Earth Arrow"                                 # 544
 	nextalwayswep      530 # Extra effect if target is hit: 546: Earth Blast.
 	nextdmg             64 # Stun
 
-
 newmonster "New Ultimate War Machine"
-spr1 "sprites/koboldwarmachine.png"
-spr2 "sprites/koboldwarmachine1.png"
-descr "The apex of Kobold Engineering, this machine boasts unparalleled firepower at the cost of any kind of armor or in fact even the structural integrety to maintain fire on its own battery of weapons. Requires constants maintenance from its large crew of technicians but in order to keep it running but it will slowly break down and needs a master artificer to occasionally repair it. It is so large and cumbersome that is requires a pair of stone drakes to pull. The paint on this one is new and the bolts have not even started to juggle. It will not be repaired"
-fastheal
-huge
-armor                          1 # Armor.
-hp                            40 # Hit Points.
-str                            6 # Strength.
-mor                            4 # Morale.
-mr                             6 # Magic Resistance.
-rank                          -1 # Back rank.
-noheal
-immobile
-siegeweapon               15 "Earth Arrow" # Giant Earth Branded Arrow: d15 Pierce damage.
-rangedweapon              15 "Earth Arrow" # Giant Earth Branded Arrow: d15 Pierce damage.
-siegeweapon               15 "Rime Arrow"  # Giant Rime Branded Arrow: d15 Pierce damage.
-rangedweapon              15 "Rime Arrow"  # Giant Rime Branded Arrow: d15 Pierce damage.
-siegeweapon               15 "Flame Arrow" # Giant Flame Branded Arrow: d15 Pierce damage.
-rangedweapon              15 "Flame Arrow" # Giant Flame Branded Arrow: d15 Pierce damage.
-siegeweapon               15 239 # Giant Arrow: d15 Pierce damage.
-rangedweapon              15 477 # Giant Arrow: d15 Pierce damage.
-siegeweapon               15 239 # Giant Arrow: d15 Pierce damage.
-rangedweapon              15 477 # Giant Arrow: d15 Pierce damage.
-meleeweapon                8  11 # Bite: d8 Slash damage.
-meleeweapon                8  11 # Bite: d8 Slash damage.
-siegeweapon               0 "Percussive Maintenance"
-rangedweapon    		  0 "Percussive Maintenance"
-shrinkhp 39
+	spr1 "sprites/koboldwarmachine.png"
+	spr2 "sprites/koboldwarmachine1.png"
+	descr "The apex of Kobold Engineering, this machine boasts unparalleled firepower at the cost of any kind of armor or in fact even the structural integrety to maintain fire on its own battery of weapons. Requires constants maintenance from its large crew of technicians but in order to keep it running but it will slowly break down and needs a master artificer to occasionally repair it. It is so large and cumbersome that is requires a pair of stone drakes to pull. The paint on this one is new and the bolts have not even started to juggle. It will not be repaired"
+	fastheal
+	huge
+	armor                          1 # Armor.
+	hp                            40 # Hit Points.
+	str                            6 # Strength.
+	mor                            4 # Morale.
+	mr                             6 # Magic Resistance.
+	rank                          -1 # Back rank.
+	noheal
+	immobile
+	siegeweapon               15 "Earth Arrow" # Giant Earth Branded Arrow: d15 Pierce damage.
+	rangedweapon              15 "Earth Arrow" # Giant Earth Branded Arrow: d15 Pierce damage.
+	siegeweapon               15 "Rime Arrow"  # Giant Rime Branded Arrow: d15 Pierce damage.
+	rangedweapon              15 "Rime Arrow"  # Giant Rime Branded Arrow: d15 Pierce damage.
+	siegeweapon               15 "Flame Arrow" # Giant Flame Branded Arrow: d15 Pierce damage.
+	rangedweapon              15 "Flame Arrow" # Giant Flame Branded Arrow: d15 Pierce damage.
+	siegeweapon               15 239 # Giant Arrow: d15 Pierce damage.
+	rangedweapon              15 477 # Giant Arrow: d15 Pierce damage.
+	siegeweapon               15 239 # Giant Arrow: d15 Pierce damage.
+	rangedweapon              15 477 # Giant Arrow: d15 Pierce damage.
+	meleeweapon                8  11 # Bite: d8 Slash damage.
+	meleeweapon                8  11 # Bite: d8 Slash damage.
+	siegeweapon               0 "Percussive Maintenance"
+	rangedweapon    		  0 "Percussive Maintenance"
+	shrinkhp 39
 
 newmonster "Ultimate War Machine"
-spr1 "sprites/koboldwarmachine.png"
-spr2 "sprites/koboldwarmachine1.png"
-descr "The apex of Kobold Engineering, this machine boasts unparalleled firepower at the cost of any kind of armor or in fact even the structural integrety to maintain fire on its own battery of weapons. Requires constants maintenance from its large crew of technicians but in order to keep it running but it will slowly break down and needs a master artificer to occasionally repair it. It is so large and cumbersome that is requires a pair of stone drakes to pull."
-huge
-armor                          1 # Armor.
-hp                            40 # Hit Points.
-str                            6 # Strength.
-mor                            4 # Morale.
-mr                             6 # Magic Resistance.
-rank                          -1 # Back rank.
-noheal
-immobile
-siegeweapon               15 "Earth Arrow" # Giant Earth Branded Arrow: d15 Pierce damage.
-rangedweapon              15 "Earth Arrow" # Giant Earth Branded Arrow: d15 Pierce damage.
-siegeweapon               15 "Rime Arrow"  # Giant Rime Branded Arrow: d15 Pierce damage.
-rangedweapon              15 "Rime Arrow"  # Giant Rime Branded Arrow: d15 Pierce damage.
-siegeweapon               15 "Flame Arrow" # Giant Flame Branded Arrow: d15 Pierce damage.
-rangedweapon              15 "Flame Arrow" # Giant Flame Branded Arrow: d15 Pierce damage.
-siegeweapon               15 239 # Giant Arrow: d15 Pierce damage.
-rangedweapon              15 477 # Giant Arrow: d15 Pierce damage.
-siegeweapon               15 239 # Giant Arrow: d15 Pierce damage.
-rangedweapon              15 477 # Giant Arrow: d15 Pierce damage.
-meleeweapon                8  11 # Bite: d8 Slash damage.
-meleeweapon                8  11 # Bite: d8 Slash damage.
-siegeweapon               0 "Percussive Maintenance"
-rangedweapon    		  0 "Percussive Maintenance"
-shrinkhp 30
+	spr1 "sprites/koboldwarmachine.png"
+	spr2 "sprites/koboldwarmachine1.png"
+	descr "The apex of Kobold Engineering, this machine boasts unparalleled firepower at the cost of any kind of armor or in fact even the structural integrety to maintain fire on its own battery of weapons. Requires constants maintenance from its large crew of technicians but in order to keep it running but it will slowly break down and needs a master artificer to occasionally repair it. It is so large and cumbersome that is requires a pair of stone drakes to pull."
+	huge
+	armor                          1 # Armor.
+	hp                            40 # Hit Points.
+	str                            6 # Strength.
+	mor                            4 # Morale.
+	mr                             6 # Magic Resistance.
+	rank                          -1 # Back rank.
+	noheal
+	immobile
+	siegeweapon               15 "Earth Arrow" # Giant Earth Branded Arrow: d15 Pierce damage.
+	rangedweapon              15 "Earth Arrow" # Giant Earth Branded Arrow: d15 Pierce damage.
+	siegeweapon               15 "Rime Arrow"  # Giant Rime Branded Arrow: d15 Pierce damage.
+	rangedweapon              15 "Rime Arrow"  # Giant Rime Branded Arrow: d15 Pierce damage.
+	siegeweapon               15 "Flame Arrow" # Giant Flame Branded Arrow: d15 Pierce damage.
+	rangedweapon              15 "Flame Arrow" # Giant Flame Branded Arrow: d15 Pierce damage.
+	siegeweapon               15 239 # Giant Arrow: d15 Pierce damage.
+	rangedweapon              15 477 # Giant Arrow: d15 Pierce damage.
+	siegeweapon               15 239 # Giant Arrow: d15 Pierce damage.
+	rangedweapon              15 477 # Giant Arrow: d15 Pierce damage.
+	meleeweapon                8  11 # Bite: d8 Slash damage.
+	meleeweapon                8  11 # Bite: d8 Slash damage.
+	siegeweapon               0 "Percussive Maintenance"
+	rangedweapon    		  0 "Percussive Maintenance"
+	shrinkhp 30
 
 newmonster "Scuffed War Machine"
-spr1 "sprites/scuffedwarmachine.png"
-spr2 "sprites/scuffedwarmachine1.png"
+	spr1 "sprites/scuffedwarmachine.png"
+	spr2 "sprites/scuffedwarmachine1.png"
 
-huge
-armor                          1 # Armor.
-hp                            40 # Hit Points.
-str                            6 # Strength.
-mor                            4 # Morale.
-mr                             6 # Magic Resistance.
-rank                          -1 # Back rank.
-immobile
-siegeweapon               15 "Rime Arrow"  # Giant Rime Branded Arrow: d15 Pierce damage.
-rangedweapon              15 "Rime Arrow"  # Giant Rime Branded Arrow: d15 Pierce damage.
-siegeweapon               15 "Flame Arrow" # Giant Flame Branded Arrow: d15 Pierce damage.
-rangedweapon              15 "Flame Arrow" # Giant Flame Branded Arrow: d15 Pierce damage.
-siegeweapon               15 239 # Giant Arrow: d15 Pierce damage.
-rangedweapon              15 477 # Giant Arrow: d15 Pierce damage.
-meleeweapon                8  11 # Bite: d8 Slash damage.
-meleeweapon                8  11 # Bite: d8 Slash damage.
-siegeweapon               0 "Percussive Maintenance"
-rangedweapon    		  0  "Percussive Maintenance"
-noheal
-shrinkhp 20
-growhp 31
-
+	huge
+	armor                          1 # Armor.
+	hp                            40 # Hit Points.
+	str                            6 # Strength.
+	mor                            4 # Morale.
+	mr                             6 # Magic Resistance.
+	rank                          -1 # Back rank.
+	immobile
+	siegeweapon               15 "Rime Arrow"  # Giant Rime Branded Arrow: d15 Pierce damage.
+	rangedweapon              15 "Rime Arrow"  # Giant Rime Branded Arrow: d15 Pierce damage.
+	siegeweapon               15 "Flame Arrow" # Giant Flame Branded Arrow: d15 Pierce damage.
+	rangedweapon              15 "Flame Arrow" # Giant Flame Branded Arrow: d15 Pierce damage.
+	siegeweapon               15 239 # Giant Arrow: d15 Pierce damage.
+	rangedweapon              15 477 # Giant Arrow: d15 Pierce damage.
+	meleeweapon                8  11 # Bite: d8 Slash damage.
+	meleeweapon                8  11 # Bite: d8 Slash damage.
+	siegeweapon               0 "Percussive Maintenance"
+	rangedweapon    		  0  "Percussive Maintenance"
+	noheal
+	shrinkhp 20
+	growhp 31
 
 newmonster "Damaged War Machine"
-spr1 "sprites/damagedwarmachine.png"
-spr2 "sprites/damagedwarmachine1.png"
+	spr1 "sprites/damagedwarmachine.png"
+	spr2 "sprites/damagedwarmachine1.png"
 
-huge
-armor                          1 # Armor.
-hp                            40 # Hit Points.
-str                            6 # Strength.
-mor                            4 # Morale.
-mr                             6 # Magic Resistance.
-rank                          -1 # Back rank.
-immobile
-siegeweapon               15 "Flame Arrow" # Giant Flame Branded Arrow: d15 Pierce damage.
-rangedweapon              15 "Flame Arrow" # Giant Flame Branded Arrow: d15 Pierce damage.
-meleeweapon                8  11 # Bite: d8 Slash damage.
-meleeweapon                8  11 # Bite: d8 Slash damage.
-siegeweapon               0 "Percussive Maintenance"
-rangedweapon    		  0  "Percussive Maintenance"
-noheal
-growhp 21
-shrinkhp 10
-
+	huge
+	armor                          1 # Armor.
+	hp                            40 # Hit Points.
+	str                            6 # Strength.
+	mor                            4 # Morale.
+	mr                             6 # Magic Resistance.
+	rank                          -1 # Back rank.
+	immobile
+	siegeweapon               15 "Flame Arrow" # Giant Flame Branded Arrow: d15 Pierce damage.
+	rangedweapon              15 "Flame Arrow" # Giant Flame Branded Arrow: d15 Pierce damage.
+	meleeweapon                8  11 # Bite: d8 Slash damage.
+	meleeweapon                8  11 # Bite: d8 Slash damage.
+	siegeweapon               0 "Percussive Maintenance"
+	rangedweapon    		  0  "Percussive Maintenance"
+	noheal
+	growhp 21
+	shrinkhp 10
 
 newmonster "Disabled War Machine"
-spr1 "sprites/disabledwarmachine.png"
+	spr1 "sprites/disabledwarmachine.png"
 
-huge
-armor                          1 # Armor.
-hp                            40 # Hit Points.
-str                            6 # Strength.
-mor                            4 # Morale.
-mr                             6 # Magic Resistance.
-rank                          -1 # Back rank.
-meleeweapon                8  11 # Bite: d8 Slash damage.
-meleeweapon                8  11 # Bite: d8 Slash damage.
-immobile
-growhp 11
-noheal
+	huge
+	armor                          1 # Armor.
+	hp                            40 # Hit Points.
+	str                            6 # Strength.
+	mor                            4 # Morale.
+	mr                             6 # Magic Resistance.
+	rank                          -1 # Back rank.
+	meleeweapon                8  11 # Bite: d8 Slash damage.
+	meleeweapon                8  11 # Bite: d8 Slash damage.
+	immobile
+	growhp 11
+	noheal
 
-###
-# Dragons
-###
+######
+# New Dragons
+######
 
 newmonster "Tiamat"
-spr1 "sprites/tiamat.png"
-unique    1
-armor 						   2 # Armor
-hp                           236 # Hit Points.
-str                           20 # Strength.
-mor                           20 # Morale.
-mr                            15 # Magic Resistance.
-rank                           2 # Mid rank.
-meleeweapon               20  11 # Bite: d25 Slash damage.
-meleeweapon               20  11 # Bite: d25 Slash damage.
-meleeweapon               20  11 # Bite: d25 Slash damage.
-meleeweapon               20  11 # Bite: d25 Slash damage.
-meleeweapon               20  11 # Bite: d25 Slash damage.
-spellweapon50s                3   3 # Pyromancy at level 3.
-spellweapon50s               27   3 # Frost Magic at level 3.
-spellweapon50s                6   3 # Geomancy at level 3.
-spellweapon50s                5   3 # Storm Magic at level 3.
-spellweapon50s                9   3 # Dark at level 3.
+	spr1 "sprites/tiamat.png"
+	unique    1
+	armor 						   2 # Armor
+	hp                           236 # Hit Points.
+	str                           20 # Strength.
+	mor                           20 # Morale.
+	mr                            15 # Magic Resistance.
+	rank                           2 # Mid rank.
+	meleeweapon               20  11 # Bite: d25 Slash damage.
+	meleeweapon               20  11 # Bite: d25 Slash damage.
+	meleeweapon               20  11 # Bite: d25 Slash damage.
+	meleeweapon               20  11 # Bite: d25 Slash damage.
+	meleeweapon               20  11 # Bite: d25 Slash damage.
+	spellweapon50s                3   3 # Pyromancy at level 3.
+	spellweapon50s               27   3 # Frost Magic at level 3.
+	spellweapon50s                6   3 # Geomancy at level 3.
+	spellweapon50s                5   3 # Storm Magic at level 3.
+	spellweapon50s                9   3 # Dark at level 3.
 
-huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
-fireres                      100 # Fire immunity.
-coldres					      50
-shockres                      50
-poisonres                     50
-fireaura
-coldaura
-shockaura
-unaging
-fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
-flying
-
+	huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
+	fireres                      100 # Fire immunity.
+	coldres					      50
+	shockres                      50
+	poisonres                     50
+	fireaura
+	coldaura
+	shockaura
+	unaging
+	fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
+	flying
 
 newmonster "Great Wyrm of Conflagration"
-unique    1
-hp                           177 # Hit Points.
-str                            9 # Strength.
-mor                           10 # Morale.
-mr                            11 # Magic Resistance.
-rank                           2 # Mid rank.
-meleeweapon               20  11 # Bite: d33 Slash damage.
-spellweapon                3   3 # Pyromancy at level 3.
-huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
-mines1                           # Loves mines (if an independent or stupid commander, will not leave its loved terrains).
-poisonres                    100 # Poison immunity.
-fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
+	unique    1
+	hp                           177 # Hit Points.
+	str                            9 # Strength.
+	mor                           10 # Morale.
+	mr                            11 # Magic Resistance.
+	rank                           2 # Mid rank.
+	meleeweapon               20  11 # Bite: d33 Slash damage.
+	spellweapon                3   3 # Pyromancy at level 3.
+	huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
+	mines1                           # Loves mines (if an independent or stupid commander, will not leave its loved terrains).
+	poisonres                    100 # Poison immunity.
+	fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
 
 newmonster "Great Wyrm of Rime"
-unique    					   1
-hp                           177 # Hit Points.
-str                            9 # Strength.
-mor                           10 # Morale.
-mr                            11 # Magic Resistance.
-rank                           2 # Mid rank.
-meleeweapon               20  11 # Bite: d20 Slash damage.
-spellweapon               27   3 # Frost Magic at level 3.
-huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
-mines1                           # Loves mines (if an independent or stupid commander, will not leave its loved terrains).
-poisonres                    100 # Poison immunity.
-fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
+	unique    					   1
+	hp                           177 # Hit Points.
+	str                            9 # Strength.
+	mor                           10 # Morale.
+	mr                            11 # Magic Resistance.
+	rank                           2 # Mid rank.
+	meleeweapon               20  11 # Bite: d20 Slash damage.
+	spellweapon               27   3 # Frost Magic at level 3.
+	huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
+	mines1                           # Loves mines (if an independent or stupid commander, will not leave its loved terrains).
+	poisonres                    100 # Poison immunity.
+	fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
 
 newmonster "Great Wyrm of Tumult"
-unique                         1
-hp                           177 # Hit Points.
-str                            9 # Strength.
-mor                           10 # Morale.
-mr                            11 # Magic Resistance.
-rank                           2 # Mid rank.
-spellweaponbonus           5   3 # Storm Magic at level 3.
-meleeweapon               20  11 # Bite: d20 Slash damage.
-huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
-mines1                           # Loves mines (if an independent or stupid commander, will not leave its loved terrains).
-poisonres                    100 # Poison immunity.
-fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
+	unique                         1
+	hp                           177 # Hit Points.
+	str                            9 # Strength.
+	mor                           10 # Morale.
+	mr                            11 # Magic Resistance.
+	rank                           2 # Mid rank.
+	spellweaponbonus           5   3 # Storm Magic at level 3.
+	meleeweapon               20  11 # Bite: d20 Slash damage.
+	huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
+	mines1                           # Loves mines (if an independent or stupid commander, will not leave its loved terrains).
+	poisonres                    100 # Poison immunity.
+	fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
 
 newmonster "Great Wyrm of Decay"
-unique                         1
-hp                           177 # Hit Points.
-str                            9 # Strength.
-mor                           10 # Morale.
-mr                            11 # Magic Resistance.
-rank                           2 # Mid rank.
-spellweapon               63   3 # Bile Magic at level 3.
-meleeweapon               20  11 # Bite: d20 Slash damage.
-huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
-mines1                           # Loves mines (if an independent or stupid commander, will not leave its loved terrains).
-poisonres                    100 # Poison immunity.
-fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
+	unique                         1
+	hp                           177 # Hit Points.
+	str                            9 # Strength.
+	mor                           10 # Morale.
+	mr                            11 # Magic Resistance.
+	rank                           2 # Mid rank.
+	spellweapon               63   3 # Bile Magic at level 3.
+	meleeweapon               20  11 # Bite: d20 Slash damage.
+	huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
+	mines1                           # Loves mines (if an independent or stupid commander, will not leave its loved terrains).
+	poisonres                    100 # Poison immunity.
+	fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
 
 newmonster "Great Wyrm of Desolation"
-
-unique                         1
-hp                           177 # Hit Points.
-str                            9 # Strength.
-mor                           10 # Morale.
-mr                            11 # Magic Resistance.
-rank                           2 # Mid rank.
-meleeweapon               20  11 # Bite: d20 Slash damage.
-spellweapon                9   3 # Dark at level 3.
-huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
-mines1                           # Loves mines (if an independent or stupid commander, will not leave its loved terrains).
-poisonres                    100 # Poison immunity.
-fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
-
+	unique                         1
+	hp                           177 # Hit Points.
+	str                            9 # Strength.
+	mor                           10 # Morale.
+	mr                            11 # Magic Resistance.
+	rank                           2 # Mid rank.
+	meleeweapon               20  11 # Bite: d20 Slash damage.
+	spellweapon                9   3 # Dark at level 3.
+	huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
+	mines1                           # Loves mines (if an independent or stupid commander, will not leave its loved terrains).
+	poisonres                    100 # Poison immunity.
+	fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
 
 newmonster "Silver Dragon"
-copystats "Storm Dragon"
-descr "The Silver Dragon a great deal of resistance to both physical and magic damage. In addition to its cold breath, it has access to silver arcana. Legends say that the Silver Dragon is actually unrelated to the elemental dragons and is actually associated with the Celestial Realm"
-spr1 "sprites/silverdragon.png"
-spr2 "sprites/silverdragon1.png"
+	copystats "Storm Dragon"
+	descr "The Silver Dragon a great deal of resistance to both physical and magic damage. In addition to its cold breath, it has access to silver arcana. Legends say that the Silver Dragon is actually unrelated to the elemental dragons and is actually associated with the Celestial Realm"
+	spr1 "sprites/silverdragon.png"
+	spr2 "sprites/silverdragon1.png"
 
-hp                           150 # Hit Points.
-armor                          4 # Armor.
-mr                             11 # Magic Resistance.
+	hp                           150 # Hit Points.
+	armor                          4 # Armor.
+	mr                             11 # Magic Resistance.
 
-spellweapon               53   2 # Silver Arcana at level 2.
-wanderrest 70
+	spellweapon               53   2 # Silver Arcana at level 2.
+	wanderrest 70
 
-
-
-
-newweapon     "Jet of Water"                               # 132
-trgrank              1 # Target: any enemy in range.
-range                5
-init                 7
-dmgtype              2 # Blunt.
-dmg                 15 # Base damage (added to dmg value where this weapon is used).
-aoe               2010 # Area: narrow cone, 10 squares.
-look                17
-sound               88 # water1.wav (Water)
-nextwep            118 # Extra effect if target is affected: 118: aff (str-resistable).
-nextdmg             64 # Stun
-
+newweapon  "Jet of Water"                               # 132
+	trgrank              1 # Target: any enemy in range.
+	range                5
+	init                 7
+	dmgtype              2 # Blunt.
+	dmg                 15 # Base damage (added to dmg value where this weapon is used).
+	aoe               2010 # Area: narrow cone, 10 squares.
+	look                17
+	sound               88 # water1.wav (Water)
+	nextwep            118 # Extra effect if target is affected: 118: aff (str-resistable).
+	nextdmg             64 # Stun
 
 newmonster "Dragon Turtle"
-descr "A much rarer relative of the Sea Dragon, the Dragon turtle has much more draconic blood in its veins, giving it access to a powerful breath weapon. Like other Dragons it does not take orders from non-dragons but can be peruaded to join the cause of the Kolbolds by a powerful storm mage"
-copystats "Sea Dragon"
-spr1 "sprites/dragonturtle.png"
-spr2 "sprites/dragonturtle1.png"
+	descr "A much rarer relative of the Sea Dragon, the Dragon turtle has much more draconic blood in its veins, giving it access to a powerful breath weapon. Like other Dragons it does not take orders from non-dragons but can be peruaded to join the cause of the Kolbolds by a powerful storm mage"
+	copystats "Sea Dragon"
+	spr1 "sprites/dragonturtle.png"
+	spr2 "sprites/dragonturtle1.png"
 
-rangedweapon50s "Jet of Water"
-dragon                         1 # Non-elder dragon.
-greedy                         1 # This unit will never give away its magic items voluntarily.
-stupid
-wanderrest                    0 # Always Be Consuming
-wander 						  9 # Yar Har
-wandermaxdist                99 # Far Far Away
-fast							 # Gotta Go Fast
+	rangedweapon50s "Jet of Water"
+	dragon                         1 # Non-elder dragon.
+	greedy                         1 # This unit will never give away its magic items voluntarily.
+	stupid
+	wanderrest                    0 # Always Be Consuming
+	wander 						  9 # Yar Har
+	wandermaxdist                99 # Far Far Away
+	fast							 # Gotta Go Fast
+
+# TODO
+#	 Carrion Dragon - Summoned on site of many corpses, Etherial, breaths unlife probably
+
+########
+# Alternate Dragon Forms
+########
 
 newmonster "Awakened Fire Dragon"
-descr "Who has not seen the head of a dragon hanging above some two-penny count's hearth? The Fire Dragon is the dragon most often hunted by knights, and also the dragon that thrives best on mankind. The Fire Dragon is the most prolific of all dragons, and it may be that a nutritious diet of knights and the occasional kidnapped princess gives their hatchlings a good start in life. Though many knights are lured into hunting dragons by the promise of obtaining their immeasurable treasures, it is often a false quest. Some survivors have confessed that what they had believed to be gold was just the ember lights from the dragon's fire reflected on its red scales and their caves of red sandstone."
-copyspr "Fire Dragon"
-armor                          3 # Armor.
-hp                           105 # Hit Points.
-str                            9 # Strength.
-mor                            7 # Morale.
-mr                             9 # Magic Resistance.
-rank                           1 # Front rank.
-rangedweapon50s           10  85 # Fiery Breath: d10 Fire damage.
-meleeweapon               25  11 # Bite: d25 Slash damage.
-meleeweapon               20  12 # Claw: d20 Slash damage.
-meleeweapon                5 485 # Tail Sweep: d5 Blunt damage.
-flying                          
-huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
-fireres                      100 # Fire immunity.
-acutesenses                      # Can see units with Stealth or Forest Stealth.
-fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
-nametype                      15 # Old Nordic male.
-randommisc                    50 # 50% chance to spawn with a random misc magic item.
-dragon                         1 # Non-elder dragon.
-greedy                         1 # This unit will never give away its magic items voluntarily.
+	descr "Who has not seen the head of a dragon hanging above some two-penny count's hearth? The Fire Dragon is the dragon most often hunted by knights, and also the dragon that thrives best on mankind. The Fire Dragon is the most prolific of all dragons, and it may be that a nutritious diet of knights and the occasional kidnapped princess gives their hatchlings a good start in life. Though many knights are lured into hunting dragons by the promise of obtaining their immeasurable treasures, it is often a false quest. Some survivors have confessed that what they had believed to be gold was just the ember lights from the dragon's fire reflected on its red scales and their caves of red sandstone."
+	copyspr "Fire Dragon"
+	armor                          3 # Armor.
+	hp                           105 # Hit Points.
+	str                            9 # Strength.
+	mor                            7 # Morale.
+	mr                             9 # Magic Resistance.
+	rank                           1 # Front rank.
+	rangedweapon50s           10  85 # Fiery Breath: d10 Fire damage.
+	meleeweapon               25  11 # Bite: d25 Slash damage.
+	meleeweapon               20  12 # Claw: d20 Slash damage.
+	meleeweapon                5 485 # Tail Sweep: d5 Blunt damage.
+	flying                          
+	huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
+	fireres                      100 # Fire immunity.
+	acutesenses                      # Can see units with Stealth or Forest Stealth.
+	fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
+	nametype                      15 # Old Nordic male.
+	randommisc                    50 # 50% chance to spawn with a random misc magic item.
+	dragon                         1 # Non-elder dragon.
+	greedy                         1 # This unit will never give away its magic items voluntarily.
 
 newmonster "Incentivised Fire Dragon"
-descr "This Fire Dragon has been enlivened by the Kobolds with fresh meat and magical gems. It is faster and more active than most of its kin, but will eventually return to its mostly sedentary state"
-copyspr "Fire Dragon"
+	descr "This Fire Dragon has been enlivened by the Kobolds with fresh meat and magical gems. It is faster and more active than most of its kin, but will eventually return to its mostly sedentary state"
+	copyspr "Fire Dragon"
 
-armor                          3 # Armor.
-hp                           105 # Hit Points.
-str                            9 # Strength.
-mor                            7 # Morale.
-mr                             9 # Magic Resistance.
-rank                           1 # Front rank.
-rangedweapon50s           10  85 # Fiery Breath: d10 Fire damage.
-meleeweapon               25  11 # Bite: d25 Slash damage.
-meleeweapon               20  12 # Claw: d20 Slash damage.
-meleeweapon                5 485 # Tail Sweep: d5 Blunt damage.
-flying                          
-huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
-fireres                      100 # Fire immunity.
-acutesenses                      # Can see units with Stealth or Forest Stealth.
-fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
-nametype                      15 # Old Nordic male.
-randommisc                    50 # 50% chance to spawn with a random misc magic item.
-dragon                         1 # Non-elder dragon.
-greedy                         1 # This unit will never give away its magic items voluntarily.
+	armor                          3 # Armor.
+	hp                           105 # Hit Points.
+	str                            9 # Strength.
+	mor                            7 # Morale.
+	mr                             9 # Magic Resistance.
+	rank                           1 # Front rank.
+	rangedweapon50s           10  85 # Fiery Breath: d10 Fire damage.
+	meleeweapon               25  11 # Bite: d25 Slash damage.
+	meleeweapon               20  12 # Claw: d20 Slash damage.
+	meleeweapon                5 485 # Tail Sweep: d5 Blunt damage.
+	flying                          
+	huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
+	fireres                      100 # Fire immunity.
+	acutesenses                      # Can see units with Stealth or Forest Stealth.
+	fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
+	nametype                      15 # Old Nordic male.
+	randommisc                    50 # 50% chance to spawn with a random misc magic item.
+	dragon                         1 # Non-elder dragon.
+	greedy                         1 # This unit will never give away its magic items voluntarily.
 
 newmonster "Awakened Frost Dragon"
-descr "Just like knights hunt the Fire Dragons in our part of the realm, barbarians in the northern wastes will try to hunt down their fabled Frost Dragons. In stark contrast to the Fire Dragon's diet of bold knights, the northern barbarians are less of a treat for the Frost Dragons. This is most likely due to their custom of smearing themselves with thick layers of rancid seal blubber to protect against the cold."
-copyspr "Frost Dragon"
-# sprite number            21004
-armor                          3 # Armor.
-hp                           105 # Hit Points.
-str                            9 # Strength.
-mor                            7 # Morale.
-mr                             9 # Magic Resistance.
-rank                           1 # Front rank.
-rangedweapon50s           10 276 # Icy Breath: d10 Cold damage.
-meleeweapon               25  11 # Bite: d25 Slash damage.
-meleeweapon               20  12 # Claw: d20 Slash damage.
-meleeweapon                5 485 # Tail Sweep: d5 Blunt damage.
-flying                          
-huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
-coldres                      100 # Cold immunity.
-acutesenses                      # Can see units with Stealth or Forest Stealth.
-fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
-nametype                      15 # Old Nordic male.
-randommisc                    50 # 50% chance to spawn with a random misc magic item.
-dragon                         1 # Non-elder dragon.
-lairgoldpen                   50 # 50% Gold income penalty for this monster's home square.
-greedy                         1 # This unit will never give away its magic items voluntarily.
-
+	descr "Just like knights hunt the Fire Dragons in our part of the realm, barbarians in the northern wastes will try to hunt down their fabled Frost Dragons. In stark contrast to the Fire Dragon's diet of bold knights, the northern barbarians are less of a treat for the Frost Dragons. This is most likely due to their custom of smearing themselves with thick layers of rancid seal blubber to protect against the cold."
+	copyspr "Frost Dragon"
+	# sprite number            21004
+	armor                          3 # Armor.
+	hp                           105 # Hit Points.
+	str                            9 # Strength.
+	mor                            7 # Morale.
+	mr                             9 # Magic Resistance.
+	rank                           1 # Front rank.
+	rangedweapon50s           10 276 # Icy Breath: d10 Cold damage.
+	meleeweapon               25  11 # Bite: d25 Slash damage.
+	meleeweapon               20  12 # Claw: d20 Slash damage.
+	meleeweapon                5 485 # Tail Sweep: d5 Blunt damage.
+	flying                          
+	huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
+	coldres                      100 # Cold immunity.
+	acutesenses                      # Can see units with Stealth or Forest Stealth.
+	fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
+	nametype                      15 # Old Nordic male.
+	randommisc                    50 # 50% chance to spawn with a random misc magic item.
+	dragon                         1 # Non-elder dragon.
+	lairgoldpen                   50 # 50% Gold income penalty for this monster's home square.
+	greedy                         1 # This unit will never give away its magic items voluntarily.
 
 newmonster "Incentivised Frost Dragon"
-descr "This Frost Dragon has been enlivened by the Kobolds with fresh meat and magical gems. It is faster and more active than most of its kin, but will eventually return to its mostly sedentary state"
-copyspr "Frost Dragon"
+	descr "This Frost Dragon has been enlivened by the Kobolds with fresh meat and magical gems. It is faster and more active than most of its kin, but will eventually return to its mostly sedentary state"
+	copyspr "Frost Dragon"
 
-armor                          3 # Armor.
-hp                           105 # Hit Points.
-str                            9 # Strength.
-mor                            7 # Morale.
-mr                             9 # Magic Resistance.
-rank                           1 # Front rank.
-rangedweapon50s           10 276 # Icy Breath: d10 Cold damage.
-meleeweapon               25  11 # Bite: d25 Slash damage.
-meleeweapon               20  12 # Claw: d20 Slash damage.
-meleeweapon                5 485 # Tail Sweep: d5 Blunt damage.
-flying                          
-huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
-coldres                      100 # Cold immunity.
-acutesenses                      # Can see units with Stealth or Forest Stealth.
-fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
-nametype                      15 # Old Nordic male.
-randommisc                    50 # 50% chance to spawn with a random misc magic item.
-greedy                         1 # This unit will never give away its magic items voluntarily.
-
-
+	armor                          3 # Armor.
+	hp                           105 # Hit Points.
+	str                            9 # Strength.
+	mor                            7 # Morale.
+	mr                             9 # Magic Resistance.
+	rank                           1 # Front rank.
+	rangedweapon50s           10 276 # Icy Breath: d10 Cold damage.
+	meleeweapon               25  11 # Bite: d25 Slash damage.
+	meleeweapon               20  12 # Claw: d20 Slash damage.
+	meleeweapon                5 485 # Tail Sweep: d5 Blunt damage.
+	flying                          
+	huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
+	coldres                      100 # Cold immunity.
+	acutesenses                      # Can see units with Stealth or Forest Stealth.
+	fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
+	nametype                      15 # Old Nordic male.
+	randommisc                    50 # 50% chance to spawn with a random misc magic item.
+	greedy                         1 # This unit will never give away its magic items voluntarily.
 
 newmonster "Awakened Storm Dragon"
-descr "The Storm Dragon is associated with air, and sharing the same domain as the Cloud Lords, they have become a great nuisance in the cloud realms of late. While the rest of dragon kind is too cumbersome to travel the clouds without falling through, the Storm Dragon hunts and nests there with ease. It is reported that their nests are made up with feathers from cloud people, so it is assumed that they are also their preferred prey. Some attempts have been made to ascertain the diet of the Storm Dragons, but so far the Cloud Lords have refused whatever reasonable requests to borrow some of his subjects to try out the theory. He even refuses to tell us how many from his realm have been taken by dragons."
-copyspr "Storm Dragon"
-descr  # sprite number            21022
-armor                          3 # Armor.
-hp                           110 # Hit Points.
-str                            9 # Strength.
-mor                            7 # Morale.
-mr                             9 # Magic Resistance.
-rank                           1 # Front rank.
-rangedweapon50s           10 858 # Lightning Breath: d10 Shock damage.
-meleeweapon               25  11 # Bite: d25 Slash damage.
-meleeweapon               20  12 # Claw: d20 Slash damage.
-meleeweapon                5 485 # Tail Sweep: d5 Blunt damage.
-flying                          
-huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
-shockres                     100 # Shock immunity.
-acutesenses                      # Can see units with Stealth or Forest Stealth.
-fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
-nametype                      15 # Old Nordic male.
-randommisc                    50 # 50% chance to spawn with a random misc magic item.
-dragon                         1 # Non-elder dragon.
-lairgoldpen                   50 # 50% Gold income penalty for this monster's home square.
-greedy                         1 # This unit will never give away its magic items voluntarily.
+	descr "The Storm Dragon is associated with air, and sharing the same domain as the Cloud Lords, they have become a great nuisance in the cloud realms of late. While the rest of dragon kind is too cumbersome to travel the clouds without falling through, the Storm Dragon hunts and nests there with ease. It is reported that their nests are made up with feathers from cloud people, so it is assumed that they are also their preferred prey. Some attempts have been made to ascertain the diet of the Storm Dragons, but so far the Cloud Lords have refused whatever reasonable requests to borrow some of his subjects to try out the theory. He even refuses to tell us how many from his realm have been taken by dragons."
+	copyspr "Storm Dragon"
+	descr  # sprite number            21022
+	armor                          3 # Armor.
+	hp                           110 # Hit Points.
+	str                            9 # Strength.
+	mor                            7 # Morale.
+	mr                             9 # Magic Resistance.
+	rank                           1 # Front rank.
+	rangedweapon50s           10 858 # Lightning Breath: d10 Shock damage.
+	meleeweapon               25  11 # Bite: d25 Slash damage.
+	meleeweapon               20  12 # Claw: d20 Slash damage.
+	meleeweapon                5 485 # Tail Sweep: d5 Blunt damage.
+	flying                          
+	huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
+	shockres                     100 # Shock immunity.
+	acutesenses                      # Can see units with Stealth or Forest Stealth.
+	fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
+	nametype                      15 # Old Nordic male.
+	randommisc                    50 # 50% chance to spawn with a random misc magic item.
+	dragon                         1 # Non-elder dragon.
+	lairgoldpen                   50 # 50% Gold income penalty for this monster's home square.
+	greedy                         1 # This unit will never give away its magic items voluntarily.
 
 newmonster "Incentivised Storm Dragon"
-descr "This Storm Dragon has been enlivened by the Kobolds with fresh meat and magical gems. It is faster and more active than most of its kin, but will eventually return to its mostly sedentary state"
-copyspr "Storm Dragon"
+	descr "This Storm Dragon has been enlivened by the Kobolds with fresh meat and magical gems. It is faster and more active than most of its kin, but will eventually return to its mostly sedentary state"
+	copyspr "Storm Dragon"
 
-descr  # sprite number            21022
-armor                          3 # Armor.
-hp                           110 # Hit Points.
-str                            9 # Strength.
-mor                            7 # Morale.
-mr                             9 # Magic Resistance.
-rank                           1 # Front rank.
-rangedweapon50s           10 858 # Lightning Breath: d10 Shock damage.
-meleeweapon               25  11 # Bite: d25 Slash damage.
-meleeweapon               20  12 # Claw: d20 Slash damage.
-meleeweapon                5 485 # Tail Sweep: d5 Blunt damage.
-flying                          
-huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
-shockres                     100 # Shock immunity.
-acutesenses                      # Can see units with Stealth or Forest Stealth.
-fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
-stupid
-nametype                      15 # Old Nordic male.
-randommisc                    50 # 50% chance to spawn with a random misc magic item.
-greedy                         1 # This unit will never give away its magic items voluntarily.
-
+	descr  # sprite number            21022
+	armor                          3 # Armor.
+	hp                           110 # Hit Points.
+	str                            9 # Strength.
+	mor                            7 # Morale.
+	mr                             9 # Magic Resistance.
+	rank                           1 # Front rank.
+	rangedweapon50s           10 858 # Lightning Breath: d10 Shock damage.
+	meleeweapon               25  11 # Bite: d25 Slash damage.
+	meleeweapon               20  12 # Claw: d20 Slash damage.
+	meleeweapon                5 485 # Tail Sweep: d5 Blunt damage.
+	flying                          
+	huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
+	shockres                     100 # Shock immunity.
+	acutesenses                      # Can see units with Stealth or Forest Stealth.
+	fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
+	stupid
+	nametype                      15 # Old Nordic male.
+	randommisc                    50 # 50% chance to spawn with a random misc magic item.
+	greedy                         1 # This unit will never give away its magic items voluntarily.
 
 newmonster "Awakened Bile Dragon"
-descr "In some of the deepest marshes, within clouds of dense miasma, dwells the Bile Dragon. It breathes poison and seems to thrive in the vile humors promoted in the swamps. It is uncertain what their immature form looks like, but in my opinion it is clear that the poison and miasma they exude indicates a twisted association to the element of earth. Some studies of defeated Bile Dragons have shown that they have wide cracks and large chafings in their otherwise thick and stone-like hide, and Basilea suggests in her Opus Draconica that the mud of the marshes may ease the itches the Bile Dragons suffer from, but that the vile humors of the swamp will seep into the cracks and be absorbed by the flesh beneath."
-copyspr "Bile Dragon"
-armor                          3 # Armor.
-hp                           105 # Hit Points.
-str                            9 # Strength.
-mor                            7 # Morale.
-mr                             9 # Magic Resistance.
-rank                           1 # Front rank.
-rangedweapon50s           10  38 # Poison Breath: d10 Poison damage.
-meleeweapon               25  11 # Bite: d25 Slash damage.
-meleeweapon               20  12 # Claw: d20 Slash damage.
-meleeweapon                5 485 # Tail Sweep: d5 Blunt damage.
-flying                          
-huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
-poisonres                    100 # Poison immunity.
-acutesenses                      # Can see units with Stealth or Forest Stealth.
-fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
-nametype                      15 # Old Nordic male.
-randommisc                    50 # 50% chance to spawn with a random misc magic item.
-dragon                         1 # Non-elder dragon.
-greedy                         1 # This unit will never give away its magic items voluntarily.
-
+	descr "In some of the deepest marshes, within clouds of dense miasma, dwells the Bile Dragon. It breathes poison and seems to thrive in the vile humors promoted in the swamps. It is uncertain what their immature form looks like, but in my opinion it is clear that the poison and miasma they exude indicates a twisted association to the element of earth. Some studies of defeated Bile Dragons have shown that they have wide cracks and large chafings in their otherwise thick and stone-like hide, and Basilea suggests in her Opus Draconica that the mud of the marshes may ease the itches the Bile Dragons suffer from, but that the vile humors of the swamp will seep into the cracks and be absorbed by the flesh beneath."
+	copyspr "Bile Dragon"
+	armor                          3 # Armor.
+	hp                           105 # Hit Points.
+	str                            9 # Strength.
+	mor                            7 # Morale.
+	mr                             9 # Magic Resistance.
+	rank                           1 # Front rank.
+	rangedweapon50s           10  38 # Poison Breath: d10 Poison damage.
+	meleeweapon               25  11 # Bite: d25 Slash damage.
+	meleeweapon               20  12 # Claw: d20 Slash damage.
+	meleeweapon                5 485 # Tail Sweep: d5 Blunt damage.
+	flying                          
+	huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
+	poisonres                    100 # Poison immunity.
+	acutesenses                      # Can see units with Stealth or Forest Stealth.
+	fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
+	nametype                      15 # Old Nordic male.
+	randommisc                    50 # 50% chance to spawn with a random misc magic item.
+	dragon                         1 # Non-elder dragon.
+	greedy                         1 # This unit will never give away its magic items voluntarily.
 
 newmonster "Incentivised Bile Dragon"
-descr "This Bile Dragon has been enlivened by the Kobolds with fresh meat and magical gems. It is faster and more active than most of its kin, but will eventually return to its mostly sedentary state"
-copyspr "Bile Dragon"
-armor                          3 # Armor.
-hp                           105 # Hit Points.
-str                            9 # Strength.
-mor                            7 # Morale.
-mr                             9 # Magic Resistance.
-rank                           1 # Front rank.
-rangedweapon50s           10  38 # Poison Breath: d10 Poison damage.
-meleeweapon               25  11 # Bite: d25 Slash damage.
-meleeweapon               20  12 # Claw: d20 Slash damage.
-meleeweapon                5 485 # Tail Sweep: d5 Blunt damage.
-flying                          
-huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
-stupid                           # Cannot be controlled by players and will move automatically like an independent unit.
-poisonres                    100 # Poison immunity.
-acutesenses                      # Can see units with Stealth or Forest Stealth.
-fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
-nametype                      15 # Old Nordic male.
-randommisc                    50 # 50% chance to spawn with a random misc magic item.
-greedy                         1 # This unit will never give away its magic items voluntarily.
-
+	descr "This Bile Dragon has been enlivened by the Kobolds with fresh meat and magical gems. It is faster and more active than most of its kin, but will eventually return to its mostly sedentary state"
+	copyspr "Bile Dragon"
+	armor                          3 # Armor.
+	hp                           105 # Hit Points.
+	str                            9 # Strength.
+	mor                            7 # Morale.
+	mr                             9 # Magic Resistance.
+	rank                           1 # Front rank.
+	rangedweapon50s           10  38 # Poison Breath: d10 Poison damage.
+	meleeweapon               25  11 # Bite: d25 Slash damage.
+	meleeweapon               20  12 # Claw: d20 Slash damage.
+	meleeweapon                5 485 # Tail Sweep: d5 Blunt damage.
+	flying                          
+	huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
+	stupid                           # Cannot be controlled by players and will move automatically like an independent unit.
+	poisonres                    100 # Poison immunity.
+	acutesenses                      # Can see units with Stealth or Forest Stealth.
+	fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
+	nametype                      15 # Old Nordic male.
+	randommisc                    50 # 50% chance to spawn with a random misc magic item.
+	greedy                         1 # This unit will never give away its magic items voluntarily.
 
 newmonster "Awakened Dusk Dragon"
-descr "Made from shadow and regret, the darkest dragon of them all is the Dusk Dragon. It comes in the night and calls forth tearing shadows and manifest darkness. Still like most dragons it can be defeated by the valiant knights of the realm. Their scales are highly fashionable, and most nobles in the southern trade cities pay dearly for a Dusk Dragon scale mail, and it really is a must for the many masquerades in Ravezia. Much so that the prices have soared, and some sell sooted sturgeon scales, as those of the Dusk Dragon."
-copyspr "Dusk Dragon"
-armor                          3 # Armor.
-hp                           105 # Hit Points.
-str                            9 # Strength.
-mor                            7 # Morale.
-mr                             9 # Magic Resistance.
-rank                           1 # Front rank.
-spellweapon50s             9   2 # Dark Magic at level 2.
-meleeweapon               25  11 # Bite: d25 Slash damage.
-meleeweapon               20  12 # Claw: d20 Slash damage.
-meleeweapon                5 485 # Tail Sweep: d5 Blunt damage.
-flying                          
-huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
-acutesenses                      # Can see units with Stealth or Forest Stealth.
-stealth                          # Can only be seen by units with Acute Senses or Spirit Sight.
-fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
-nametype                      15 # Old Nordic male.
-randommisc                    50 # 50% chance to spawn with a random misc magic item.
-dragon                         1 # Non-elder dragon.
-lairgoldpen                   50 # 50% Gold income penalty for this monster's home square.
-greedy                         1 # This unit will never give away its magic items voluntarily.
+	descr "Made from shadow and regret, the darkest dragon of them all is the Dusk Dragon. It comes in the night and calls forth tearing shadows and manifest darkness. Still like most dragons it can be defeated by the valiant knights of the realm. Their scales are highly fashionable, and most nobles in the southern trade cities pay dearly for a Dusk Dragon scale mail, and it really is a must for the many masquerades in Ravezia. Much so that the prices have soared, and some sell sooted sturgeon scales, as those of the Dusk Dragon."
+	copyspr "Dusk Dragon"
+	armor                          3 # Armor.
+	hp                           105 # Hit Points.
+	str                            9 # Strength.
+	mor                            7 # Morale.
+	mr                             9 # Magic Resistance.
+	rank                           1 # Front rank.
+	spellweapon50s             9   2 # Dark Magic at level 2.
+	meleeweapon               25  11 # Bite: d25 Slash damage.
+	meleeweapon               20  12 # Claw: d20 Slash damage.
+	meleeweapon                5 485 # Tail Sweep: d5 Blunt damage.
+	flying                          
+	huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
+	acutesenses                      # Can see units with Stealth or Forest Stealth.
+	stealth                          # Can only be seen by units with Acute Senses or Spirit Sight.
+	fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
+	nametype                      15 # Old Nordic male.
+	randommisc                    50 # 50% chance to spawn with a random misc magic item.
+	dragon                         1 # Non-elder dragon.
+	lairgoldpen                   50 # 50% Gold income penalty for this monster's home square.
+	greedy                         1 # This unit will never give away its magic items voluntarily.
 
 newmonster "Incentivised Dusk Dragon"
-descr "This Dusk Dragon has been enlivened by the Kobolds with fresh meat and magical gems. It is faster and more active than most of its kin, but will eventually return to its mostly sedentary state"
-copyspr "Dusk Dragon"
-armor                          3 # Armor.
-hp                           105 # Hit Points.
-str                            9 # Strength.
-mor                            7 # Morale.
-mr                             9 # Magic Resistance.
-rank                           1 # Front rank.
-spellweapon50s             9   2 # Dark Magic at level 2.
-meleeweapon               25  11 # Bite: d25 Slash damage.
-meleeweapon               20  12 # Claw: d20 Slash damage.
-meleeweapon                5 485 # Tail Sweep: d5 Blunt damage.
-flying                          
-huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
-stupid                           # Cannot be controlled by players and will move automatically like an independent unit.
-acutesenses                      # Can see units with Stealth or Forest Stealth.
-stealth                          # Can only be seen by units with Acute Senses or Spirit Sight.
-fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
-nametype                      15 # Old Nordic male.
-randommisc                    50 # 50% chance to spawn with a random misc magic item.
-lairgoldpen                   50 # 50% Gold income penalty for this monster's home square.
-greedy                         1 # This unit will never give away its magic items voluntarily.
+	descr "This Dusk Dragon has been enlivened by the Kobolds with fresh meat and magical gems. It is faster and more active than most of its kin, but will eventually return to its mostly sedentary state"
+	copyspr "Dusk Dragon"
+	armor                          3 # Armor.
+	hp                           105 # Hit Points.
+	str                            9 # Strength.
+	mor                            7 # Morale.
+	mr                             9 # Magic Resistance.
+	rank                           1 # Front rank.
+	spellweapon50s             9   2 # Dark Magic at level 2.
+	meleeweapon               25  11 # Bite: d25 Slash damage.
+	meleeweapon               20  12 # Claw: d20 Slash damage.
+	meleeweapon                5 485 # Tail Sweep: d5 Blunt damage.
+	flying                          
+	huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
+	stupid                           # Cannot be controlled by players and will move automatically like an independent unit.
+	acutesenses                      # Can see units with Stealth or Forest Stealth.
+	stealth                          # Can only be seen by units with Acute Senses or Spirit Sight.
+	fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
+	nametype                      15 # Old Nordic male.
+	randommisc                    50 # 50% chance to spawn with a random misc magic item.
+	lairgoldpen                   50 # 50% Gold income penalty for this monster's home square.
+	greedy                         1 # This unit will never give away its magic items voluntarily.
 
-
-newweapon     "Silver Swordword"                                                #   8
-trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
-range                1
-init                 3
-dmgtype              1 # Slash.
-dmg                  6 # Base damage (added to dmg value where this weapon is used).
-aoe                  0 # Area: single target.
-undkill
-sound                8 # sword.wav (Sword)
+newweapon  "Silver Swordword"                                                #   8
+	trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
+	range                1
+	init                 3
+	dmgtype              1 # Slash.
+	dmg                  6 # Base damage (added to dmg value where this weapon is used).
+	aoe                  0 # Area: single target.
+	undkill
+	sound                8 # sword.wav (Sword)
 
 newmonster    "Silver Dragon Spawn"                                        # 1364
-descr "In each batch of eggs one or two will develop some small wings, allowing them to fly. Such a kobold is called a Dragon Spawn and is considered to be holy and only below the king and the shaman in caste. As most kobolds lack the ability to fly, they have some problems teaching their new hatchlings to how to do so. Their solution is as always very crude and wasteful, in the manner they solve most things. Each year all Dragon Spawn that are considered  mature enough are taken to a special cliff and simply thrown off of it. Those who survive will be part of an elite guard, while those that don’t will become a tasty meal for the rest of the tribe. Though they have taken the name from the dragons themselves, the Dragon Spawn, in my opinion, are proof that the kobolds are not descended from dragons. Some of our local taxidermists/approved necromancers have received a few dead Dragon Spawn that they have deboned and reconstructed. It should be obvious to anyone examining their skeletons that their wings are not joined to the spine in the same manner as they would be on a dragon. Though some critics will claim that the lack of deboned dragons may prove a problem for this claim, it is obvious when looking at any sketch of a dragon."
-spr1 "sprites/silverdragonspawn.png"
-spr2 "sprites/silverdragonspawn1.png"
-# sprite number            39072
-armor                          3 # Armor.
-hp                             6 # Hit Points.
-str                            5 # Strength.
-mor                            3 # Morale.
-mr                             7 # Magic Resistance.
-rank                           1 # Front rank.
-meleeweapon                0   "Silver Swordword" 
-flying                          
-snow                             # -1 AP to enter snow-covered squares.
-shockres                      100 # Cold immunity.
-shield                           # Reduces damage from most weapons by 0-1; 0-2 against ranged weapons.
-allitemslots                     # Has the full set of item slots.
+	descr "In each batch of eggs one or two will develop some small wings, allowing them to fly. Such a kobold is called a Dragon Spawn and is considered to be holy and only below the king and the shaman in caste. As most kobolds lack the ability to fly, they have some problems teaching their new hatchlings to how to do so. Their solution is as always very crude and wasteful, in the manner they solve most things. Each year all Dragon Spawn that are considered  mature enough are taken to a special cliff and simply thrown off of it. Those who survive will be part of an elite guard, while those that don’t will become a tasty meal for the rest of the tribe. Though they have taken the name from the dragons themselves, the Dragon Spawn, in my opinion, are proof that the kobolds are not descended from dragons. Some of our local taxidermists/approved necromancers have received a few dead Dragon Spawn that they have deboned and reconstructed. It should be obvious to anyone examining their skeletons that their wings are not joined to the spine in the same manner as they would be on a dragon. Though some critics will claim that the lack of deboned dragons may prove a problem for this claim, it is obvious when looking at any sketch of a dragon."
+	spr1 "sprites/silverdragonspawn.png"
+	spr2 "sprites/silverdragonspawn1.png"
+	# sprite number            39072
+	armor                          3 # Armor.
+	hp                             6 # Hit Points.
+	str                            5 # Strength.
+	mor                            3 # Morale.
+	mr                             7 # Magic Resistance.
+	rank                           1 # Front rank.
+	meleeweapon                0   "Silver Swordword" 
+	flying                          
+	snow                             # -1 AP to enter snow-covered squares.
+	shockres                      100 # Cold immunity.
+	shield                           # Reduces damage from most weapons by 0-1; 0-2 against ranged weapons.
+	allitemslots                     # Has the full set of item slots.
 
 #####
 # Debug Rituals
 #####
 
 newritual     "Summon Fire Dragon"                                             # 471
-descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
-ritpow                52 # Kobold, Red
-level                  2
-free
-cost              0   1 # 50 Gold
-cost             16   1 # 25 Kobolds
-terr                 -1 # Required terrain: proper mines.
-# fx1031             431 # Unhandled trait 1031 with argument 431.
-summoning                # The ritual will summon the monsters specified in a random string.
-aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
-addstring     "c*Fire Dragon"
+	descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
+	ritpow                52 # Kobold, Red
+	level                  2
+	free
+	cost              0   1 # 50 Gold
+	cost             16   1 # 25 Kobolds
+	terr                 -1 # Required terrain: proper mines.
+	# fx1031             431 # Unhandled trait 1031 with argument 431.
+	summoning                # The ritual will summon the monsters specified in a random string.
+	aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
+	addstring     "c*Fire Dragon"
 
 newritual     "Summon Frost Dragon"                                             # 471
-descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
-ritpow                52 # Kobold, Red
-level                  2
-free
-cost              0   1 # 50 Gold
-cost             16   1 # 25 Kobolds
-terr                 -1 # Required terrain: proper mines.
-# fx1031             431 # Unhandled trait 1031 with argument 431.
-summoning                # The ritual will summon the monsters specified in a random string.
-aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
-addstring     "c*Frost Dragon"
-
+	descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
+	ritpow                52 # Kobold, Red
+	level                  2
+	free
+	cost              0   1 # 50 Gold
+	cost             16   1 # 25 Kobolds
+	terr                 -1 # Required terrain: proper mines.
+	# fx1031             431 # Unhandled trait 1031 with argument 431.
+	summoning                # The ritual will summon the monsters specified in a random string.
+	aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
+	addstring     "c*Frost Dragon"
 
 newritual     "Summon Storm Dragon"                                             # 471
-descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
-ritpow                52 # Kobold, Red
-level                  2
-free
-cost              0   1 # 50 Gold
-cost             16   1 # 25 Kobolds
-terr                 -1 # Required terrain: proper mines.
-# fx1031             431 # Unhandled trait 1031 with argument 431.
-summoning                # The ritual will summon the monsters specified in a random string.
-aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
-addstring     "c*Storm Dragon"
-
-
+	descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
+	ritpow                52 # Kobold, Red
+	level                  2
+	free
+	cost              0   1 # 50 Gold
+	cost             16   1 # 25 Kobolds
+	terr                 -1 # Required terrain: proper mines.
+	# fx1031             431 # Unhandled trait 1031 with argument 431.
+	summoning                # The ritual will summon the monsters specified in a random string.
+	aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
+	addstring     "c*Storm Dragon"
 
 newritual     "Summon Bile Dragon"                                             # 471
-descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
-ritpow                52 # Kobold, Red
-level                  2
-free
-cost              0   1 # 50 Gold
-cost             16   1 # 25 Kobolds
-terr                 -1 # Required terrain: proper mines.
-# fx1031             431 # Unhandled trait 1031 with argument 431.
-summoning                # The ritual will summon the monsters specified in a random string.
-aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
-addstring     "c*Bile Dragon"
-
-
+	descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
+	ritpow                52 # Kobold, Red
+	level                  2
+	free
+	cost              0   1 # 50 Gold
+	cost             16   1 # 25 Kobolds
+	terr                 -1 # Required terrain: proper mines.
+	# fx1031             431 # Unhandled trait 1031 with argument 431.
+	summoning                # The ritual will summon the monsters specified in a random string.
+	aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
+	addstring     "c*Bile Dragon"
 
 newritual     "Summon Dusk Dragon"                                             # 471
-descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
-ritpow                52 # Kobold, Red
-level                  2
-free
-cost              0   1 # 50 Gold
-cost             16   1 # 25 Kobolds
-terr                 -1 # Required terrain: proper mines.
-# fx1031             431 # Unhandled trait 1031 with argument 431.
-summoning                # The ritual will summon the monsters specified in a random string.
-aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
-addstring     "c*Dusk Dragon"
+	descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
+	ritpow                52 # Kobold, Red
+	level                  2
+	free
+	cost              0   1 # 50 Gold
+	cost             16   1 # 25 Kobolds
+	terr                 -1 # Required terrain: proper mines.
+	# fx1031             431 # Unhandled trait 1031 with argument 431.
+	summoning                # The ritual will summon the monsters specified in a random string.
+	aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
+	addstring     "c*Dusk Dragon"
 
 #####
 # Rituals
 #####
 
-
 newritual     "Summon Dragon Turtle"                                             # 471
-descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
-ritpow                53 # Kobold, Blue
-level                  2
-free
-cost              0   50 # 50 Gold
-cost             16   25 # 25 Kobolds
-cost             15   25 # 25 Gems
-nomonhomereq
-addstring "(-)Dragon Turtle"
-terr                 -93 # Ports
-# fx1031             431 # Unhandled trait 1031 with argument 431.
-summoning                # The ritual will summon the monsters specified in a random string.
-aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
-addstring     "c*Dragon Turtle"
+	descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
+	ritpow                53 # Kobold, Blue
+	level                  2
+	free
+	cost              0   50 # 50 Gold
+	cost             16   25 # 25 Kobolds
+	cost             15   25 # 25 Gems
+	nomonhomereq
+	addstring "(-)Dragon Turtle"
+	terr                 -93 # Ports
+	# fx1031             431 # Unhandled trait 1031 with argument 431.
+	summoning                # The ritual will summon the monsters specified in a random string.
+	aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
+	addstring     "c*Dragon Turtle"
 
 newritual     "Summon Tiamat"                                             # 471
-descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
-ritpow                52 # Kobold, Red
-level                  2
-free
-cost              0   1 # 50 Gold
-cost             16   1 # 25 Kobolds
-terr                 -1 # Required terrain: proper mines.
-# fx1031             431 # Unhandled trait 1031 with argument 431.
-summoning                # The ritual will summon the monsters specified in a random string.
-aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
-addstring     "c*Tiamat"
-
+	descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
+	ritpow                52 # Kobold, Red
+	level                  2
+	free
+	cost              0   1 # 50 Gold
+	cost             16   1 # 25 Kobolds
+	terr                 -1 # Required terrain: proper mines.
+	# fx1031             431 # Unhandled trait 1031 with argument 431.
+	summoning                # The ritual will summon the monsters specified in a random string.
+	aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
+	addstring     "c*Tiamat"
 
 newritual     "Incentivise Fire Dragon"   
-descr "By feeding a dragon a few Kobolds and gems, is it persuaded to follow the instructions of the Kolbald King for a few turns. This effect will last for at least a season, but could last longer. You may only Incentivise one dragon of each type at a time "
-ritpow                 52 # Kobold, Red
-noeventvarreq         700 # There must not be any currently Incentivised Red Dragon
-seteventvar			  700
-seteventvar			  701
-addeventvar           701 # Sets event var to 3. Dragon should last at minimum 3 turns
-addeventvar           701
-addeventvar           701
-free
-level					1
-cost					0 1 # 75 gold
-promotion				1
-addstring "Fire Dragon"
-addstring "Incentivised Fire Dragon"
+	descr "By feeding a dragon a few Kobolds and gems, is it persuaded to follow the instructions of the Kolbald King for a few turns. This effect will last for at least a season, but could last longer. You may only Incentivise one dragon of each type at a time "
+	ritpow                 52 # Kobold, Red
+	noeventvarreq         700 # There must not be any currently Incentivised Red Dragon
+	seteventvar			  700
+	seteventvar			  701
+	addeventvar           701 # Sets event var to 3. Dragon should last at minimum 3 turns
+	addeventvar           701
+	addeventvar           701
+	free
+	level					1
+	cost					0 1 # 75 gold
+	promotion				1
+	addstring "Fire Dragon"
+	addstring "Incentivised Fire Dragon"
 
 newritual     "Incentivise Frost Dragon"   
-descr "By feeding a dragon a few Kobolds and gems, it becomes Incentivised, becoming much faster and more aggressive as well as more likely to venture further. This effect will last for at least a season, but could last longer. You may only Incentivise one dragon of each type at a time "
-ritpow                 52 # Kobold, Red
-noeventvarreq         702 # There must not be any currently Incentivised Red Dragon
-seteventvar			  702
-seteventvar			  703
-addeventvar           703 # Sets event var to 3. Dragon should last at minimum 3 turns
-addeventvar           703
-addeventvar           703
-free
-level					1
-cost					0 1 # 75 gold
-promotion				1
-addstring "Frost Dragon"
-addstring "Incentivised Frost Dragon"
+	descr "By feeding a dragon a few Kobolds and gems, it becomes Incentivised, becoming much faster and more aggressive as well as more likely to venture further. This effect will last for at least a season, but could last longer. You may only Incentivise one dragon of each type at a time "
+	ritpow                 52 # Kobold, Red
+	noeventvarreq         702 # There must not be any currently Incentivised Red Dragon
+	seteventvar			  702
+	seteventvar			  703
+	addeventvar           703 # Sets event var to 3. Dragon should last at minimum 3 turns
+	addeventvar           703
+	addeventvar           703
+	free
+	level					1
+	cost					0 1 # 75 gold
+	promotion				1
+	addstring "Frost Dragon"
+	addstring "Incentivised Frost Dragon"
 
 newritual     "Incentivise Storm Dragon"   
-descr "By feeding a dragon a few Kobolds and gems, it becomes Incentivised, becoming much faster and more aggressive as well as more likely to venture further. This effect will last for at least a season, but could last longer. You may only Incentivise one dragon of each type at a time "
-ritpow                 52 # Kobold, Red
-noeventvarreq         704 # There must not be any currently Incentivised Red Dragon
-seteventvar			  704
-seteventvar			  705
-addeventvar           705 # Sets event var to 3. Dragon should last at minimum 3 turns
-addeventvar           705
-addeventvar           705
-free
-level					1
-cost					0 1 # 75 gold
-promotion				1
-addstring "Storm Dragon"
-addstring "Incentivised Storm Dragon"
-
+	descr "By feeding a dragon a few Kobolds and gems, it becomes Incentivised, becoming much faster and more aggressive as well as more likely to venture further. This effect will last for at least a season, but could last longer. You may only Incentivise one dragon of each type at a time "
+	ritpow                 52 # Kobold, Red
+	noeventvarreq         704 # There must not be any currently Incentivised Red Dragon
+	seteventvar			  704
+	seteventvar			  705
+	addeventvar           705 # Sets event var to 3. Dragon should last at minimum 3 turns
+	addeventvar           705
+	addeventvar           705
+	free
+	level					1
+	cost					0 1 # 75 gold
+	promotion				1
+	addstring "Storm Dragon"
+	addstring "Incentivised Storm Dragon"
 
 newritual     "Incentivise Bile Dragon"   
-descr "By feeding a dragon a few Kobolds and gems, it becomes Incentivised, becoming much faster and more aggressive as well as more likely to venture further. This effect will last for at least a season, but could last longer. You may only Incentivise one dragon of each type at a time "
-ritpow                 52 # Kobold, Red
-noeventvarreq         706 # There must not be any currently Incentivised Bile Dragon
-seteventvar			  706
-seteventvar			  707
-addeventvar           707 # Sets event var to 3. Dragon should last at minimum 3 turns
-addeventvar           707
-addeventvar           707
-free
-level					1
-cost					0 1 # 75 gold
-promotion				1
-addstring "Bile Dragon"
-addstring "Incentivised Bile Dragon"
-
+	descr "By feeding a dragon a few Kobolds and gems, it becomes Incentivised, becoming much faster and more aggressive as well as more likely to venture further. This effect will last for at least a season, but could last longer. You may only Incentivise one dragon of each type at a time "
+	ritpow                 52 # Kobold, Red
+	noeventvarreq         706 # There must not be any currently Incentivised Bile Dragon
+	seteventvar			  706
+	seteventvar			  707
+	addeventvar           707 # Sets event var to 3. Dragon should last at minimum 3 turns
+	addeventvar           707
+	addeventvar           707
+	free
+	level					1
+	cost					0 1 # 75 gold
+	promotion				1
+	addstring "Bile Dragon"
+	addstring "Incentivised Bile Dragon"
 
 newritual     "Incentivise Dusk Dragon"   
-descr "By feeding a dragon a few Kobolds and gems, it becomes Incentivised, becoming much faster and more aggressive as well as more likely to venture further. This effect will last for at least a season, but could last longer. You may only Incentivise one dragon of each type at a time "
-ritpow                 52 # Kobold, Red
-noeventvarreq         708 # There must not be any currently Incentivised Red Dragon
-seteventvar			  708
-seteventvar			  709
-addeventvar           709 # Sets event var to 3. Dragon should last at minimum 3 turns
-addeventvar           709
-addeventvar           709
-free
-level					1
-cost					0 1 # 75 gold
-promotion				1
-addstring "Dusk Dragon"
-addstring "Incentivised Dusk Dragon"
-
+	descr "By feeding a dragon a few Kobolds and gems, it becomes Incentivised, becoming much faster and more aggressive as well as more likely to venture further. This effect will last for at least a season, but could last longer. You may only Incentivise one dragon of each type at a time "
+	ritpow                 52 # Kobold, Red
+	noeventvarreq         708 # There must not be any currently Incentivised Red Dragon
+	seteventvar			  708
+	seteventvar			  709
+	addeventvar           709 # Sets event var to 3. Dragon should last at minimum 3 turns
+	addeventvar           709
+	addeventvar           709
+	free
+	level					1
+	cost					0 1 # 75 gold
+	promotion				1
+	addstring "Dusk Dragon"
+	addstring "Incentivised Dusk Dragon"
 
 newritual     "Summon Silver Dragon"                                             # 480
-descr "This ritual summons a Silver Dragon to a Silver mine. The dragon demands gold, saphires, and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
-nomonhomereq
-addstring "(&)Silver Dragon"
-addstring "(&)Fire Dragon"
-addstring "(&)Frost Dragon"
-addstring "(&)Storm Dragon"
-addstring "(&)Bile Dragon"
-addstring "(&)Dusk Dragon"
-addstring "(&)Incentivised Silver Dragon"
-addstring "(&)Incentivised Fire Dragon"
-addstring "(&)Incentivised Frost Dragon"
-addstring "(&)Incentivised Storm Dragon"
-addstring "(&)Incentivised Bile Dragon"
-addstring "(&)Incentivised Dusk Dragon"
+	descr "This ritual summons a Silver Dragon to a Silver mine. The dragon demands gold, saphires, and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
+	nomonhomereq
+	addstring "(&)Silver Dragon"
+	addstring "(&)Fire Dragon"
+	addstring "(&)Frost Dragon"
+	addstring "(&)Storm Dragon"
+	addstring "(&)Bile Dragon"
+	addstring "(&)Dusk Dragon"
+	addstring "(&)Incentivised Silver Dragon"
+	addstring "(&)Incentivised Fire Dragon"
+	addstring "(&)Incentivised Frost Dragon"
+	addstring "(&)Incentivised Storm Dragon"
+	addstring "(&)Incentivised Bile Dragon"
+	addstring "(&)Incentivised Dusk Dragon"
 
 newritual     "Call the Great Dragon"
-descr "Ascend to the Nexus with all five of the great Wyrms and reach out into the Universe. Be careful, when the Universe responds it might not be happy. Make sure to turn off the dimensional shields."
-ritpow                52 # Kobold, Fire
-level                  3
-cost             16  500 # 500 Kobolds
-cost             15  500 # 500 Gems
-terr                 223 # Required terrain: The Nexus
-killtarg            9999 # Automatically kills target unit (caster).
-# fx1031             431 # Unhandled trait 1031 with argument 431.
-# addstring     "c*Tiamat"
-seteventvar 710 #Tiamat Time
+	descr "Ascend to the Nexus with all five of the great Wyrms and reach out into the Universe. Be careful, when the Universe responds it might not be happy. Make sure to turn off the dimensional shields."
+	ritpow                52 # Kobold, Fire
+	level                  3
+	cost             16  500 # 500 Kobolds
+	cost             15  500 # 500 Gems
+	terr                 223 # Required terrain: The Nexus
+	killtarg            9999 # Automatically kills target unit (caster).
+	# fx1031             431 # Unhandled trait 1031 with argument 431.
+	# addstring     "c*Tiamat"
+	seteventvar 710 #Tiamat Time
 
 
 ########
 ## Kobold Krafting Rituals
 ########
 
-
-newritual     "Lesser Feat of Krafting"                                  #  18
-ritpow                 91 # Kobold krafting
-level                  1
-cost              	   0 10 # 10 gold
-newrit                 1 # Caster will learn a new ritual of level 2.
-# levelup                1 # Level up to new monster (determined by mastery command on monster) if below level 2.
-soundfx               57 # Sound effect when the ritual is cast: orchhit.smp (Summoning).
-rebatelvl              1 # Ritual can be cast for half price if caster's power level is greater than or equal to 2.
-free                     # Always start with this ritual in addition to the others.
-descr "This ritual grants the caster a new first level ritual."
-
-
 selectritual "Flame Rune Trap" 
-ritpow               91
+	ritpow               91
 
 selectritual "Decay Rune Trap" 
-ritpow               91
+	ritpow               91
 
 selectritual "Frost Rune Trap" 
-ritpow               91
+	ritpow               91
 
 selectritual "Lightning Rune Trap" 
-ritpow               91
+	ritpow               91
 
 selectritual "Poison Gas Trap" 
-ritpow               91
+	ritpow               91
 
 newritual "Find new Ammo"
 	ritpow               91
@@ -1194,7 +1153,7 @@ newritual "Find new Ammo"
 	free
 
 	cost            16   15 # 15 Kobolds
-	cost             1   15 # 15 Iron
+	cost             1   10 # 15 Iron
 	promotion             1
 	addstring "Kobolpult"
 	addstring "Full Kobolpult"     
@@ -1204,17 +1163,22 @@ newritual "Repair Basic Machine"
 	ritpow               91
 	level                 1
 	free
+	cost            16   2 # 2 Kobolds
+	cost             1   3 # 3 Iron
+	cost             0   3 # 3 Iron
 	promotion				1
 	addstring "Dragon Can"
 	addstring "New Dragon Can"
 	addstring "Mobile Kobold Wall"
 	addstring "New Kobold Wall"
 
-
 newritual "Repair Advanced Machine"
 	ritpow               91
 	level                 1
 	free
+	cost            16   4 # 4 Kobolds
+	cost             1   5 # 5 Iron
+	cost             0   5 # 5 Iron
 	promotion				1
 	addstring "Kobold Battering Ram"
 	addstring "New Kobold Battering Ram"
@@ -1228,7 +1192,6 @@ newritual "Repair Advanced Machine"
 	addstring "New Ultimate War Machine"
 
 selectclass 27
-
 	addstartcom "Kobold Grease Fetcher"
 	addstartcom "Black Kobold Slayer Shaman"
 	addstartunits "New Dragon Can" 10
@@ -1249,8 +1212,6 @@ selectclass 27
 #####
 # Kobald Mage Rituals
 #####
-
-
 
 # Summon Tiamat
 playerevent
