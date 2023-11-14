@@ -514,7 +514,7 @@ newmonster "Disabled War Machine"
 
 newmonster "Tiamat"
 	spr1 "sprites/tiamat.png"
-	descr "The Mother of all Chromatic Dragons, the power of Tiamat was broken and scattered long ago an d"
+	descr "The Mother of all Chromatic Dragons, the power of Tiamat was broken and scattered and her sprit cast far from Elysium after her war with Bahamut aeons ago. As long as the Nexus remains intact, Tiamat will never have the power to re-enter the world. This is a good thing, because she ever did, Elysium would be in serious risk of total domination by she and her kin unless The Platinum Dragon were to returns to once again do battle with her."
 	unique                         1
 	armor 						   2 # Armor
 	hp                           236 # Hit Points.
