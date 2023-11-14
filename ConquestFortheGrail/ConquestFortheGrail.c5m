@@ -161,6 +161,8 @@ meleeweapon                15 332 # Tangle Vines: d5 Blunt damage.
 meleeweapon                15 332 # Tangle Vines: d5 Blunt damage.
 regeneration
 
+terraformfrom 294
+terraformto   283
 
 newmonster    "False Hound"     
 spr1 "sprites/falsehound.png"
@@ -479,6 +481,25 @@ alterloc            	294 # Wild Forest
 soundfx               	57
 descr "Using greater mastery of of magical weed, The Yogini infuses a forest or jungle with primal magic such that it will produce magical weed on its own. The forest must be withing 3 provinces of an ancient forest "
 
+# newritual "Test citadel"
+# ritpow					23 # Bandar Weed
+# level					1
+# free
+# terr					-1
+# aiwhere					4
+# portalroom				220 # Primal Forest
+# noportalreq				1
+# closewin
+
+
+# newritual "Scry"
+# ritpow					23 # Bandar Weed
+# level					1
+# free
+# terr					-1
+# aiwhere					4
+# scryloc                 999
+# closewin
 
 newritual "Journey For Weed"
 ritpow					90 # Bandar Weed
