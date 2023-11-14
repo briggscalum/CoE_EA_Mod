@@ -62,7 +62,7 @@ hadesres
 
 selectmonster "Black Kobold Slayer Prophet"  
 sensedead 					1
-planeshift 2
+planeshift 1
 acutesenses
 hadesres
 
@@ -514,7 +514,8 @@ newmonster "Disabled War Machine"
 
 newmonster "Tiamat"
 	spr1 "sprites/tiamat.png"
-	unique    1
+	descr "The Mother of all Chromatic Dragons, the power of Tiamat was broken and scattered long ago an d"
+	unique                         1
 	armor 						   2 # Armor
 	hp                           236 # Hit Points.
 	str                           20 # Strength.
@@ -692,39 +693,41 @@ newweapon     "Decay"
 	inanimate
 
 newmonster "Spectral Dragon"
-spr1 "sprites/spectraldragon.png"
-spr2 "sprites/spectraldragon1.png"
+	spr1 "sprites/spectraldragon.png"
+	spr2 "sprites/spectraldragon1.png"
 
-armor                          0 # Armor.
-hp                           105 # Hit Points.
-str                            9 # Strength.
-mor                            7 # Morale.
-mr                             8 # Magic Resistance.
-rank                           1 # Front rank.
+	armor                          0 # Armor.
+	hp                           105 # Hit Points.
+	str                            9 # Strength.
+	mor                            7 # Morale.
+	mr                            10 # Magic Resistance.
+	rank                           1 # Front rank.
+	planeshift                     2
+	rangedweapon50s           0  "Unlife Breath"
+	meleeweapon               25  11 # Bite: d25 Slash damage.
+	meleeweapon               20  12 # Claw: d20 Slash damage.
+	meleeweapon                5 485 # Tail Sweep: d5 Blunt damage.
+	float
+	spiritsight
+	coldres                      100 # Cold immunity.
+	poisonres                    100 # Poison immunity.
+	ethereal
+	undead
+	charmres                         # Charm immunity.
+	flying                          
+	huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
+	stupid                           # Cannot be controlled by players and will move automatically like an independent unit.
+	acutesenses                      # Can see units with Stealth or Forest Stealth.
+	fear                           2 # Causes Dread (1d8 vs morale) within 2 squares.
+	nametype                      15 # Old Nordic male.
+	randommisc                    50 # 50% chance to spawn with a random misc magic item.
+	wander                         9 # Will try to fulfill this objective if it is a commander: Dragon.
+	wanderrest                    70 # 70% chance for wandering monster to rest a turn instead of going on a mission.
+	wandermaxdist                  5 # Maximum distance for raid missions for wanderers.
+	dragon                         1 # Non-elder dragon.
+	lairgoldpen                   50 # 50% Gold income penalty for this monster's home square.
+	greedy                         1 # This unit will never give away its magic items voluntarily.
 
-rangedweapon50s           0  "Unlife Breath"
-meleeweapon               25  11 # Bite: d25 Slash damage.
-meleeweapon               20  12 # Claw: d20 Slash damage.
-meleeweapon                5 485 # Tail Sweep: d5 Blunt damage.
-float
-ethereal
-undead
-flying                          
-huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
-stupid                           # Cannot be controlled by players and will move automatically like an independent unit.
-acutesenses                      # Can see units with Stealth or Forest Stealth.
-fear                           2 # Causes Dread (1d8 vs morale) within 2 squares.
-nametype                      15 # Old Nordic male.
-randommisc                    50 # 50% chance to spawn with a random misc magic item.
-wander                         9 # Will try to fulfill this objective if it is a commander: Dragon.
-wanderrest                    70 # 70% chance for wandering monster to rest a turn instead of going on a mission.
-wandermaxdist                  5 # Maximum distance for raid missions for wanderers.
-dragon                         1 # Non-elder dragon.
-lairgoldpen                   50 # 50% Gold income penalty for this monster's home square.
-greedy                         1 # This unit will never give away its magic items voluntarily.
-
-# TODO
-#	 Carrion Dragon - Summoned on site of many corpses, Etherial, breaths unlife probably
 
 ########
 # Alternate Dragon Forms
@@ -1208,6 +1211,17 @@ newritual     "Summon Silver Dragon"                                            
 	addstring "(&)Incentivised Bile Dragon"
 	addstring "(&)Incentivised Dusk Dragon"
 
+newritual     "Summon Spectral Dragon"                                             # 471
+	descr "This ritual calls upon the soul of a long dead Dragon from hades to return to the world in the form of a Spectral Dragon. This ritual requires both gems as well as the energy from the corpses of many dead humanoids. Old battlefields and graveyards are good places to cast this spell, but anywhere with many corpses will suffice. The Spectral Dragon behaves much like its corporal kin, considering the place of its summoning its home and occasionally flying around to attack those not friendly to the draconic cause."
+	ritpow                51 # Kobold, Black
+	level                  2
+	cost             15   30 # 50 Gems
+	cost             14   30 # 25 Corpses (humanoid)
+	terr                 -1 # Required terrain: Any
+	summoning                # The ritual will summon the monsters specified in a random string.
+	aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
+	addstring     "c*Spectral Dragon"
+
 newritual     "Call the Great Dragon"
 	descr "Ascend to the Nexus with all five of the great Wyrms and reach out into the Universe. Be careful, when the Universe responds it might not be happy. Make sure to turn off the dimensional shields."
 	ritpow                52 # Kobold, Fire
@@ -1217,7 +1231,6 @@ newritual     "Call the Great Dragon"
 	terr                 223 # Required terrain: The Nexus
 	killtarg            9999 # Automatically kills target unit (caster).
 	# fx1031             431 # Unhandled trait 1031 with argument 431.
-	# addstring     "c*Tiamat"
 	seteventvar 710 #Tiamat Time
 
 
