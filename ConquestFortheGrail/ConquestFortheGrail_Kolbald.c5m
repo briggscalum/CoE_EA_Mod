@@ -533,6 +533,7 @@ newmonster "Tiamat"
 	fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
 	flying
 
+# Summoned on Fortress in Fire plane
 newmonster "Great Wyrm of Conflagration"
 	unique    1
 	hp                           177 # Hit Points.
@@ -547,6 +548,7 @@ newmonster "Great Wyrm of Conflagration"
 	poisonres                    100 # Poison immunity.
 	fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
 
+# Summoned on Ice Fortress in Water Plane
 newmonster "Great Wyrm of Rime"
 	unique    					   1
 	hp                           177 # Hit Points.
@@ -561,6 +563,7 @@ newmonster "Great Wyrm of Rime"
 	poisonres                    100 # Poison immunity.
 	fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
 
+# Summoned on Fortess in Air Plane
 newmonster "Great Wyrm of Tumult"
 	unique                         1
 	hp                           177 # Hit Points.
@@ -575,6 +578,7 @@ newmonster "Great Wyrm of Tumult"
 	poisonres                    100 # Poison immunity.
 	fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
 
+# Summoned on Swamp in Primal Plane
 newmonster "Great Wyrm of Decay"
 	unique                         1
 	hp                           177 # Hit Points.
@@ -589,6 +593,7 @@ newmonster "Great Wyrm of Decay"
 	poisonres                    100 # Poison immunity.
 	fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
 
+# Summoned on Shadow Wood in Hades
 newmonster "Great Wyrm of Desolation"
 	unique                         1
 	hp                           177 # Hit Points.
@@ -603,6 +608,7 @@ newmonster "Great Wyrm of Desolation"
 	poisonres                    100 # Poison immunity.
 	fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
 
+# Summoned on Silver Mines
 newmonster "Silver Dragon"
 	copystats "Storm Dragon"
 	descr "The Silver Dragon a great deal of resistance to both physical and magic damage. In addition to its cold breath, it has access to silver arcana. Legends say that the Silver Dragon is actually unrelated to the elemental dragons and is actually associated with the Celestial Realm"
@@ -889,7 +895,7 @@ newmonster "Incentivised Dusk Dragon"
 	lairgoldpen                   50 # 50% Gold income penalty for this monster's home square.
 	greedy                         1 # This unit will never give away its magic items voluntarily.
 
-newweapon  "Silver Swordword"                                                #   8
+newweapon  "Silver Swordword"                                               
 	trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
 	range                1
 	init                 3
@@ -899,7 +905,7 @@ newweapon  "Silver Swordword"                                                #  
 	undkill
 	sound                8 # sword.wav (Sword)
 
-newmonster    "Silver Dragon Spawn"                                        # 1364
+newmonster "Silver Dragon Spawn"                                        
 	descr "In each batch of eggs one or two will develop some small wings, allowing them to fly. Such a kobold is called a Dragon Spawn and is considered to be holy and only below the king and the shaman in caste. As most kobolds lack the ability to fly, they have some problems teaching their new hatchlings to how to do so. Their solution is as always very crude and wasteful, in the manner they solve most things. Each year all Dragon Spawn that are considered  mature enough are taken to a special cliff and simply thrown off of it. Those who survive will be part of an elite guard, while those that don’t will become a tasty meal for the rest of the tribe. Though they have taken the name from the dragons themselves, the Dragon Spawn, in my opinion, are proof that the kobolds are not descended from dragons. Some of our local taxidermists/approved necromancers have received a few dead Dragon Spawn that they have deboned and reconstructed. It should be obvious to anyone examining their skeletons that their wings are not joined to the spine in the same manner as they would be on a dragon. Though some critics will claim that the lack of deboned dragons may prove a problem for this claim, it is obvious when looking at any sketch of a dragon."
 	spr1 "sprites/silverdragonspawn.png"
 	spr2 "sprites/silverdragonspawn1.png"
@@ -1190,6 +1196,9 @@ newritual "Repair Advanced Machine"
 	addstring "New War Machine"
 	addstring "Ultimate War Machine"
 	addstring "New Ultimate War Machine"
+
+# TODO
+# Portal - 
 
 selectclass 27
 	addstartcom "Kobold Grease Fetcher"
