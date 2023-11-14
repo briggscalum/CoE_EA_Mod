@@ -87,34 +87,34 @@ apcost 1            # Action Point cost for moving through the terrain: 3
 # Monsters #
 ############
 
-# The milita commander is stupid 
-newmonster "Militia Captain"
-descr "The head of the local defense force, mostly they deal with the stray animals and brigands who might come their way. The militia commander may occationally attack nearby weak force"
-copyspr   "Captain"
-copystats "Captain"
-stupid
-wander                        14
-wanderrest                   100
-wandermaxdist                  0 
-spawnmon                     100
+# # The milita commander is stupid 
+# newmonster "Militia Captain"
+# descr "The head of the local defense force, mostly they deal with the stray animals and brigands who might come their way. The militia commander may occationally attack nearby weak force"
+# copyspr   "Captain"
+# copystats "Captain"
+# stupid
+# wander                        14
+# wanderrest                   100
+# wandermaxdist                  0 
+# spawnmon                     100
 
-newmonster "Town Militia"
-descr "A simple until recently farmer whose job now involes little more than squinting at out of towners and playing rocks"
-copyspr   "Militia"
-copystats "Militia"
-stupid
+# newmonster "Town Militia"
+# descr "A simple until recently farmer whose job now involes little more than squinting at out of towners and playing rocks"
+# copyspr   "Militia"
+# copystats "Militia"
+# stupid
 
-newmonster "Active Duty Militia"
-descr "A simple until recently farmer whose job now involes little more than squinting at out of towners and playing rocks"
-copyspr   "Militia"
-copystats "Militia"
-semistupid
+# newmonster "Active Duty Militia"
+# descr "A simple until recently farmer whose job now involes little more than squinting at out of towners and playing rocks"
+# copyspr   "Militia"
+# copystats "Militia"
+# semistupid
 
 
-newmonster "Field Captain"
-descr "The head of the local defense force, mostly they deal with the stray animals and brigands who might come their way. The militia commander may occationally attack nearby weak force"
-copyspr   "Captain"
-copystats "Captain"
+# newmonster "Field Captain"
+# descr "The head of the local defense force, mostly they deal with the stray animals and brigands who might come their way. The militia commander may occationally attack nearby weak force"
+# copyspr   "Captain"
+# copystats "Captain"
 
 
 # newmonster "Done Captain"
@@ -123,12 +123,12 @@ copystats "Captain"
 # copystats "Captain"
 
 
-newmonster "Captain of the Guard"
-descr "The head of the the natianal defense force. In charge of calling up armies in their nation's time of need."
-copyspr   "Tower Guard"
-copystats "Tower Guard"
-power					89  1
-rank -1
+# newmonster "Captain of the Guard"
+# descr "The head of the the natianal defense force. In charge of calling up armies in their nation's time of need."
+# copyspr   "Tower Guard"
+# copystats "Tower Guard"
+# power					89  1
+# rank -1
 
 
 
@@ -339,21 +339,21 @@ reclimiter  "=Possessed Longdead Bandar"      # The preceding offer can only be 
 ## Misc Rituals
 #######
 
-newritual   "Raise the Alarm"
-ritpow 				   89
-level 					1
-soundfx                114 # Horn
-apcost 				   17  # Twice Per year
-setvar      599
-addeventvar 599
-addeventvar 599
-addeventvar 599
-addeventvar 599
-addeventvar 599
-addeventvar 599
-addeventvar 599
+# newritual   "Raise the Alarm"
+# ritpow 				   89
+# level 					1
+# soundfx                114 # Horn
+# apcost 				   17  # Twice Per year
+# setvar      599
+# addeventvar 599
+# addeventvar 599
+# addeventvar 599
+# addeventvar 599
+# addeventvar 599
+# addeventvar 599
+# addeventvar 599
 
-descr "Ring the bell, blow the horn, the river has frozen and the wolves have come"
+# descr "Ring the bell, blow the horn, the river has frozen and the wolves have come"
 
 
 #########################
@@ -611,50 +611,50 @@ squareevent
 endevent
 
 
-# Spawn Commander
-squareevent
-	+terrain   -14   # Any Human Settlment
-    +minturnnbr 1    # Any turn
-	+squareowner -2
-	+humanplayer -2
-	+varequal 599 0
-	-hasunithere -2 "Militia Captain"
-	newunits -2 "c*Militia Captain"
-endevent
+# # Spawn Commander
+# squareevent
+# 	+terrain   -14   # Any Human Settlment
+#     +minturnnbr 1    # Any turn
+# 	+squareowner -2
+# 	+humanplayer -2
+# 	+varequal 599 0
+# 	-hasunithere -2 "Militia Captain"
+# 	newunits -2 "c*Militia Captain"
+# endevent
 
-# Raise the Levies
-squareevent
-	+class -2 "Baron"
-	+minturnnbr 1    # Any turn
-	+varequal 599 7
-	promoteunits -2 1   "Militia Captain""Field Captain"
-	promote 1 "Field Captain"
-	promoteunits -2 100 "Town Militia" "Active Duty Militia"
-endevent
+# # Raise the Levies
+# squareevent
+# 	+class -2 "Baron"
+# 	+minturnnbr 1    # Any turn
+# 	+varequal 599 7
+# 	promoteunits -2 1   "Militia Captain""Field Captain"
+# 	promote 1 "Field Captain"
+# 	promoteunits -2 100 "Town Militia" "Active Duty Militia"
+# endevent
 
-# Unraise the Levies
+# # Unraise the Levies
 
-squareevent
-	+minturnnbr 1    # Any turn
-	+class -2 "Baron"
-	+hasunithere 599 4
-	promoteunits -2 100  "Active Duty Militia" "Town Militia"
-endevent
+# squareevent
+# 	+minturnnbr 1    # Any turn
+# 	+class -2 "Baron"
+# 	+hasunithere 599 4
+# 	promoteunits -2 100  "Active Duty Militia" "Town Militia"
+# endevent
 
-squareevent
-	+minturnnbr 1    # Any turn
-	+class -2 "Baron"
-	+varequal 599 4
-	+hasunithere "Field Captain"
-	promoteunits -2 100  "Field Captain" "Militia Captain"
-endevent
+# squareevent
+# 	+minturnnbr 1    # Any turn
+# 	+class -2 "Baron"
+# 	+varequal 599 4
+# 	+hasunithere "Field Captain"
+# 	promoteunits -2 100  "Field Captain" "Militia Captain"
+# endevent
 
-playerevent
-	+minturnnbr 1    # Any turn
-	+class -2 "Baron"
-	+vargreater 599 0
-	addvar 599 -1
-endevent
+# playerevent
+# 	+minturnnbr 1    # Any turn
+# 	+class -2 "Baron"
+# 	+vargreater 599 0
+# 	addvar 599 -1
+# endevent
 
-selectclass 1
-addstartcom "Captain of the Guard"
+# selectclass 1
+# addstartcom "Captain of the Guard"

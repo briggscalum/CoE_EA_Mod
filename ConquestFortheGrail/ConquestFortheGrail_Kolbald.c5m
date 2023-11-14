@@ -69,6 +69,16 @@ hadesres
 selectmonster "Black Dragon Spawn"   
 hadesres
 
+selectmonster "Bile Dragon"  
+wanderrest 75
+selectmonster "Fire Dragon"  
+wanderrest 75
+selectmonster "Frost Dragon"  
+wanderrest 75
+selectmonster "Storm Dragon"  
+wanderrest 75
+selectmonster "Dusk Dragon"  
+wanderrest 75
 
 newmonster "Kobold Grease Fetcher"
 	copystats "Red Kobold Chief"
@@ -656,9 +666,9 @@ newmonster "Dragon Turtle"
 	dragon                         1 # Non-elder dragon.
 	greedy                         1 # This unit will never give away its magic items voluntarily.
 	stupid
-	wanderrest                    0 # Always Be Consuming
+	wanderrest                   70 # Always Be Consuming
 	wander 						  9 # Yar Har
-	wandermaxdist                99 # Far Far Away
+	wandermaxdist                10 # Far Far Away
 	fast							 # Gotta Go Fast
 
 newweapon     "Unlife Breath"                                             # 838
@@ -1004,90 +1014,91 @@ newmonster "Silver Dragon Spawn"
 # Debug Rituals
 #####
 
-newritual     "Summon Fire Dragon"                                             # 471
-	descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
-	ritpow                52 # Kobold, Red
-	level                  2
-	free
-	cost              0   1 # 50 Gold
-	cost             16   1 # 25 Kobolds
-	terr                 -1 # Required terrain: proper mines.
-	# fx1031             431 # Unhandled trait 1031 with argument 431.
-	summoning                # The ritual will summon the monsters specified in a random string.
-	aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
-	addstring     "c*Fire Dragon"
+# newritual     "Debug Summon Fire Dragon"                                             # 471
+# 	descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
+# 	ritpow                91 # Kobold, Red
+# 	level                  1
+# 	free
+# 	cost              0   1 # 50 Gold
+# 	cost             16   1 # 25 Kobolds
+# 	terr                 -1 # Required terrain: proper mines.
+# 	# fx1031             431 # Unhandled trait 1031 with argument 431.
+# 	summoning                # The ritual will summon the monsters specified in a random string.
+# 	aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
+# 	addstring     "c*Fire Dragon"
 
-newritual     "Summon Frost Dragon"                                             # 471
-	descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
-	ritpow                52 # Kobold, Red
-	level                  2
-	free
-	cost              0   1 # 50 Gold
-	cost             16   1 # 25 Kobolds
-	terr                 -1 # Required terrain: proper mines.
-	# fx1031             431 # Unhandled trait 1031 with argument 431.
-	summoning                # The ritual will summon the monsters specified in a random string.
-	aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
-	addstring     "c*Frost Dragon"
+# newritual     "Debug Summon Frost Dragon"                                             # 471
+# 	descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
+# 	ritpow                91 # Kobold, Red
+# 	level                  1
+# 	free
+# 	cost              0   1 # 50 Gold
+# 	cost             16   1 # 25 Kobolds
+# 	terr                 -1 # Required terrain: proper mines.
+# 	# fx1031             431 # Unhandled trait 1031 with argument 431.
+# 	summoning                # The ritual will summon the monsters specified in a random string.
+# 	aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
+# 	addstring     "c*Frost Dragon"
 
-newritual     "Summon Storm Dragon"                                             # 471
-	descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
-	ritpow                52 # Kobold, Red
-	level                  2
-	free
-	cost              0   1 # 50 Gold
-	cost             16   1 # 25 Kobolds
-	terr                 -1 # Required terrain: proper mines.
-	# fx1031             431 # Unhandled trait 1031 with argument 431.
-	summoning                # The ritual will summon the monsters specified in a random string.
-	aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
-	addstring     "c*Storm Dragon"
+# newritual     "Debug Summon Storm Dragon"                                             # 471
+# 	descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
+# 	ritpow                91 # Kobold, Red
+# 	level                  1
+# 	free
+# 	cost              0   1 # 50 Gold
+# 	cost             16   1 # 25 Kobolds
+# 	terr                 -1 # Required terrain: proper mines.
+# 	# fx1031             431 # Unhandled trait 1031 with argument 431.
+# 	summoning                # The ritual will summon the monsters specified in a random string.
+# 	aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
+# 	addstring     "c*Storm Dragon"
 
-newritual     "Summon Bile Dragon"                                             # 471
-	descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
-	ritpow                52 # Kobold, Red
-	level                  2
-	free
-	cost              0   1 # 50 Gold
-	cost             16   1 # 25 Kobolds
-	terr                 -1 # Required terrain: proper mines.
-	# fx1031             431 # Unhandled trait 1031 with argument 431.
-	summoning                # The ritual will summon the monsters specified in a random string.
-	aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
-	addstring     "c*Bile Dragon"
+# newritual     "Debug Summon Bile Dragon"                                             # 471
+# 	descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
+# 	ritpow                91 # Kobold, Red
+# 	level                  1
+# 	free
+# 	cost              0   1 # 50 Gold
+# 	cost             16   1 # 25 Kobolds
+# 	terr                 -1 # Required terrain: proper mines.
+# 	# fx1031             431 # Unhandled trait 1031 with argument 431.
+# 	summoning                # The ritual will summon the monsters specified in a random string.
+# 	aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
+# 	addstring     "c*Bile Dragon"
 
-newritual     "Summon Dusk Dragon"                                             # 471
-	descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
-	ritpow                52 # Kobold, Red
-	level                  2
-	free
-	cost              0   1 # 50 Gold
-	cost             16   1 # 25 Kobolds
-	terr                 -1 # Required terrain: proper mines.
-	# fx1031             431 # Unhandled trait 1031 with argument 431.
-	summoning                # The ritual will summon the monsters specified in a random string.
-	aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
-	addstring     "c*Dusk Dragon"
+# newritual     "Debug Summon Dusk Dragon"                                             # 471
+# 	descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
+# 	ritpow                91 # Kobold, Red
+# 	level                  1
+# 	free
+# 	cost              0   1 # 50 Gold
+# 	cost             16   1 # 25 Kobolds
+# 	terr                 -1 # Required terrain: proper mines.
+# 	# fx1031             431 # Unhandled trait 1031 with argument 431.
+# 	summoning                # The ritual will summon the monsters specified in a random string.
+# 	aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
+# 	addstring     "c*Dusk Dragon"
 
-newritual     "Summon Spectral Dragon"                                             # 471
-	descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
-	ritpow                91 # Kobold, Red
-	level                  1
-	free
-	cost              0   1 # 50 Gold
-	cost             16   1 # 25 Kobolds
-	terr                 -1 # Required terrain: proper mines.
-	# fx1031             431 # Unhandled trait 1031 with argument 431.
-	summoning                # The ritual will summon the monsters specified in a random string.
-	aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
-	addstring     "c*Spectral Dragon"
+# newritual     "Debug Summon Spectral Dragon"                                             # 471
+# 	descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
+# 	ritpow                91 # Kobold, Red
+# 	level                  1
+# 	free
+# 	cost              0   1 # 50 Gold
+# 	cost             16   1 # 25 Kobolds
+# 	terr                 -1 # Required terrain: proper mines.
+# 	# fx1031             431 # Unhandled trait 1031 with argument 431.
+# 	summoning                # The ritual will summon the monsters specified in a random string.
+# 	aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
+# 	addstring     "c*Spectral Dragon"
 
 #####
 # Rituals
 #####
 
 newritual     "Summon Dragon Turtle"                                             # 471
-	descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
+	descr "This ritual summons a dragon Turtle to a port. It will patrol nearby waters and capture gem deposits for its patron"
+
 	ritpow                53 # Kobold, Blue
 	level                  2
 	free
@@ -1124,32 +1135,34 @@ newritual     "Incentivise Fire Dragon"
 	addeventvar           701 # Sets event var to 3. Dragon should last at minimum 3 turns
 	addeventvar           701
 	addeventvar           701
-	free
+	
 	level					1
-	cost					0 1 # 75 gold
+	cost             16    10 # 25 Kobolds
+	cost              7     5 # 25 Rubies
 	promotion				1
 	addstring "Fire Dragon"
 	addstring "Incentivised Fire Dragon"
 
 newritual     "Incentivise Frost Dragon"   
 	descr "By feeding a dragon a few Kobolds and gems, it becomes Incentivised, becoming much faster and more aggressive as well as more likely to venture further. This effect will last for at least a season, but could last longer. You may only Incentivise one dragon of each type at a time "
-	ritpow                 52 # Kobold, Red
+	ritpow                 53 # Kobold, Blue
 	noeventvarreq         702 # There must not be any currently Incentivised Red Dragon
 	seteventvar			  702
 	seteventvar			  703
 	addeventvar           703 # Sets event var to 3. Dragon should last at minimum 3 turns
 	addeventvar           703
 	addeventvar           703
-	free
+	
 	level					1
-	cost					0 1 # 75 gold
+	cost             16    10 # 25 Kobolds
+	cost              8     5 # 25 Sapphires
 	promotion				1
 	addstring "Frost Dragon"
 	addstring "Incentivised Frost Dragon"
 
 newritual     "Incentivise Storm Dragon"   
 	descr "By feeding a dragon a few Kobolds and gems, it becomes Incentivised, becoming much faster and more aggressive as well as more likely to venture further. This effect will last for at least a season, but could last longer. You may only Incentivise one dragon of each type at a time "
-	ritpow                 52 # Kobold, Red
+	ritpow                 54 # Kobold, White
 	noeventvarreq         704 # There must not be any currently Incentivised Red Dragon
 	seteventvar			  704
 	seteventvar			  705
@@ -1158,39 +1171,40 @@ newritual     "Incentivise Storm Dragon"
 	addeventvar           705
 	free
 	level					1
-	cost					0 1 # 75 gold
+	cost             16    10 # 10 Kobolds
+	cost              9     5 # 10 Diamonds
 	promotion				1
 	addstring "Storm Dragon"
 	addstring "Incentivised Storm Dragon"
 
 newritual     "Incentivise Bile Dragon"   
 	descr "By feeding a dragon a few Kobolds and gems, it becomes Incentivised, becoming much faster and more aggressive as well as more likely to venture further. This effect will last for at least a season, but could last longer. You may only Incentivise one dragon of each type at a time "
-	ritpow                 52 # Kobold, Red
+	ritpow                 55 # Kobold, Green
 	noeventvarreq         706 # There must not be any currently Incentivised Bile Dragon
 	seteventvar			  706
 	seteventvar			  707
 	addeventvar           707 # Sets event var to 3. Dragon should last at minimum 3 turns
 	addeventvar           707
 	addeventvar           707
-	free
-	level					1
-	cost					0 1 # 75 gold
+	level				    1
+	cost             16    10 # 25 Kobolds
+	cost             10     5 # 25 Emeralds
 	promotion				1
 	addstring "Bile Dragon"
 	addstring "Incentivised Bile Dragon"
 
 newritual     "Incentivise Dusk Dragon"   
 	descr "By feeding a dragon a few Kobolds and gems, it becomes Incentivised, becoming much faster and more aggressive as well as more likely to venture further. This effect will last for at least a season, but could last longer. You may only Incentivise one dragon of each type at a time "
-	ritpow                 52 # Kobold, Red
+	ritpow                 51 # Kobold, Red
 	noeventvarreq         708 # There must not be any currently Incentivised Red Dragon
 	seteventvar			  708
 	seteventvar			  709
 	addeventvar           709 # Sets event var to 3. Dragon should last at minimum 3 turns
 	addeventvar           709
 	addeventvar           709
-	free
-	level					1
-	cost					0 1 # 75 gold
+	level				  1
+	cost             16   10 # 25 Kobolds
+	cost             15   5 # 50 Gems
 	promotion				1
 	addstring "Dusk Dragon"
 	addstring "Incentivised Dusk Dragon"
@@ -1284,7 +1298,7 @@ newritual "Repair Advanced Machine"
 	free
 	cost            16   4 # 4 Kobolds
 	cost             1   5 # 5 Iron
-	cost             0   5 # 5 Iron
+	cost             0   5 # 5 Gold
 	promotion				1
 	addstring "Kobold Battering Ram"
 	addstring "New Kobold Battering Ram"
@@ -1296,6 +1310,19 @@ newritual "Repair Advanced Machine"
 	addstring "New War Machine"
 	addstring "Ultimate War Machine"
 	addstring "New Ultimate War Machine"
+
+newritual "Pok's Portal Portal"
+	ritpow               91
+	level                 2
+	free
+	cost            16   50 # 50 Kobolds
+	cost             1   50 # 50 Iron
+	cost             0   50 # 50 Gold
+	portalroom				204 # near a gateway
+	noportalreq				1
+
+	descr "The great artificer Pok discoved that the transmittance space around esablished gateways was consderbly more fluid than the background rate. By setting up a gateway to lock in on and establish a tether to an already stable gateway, a portal could be created with considerablly less energy than usual. Its very difficult to aim the device and the process involves guessing where a portal might be, sending a kobold through, and checking to see how many pieces it turns into when it gets there."
+
 
 # TODO
 # Portal - 
