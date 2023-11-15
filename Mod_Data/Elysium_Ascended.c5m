@@ -128,3 +128,231 @@ endevent
 # aiwhere					4
 # scryloc                 999
 # closewin
+
+# --------------SuperTestGuy--------------
+#This is just a simple OP debug monster to cheat/test stuff.
+
+#Add one of the following to the end of any classdef and you'll be able to recruit or start with the debug guy.
+
+
+
+newritpow "Test/Debug Rituals"
+
+newritual "Nether's Super Scry"
+	level 1
+	apcost -1
+	free
+	scryloc 10000
+	closewin
+	descr "Reveals the whole map of the current plane, make sure to have show indepentaent moves off first unless you have all day."
+	
+newritual "Nether's Teleport"
+	level 1
+	free
+	apcost -1
+	chooseterrloc -1
+	teleportloc 2
+	centercaster
+	closewin
+	descr "Select a destination in any plane and this ritual brings everyone under the casters command there."
+	
+newritual "Nether's Random Teleport (Random)"
+	level 1
+	free
+	apcost -1
+	setplane -1
+	#setplane 1
+	randomloc 1
+	teleportloc 2
+	centercaster
+	closewin
+	descr "Teleports to a random tile in a random plane, useful for getting to other planes in the first place. Caution; can and will teleport you into enemies. Will sometimes get you 100% stuck in plane10."
+	
+
+	
+#newritual "Enchant Test 1"
+#	level 1
+#	free
+#	apcost -1
+#	squareench 21
+#	descr "Tests enchantment values."
+
+newritual "Nether's Random Teleport (Elysium)"
+	level 2
+	free
+	apcost -1
+	setplane 0
+	randomloc 1
+	teleportloc 2
+	centercaster
+	closewin
+	descr "Teleports to a random tile in the named plane, useful for getting to other planes in the first place. Caution; can and will teleport you into enemies."
+	
+newritual "Nether's Random Teleport (Celestial)"
+	level 2
+	free
+	apcost -1
+	setplane 1
+	randomloc 1
+	teleportloc 2
+	centercaster
+	closewin
+	descr "Teleports to a random tile in the named plane, useful for getting to other planes in the first place. Caution; can and will teleport you into enemies."
+	
+newritual "Nether's Random Teleport (Sky)"
+	level 2
+	free
+	apcost -1
+	setplane 2
+	randomloc 1
+	teleportloc 2
+	centercaster
+	closewin
+	descr "Teleports to a random tile in the named plane, useful for getting to other planes in the first place. Caution; can and will teleport you into enemies."
+	
+newritual "Nether's Random Teleport (Agartha)"
+	level 2
+	free
+	apcost -1
+	setplane 3
+	randomloc 1
+	teleportloc 2
+	centercaster
+	closewin
+	descr "Teleports to a random tile in the named plane, useful for getting to other planes in the first place. Caution; can and will teleport you into enemies."
+	
+newritual "Nether's Random Teleport (Inferno)"
+	level 2
+	free
+	apcost -1
+	setplane 4
+	randomloc 1
+	teleportloc 2
+	centercaster
+	closewin
+	descr "Teleports to a random tile in the named plane, useful for getting to other planes in the first place. Caution; can and will teleport you into enemies."
+	
+newritual "Nether's Random Teleport (Hades)"
+	level 2
+	free
+	apcost -1
+	setplane 5
+	randomloc 1
+	teleportloc 2
+	centercaster
+	closewin
+	descr "Teleports to a random tile in the named plane, useful for getting to other planes in the first place. Caution; can and will teleport you into enemies."
+	
+newritual "Nether's Random Teleport (Atzlan)"
+	level 2
+	free
+	apcost -1
+	setplane 6
+	randomloc 1
+	teleportloc 2
+	centercaster
+	closewin
+	descr "Teleports to a random tile in the named plane, useful for getting to other planes in the first place. Caution; can and will teleport you into enemies."
+		
+newritual "Nether's Random Teleport (Primal)"
+	level 2
+	free
+	apcost -1
+	setplane 7
+	randomloc 1
+	teleportloc 2
+	centercaster
+	closewin
+	descr "Teleports to a random tile in the named plane, useful for getting to other planes in the first place. Caution; can and will teleport you into enemies."
+		
+newritual "Nether's Random Teleport (Elemental)"
+	level 2
+	free
+	apcost -1
+	setplane 8
+	randomloc 1
+	teleportloc 2
+	centercaster
+	closewin
+	descr "Teleports to a random tile in the named plane, useful for getting to other planes in the first place. Caution; can and will teleport you into enemies."
+	
+newritual "Nether's Random Teleport (Void)"
+	level 2
+	free
+	apcost -1
+	setplane 9
+	randomloc 1
+	teleportloc 2
+	centercaster
+	closewin
+	descr "Teleports to a random tile in the named plane, useful for getting to other planes in the first place. Caution; can and will teleport you into enemies."
+	
+#newritual "Nether's Random Teleport (plane10?)"
+#	level 2
+#	free
+#	apcost -1
+#	setplane 10
+#	randomloc 1
+#	teleportloc 2
+#	centercaster
+#	closewin
+#	descr "This plane exists, but you'll get stuck there. Coming content confirmed? Pobably just a bug with teleporting to planes not actually populated."
+	
+newweapon "Nether's Total Destruction"
+	range 99
+	aoe 999
+	dmg 999
+	an
+	init 9
+	dmgtype 7 #magic
+
+newmonster "Netherstestguy"
+	copyspr "Bard"
+	rank 1
+	frontpos
+	hp 2500
+	armor 20
+	str 30
+	mor 30
+	mr 30
+	regeneration
+	affres 100
+	diseaseres
+	voidsanity 20
+	water
+	tunnel
+	spiritsight
+	farsight 1
+	flying
+	#rangedweaponbonus 1 "Conversion"
+	prebatweapon 0 "Nether's Total Destruction"
+	rangedweaponbonus 0 "Nether's Total Destruction"
+	meleeweapon 100 "Soul Scythe"
+	meleeweapon 100 "Soul Scythe"
+	hadesres 100
+	unaging
+	gold 15000
+	iron 2000
+	trade 2000
+	relics 500
+	hands 500
+	fungi 500
+	weed 500
+	gatherherbs
+	gatherfungus
+	gathersacr
+	gatherhands
+	gatherweed
+	gathergems
+	gatherrelics
+	fast
+	teleport
+	nametype 39
+	power 0 2
+	immortal
+	immortalap 1
+	descr "Is he the true god of this realm? No; he's the debug guy sent to test and explore. Gathers everything, generates enough gold and trade to buy any resource, has powerful debug rituals and is immortal to the highest degree. Not indended for a normal game. Make sure you remove the code that added him when you're done."
+
+# addcomrec "Netherstestguy" 100 0 0 0
+selectclass 29 # Raksharaja
+	addstartcom "Netherstestguy"
