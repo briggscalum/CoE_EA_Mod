@@ -50,9 +50,20 @@ newritpow
 #########
 
 
+
+
+
 #########################
 # Terrain Modifications #
 #########################
+
+
+# Elemetnal Plane
+######
+
+selectterr      228 # Maelstrom
+gems 524368 # 2d2 Saphires + 1d1 Diamonds?
+
 
 
 # Gives Farms Weed
@@ -86,9 +97,10 @@ invisible           # Terrain on top of the background is not drawn, but the gra
 nosight             # The terrain does not provide vision into adjacent squares when owned.
 apcost 1            # Action Point cost for moving through the terrain: 3
 
-##########
-# Events #
-##########
+
+##################
+# Terrain Events #
+##################
 
 # Make Swamps Freeze in the Winter
 squareevent
@@ -108,6 +120,18 @@ squareevent
 	alterterrain 107 # Back to swamp
 endevent
 
+# Fill the elemental plane of water with Maelstorms
+squareevent
+	+turnnbr   -1	#pre-game
+	+player    24 
+	+terrain   68 "Deep Sea"
+	+chance 15
+	alterterrain 228 # Maelstorms
+endevent
+
+##########
+# Events #
+##########
 
 # newritual "Test citadel"
 # ritpow					23 # Bandar Weed

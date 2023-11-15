@@ -157,7 +157,7 @@ newmonster "Yogini Rakshasi"
 
 selectclass 29 # Raksharaja
 	addstartcom "Yogini"
-	addstartunits "Bandar Soldier" 8
+	addstartunits "Bandar Warrior" 8
 	addstartunits "Bandar Archer"  8
 
 
