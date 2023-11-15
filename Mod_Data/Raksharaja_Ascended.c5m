@@ -9,33 +9,33 @@ modprio 3
 ############
 
 newmonster "Blood Vine Abomination"
-descr "The ultimate comination of Maya and Primal Magic, The Blood Vine Abomination evicerates anything near it while the power of blood magic keeps its vines regrowing at an alarming rate"
-spr1 "sprites/bloodvine.png"
-spr2 "sprites/bloodvine1.png"
-ctrlchance 75
-armor                          1 # Armor.
-hp                           150 # Hit Points.
-str                           12 # Strength.
-mor                           99 # Morale.
-mr                            10 # Magic Resistance.
-rank                           1 # Front rank.
-meleeweapon              512 531 # Entangle: Special damage: Entanglement.
-huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
-poisonres                    100 # Poison immunity.
-sleepres                         # Sleep immunity.
-charmres                         # Charm immunity.
-diseaseres                       # Disease immunity.
-bluntres                         # Blunt resistance (half damage).
-pierceres                        # Pierce resistance (half damage).
-fireres                      -50 # 50 Fire Vulnerability.
-tangleres                      1 # Immunity to tangle vines.meleeweapon                15 332 # Tangle Vines: d5 Blunt damage.
-meleeweapon                15 332 # Tangle Vines: d5 Blunt damage.
-meleeweapon                15 332 # Tangle Vines: d5 Blunt damage.
-meleeweapon                15 332 # Tangle Vines: d5 Blunt damage.
-meleeweapon                15 332 # Tangle Vines: d5 Blunt damage.
-regeneration
-terraformfrom 294   	          # Turns Wild Forests into Spider thickets
-terraformto   283
+	descr "The ultimate comination of Maya and Primal Magic, The Blood Vine Abomination evicerates anything near it while the power of blood magic keeps its vines regrowing at an alarming rate"
+	spr1 "sprites/bloodvine.png"
+	spr2 "sprites/bloodvine1.png"
+	ctrlchance 75
+	armor                          1 # Armor.
+	hp                           150 # Hit Points.
+	str                           12 # Strength.
+	mor                           99 # Morale.
+	mr                            10 # Magic Resistance.
+	rank                           1 # Front rank.
+	meleeweapon              512 531 # Entangle: Special damage: Entanglement.
+	huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
+	poisonres                    100 # Poison immunity.
+	sleepres                         # Sleep immunity.
+	charmres                         # Charm immunity.
+	diseaseres                       # Disease immunity.
+	bluntres                         # Blunt resistance (half damage).
+	pierceres                        # Pierce resistance (half damage).
+	fireres                      -50 # 50 Fire Vulnerability.
+	tangleres                      1 # Immunity to tangle vines.meleeweapon                15 332 # Tangle Vines: d5 Blunt damage.
+	meleeweapon                15 332 # Tangle Vines: d5 Blunt damage.
+	meleeweapon                15 332 # Tangle Vines: d5 Blunt damage.
+	meleeweapon                15 332 # Tangle Vines: d5 Blunt damage.
+	meleeweapon                15 332 # Tangle Vines: d5 Blunt damage.
+	regeneration
+	terraformfrom 294   	          # Turns Wild Forests into Spider thickets
+	terraformto   283
 
 newmonster    "False Hound"     
 	spr1 "sprites/falsehound.png"

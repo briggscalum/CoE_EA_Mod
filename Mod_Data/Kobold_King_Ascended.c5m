@@ -20,65 +20,34 @@ modprio 3
 # 709 - Dusk Dragon Guaranteed turns of Invigoration
 # 710 - Tiamat Summoning
 
-newritpow 
-newritpow 
-newritpow 
-newritpow 
-newritpow 
-newritpow 
-newritpow 
-newritpow 
-newritpow 
-newritpow 
-newritpow 
-newritpow 
-newritpow 
-newritpow 
-newritpow 
-newritpow 
-newritpow 
-newritpow 
-newritpow 
-newritpow 
-newritpow 
-newritpow 
-newritpow
-newritpow 
-newritpow 
-newritpow 
-newritpow 
-newritpow 
-newritpow 
-newritpow 
-newritpow 
-newritpow 
-newritpow
-newritpow 
+#################
+# Monster Edits #
+#################
 
 selectmonster "Black Kobold Slayer Shaman"   
-sensedead 					1
-acutesenses
-hadesres
+	sensedead 					1
+	acutesenses
+	hadesres
 
 selectmonster "Black Kobold Slayer Prophet"  
-sensedead 					1
-planeshift 1
-acutesenses
-hadesres
+	sensedead 					1
+	planeshift 1
+	acutesenses
+	hadesres
 
 selectmonster "Black Dragon Spawn"   
-hadesres
+	hadesres
 
 selectmonster "Bile Dragon"  
-wanderrest 75
+	wanderrest 75
 selectmonster "Fire Dragon"  
-wanderrest 75
+	wanderrest 75
 selectmonster "Frost Dragon"  
-wanderrest 75
+	wanderrest 75
 selectmonster "Storm Dragon"  
-wanderrest 75
+	wanderrest 75
 selectmonster "Dusk Dragon"  
-wanderrest 75
+	wanderrest 75
 
 newmonster "Kobold Grease Fetcher"
 	copystats "Red Kobold Chief"
@@ -1376,7 +1345,7 @@ endevent
 playerevent
 	+minturnnbr 1  			#Any turn
 	+class -2 "Kobold King"
-	+hasunit -2 "Incentivised Fire Dragon"
+	+hascom  -2 "Incentivised Fire Dragon"
 	+vargreater 701 0
 	+chance 100
 	
@@ -1384,10 +1353,10 @@ playerevent
 endevent
 
 # Turn the Awake Dragon Back into a Dragon After 3 or more turns
-squareevent
+playerevent
 	+minturnnbr 1  			#Any turn
 	+class -2 "Kobold King"
-	+hasunithere -2 "Incentivised Fire Dragon"
+	+hascom -2 "Incentivised Fire Dragon"
 	+chance 50
 	+varequal 701 0 # If it has been 3 turn
 	
@@ -1400,7 +1369,7 @@ endevent
 playerevent
 	+minturnnbr 1  			#Any turn
 	+class -2 "Kobold King"
-	-hasunit -2 "Incentivised Fire Dragon"
+	-hascom -2  "Incentivised Fire Dragon"
 	+varequal 700 1 # If I have an Incentivised Fire Dragon
 	+chance 100
 	
@@ -1416,17 +1385,17 @@ endevent
 playerevent
 	+minturnnbr 1  			#Any turn
 	+class -2 "Kobold King"
-	+hasunit -2 "Incentivised Frost Dragon"
+	+hascom  -2 "Incentivised Frost Dragon"
 	+vargreater 703 0
 	+chance 100
 	addvar 703 -1
 endevent
 
 # Turn the Awake Dragon Back into a Dragon After 3 or more turns
-squareevent
+playerevent
 	+minturnnbr 1  			#Any turn
 	+class -2 "Kobold King"
-	+hasunithere -2 "Incentivised Frost Dragon"
+	+hascom -2 "Incentivised Frost Dragon"
 	+chance 50
 	+varequal 703 0 # If it has been 3 turn
 	setvar 702 0
@@ -1437,7 +1406,7 @@ endevent
 playerevent
 	+minturnnbr 1  			#Any turn
 	+class -2 "Kobold King"
-	-hasunit -2 "Incentivised Frost Dragon"
+	-hascom -2   "Incentivised Frost Dragon"
 	+varequal 702 1 # Frost Dragon active 
 	+chance 100
 	setvar 702 0
@@ -1452,17 +1421,17 @@ endevent
 playerevent
 	+minturnnbr 1  			#Any turn
 	+class -2 "Kobold King"
-	+hasunit -2 "Incentivised Storm Dragon"
+	+hascom -2 "Incentivised Storm Dragon"
 	+vargreater 705 0
 	+chance 100
 	addvar 705 -1
 endevent
 
 # Turn the Awake Dragon Back into a Dragon After 3 or more turns
-squareevent
+playerevent
 	+minturnnbr 1  			#Any turn
 	+class -2 "Kobold King"
-	+hasunithere -2 "Incentivised Storm Dragon"
+	+hascom  -2 "Incentivised Storm Dragon"
 	+chance 50
 	+varequal 705 0 # If it has been 3 turn
 	setvar 704 0
@@ -1473,7 +1442,7 @@ endevent
 playerevent
 	+minturnnbr 1  			#Any turn
 	+class -2 "Kobold King"
-	-hasunit -2 "Incentivised Storm Dragon"
+	-hascom  -2 "Incentivised Storm Dragon"
 	+varequal 704 1 # If it has been 3 turn
 	+chance 100
 	setvar 704 0
@@ -1495,10 +1464,10 @@ playerevent
 endevent
 
 # Turn the Awake Dragon Back into a Dragon After 3 or more turns
-squareevent
+playerevent
 	+minturnnbr 1  			#Any turn
 	+class -2 "Kobold King"
-	+hasunithere -2 "Incentivised Bile Dragon"
+	+hascom  -2 "Incentivised Bile Dragon"
 	+chance 50
 	+varequal 707 0 # If it has been 3 turn
 	setvar 706 0
@@ -1509,7 +1478,7 @@ endevent
 playerevent
 	+minturnnbr 1  			#Any turn
 	+class -2 "Kobold King"
-	-hasunit -2 "Incentivised Bile Dragon"
+	-hascom -2 "Incentivised Bile Dragon"
 	+varequal 706 1 # If Dragon is set to be done
 	+chance 100
 	setvar 706 0
@@ -1531,10 +1500,10 @@ playerevent
 endevent
 
 # Turn the Awake Dragon Back into a  Dragon After 3 or more turns
-squareevent
+playerevent
 	+minturnnbr 1  			#Any turn
 	+class -2 "Kobold King"	
-	+hasunithere -2 "Incentivised Dusk Dragon"
+	+hascom -2 "Incentivised Dusk Dragon"
 	+chance 50
 	+varequal 709 0 # If it has been 3 turn
 	setvar 708 0

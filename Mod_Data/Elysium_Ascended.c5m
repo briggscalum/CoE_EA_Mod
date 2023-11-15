@@ -10,7 +10,6 @@ modprio 2
 # Should just unlock new ritual paths
 # Populates ritpower 68-100
 
-
 newritpow 
 newritpow 
 newritpow 
@@ -51,9 +50,9 @@ newritpow
 #########
 
 
-################
-# Terrain Mods #
-################
+#########################
+# Terrain Modifications #
+#########################
 
 
 # Gives Farms Weed
@@ -68,7 +67,7 @@ weed 					1
 selectterr      348 # Atavi Tribe Village
 weed 					1
 
-# Makes City of the First Men good
+# Makes City of the First Men Good
 selectterr      284
 weed 			4
 citadel 
