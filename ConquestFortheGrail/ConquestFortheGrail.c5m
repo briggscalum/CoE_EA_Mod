@@ -10,6 +10,7 @@ modprio 2
 # Should just unlock new ritual paths
 # Populates ritpower 68-100
 
+
 newritpow 
 newritpow 
 newritpow 
