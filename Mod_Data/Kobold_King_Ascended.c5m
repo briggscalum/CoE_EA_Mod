@@ -526,7 +526,9 @@ newmonster "Tiamat"
 
 # Summoned on Fortress in Fire plane
 newmonster "Great Wyrm of Conflagration"
+	spr1 "sprites/firewyrm.png"
 	unique    1
+	armor                          2
 	hp                           177 # Hit Points.
 	str                            9 # Strength.
 	mor                           10 # Morale.
@@ -536,11 +538,12 @@ newmonster "Great Wyrm of Conflagration"
 	spellweapon                3   3 # Pyromancy at level 3.
 	huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
 	mines1                           # Loves mines (if an independent or stupid commander, will not leave its loved terrains).
-	poisonres                    100 # Poison immunity.
+	fireres                      100 # Fire immunity.
 	fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
 
 # Summoned on Ice Fortress in Water Plane
 newmonster "Great Wyrm of Rime"
+	spr1 "sprites/frostwyrm.png"
 	unique    					   1
 	hp                           177 # Hit Points.
 	str                            9 # Strength.
@@ -551,12 +554,14 @@ newmonster "Great Wyrm of Rime"
 	spellweapon               27   3 # Frost Magic at level 3.
 	huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
 	mines1                           # Loves mines (if an independent or stupid commander, will not leave its loved terrains).
-	poisonres                    100 # Poison immunity.
+	coldres                      100 # Cold immunity.
 	fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
 
 # Summoned on Fortess in Air Plane
 newmonster "Great Wyrm of Tumult"
+	spr1 "sprites/stormwyrm.png"
 	unique                         1
+	armor                          2
 	hp                           177 # Hit Points.
 	str                            9 # Strength.
 	mor                           10 # Morale.
@@ -566,12 +571,14 @@ newmonster "Great Wyrm of Tumult"
 	meleeweapon               20  11 # Bite: d20 Slash damage.
 	huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
 	mines1                           # Loves mines (if an independent or stupid commander, will not leave its loved terrains).
-	poisonres                    100 # Poison immunity.
+	shockres                    100 # Poison immunity.
 	fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
 
 # Summoned on Swamp in Primal Plane
 newmonster "Great Wyrm of Decay"
+	spr1 "sprites/decaywyrm.png"
 	unique                         1
+	armor                          2
 	hp                           177 # Hit Points.
 	str                            9 # Strength.
 	mor                           10 # Morale.
@@ -586,7 +593,9 @@ newmonster "Great Wyrm of Decay"
 
 # Summoned on Shadow Wood in Hades
 newmonster "Great Wyrm of Desolation"
+	spr1 "sprites/desolationwyrm.png"
 	unique                         1
+	armor                          2
 	hp                           177 # Hit Points.
 	str                            9 # Strength.
 	mor                           10 # Morale.
@@ -596,8 +605,8 @@ newmonster "Great Wyrm of Desolation"
 	spellweapon                9   3 # Dark at level 3.
 	huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
 	mines1                           # Loves mines (if an independent or stupid commander, will not leave its loved terrains).
-	poisonres                    100 # Poison immunity.
 	fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
+	hadesres
 
 # Summoned on Silver Mines
 newmonster "Silver Dragon"
@@ -1065,6 +1074,63 @@ newmonster "Silver Dragon Spawn"
 # Rituals
 #####
 
+newritual "Summon Great Dragon of Desolation"
+	ritpow                51 # Kobold, Blue
+	level                  3
+	planereq               5 # Primal Plane
+	cost              0   50 # 50 Gold
+	cost             16   50 # 50 Kobolds
+	cost             15   150 # 150 Emeralds
+	terr                  37 # Shadow Wood
+
+	nomonworldreq
+		addstring    "(-)Great Wyrm of Desolation"
+	summoning
+		addstring    "c*Great Wyrm of Desolation"
+
+newritual "Summon Great Dragon of Bile"
+	ritpow                55 # Kobold, Green
+	level                  3
+	planereq               7 # Primal Plane
+	cost              0   50 # 50 Gold
+	cost             16   50 # 50 Kobolds
+	cost             10   150 # 150 Emeralds
+
+	terr                -20 # Ancient Forest
+	nomonworldreq
+		addstring    "(-)Great Wyrm of Decay"
+	summoning
+		addstring    "c*Great Wyrm of Decay"
+
+newritual "Summon Great Dragon of Storms"
+	ritpow                54 # Kobold, Blue
+	level                  3
+	planereq               8 # Elemental Plane
+	cost              0   50 # 50 Gold
+	cost             16   50 # 50 Kobolds
+	cost             9   150 # 150 Sapphires
+
+	terr                -50 # Fire Fort
+	nomonworldreq
+		addstring    "(-)Great Wyrm of Tumult"
+	summoning
+		addstring    "c*Great Wyrm of Tumult"
+
+
+newritual "Summon Great Dragon of Fire"
+	ritpow                52 # Kobold, Blue
+	level                  3
+	planereq               8 # Elemental Plane
+	cost              0   50 # 50 Gold
+	cost             16   50 # 50 Kobolds
+	cost             7   150 # 150 Sapphires
+
+	terr                -48 # Fire Fort
+	nomonworldreq
+		addstring    "(-)Great Wyrm of Conflagration"
+	summoning
+		addstring    "c*Great Wyrm of Conflagration"
+
 
 newritual "Summon Great Dragon of Ice"
 	
@@ -1072,7 +1138,7 @@ newritual "Summon Great Dragon of Ice"
 	level                  3
 	planereq               8 # Elemental Plane
 	cost              0   50 # 50 Gold
-	cost             16   50 # 25 Kobolds
+	cost             16   50 # 50 Kobolds
 	cost             8   150 # 150 Sapphires
 
 	terr                139 # Fimbul Fort

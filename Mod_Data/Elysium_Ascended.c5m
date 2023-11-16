@@ -97,7 +97,17 @@ selectterr      700
 
 
 selectterr      139 	# Fimbul Fortress
-	gems 		48 		# 6 Sapphires
+	gems 		 24 		# 3 Sapphires
+	gold          3         # 3 Gold
+
+selectterr      213 # Fire Citadel
+	gems 		 3 		# 3 Rubies
+
+selectterr      212 # Fire Citadel
+	gems 		 3 		# 3 Rubies
+
+selectterr      214 # Fire Citadel
+	gems 		 3 		# 3 Rubies
 
 
 
