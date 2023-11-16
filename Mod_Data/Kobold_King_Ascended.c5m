@@ -1065,6 +1065,22 @@ newmonster "Silver Dragon Spawn"
 # Rituals
 #####
 
+
+newritual "Summon Great Dragon of Ice"
+	
+	ritpow                53 # Kobold, Blue
+	level                  3
+	planereq               8 # Elemental Plane
+	cost              0   50 # 50 Gold
+	cost             16   50 # 25 Kobolds
+	cost             8   150 # 150 Sapphires
+
+	terr                139 # Fimbul Fort
+	nomonworldreq
+		addstring    "(-)Great Wyrm of Rime"
+	summoning
+		addstring    "c*Great Wyrm of Rime"
+
 newritual     "Summon Dragon Turtle"                                             # 471
 	descr "This ritual summons a dragon Turtle to a port. It will patrol nearby waters and capture gem deposits for its patron"
 
@@ -1077,9 +1093,7 @@ newritual     "Summon Dragon Turtle"                                            
 	nomonhomereq
 	addstring "(-)Dragon Turtle"
 	terr                 -93 # Ports
-	# fx1031             431 # Unhandled trait 1031 with argument 431.
 	summoning                # The ritual will summon the monsters specified in a random string.
-	aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
 	addstring     "c*Dragon Turtle"
 
 newritual     "Summon Tiamat"                                             # 471

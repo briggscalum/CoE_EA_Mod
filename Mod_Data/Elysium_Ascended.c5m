@@ -61,8 +61,6 @@ newritpow
 # Elemetnal Plane
 ######
 
-selectterr      228 # Maelstrom
-gems 524368 # 2d2 Saphires + 1d1 Diamonds?
 
 
 
@@ -88,14 +86,19 @@ batmap           39
 # New Terrain, Frozen Swamp
 
 selectterr      700
-name "Frozen Swamp"
-spr "sprites/frozenswamp.tga"
-herbs             1 # Herbs:  1
-fungus            3 # Fungus:  3
-lifeforce        20 # 2 Lifeforce can be drained from this square per turn.
-invisible           # Terrain on top of the background is not drawn, but the grass will still be drawn.
-nosight             # The terrain does not provide vision into adjacent squares when owned.
-apcost 1            # Action Point cost for moving through the terrain: 3
+	name "Frozen Swamp"
+	spr "sprites/frozenswamp.tga"
+	herbs             1 # Herbs:  1
+	fungus            3 # Fungus:  3
+	lifeforce        20 # 2 Lifeforce can be drained from this square per turn.
+	invisible           # Terrain on top of the background is not drawn, but the grass will still be drawn.
+	nosight             # The terrain does not provide vision into adjacent squares when owned.
+	apcost 1            # Action Point cost for moving through the terrain: 3
+
+
+selectterr      139 	# Fimbul Fortress
+	gems 		48 		# 6 Sapphires
+
 
 
 ##################
@@ -126,8 +129,17 @@ squareevent
 	+player    24 
 	+terrain   68 "Deep Sea"
 	+chance 15
-	alterterrain 228 # Maelstorms
+	alterterrain 171 # Saphire Gem Deposits
 endevent
+
+# squareevent
+# 	+turnnbr   -1	 # pre-game
+# 	+player    24 
+# 	+terrain   54    # Frozen Waste
+# 	-ownsloctarg -1 139
+# 	+chance 100
+# 	alterterrain 139 # Fimbulfort
+# endevent
 
 ##########
 # Events #
