@@ -155,25 +155,71 @@ endevent
 # Events #
 ##########
 
-# newritual "Test citadel"
-# ritpow					23 # Bandar Weed
-# level					1
-# free
-# terr					-1
-# aiwhere					4
-# portalroom				220 # Primal Forest
-# noportalreq				1
-# closewin
+squareevent
+	+player  30        # Occurs on the independant turn
+	+turnnbr -1
+	+terrain -40
+	newunits 30 "2d4*Heavy Infantry"
+endevent
+
+# Downgrades Settlements when controlled by indies one of each per turn
+
+playerevent
+	+player  24       # Occurs on the independant turn
+	+ownsloctarg  24 -13   # Indies own a Village
+	+armyowner 24          # And has an army there
+	+chance 100
+	alterterrain 7    # Village Becomes a Hamlet
+	message -1 "New Hamlet"
+endevent
+
+playerevent
+	+player  24       # Occurs on the independant turn
+	+ownsloctarg 24 -40      # Indies own a Hamlet
+	+armyowner 24          # And has an army there
+	+chance 100
+	alterterrain 6    # Hamlet Becomes a Farm
+	message -1 "New Farm"
+
+endevent
+
+playerevent
+	+player  24       # Occurs on the independant turn
+	+ownsloctarg 24 6     # Indies own a Farm
+	+armyowner 24          # And has an army there
+	+chance 100
+	alterterrain 0    # Village Becomes a Plain (RIP)
+	message -1 "New Plain"
+
+endevent
+
+# Downgrades Settlements when controlled by Horrors
+
+playerevent
+	+player  26        # Occurs on the independant turn
+	+ownsloctarg 26  -13    # Indies own a Village
+	+armyowner 26          # And has an army there
+	+chance 100
+	alterterrain 7    # Village Becomes a Hamlet
+endevent
+
+playerevent
+	+player  26            # Occurs on the independant turn
+	+ownsloctarg 26  -40   # Indies own a Hamlet
+	+armyowner 26          # And has an army there
+	+chance 100
+	alterterrain 6         # Hamlet Becomes a Farm
+endevent
+
+playerevent
+	+player  26        # Occurs on the independant turn
+	+ownsloctarg 26  -13     # Indies own a Farm
+	+armyowner 26          # And has an army there
+	+chance 100
+	alterterrain 0    # Farm Becomes a Plain (RIP)
+endevent
 
 
-# newritual "Scry"
-# ritpow					23 # Bandar Weed
-# level					1
-# free
-# terr					-1
-# aiwhere					4
-# scryloc                 999
-# closewin
 
 # --------------SuperTestGuy--------------
 #This is just a simple OP debug monster to cheat/test stuff.
