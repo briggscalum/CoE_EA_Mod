@@ -5,6 +5,8 @@ description "Norb"
 # Load Third so It loads after Main Mod
 modprio 3
 
+newritpow #Kobold Krafting
+
 
 # Variables used
 # Dragon Invortion
@@ -49,20 +51,21 @@ selectmonster "Storm Dragon"
 selectmonster "Dusk Dragon"  
 	wanderrest 75
 
+
 newmonster "Kobold Grease Fetcher"
 	copystats "Red Kobold Chief"
 	spr1 "sprites/koboldtinker.png"
 	spr2 "sprites/koboldtinker1.png"
 	fireres 					   0
 	armor                          0 # Armor.
-	power                          91 1 # Level 1 Kobold Krafts
+	power                          0 1 # Level 1 Kobold Krafts
 	mastery                        1
 
 newmonster "Kobold Make Thinger"
 	copystats "Red Kobold Chief"
 	spr1 "sprites/koboldengineer.png"
 	spr2 "sprites/koboldengineer1.png"
-	power                          91 2 # Level 1 Kobold Krafts
+	power                          0 2 # Level 1 Kobold Krafts
 	fireres 		               0
 	armor                          1 # Armor.
 	mastery                        1
@@ -71,7 +74,7 @@ newmonster "Kobold Big Boomer"
 	copystats "Red Kobold Chief"
 	spr1 "sprites/koboldinventer.png"
 	spr2 "sprites/koboldinventer.png"
-	power                          91 3 # Level 1 Kobold Krafts
+	power                          0 3 # Level 1 Kobold Krafts
 	fireres 		               0
 	armor                          2 # Armor.
 
@@ -994,7 +997,7 @@ newmonster "Silver Dragon Spawn"
 
 # newritual     "Debug Summon Fire Dragon"                                             # 471
 # 	descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
-# 	ritpow                91 # Kobold, Red
+# 	ritpow                0 # Kobold, Red
 # 	level                  1
 # 	free
 # 	cost              0   1 # 50 Gold
@@ -1007,7 +1010,7 @@ newmonster "Silver Dragon Spawn"
 
 # newritual     "Debug Summon Frost Dragon"                                             # 471
 # 	descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
-# 	ritpow                91 # Kobold, Red
+# 	ritpow                0 # Kobold, Red
 # 	level                  1
 # 	free
 # 	cost              0   1 # 50 Gold
@@ -1020,7 +1023,7 @@ newmonster "Silver Dragon Spawn"
 
 # newritual     "Debug Summon Storm Dragon"                                             # 471
 # 	descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
-# 	ritpow                91 # Kobold, Red
+# 	ritpow                0 # Kobold, Red
 # 	level                  1
 # 	free
 # 	cost              0   1 # 50 Gold
@@ -1033,7 +1036,7 @@ newmonster "Silver Dragon Spawn"
 
 # newritual     "Debug Summon Bile Dragon"                                             # 471
 # 	descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
-# 	ritpow                91 # Kobold, Red
+# 	ritpow                0 # Kobold, Red
 # 	level                  1
 # 	free
 # 	cost              0   1 # 50 Gold
@@ -1046,7 +1049,7 @@ newmonster "Silver Dragon Spawn"
 
 # newritual     "Debug Summon Dusk Dragon"                                             # 471
 # 	descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
-# 	ritpow                91 # Kobold, Red
+# 	ritpow                0 # Kobold, Red
 # 	level                  1
 # 	free
 # 	cost              0   1 # 50 Gold
@@ -1059,7 +1062,7 @@ newmonster "Silver Dragon Spawn"
 
 # newritual     "Debug Summon Spectral Dragon"                                             # 471
 # 	descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
-# 	ritpow                91 # Kobold, Red
+# 	ritpow                0newritpow # Kobold, Red
 # 	level                  1
 # 	free
 # 	cost              0   1 # 50 Gold
@@ -1260,6 +1263,7 @@ newritual     "Incentivise Dusk Dragon"
 
 newritual     "Summon Silver Dragon"                                             # 480
 	descr "This ritual summons a Silver Dragon to a Silver mine. The dragon demands gold, saphires, and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
+	ritpow                54 # Kobold, White
 	nomonhomereq
 	addstring "(&)Silver Dragon"
 	addstring "(&)Fire Dragon"
@@ -1301,23 +1305,32 @@ newritual     "Call the Great Dragon"
 ## Kobold Krafting Rituals
 ########
 
-selectritual "Flame Rune Trap" 
-	ritpow               91
+newritual "Lesser Feat of Krafting"
+level                  1
+newrit                 1 # Caster will learn a new ritual of level 1.
+soundfx               57 # Sound effect when the ritual is cast: orchhit.smp (Summoning).
+free                     # Always start with this ritual in addition to the others.
 
-selectritual "Decay Rune Trap" 
-	ritpow               91
 
-selectritual "Frost Rune Trap" 
-	ritpow               91
+newritual "Feat of Krafting"
+level                  1
+newrit                 2 # Caster will learn a new ritual of level 1.
+soundfx               57 # Sound effect when the ritual is cast: orchhit.smp (Summoning).
+free                     # Always start with this ritual in addition to the others.
+levelup                2 # Level up to new monster (determined by mastery command on monster) if below level 2.
 
-selectritual "Lightning Rune Trap" 
-	ritpow               91
 
-selectritual "Poison Gas Trap" 
-	ritpow               91
+newritual "Greater Feat of Krafting"
+level                  2
+newrit                 3 # Caster will learn a new ritual of level 1.
+soundfx               57 # Sound effect when the ritual is cast: orchhit.smp (Summoning).
+free                     # Always start with this ritual in addition to the others.
+levelup                3 # Level up to new monster (determined by mastery command on monster) if below level 2.
+
+
+
 
 newritual "Find new Ammo"
-	ritpow               91
 	level                 1
 	free
 
@@ -1329,7 +1342,6 @@ newritual "Find new Ammo"
 	descr "Finds a few likely lads to get into the catapult and fits them with the appropriate armor"
 
 newritual "Repair Basic Machine"
-	ritpow               91
 	level                 1
 	free
 	cost            16   2 # 2 Kobolds
@@ -1342,7 +1354,6 @@ newritual "Repair Basic Machine"
 	addstring "New Kobold Wall"
 
 newritual "Repair Advanced Machine"
-	ritpow               91
 	level                 1
 	free
 	cost            16   4 # 4 Kobolds
@@ -1361,7 +1372,6 @@ newritual "Repair Advanced Machine"
 	addstring "New Ultimate War Machine"
 
 newritual "Pok's Portal Portal"
-	ritpow               91
 	level                 2
 	free
 	cost            16   50 # 50 Kobolds
@@ -1372,6 +1382,10 @@ newritual "Pok's Portal Portal"
 
 	descr "The great artificer Pok discoved that the transmittance space around esablished gateways was consderbly more fluid than the background rate. By setting up a gateway to lock in on and establish a tether to an already stable gateway, a portal could be created with considerablly less energy than usual. Its very difficult to aim the device and the process involves guessing where a portal might be, sending a kobold through, and checking to see how many pieces it turns into when it gets there."
 
+newritual "Built Ultimate War Machine"
+	level 3
+	summoning 
+	addstring "New Ultimate War Machine"
 
 # TODO
 # Portal - 

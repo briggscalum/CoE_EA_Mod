@@ -4,6 +4,8 @@ description "The Raksharaja Mod"
 
 modprio 3
 
+newritpow #Yogini Weed
+
 ############
 # Monsters #
 ############
@@ -91,7 +93,7 @@ newmonster "Yogini Aspirant"
 	spr1 "sprites/yoginiaspirant.png"
 	spr2 "sprites/yoginiaspirant1.png"
 	gatherweed
-	power 					     90 1 # Level 1 Bandar Weed
+	power 					     0 1 # Level 1 Bandar Weed
 	# sprite number            41004
 	armor                          0 # Armor.
 	hp                            12 # Hit Points.
@@ -114,7 +116,7 @@ newmonster "Yogini Adept"
 	spr1 "sprites/yoginiadept.png"
 	spr2 "sprites/yoginiadept1.png"
 	gatherweed
-	power 					90     2 # Bandar Weed
+	power 					0     2 # Bandar Weed
 	armor                          0 # Armor.
 	hp                            13 # Hit Points.
 	str                            5 # Strength.
@@ -148,7 +150,7 @@ newmonster "Yogini Rakshasi"
 	allitemslots                     # Has the full set of item slots.
 	fireres                      -50 # 50 Fire Vulnerability.
 	gatherweed                     1 # A commander with this ability will enable the player to gather sacrifices.
-	power 					90     3 # Bandar Weed
+	power 					0     3 # Bandar Weed
 	mirrorimages                   2 # Constant Mirror Images (2): start each battle with 2 mirror images.
 	nametype                      30 # Indian female.
 	descr "The ultimate wisdom of the Celestial Realm are unavailable to the followers of the Raksharaja. However through a pact with the Lord of the False World, an ambitious Yognini are able to tranform into a powerful Demon, augmenting their power over the natural world and gaining the power of Maya"
@@ -167,7 +169,6 @@ selectclass 29 # Raksharaja
 
 
 newritual     "Lesser Ritual of Mastery"                                  #  18
-	ritpow                 90 # Bandar Weed
 	level                  1
 	cost              	   6 50 # 150 Weed
 	newrit                 1 # Caster will learn a new ritual of level 2.
@@ -179,7 +180,6 @@ newritual     "Lesser Ritual of Mastery"                                  #  18
 
 
 newritual     "Ritual of Mastery"                                  #  18
-	ritpow                 90 # Bandar Weed
 	level                  1
 	cost              	   6 150 # 150 Weed
 	newrit                 2 # Caster will learn a new ritual of level 2.
@@ -190,7 +190,6 @@ newritual     "Ritual of Mastery"                                  #  18
 	descr "This ritual grants the caster a new second level ritual."
 
 newritual     "Ritual of Bloody Mastery"                                  #  18
-	ritpow                 90 # Bandar Weed
 	level                  1
 	cost              	   6 250 # 240 Weed
 	cost              	   4 250 # 240 Sacrifices
@@ -203,7 +202,6 @@ newritual     "Ritual of Bloody Mastery"                                  #  18
 
 
 newritual     "Butanese Shadow Garden"
-	ritpow 90
 	level                 	1
 	free
 	cost              		0 5 # 5 gold
@@ -218,7 +216,6 @@ newritual     "Butanese Shadow Garden"
 
 
 newritual     "Forest Summoning"                                          # 273
-	ritpow                90 # Yogini Weed
 	level                  1
 	cost              6   15 # 15 Weed
 	terr                 -100# Forest or Jungle like
@@ -232,7 +229,6 @@ newritual     "Forest Summoning"                                          # 273
 	descr "With the help of magical weed the Yogini is able to control some beasts of the forest by tricking them into eating the delicious magic mixture."
 
 newritual     "Jungle Summoning"                                          # 273
-	ritpow                90 # Yogini Weed
 	level                  2
 	cost              6   35 # 15 Weed
 	terr                 115 # Jungle 
@@ -247,7 +243,6 @@ newritual     "Jungle Summoning"                                          # 273
 
 
 newritual     "Cultivate new crops"
-	ritpow 					90   # Yogini Weed
 	level                 	2
 	free
 	cost              		0 10 # 10 gold gold
@@ -262,7 +257,6 @@ newritual     "Cultivate new crops"
 
 # Yogini Weed
 newritual     "Enrich Forest"
-	ritpow 					90   # Yogini Weed
 	level                 	1
 	free
 	cost              		6 10 # 10 weed 
@@ -274,7 +268,6 @@ newritual     "Enrich Forest"
 	descr "By use of magical weed,The Yogini entices alters the makup of a forest to make it more suitable for the growing of weed and inhabitation by the monkey people. This ritual can only be performed near the southern part of the world"
 
 newritual     "Infuse Forest"
-	ritpow 					90   # Yogini Weed
 	level                 	3
 	cost              		6 10 # 10 weed 
 	apcost					2
@@ -286,7 +279,6 @@ newritual     "Infuse Forest"
 
 
 newritual "Journey For Weed"
-	ritpow					90 # Bandar Weed
 	level					3
 	free
 	cost					6 200 #200 Weed
@@ -298,7 +290,6 @@ newritual "Journey For Weed"
 	descr "The Yogini now infused with bloody power now has an insatiable lust for the mystical weed. Reaching out beyond the Elyisan sphere, She locates a powerful source of Primal Energy where more weed can be found and creates a portal to its center"
 
 newritual "Corrupt Primal Animals"
-	ritpow					90 # Bandar Weed
 	level					3
 	cost              	    6 30 # 20 Weed
 	cost              	    4 30 # 20 Sacrifices
@@ -311,7 +302,6 @@ newritual "Corrupt Primal Animals"
 	descr "The Demonic Yogini Combines the power of the Primal forest and the False World to create powerful and bloodythirsty creatures, the Maya magic involved in this ritual turns the forest into a drained, evil place."
 
 newritual "Create Blood Vine Behemoth"
-	ritpow					90 # Bandar Weed
 	defctrl 				75
 	level					3
 	cost              	    6 200 # 200 Weed

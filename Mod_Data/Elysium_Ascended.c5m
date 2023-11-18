@@ -137,7 +137,8 @@ endevent
 squareevent
 	+turnnbr   -1	#pre-game
 	+player    24 
-	+terrain   68 "Deep Sea"
+	+plane     	8  # Elemental Plane	
+	+terrain   68  # Deep Sea
 	+chance 15
 	alterterrain 171 # Saphire Gem Deposits
 endevent
@@ -155,12 +156,13 @@ endevent
 # Events #
 ##########
 
-squareevent
-	+player  30        # Occurs on the independant turn
-	+turnnbr -1
-	+terrain -40
-	newunits 30 "2d4*Heavy Infantry"
-endevent
+# squareevent
+# 	+player  30        # Occurs on the independant turn
+# 	+turnnbr -1
+# 	+terrain -40
+# 	+plane 0
+# 	newunits 30 "2d4*Heavy Infantry"
+# endevent
 
 # Downgrades Settlements when controlled by indies one of each per turn
 
@@ -169,13 +171,16 @@ playerevent
 	+ownsloctarg  24 -13   # Indies own a Village
 	+armyowner 24          # And has an army there
 	+chance 100
+	+plane 0
 	alterterrain 7    # Village Becomes a Hamlet
+
 	message -1 "New Hamlet"
 endevent
 
 playerevent
 	+player  24       # Occurs on the independant turn
-	+ownsloctarg 24 -40      # Indies own a Hamlet
+	+ownsloctarg 24 -40      # Indies own a 
+	+plane 0
 	+armyowner 24          # And has an army there
 	+chance 100
 	alterterrain 6    # Hamlet Becomes a Farm
@@ -185,6 +190,7 @@ endevent
 
 playerevent
 	+player  24       # Occurs on the independant turn
+	+plane 0
 	+ownsloctarg 24 6     # Indies own a Farm
 	+armyowner 24          # And has an army there
 	+chance 100
@@ -197,6 +203,7 @@ endevent
 
 playerevent
 	+player  26        # Occurs on the independant turn
+	+plane 0
 	+ownsloctarg 26  -13    # Indies own a Village
 	+armyowner 26          # And has an army there
 	+chance 100
@@ -205,6 +212,7 @@ endevent
 
 playerevent
 	+player  26            # Occurs on the independant turn
+	+plane 0
 	+ownsloctarg 26  -40   # Indies own a Hamlet
 	+armyowner 26          # And has an army there
 	+chance 100
@@ -213,6 +221,7 @@ endevent
 
 playerevent
 	+player  26        # Occurs on the independant turn
+	+plane 0
 	+ownsloctarg 26  -13     # Indies own a Farm
 	+armyowner 26          # And has an army there
 	+chance 100
