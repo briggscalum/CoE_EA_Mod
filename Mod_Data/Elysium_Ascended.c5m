@@ -6,61 +6,133 @@ description "The Main Ascended Mod"
 # Load Second so clearrec does not impact other mods but so it loads after Overhaul
 modprio 2 
 
+# Variables used
+# 711 Homelessness rate
+
+
 # I think I can just call this a bunch and its fine. 
 # Should just unlock new ritual paths
 # Populates ritpower 68-100
-
-newritpow 
-newritpow 
-newritpow 
-newritpow 
-newritpow 
-newritpow 
-newritpow 
-newritpow 
-newritpow 
-newritpow 
-newritpow 
-newritpow 
-newritpow 
-newritpow 
-newritpow 
-newritpow 
-newritpow 
-newritpow 
-newritpow 
-newritpow 
-newritpow 
-newritpow 
-newritpow
-newritpow 
-newritpow 
-newritpow 
-newritpow 
-newritpow 
-newritpow 
-newritpow 
-newritpow 
-newritpow 
-newritpow
-newritpow 
 
 #########
 # Items #
 #########
 
 
-
-
-
 #########################
 # Terrain Modifications #
 #########################
 
-
+######
 # Elemetnal Plane
 ######
 
+selectterr      139 	# Fimbul Fortress
+	gems 		 32 		# 3 Sapphires
+	gold          3         # 3 Gold
+	misty
+
+selectterr      213 # Fire Citadel
+	gems 		 4 		# 3 Rubies
+
+selectterr      212 # Fire Citadel
+	gems 		 4 		# 3 Rubies
+
+selectterr      214 # Fire Citadel
+	gems 		 4 		# 3 Rubies
+
+# Fill the elemental plane of water with Gem Deposits
+squareevent
+	+turnnbr   -1	#pre-game
+	+player    24 
+	+plane     	8  # Elemental Plane	
+	+terrain   68  # Deep Sea
+	+chance 15
+	alterterrain 171 # Saphire Gem Deposits
+endevent
+
+# Fill the elemental plane of Air with Thunderstorms
+squareevent
+	+turnnbr   -1	#pre-game
+	+player    24 
+	+plane     	8  # Elemental Plane	
+	+terrain   194  # Cloud
+	+chance 15
+	alterterrain 307 # Storm Cloud
+endevent
+
+# Fill the elemental plane of Fire with Eruptions
+squareevent
+	+turnnbr   -1	#pre-game
+	+player    24 
+	+plane     	8  # Elemental Plane	
+	+terrain   53  # Magma
+	+chance 25
+	alterterrain 334 # Eruptions
+endevent
+
+# Fill the elemental plane of Earth with Depos
+squareevent
+	+turnnbr   -1	#pre-game
+	+player    24 
+	+plane     	8  # Elemental Plane	
+	+terrain   47  # Rock Ground
+	+chance 5
+	alterterrain 174 # Gem Deposits
+endevent
+
+# Fill the elemental plane of Earth with Depos
+squareevent
+	+turnnbr   -1	#pre-game
+	+player    24 
+	+plane     	8  # Elemental Plane	
+	+terrain   47  # Rock Ground
+	+chance 5
+	alterterrain 175 # Gem Deposits
+endevent
+
+# Fill the elemental plane of Earth with Depos
+squareevent
+	+turnnbr   -1	#pre-game
+	+player    24 
+	+plane     	8  # Elemental Plane	
+	+terrain   47  # Rock Ground
+	+chance 5
+	alterterrain 176 # Gem Deposits
+endevent
+
+# Fill the elemental plane of Earth with Depos
+squareevent
+	+turnnbr   -1	#pre-game
+	+player    24 
+	+plane     	8  # Elemental Plane	
+	+terrain   47  # Rock Ground
+	+chance 5
+	alterterrain 177 # Gem Deposits
+endevent
+
+
+#######
+# Void
+######
+
+selectterr      229  # Forest of Cubes
+	iron              2  # Iron:  1
+	gems           12288 # 3 random gems
+
+selectterr      250 # Color out of Space
+	ownable
+
+selectterr      232 # Corkscrew Towers
+	farsight
+
+########
+# Primal
+#######
+
+selectterr       89 # Mystical Column
+	ritrebate        20 # All rituals cast on this location will be 10% cheaper.
+	farsight
 
 
 
@@ -96,18 +168,6 @@ selectterr      700
 	apcost 1            # Action Point cost for moving through the terrain: 3
 
 
-selectterr      139 	# Fimbul Fortress
-	gems 		 24 		# 3 Sapphires
-	gold          3         # 3 Gold
-
-selectterr      213 # Fire Citadel
-	gems 		 3 		# 3 Rubies
-
-selectterr      212 # Fire Citadel
-	gems 		 3 		# 3 Rubies
-
-selectterr      214 # Fire Citadel
-	gems 		 3 		# 3 Rubies
 
 
 
@@ -133,15 +193,7 @@ squareevent
 	alterterrain 107 # Back to swamp
 endevent
 
-# Fill the elemental plane of water with Maelstorms
-squareevent
-	+turnnbr   -1	#pre-game
-	+player    24 
-	+plane     	8  # Elemental Plane	
-	+terrain   68  # Deep Sea
-	+chance 15
-	alterterrain 171 # Saphire Gem Deposits
-endevent
+
 
 # squareevent
 # 	+turnnbr   -1	 # pre-game
