@@ -225,8 +225,8 @@ playerevent
 	+chance 100
 	+plane 0
 	alterterrain 7    # Village Becomes a Hamlet
-
-	message -1 "New Hamlet"
+	addvar 711 1
+	message -1 "A Village has been diminished"
 endevent
 
 playerevent
@@ -236,7 +236,8 @@ playerevent
 	+armyowner 24          # And has an army there
 	+chance 100
 	alterterrain 6    # Hamlet Becomes a Farm
-	message -1 "New Farm"
+	addvar 711 1
+	message -1 "A Hamlet has been diminished"
 
 endevent
 
@@ -247,7 +248,8 @@ playerevent
 	+armyowner 24          # And has an army there
 	+chance 100
 	alterterrain 0    # Village Becomes a Plain (RIP)
-	message -1 "New Plain"
+	addvar 711 1
+	message -1 "A Farm has been Abandoned"
 
 endevent
 
@@ -260,6 +262,9 @@ playerevent
 	+armyowner 26          # And has an army there
 	+chance 100
 	alterterrain 7    # Village Becomes a Hamlet
+	addvar 711 1
+	message -1 "A Village has been diminished by horrors!"
+
 endevent
 
 playerevent
@@ -269,6 +274,9 @@ playerevent
 	+armyowner 26          # And has an army there
 	+chance 100
 	alterterrain 6         # Hamlet Becomes a Farm
+	addvar 711 1
+	message -1 "A Hamlet has been diminished by horrors!"
+
 endevent
 
 playerevent
@@ -278,8 +286,97 @@ playerevent
 	+armyowner 26          # And has an army there
 	+chance 100
 	alterterrain 0    # Farm Becomes a Plain (RIP)
+	message -1 "A Farm has been Abandoned due to horrors!"
+	addvar 711 1
 endevent
 
+#####
+# Growth Events
+#####
+
+# Cities grow Nearby Villages into Market Villages
+playerevent
+	+vargreater 711 0
+	-player  24
+	-player  25       
+	-player  26       
+	-player  27
+	-player  27       
+	-player  29   
+	-player  30
+	+ownsloctarg -2 -113
+	+plane 0
+	scatterloc 1
+	+terrain 18   # Villages
+	+squareowner -2
+	alterterrain 206 # Market Village
+	message -2 "One of your villages has taken up more aggressive trade policies"
+	addvar 711 -1
+endevent
+
+# Cities and Towns Grow Nearby Hamlets into Villages
+playerevent
+	+vargreater 711 0
+	-player  24
+	-player  25       
+	-player  26       
+	-player  27
+	-player  27       
+	-player  29   
+	-player  30
+	+ownsloctarg -2 -28  #Towns and Cities
+	+plane 0
+	scatterloc 1
+	+terrain -40   #Hamlets
+	+squareowner -2
+	alterterrain 18 # Village
+	message -2 "A hamlet near one of your cities has grown in population"
+	addvar 711 -1
+endevent
+
+# Cities and Towns Grow Nearbishby Farms into Hamlets
+playerevent
+	+vargreater 711 0
+	-player  24
+	-player  25       
+	-player  26       
+	-player  27
+	-player  27       
+	-player  29   
+	-player  30
+	+ownsloctarg -2 -28  #Towns and Cities
+	scatterloc 2
+	+plane 0
+	+terrain -13 # Farms
+	+squareowner -2
+
+	alterterrain 7 # Hamlet
+	message -2 "A farm near one of your cities has grown into a small hamlet"
+	addvar 711 -1
+
+endevent
+
+# Settlments Spawn Farms
+playerevent
+	+vargreater 711 0
+	-player  24
+	-player  25       
+	-player  26       
+	-player  27
+	-player  27       
+	-player  29   
+	-player  30
+	+ownsloctarg -2 -14  #Settlments
+	scatterloc 1
+	+plane 0
+	+terrain -103 # Planeslike
+	+squareowner -2
+
+	alterterrain 6 # Farm
+	message -2 "A group of displaced farmer have homesteaded near one of your settlments"
+	addvar 711 -1
+
+endevent
 
 
 # --------------SuperTestGuy--------------
