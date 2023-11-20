@@ -14,6 +14,18 @@ modprio 2
 # Should just unlock new ritual paths
 # Populates ritpower 68-100
 
+
+########### 
+## Units
+###########
+
+newmonster "Settler"
+
+	copyspr   "Angry Peasant" 
+	copystats "Angry Peasant"
+	invisible
+	nocombat
+
 #########
 # Items #
 #########
@@ -208,13 +220,20 @@ endevent
 # Events #
 ##########
 
-# squareevent
-# 	+player  30        # Occurs on the independant turn
-# 	+turnnbr -1
-# 	+terrain -40
-# 	+plane 0
-# 	newunits 30 "2d4*Heavy Infantry"
-# endevent
+squareevent
+	+player  30        # Occurs on the independant turn
+	+turnnbr -1
+	+terrain -40
+	+plane 0
+	newunits 30 "Settler"
+endevent
+
+playerevent
+	+ownsloctarg  -2 -14   # I own a Settlment
+	+hasunithere -1 "Settler" # Someone has an angry Peasant 
+	-hasunithere -2 "Settler" # But not me
+	changeowner -2 "Gimme"
+endevent
 
 # Downgrades Settlements when controlled by indies one of each per turn
 
