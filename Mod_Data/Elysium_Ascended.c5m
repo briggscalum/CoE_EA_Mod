@@ -19,12 +19,60 @@ modprio 2
 ## Units
 ###########
 
-newmonster "Settler"
-
+newmonster "Peasant"
 	copyspr   "Angry Peasant" 
 	copystats "Angry Peasant"
-	invisible
 	nocombat
+	stationary
+
+newritpow "Settler magic"
+
+newritual "Setup Farmstead"
+level                 	1
+free
+cost              		0 15 # 15 gold
+apcost					1
+terr                    -103 # Plain-alikes
+aiwhere					0
+alterloc             	6 # Farm
+nonearby1req	        -14 # Mostly just to prevent Mistaking pressing this
+soundfx               	57
+descr "The settlers set out to create an indepentant farming community, Because there are no nearby settlements, this will require some additional funding"
+
+newritual "Form Farming Community"
+level                 	1
+free
+cost              		0 8 # 8 gold
+apcost					1
+terr                    -103 # Plain-alikes
+aiwhere					0
+alterloc             	6 # Farm
+nearby1req	           -14 # Must be adjacent to some settlement
+soundfx               	57
+descr "The settlers create a farm in a fertile area near an established settlement. The locals are happy to help assist with the cost of settup."
+
+newritual "Provide needed Farmers"
+level                 	1
+free
+cost              		0 0 # 8 gold
+apcost					1
+terr                    -103 # Plain-alikes
+aiwhere					0
+alterloc             	6 # Farm
+nonearby1req	       -13 # Must not be farm adjacent
+nearby1req	           -14 # Must be adjacent to Village or biger
+soundfx               	57
+descr "The settlers create a farm in a fertile area near an large settlement. The locals are happy to completely fund the devoplment if there is no nearby farm."
+
+
+
+newmonster "Settler"
+	copystats "Angry Peasant"
+	clearweapons
+	spr1 "mainsprites/settler.png"
+	spr2 "mainsprites/settler1.png"
+	meleeweapon                0   5 # Staff: d3 Blunt damage.
+	power 0 1
 
 #########
 # Items #
@@ -179,10 +227,6 @@ selectterr      700
 	nosight             # The terrain does not provide vision into adjacent squares when owned.
 	apcost 1            # Action Point cost for moving through the terrain: 3
 
-
-
-
-
 ##################
 # Terrain Events #
 ##################
@@ -205,43 +249,78 @@ squareevent
 	alterterrain 107 # Back to swamp
 endevent
 
-
-
-# squareevent
-# 	+turnnbr   -1	 # pre-game
-# 	+player    24 
-# 	+terrain   54    # Frozen Waste
-# 	-ownsloctarg -1 139
-# 	+chance 100
-# 	alterterrain 139 # Fimbulfort
-# endevent
-
 ##########
 # Events #
 ##########
 
-squareevent
-	+player  30        # Occurs on the independant turn
-	+turnnbr -1
-	+terrain -40
-	+plane 0
-	newunits 30 "Settler"
+# Spawns Peasants slowly in settles provinces, The more different kinds of building you own the more peasants you get
+
+playerevent
+	-player  24
+	-player  25       
+	-player  26       
+	-player  27
+	-player  27       
+	-player  29   
+	-player  30
+	+chance 20
+	+ownsloctarg -2 -14 # Any place
+	newunits -2 "Peasant"
 endevent
 
 playerevent
-	+ownsloctarg  -2 -14   # I own a Settlment
-	+hasunithere -1 "Settler" # Someone has an angry Peasant 
-	-hasunithere -2 "Settler" # But not me
-	changeowner -2 "Gimme"
+	-player  24
+	-player  25       
+	-player  26       
+	-player  27
+	-player  27       
+	-player  29   
+	-player  30
+	+chance 20
+	+ownsloc -113 # A city
+	+ownsloctarg -2 -14
+	newunits -2 "Peasant"
 endevent
 
-# Downgrades Settlements when controlled by indies one of each per turn
+playerevent
+	-player  24
+	-player  25       
+	-player  26       
+	-player  27
+	-player  27       
+	-player  29   
+	-player  30
+	+chance 20 
+	+ownsloc 17 # A Town
+	+ownsloctarg -2 -14
+	newunits -2 "Peasant"
+endevent
 
+playerevent
+	-player  24
+	-player  25       
+	-player  26       
+	-player  27
+	-player  27       
+	-player  29   
+	-player  30
+	+chance 20 
+	+ownsloc -22 # A Captial province
+	+ownsloctarg -2 -14
+	newunits -2 "Peasant"
+endevent
+
+
+
+
+
+
+# Downgrades Settlements when controlled by indies one of each per turn
 playerevent
 	+player  24       # Occurs on the independant turn
 	+ownsloctarg  24 -13   # Indies own a Village
 	+armyowner 24          # And has an army there
-	+chance 100
+	+chance 50
 	+plane 0
 	alterterrain 7    # Village Becomes a Hamlet
 	addvar 711 1
@@ -253,7 +332,7 @@ playerevent
 	+ownsloctarg 24 -40      # Indies own a 
 	+plane 0
 	+armyowner 24          # And has an army there
-	+chance 100
+	+chance 50
 	alterterrain 6    # Hamlet Becomes a Farm
 	addvar 711 1
 	message -1 "A Hamlet has been diminished"
@@ -265,7 +344,8 @@ playerevent
 	+plane 0
 	+ownsloctarg 24 6     # Indies own a Farm
 	+armyowner 24          # And has an army there
-	+chance 100
+	+chance 50
+
 	alterterrain 0    # Village Becomes a Plain (RIP)
 	addvar 711 1
 	message -1 "A Farm has been Abandoned"
@@ -277,9 +357,10 @@ endevent
 playerevent
 	+player  26        # Occurs on the independant turn
 	+plane 0
-	+ownsloctarg 26  -13    # Indies own a Village
+	+ownsloctarg 26  -13    # Horrors own a Village
 	+armyowner 26          # And has an army there
 	+chance 100
+
 	alterterrain 7    # Village Becomes a Hamlet
 	addvar 711 1
 	message -1 "A Village has been diminished by horrors!"
@@ -289,21 +370,22 @@ endevent
 playerevent
 	+player  26            # Occurs on the independant turn
 	+plane 0
-	+ownsloctarg 26  -40   # Indies own a Hamlet
+	+ownsloctarg 26  -40   # Horrors own a Hamlet
 	+armyowner 26          # And has an army there
 	+chance 100
+
 	alterterrain 6         # Hamlet Becomes a Farm
 	addvar 711 1
 	message -1 "A Hamlet has been diminished by horrors!"
-
 endevent
 
 playerevent
 	+player  26        # Occurs on the independant turn
 	+plane 0
-	+ownsloctarg 26  -13     # Indies own a Farm
+	+ownsloctarg 26  -13     # Horrors own a Farm
 	+armyowner 26          # And has an army there
 	+chance 100
+
 	alterterrain 0    # Farm Becomes a Plain (RIP)
 	message -1 "A Farm has been Abandoned due to horrors!"
 	addvar 711 1
@@ -315,6 +397,7 @@ endevent
 
 # Cities grow Nearby Villages into Market Villages
 playerevent
+	+chance 25
 	+vargreater 711 0
 	-player  24
 	-player  25       
@@ -328,6 +411,7 @@ playerevent
 	scatterloc 1
 	+terrain 18   # Villages
 	+squareowner -2
+
 	alterterrain 206 # Market Village
 	message -2 "One of your villages has taken up more aggressive trade policies"
 	addvar 711 -1
@@ -335,6 +419,7 @@ endevent
 
 # Cities and Towns Grow Nearby Hamlets into Villages
 playerevent
+	+chance 25
 	+vargreater 711 0
 	-player  24
 	-player  25       
@@ -348,6 +433,7 @@ playerevent
 	scatterloc 1
 	+terrain -40   #Hamlets
 	+squareowner -2
+
 	alterterrain 18 # Village
 	message -2 "A hamlet near one of your cities has grown in population"
 	addvar 711 -1
@@ -355,6 +441,7 @@ endevent
 
 # Cities and Towns Grow Nearbishby Farms into Hamlets
 playerevent
+	+chance 25
 	+vargreater 711 0
 	-player  24
 	-player  25       
@@ -372,11 +459,11 @@ playerevent
 	alterterrain 7 # Hamlet
 	message -2 "A farm near one of your cities has grown into a small hamlet"
 	addvar 711 -1
-
 endevent
 
 # Settlments Spawn Farms
 playerevent
+	+chance 25
 	+vargreater 711 0
 	-player  24
 	-player  25       
@@ -394,8 +481,10 @@ playerevent
 	alterterrain 6 # Farm
 	message -2 "A group of displaced farmer have homesteaded near one of your settlments"
 	addvar 711 -1
-
 endevent
+
+
+
 
 
 # --------------SuperTestGuy--------------
@@ -625,3 +714,4 @@ newmonster "Netherstestguy"
 # addcomrec "Netherstestguy" 100 0 0 0
 selectclass 29 # Raksharaja
 	addstartcom "Netherstestguy"
+	addstartcom "Settler"
