@@ -73,6 +73,41 @@ newmonster "Settler"
 	meleeweapon                0   5 # Staff: d3 Blunt damage.
 	power 0 3
 
+newritpow "Miner Magic"
+
+newritual "Dig for Iron"
+level                 	1
+free
+cost              		0 0 # 10 gold
+apcost					1
+# terr                    12 # Mountain
+aiwhere					0
+soundfx               	57
+promotion 
+addstring "Miner" 
+addstring "Propecting Miner"
+descr "Iron in dem hills"
+
+
+newmonster "Miner"
+	copystats "Angry Peasant" 
+	copyspr "Slave Worker" 
+	power 0 3
+
+newritpow "Prospector Magic"
+
+newritual "Pack your Bags"
+	level 1
+	free
+	promotion 
+	addstring "Propecting Miner"
+	addstring "Miner" 
+
+newmonster "Propecting Miner"
+	copystats "Slave Worker" 
+	copyspr "Slave Worker" 
+	gold -5
+
 #########
 # Items #
 #########
@@ -252,6 +287,16 @@ endevent
 # Events #
 ##########
 
+# Miner Mining Mines
+playerevent
+	+hasunit -2 "Propecting Miner"
+	targetunitloc
+	scatterloc 1
+	+terrain 12
+	alterterrain 14
+	message -2 "Your Miner has found Iron!"
+endevent
+
 # Spawns Peasants slowly in settles provinces, The more different kinds of building you own the more peasants you get
 
 playerevent
@@ -310,7 +355,7 @@ playerevent
 	-player  29   
 	-player  30
 	+chance 50 
-	+ownsloctarg -2 -22 # Capital Prov
+	+ownsloctarg -2 -68 # Capital Prov
 
 	newunits -2 "Peasant"
 	message -2 "The captial has granted you a peasant"
@@ -778,4 +823,5 @@ newmonster "Netherstestguy"
 # addcomrec "Netherstestguy" 100 0 0 0
 selectclass 29 # Raksharaja
 	addstartcom "Netherstestguy"
+	addstartcom "Miner"
 	addstartcom "Settler"
