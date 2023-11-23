@@ -25,6 +25,14 @@ newmonster "Peasant"
 	nocombat
 	stationary
 
+newmonster "Spentant"
+	copyspr   "Angry Peasant" 
+	copystats "Angry Peasant"
+	nocombat
+	stationary
+	dmgonterr -1 # Dead Everywhere
+	dmgonterrbonus 9999
+
 newritpow "Settler magic"
 
 newritual "Setup Farmstead"
@@ -54,7 +62,7 @@ descr "The settlers create a farm in a fertile area near an established settleme
 newritual "Provide needed Farmers"
 level                 	1
 free
-cost              		0 0 # 8 gold
+cost              		0 0 # 0 gold
 apcost					1
 terr                    -103 # Plain-alikes
 aiwhere					0
@@ -64,6 +72,23 @@ nearby1req	           -14 # Must be adjacent to Village or biger
 soundfx               	57
 descr "The settlers create a farm in a fertile area near an large settlement. The locals are happy to completely fund the devoplment if there is no nearby farm."
 
+
+newritual "Hamletize"
+level                 	2
+free
+cost              		0 0 # 0 gold
+apcost					-1
+terr                    -13 # farms
+aiwhere					-13
+minmonreq 				3
+alterloc             	7 # Hamlet
+soundfx               	57
+promotion 3
+addstring "Peasant"
+addstring "Spentant"
+addstring "(&)Peasant"
+
+descr "The settlers find a thriving Farm and settle a small central community there, upgrading it into a hamlet. The farm must have at least 3 peasants to be able to upgrade."
 
 newmonster "Settler"
 	copystats "Angry Peasant"
@@ -76,37 +101,83 @@ newmonster "Settler"
 newritpow "Miner Magic"
 
 newritual "Dig for Iron"
-level                 	1
-free
-cost              		0 0 # 10 gold
-apcost					1
-# terr                    12 # Mountain
-aiwhere					0
-soundfx               	57
-promotion 
-addstring "Miner" 
-addstring "Propecting Miner"
-descr "Iron in dem hills"
+	level                 	1
+	free
+	cost              		0 0 # 10 gold
+	apcost					2
+	aiwhere					12
+	nonearby1req            -12 # Greater Mine
+	nomonplayerreq
+	summoning 
+	addstring "Iron Miner"
+	addstring "(-)Coal Miner"
+	descr "Check the surrounding mountains for mines. This process will cost 5 gold per turn and its uncertain how long it will take to find a mine. The miner is more likely to find a mine the more adjacent mountains there are. Must not be adjecent to an existing mountain mine."
 
+newritual "Dig for Coal"
+	level                 	1
+	free
+	cost              		0 0 # 10 gold
+	apcost					1
+	aiwhere					73  # AI should cast on hills
+	nonearby1req            105 # Coal Mine
+	summoning 
+	nomonplayerreq 
+	addstring "c*Coal Miner"
+	addstring "(-)Coal Miner"
+
+	descr "Check the surrounding hills for coal. Must not be adjecent to an existing coal mine."
+
+newritual "Silver and Gold"
+	level                 	1
+	free
+	cost              		0 0 # 10 gold
+	apcost					1
+	aiwhere					-12 # AI should cast on Mountains
+	nonearby1req            15 # Silver Mine
+	nonearby1req            34 # Gold Mine
+	summoning 
+	addstring "Precious Metal Miner"
+	descr "Check surrounding Iron Mines for signs of precious metals. Silver is much more common that Gold"
+
+newritual "Pan for Gold"
+	level                 	1
+	free
+	cost              		0 0 # 10 gold
+	apcost					1
+	aiwhere					12
+	nonearby1req            -12 # Greater Mine
+	nearby1req              67 # River
+
+	summoning 
+	addstring "Gold Panner"
+	descr "Check the mountains streams by a river for signs of gold in the water. Must be adjecent to a river and not adjacent to a mountain mine"
 
 newmonster "Miner"
 	copystats "Angry Peasant" 
 	copyspr "Slave Worker" 
+	clearweapons
+	meleeweapon               0 441 # Pick Axe: d6 Pierce damage.
 	power 0 3
 
-newritpow "Prospector Magic"
-
-newritual "Pack your Bags"
-	level 1
-	free
-	promotion 
-	addstring "Propecting Miner"
-	addstring "Miner" 
-
-newmonster "Propecting Miner"
+newmonster "Iron Miner"
 	copystats "Slave Worker" 
 	copyspr "Slave Worker" 
-	gold -5
+
+
+newmonster "Coal Miner"
+	copystats "Slave Worker" 
+	copyspr "Slave Worker" 
+
+
+newmonster "Precious Metal Miner"
+	copystats "Slave Worker" 
+	copyspr "Slave Worker" 
+
+
+newmonster "Gold Panner"
+	copystats "Slave Worker" 
+	copyspr "Slave Worker" 
+
 
 #########
 # Items #
@@ -289,12 +360,79 @@ endevent
 
 # Miner Mining Mines
 playerevent
-	+hasunit -2 "Propecting Miner"
+	+hasunit -2 "Iron Miner"
 	targetunitloc
 	scatterloc 1
 	+terrain 12
 	alterterrain 14
 	message -2 "Your Miner has found Iron!"
+endevent
+
+# Miner Mining Mines
+playerevent
+	+hasunit -2 "Coal Miner"
+	targetunitloc
+	scatterloc 1
+	+terrain 73
+	alterterrain 105
+	message -2 "Your Miner has found Coal!"
+endevent
+
+# Miner Mining Mines
+playerevent
+	+hasunit -2 "Precious Metal Miner"
+	targetunitloc
+	scatterloc 1
+	+terrain 14 "Iron Mine"
+	alterterrain 15
+	message -2 "Your Miner has found Silver!"
+endevent
+
+# Miner Mining Mines
+playerevent
+	+hasunit -2 "Precious Metal Miner"
+	targetunitloc
+	scatterloc 1
+	+terrain 14 "Iron Mine"
+	+chance 15
+	alterterrain 34
+	message -2 "Your Miner has found Gold!!!"
+endevent
+
+# Panner Panning Pans
+playerevent
+	+hasunit -2 "Gold Panner"
+	targetunitloc 
+	scatterloc 1
+	+terrain 12 # Mountains
+	+chance 25
+	alterterrain 33
+	message -2 "Your Miner has found a Gold Stream!"
+endevent
+
+
+# Lasts One turn
+playerevent
+	+hasunit -2 "Iron Miner"
+	killunit 1000
+endevent
+
+# Lasts One turn
+playerevent
+	+hasunit -2 "Precious Metal Miner"
+	killunit 1000
+endevent
+
+# Lasts One turn
+playerevent
+	+hasunit -2 "Coal Miner"
+	killunit 1000
+endevent
+
+# Lasts One turn
+playerevent
+	+hasunit -2 "Gold Panner"
+	killunit 1000
 endevent
 
 # Spawns Peasants slowly in settles provinces, The more different kinds of building you own the more peasants you get
@@ -307,8 +445,24 @@ playerevent
 	-player  27       
 	-player  29   
 	-player  30
+	+chance 100
+	+ownsloctarg -2 -64 # Farms and Hamlets
+
+	newunits -2 "Peasant"
+	message -2 "A Small Settlment has granted you a peasant"
+endevent
+
+
+playerevent
+	-player  24
+	-player  25       
+	-player  26       
+	-player  27
+	-player  27       
+	-player  29   
+	-player  30
 	+chance 50
-	+ownsloctarg -2 -16 # Villages and Smaller
+	+ownsloctarg -2 -16 # Villages sized
 
 	newunits -2 "Peasant"
 	message -2 "A Settlment has granted you a peasant"
