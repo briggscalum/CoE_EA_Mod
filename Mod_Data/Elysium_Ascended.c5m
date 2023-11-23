@@ -65,18 +65,18 @@ soundfx               	57
 descr "The settlers create a farm in a fertile area near an large settlement. The locals are happy to completely fund the devoplment if there is no nearby farm."
 
 
-
 newmonster "Settler"
 	copystats "Angry Peasant"
 	clearweapons
 	spr1 "mainsprites/settler.png"
 	spr2 "mainsprites/settler1.png"
 	meleeweapon                0   5 # Staff: d3 Blunt damage.
-	power 0 1
+	power 0 3
 
 #########
 # Items #
 #########
+
 
 
 #########################
@@ -223,7 +223,6 @@ selectterr      700
 	herbs             1 # Herbs:  1
 	fungus            3 # Fungus:  3
 	lifeforce        20 # 2 Lifeforce can be drained from this square per turn.
-	invisible           # Terrain on top of the background is not drawn, but the grass will still be drawn.
 	nosight             # The terrain does not provide vision into adjacent squares when owned.
 	apcost 1            # Action Point cost for moving through the terrain: 3
 
@@ -263,9 +262,11 @@ playerevent
 	-player  27       
 	-player  29   
 	-player  30
-	+chance 20
-	+ownsloctarg -2 -14 # Any place
+	+chance 50
+	+ownsloctarg -2 -16 # Villages and Smaller
+
 	newunits -2 "Peasant"
+	message -2 "A Settlment has granted you a peasant"
 endevent
 
 playerevent
@@ -276,10 +277,12 @@ playerevent
 	-player  27       
 	-player  29   
 	-player  30
-	+chance 20
-	+ownsloc -113 # A city
-	+ownsloctarg -2 -14
+	+chance 50
+	+ownsloctarg -2 -113 # City
+
 	newunits -2 "Peasant"
+	message -2 "A City has granted you a peasant"
+
 endevent
 
 playerevent
@@ -290,10 +293,12 @@ playerevent
 	-player  27       
 	-player  29   
 	-player  30
-	+chance 20 
-	+ownsloc 17 # A Town
-	+ownsloctarg -2 -14
+	+chance 50 
+	+ownsloctarg -2 17 # Town
+
 	newunits -2 "Peasant"
+	message -2 "A Town has granted you a peasant"
+
 endevent
 
 playerevent
@@ -304,16 +309,75 @@ playerevent
 	-player  27       
 	-player  29   
 	-player  30
-	+chance 20 
-	+ownsloc -22 # A Captial province
-	+ownsloctarg -2 -14
+	+chance 50 
+	+ownsloctarg -2 -22 # Capital Prov
+
 	newunits -2 "Peasant"
+	message -2 "The captial has granted you a peasant"
+
 endevent
 
+playerevent
+	-player  24
+	-player  25       
+	-player  26       
+	-player  27
+	-player  27       
+	-player  29   
+	-player  30
+	+chance 50 
+	+ownsloctarg -2 -93 # Port
 
+	newunits -2 "Peasant"
+	message -2 "A Port has granted you a peasant"
 
+endevent
 
+# Settler spawn
 
+playerevent
+	-player  24
+	-player  25       
+	-player  26       
+	-player  27
+	-player  27       
+	-player  29   
+	-player  30
+	+chance 50 
+	+minunits -2 5 0 "Peasant"
+
+	newunits -2 "c*Settler"
+	message -2 "having 5 peasants has granted you a settler"
+endevent
+
+playerevent
+	-player  24
+	-player  25       
+	-player  26       
+	-player  27
+	-player  27       
+	-player  29   
+	-player  30
+	+chance 50 
+	+minunits -2 10 0 "Peasant"
+	newunits -2 "c*Peasant"
+	message -2 "having 10 peasants has granted you a settler"
+endevent
+
+playerevent
+	-player  24
+	-player  25       
+	-player  26       
+	-player  27
+	-player  27       
+	-player  29   
+	-player  30
+	+chance 50 
+	+minunits -2 15 0 "Peasant"
+	
+	newunits -2 "c*Peasant"
+	message -2 "having 15 peasants has granted you a settler"
+endevent
 
 # Downgrades Settlements when controlled by indies one of each per turn
 playerevent
