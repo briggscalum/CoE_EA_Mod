@@ -296,7 +296,7 @@ newritual "Establish Mercantile City"
 	addstring "Spentant"
 	descr "The settlers find a prosperous Town centrally situated in a highly populated region and establishes a regional trading hub with strong walls and barracks for housing and traing troops. In order to create a thriving merchant city, the location must be withing 3 tiles of a market village, a Hamlet, a Farm, another town, a greater mine, and water. The Town must spend 10 peasants to upgrade."
 
-newritual "Establish Spentant City"
+newritual "Establish Splendid City"
 	level                 	3
 	free
 	cost              		0 40 # 30 gold
