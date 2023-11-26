@@ -6,6 +6,12 @@ modprio 3
 
 newritpow #Yogini Weed
 
+selectmonster "Yogini"
+	spr1 "sprites/yoginiaspirant.png"
+	spr2 "sprites/yoginiaspirant1.png"
+	gatherweed
+	power 					     0 1 # Level 1 Bandar Weed
+
 ############
 # Monsters #
 ############
@@ -89,34 +95,14 @@ newmonster    "Murder Monkey"
 	animal                           # Vulnerable to weapons and spells that only affect animals; leaves an animal corpse on death.
 	descr "Winged Monkeys are the creations of some twisted magic. The Raksharaja found them not twisted enough."
 
-newmonster "Yogini Aspirant"
-	spr1 "sprites/yoginiaspirant.png"
-	spr2 "sprites/yoginiaspirant1.png"
-	gatherweed
-	power 					     0 1 # Level 1 Bandar Weed
-	# sprite number            41004
-	armor                          0 # Armor.
-	hp                            12 # Hit Points.
-	str                            5 # Strength.
-	mor                            5 # Morale.
-	mr                             5 # Magic Resistance.
-	rank                          -1 # Back rank.
-	spellweapon               54   1 # Forest Magic at level 1.
-	meleeweapon                0 322 # Scepter: d4 Blunt damage.
-	jungle2                          # Likes jungles (if an independent or stupid commander, will not move more than 1 square away from its liked terrains).
-	allitemslots                     # Has the full set of item slots.
-	foreststealth                    # When in a forest or jungle, can only be seen by units with Acute Senses or Spirit Sight.
-	ape                            3 # Becomes a bandar sized ape corpse when killed. Also sets Nametype = 29 (Indian Male).
-	nametype                      30 # Indian female.
-	mastery 						1
-	descr "While most monkeys of the Rakshasa Kingdom have abandoned the wisdom of the White Ones for the false truths of the Rakshasas, there are some who have taken their own path to find the truth. Mimicking the asceticism of the White Ones, some female Bandar have abandoned civilization to live with the atavi tribes in search of ancient truths not found under the yoke of the Rakshasa Kings. Little do they understand that Maya takes many forms, and atavism is just another route to depravity and the downfall of your soul."
-
+# newmonster "Yogini Aspirant"
+	
 
 newmonster "Yogini Adept"  
 	spr1 "sprites/yoginiadept.png"
 	spr2 "sprites/yoginiadept1.png"
 	gatherweed
-	power 					0     2 # Bandar Weed
+	power 					0      2 # Bandar Weed
 	armor                          0 # Armor.
 	hp                            13 # Hit Points.
 	str                            5 # Strength.
@@ -153,7 +139,7 @@ newmonster "Yogini Rakshasi"
 	power 					0     3 # Bandar Weed
 	mirrorimages                   2 # Constant Mirror Images (2): start each battle with 2 mirror images.
 	nametype                      30 # Indian female.
-	descr "The ultimate wisdom of the Celestial Realm are unavailable to the followers of the Raksharaja. However through a pact with the Lord of the False World, an ambitious Yognini are able to tranform into a powerful Demon, augmenting their power over the natural world and gaining the power of Maya"
+	descr "The ultimate wisdom of the Celestial Realm are unavailable to the followers of the Raksharaja. However through a pact with the Lord of the False World, an ambitious Yogini are able to tranform into a powerful Demon, augmenting their power over the natural world and gaining the power of Maya"
 
 # Add Yogini and some troops to start
 
@@ -168,28 +154,30 @@ selectclass 29 # Raksharaja
 #########################
 
 
-newritual     "Lesser Ritual of Mastery"                                  #  18
+newritual     "Lesser Ritual of Weed Mastery"                                  #  18
 	level                  1
-	cost              	   6 50 # 150 Weed
+	cost              	   6 0 # 150 Weed
 	newrit                 1 # Caster will learn a new ritual of level 2.
 	levelup                1 # Level up to new monster (determined by mastery command on monster) if below level 2.
 	soundfx               57 # Sound effect when the ritual is cast: orchhit.smp (Summoning).
 	rebatelvl              1 # Ritual can be cast for half price if caster's power level is greater than or equal to 2.
 	free                     # Always start with this ritual in addition to the others.
-	descr "This ritual grants the caster a new first level ritual."
+	descr "This ritual grants the caster a new first level Weed ritual."
 
 
-newritual     "Ritual of Mastery"                                  #  18
+newritual     "Ritual of Weed Mastery"                                         #  18
 	level                  1
-	cost              	   6 150 # 150 Weed
+	cost              	   6 0 # 150 Weed
 	newrit                 2 # Caster will learn a new ritual of level 2.
-	levelup                2 # Level up to new monster (determined by mastery command on monster) if below level 2.
+	levelupmon             2 # Level up to new monster (determined by mastery command on monster) if below level 2.
 	soundfx               57 # Sound effect when the ritual is cast: orchhit.smp (Summoning).
 	rebatelvl              2 # Ritual can be cast for half price if caster's power level is greater than or equal to 2.
 	free                     # Always start with this ritual in addition to the others.
-	descr "This ritual grants the caster a new second level ritual."
+	addstring "Kala-Mukha"
+	descr "This ritual grants the caster a new second level Weed ritual."
 
-newritual     "Ritual of Bloody Mastery"                                  #  18
+
+newritual     "Ritual of Bloody Weed Mastery"                                  #  18
 	level                  1
 	cost              	   6 250 # 240 Weed
 	cost              	   4 250 # 240 Sacrifices
@@ -198,7 +186,7 @@ newritual     "Ritual of Bloody Mastery"                                  #  18
 	soundfx               57 # Sound effect when the ritual is cast: orchhit.smp (Summoning).
 	rebatelvl              3 # Ritual can be cast for half price if caster's power level is greater than or equal to 2.
 	free                     # Always start with this ritual in addition to the others.
-	descr "This ritual grants the caster a new thrid level ritual."
+	descr "This ritual grants the caster a new thrid level Bloody Weed ritual."
 
 
 newritual     "Butanese Shadow Garden"
@@ -383,9 +371,3 @@ newritual 		"Monkey Buisness"
 ## Events ##
 ############
 
-# Upgrade standard Yogini to aspirant. Done to avoid remaking the entire reccom
-playerevent
-	+class -2 "Raksharaja"
-	+hasunit -2 "Yogini"
-	promoteunits -2 1 "Yogini" "Yogini Aspirant"
-endevent

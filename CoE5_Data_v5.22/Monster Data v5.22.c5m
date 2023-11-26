@@ -105,9 +105,7 @@ goldbonus                     25 # 25% bonus to all gold income for the player t
 ironbonus                     25 # 25% bonus to all iron income for the player that owns this unit while it exists.
 leadership                     2 # +2 Morale for units commanded by this unit.
 nametype                       2 # Anglo-Saxon male.
-mastery                        3 # A mastery effect will change this
-
- monster to the type defined 3 after this one; i.e. monster #3: King.
+mastery                        3 # A mastery effect will change this monster to the type defined 3 after this one; i.e. monster #3: King.
 
 
 newmonster    "High Lord"                                                #    1
@@ -21430,8 +21428,7 @@ greedy                         1 # This unit will never give away its magic item
 
 
 newmonster    "Storm Dragon"                                             #  967
-descr "The Storm Dragon is associated with air, and sharing the same domain as the Cloud Lords, they have become a great nuisance in the cloud realms of late. While the rest of dragon kind is too cumbersome to travel the clouds without falling through, the Storm Dragon hunts and nests there with ease. It is reported that their nests are made up with feathers from cloud people, so it is assumed that they are also their preferred prey. Some attempts have been made to ascertain the diet of the Storm Dragons, but so far the Cloud Lords have refused whatever reasonable requests to borrow some of his subjects to try out the theory. He even refuses to tell us how many from his realm have been taken by dragons."
-# sprite number            21022
+descr  # sprite number            21022
 armor                          3 # Armor.
 hp                           110 # Hit Points.
 str                            9 # Strength.
@@ -36959,6 +36956,7 @@ str                            3 # Strength.
 mor                            4 # Morale.
 mr                             3 # Magic Resistance.
 rank                          -1 # Back rank.
+rearpos 
 meleeweapon                0   0 # Fist: d1 Blunt damage.
 human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
 allitemslots                     # Has the full set of item slots.

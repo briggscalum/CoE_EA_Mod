@@ -22,10 +22,12 @@ modprio 2
 newmonster "Peasant"
 	copyspr   "Angry Peasant" 
 	copystats "Angry Peasant"
-	nocombat
 	stationary
+	rank                          -1 # Back rank.
+	rearpos							 # Back back
 
-newmonster "Spentant"
+newmonster "Emigrating Peasant"
+	descr "These peasants are packing their bags and getting ready to join the caravan. They will be gone next turn."
 	copyspr   "Angry Peasant" 
 	copystats "Angry Peasant"
 	nocombat
@@ -33,7 +35,45 @@ newmonster "Spentant"
 	dmgonterr -1 # Dead Everywhere
 	dmgonterrbonus 9999
 
-newritpow "Settler magic"
+newritpow "Settlers magic"
+
+newritual     "Lesser Ritual of Peasantry"                                  #  18
+	level                  1
+	cost              	   0 5 # 5 gold
+	cost              	   1 5 # 5 resources
+
+	newrit                 2 # Caster will learn a new ritual of level 2.
+	levelup                2 # Level up to new monster (determined by mastery command on monster) if below level 2.
+	soundfx               57 # Sound effect when the ritual is cast: orchhit.smp (Summoning).
+	rebatelvl              1 # Ritual can be cast for half price if caster's power level is greater than or equal to 2.
+	free                     # Always start with this ritual in addition to the others.
+	updatehome               # So that a settler cannot settle on itself
+	minmonreq 				3
+	promotion 				3
+	addstring "Peasant"
+	addstring "Emigrating Peasant"
+	addstring "(&)Peasant"
+	descr "The migrants go to a settlement which has some spare peasants and promises a new life full of adventure and horse manure to try to get some more people to join their caravan. They also pick up some needed tools and skilled laborers capable of using those tools. Requires 3 peasants to cast. Note that migrants do not like to settle where they started."
+
+newritual     "Great Ritual of Peasantry"                                  #  18
+	level                  1
+	cost              	   0 10 # 5 gold
+	cost              	   1 10 # 5 resources
+
+	newrit                 3 # Caster will learn a new ritual of level 2.
+	levelup                3 # Level up to new monster (determined by mastery command on monster) if below level 2.
+	soundfx               57 # Sound effect when the ritual is cast: orchhit.smp (Summoning).
+	rebatelvl              1 # Ritual can be cast for half price if caster's power level is greater than or equal to 2.
+	free                     # Always start with this ritual in addition to the others.
+	terr                  -28 #cities and towns
+	updatehome               # So that a settler cannot settle on itself
+
+	minmonreq 				5
+	promotion 				5
+	addstring "Peasant"
+	addstring "Emigrating Peasant"
+	addstring "(&)Peasant"
+	descr "The settlers go to a city or town which has some spare peasants and promises freedom from oppression and ability to oppress others in order to convince some more people to join their caravan. They require those of metropolitan outlook and . Requires 5 peasants to cast. Note that migrants do not like to settle where they started."
 
 newritual "Setup Farmstead"
 level                 	1
@@ -42,10 +82,12 @@ cost              		0 15 # 15 gold
 apcost					1
 terr                    -103 # Plain-alikes
 aiwhere					0
+killtarg 9999
+
 alterloc             	6 # Farm
 nonearby1req	        -14 # Mostly just to prevent Mistaking pressing this
 soundfx               	57
-descr "The settlers set out to create an indepentant farming community, Because there are no nearby settlements, this will require some additional funding"
+descr "The settlerss set out to create an indepentant farming community, Because there are no nearby settlements, this will require some additional funding"
 
 newritual "Form Farming Community"
 level                 	1
@@ -54,10 +96,12 @@ cost              		0 8 # 8 gold
 apcost					1
 terr                    -103 # Plain-alikes
 aiwhere					0
-alterloc             	6 # Farm
 nearby1req	           -14 # Must be adjacent to some settlement
+
+alterloc             	6 # Farm
 soundfx               	57
-descr "The settlers create a farm in a fertile area near an established settlement. The locals are happy to help assist with the cost of settup."
+killtarg 9999
+descr "The settlerss create a farm in a fertile area near an established settlement. The locals are happy to help assist with the cost of settup."
 
 newritual "Provide needed Farmers"
 level                 	1
@@ -66,65 +110,70 @@ cost              		0 0 # 0 gold
 apcost					1
 terr                    -103 # Plain-alikes
 aiwhere					0
-alterloc             	6 # Farm
 nonearby1req	       -13 # Must not be farm adjacent
-nearby1req	           -14 # Must be adjacent to Village or biger
+nearby1req	           -16 # Must be adjacent to Village or biger
+
 soundfx               	57
-descr "The settlers create a farm in a fertile area near an large settlement. The locals are happy to completely fund the devoplment if there is no nearby farm."
+alterloc             	6 # Farm
+killtarg 9999
+
+descr "The settlerss create a farm in a fertile area near an large settlement. The locals are happy to completely fund the devoplment if there is no nearby farm."
 
 
 newritual "Expand Farm"
-level                 	2
+level                 	1
 free
 cost              		0 15 # 15 gold
 apcost					-1
 terr                    -13 # farms
 aiwhere					-13
 minmonreq 				4
-addstring "(&)Peasant"
 alterloc             	7 # Hamlet
+killtarg 9999
 soundfx               	57
 promotion 4
 addstring "Peasant"
-addstring "Spentant"
-
-descr "The settlers find an isolated Farm and settle a small central community there, upgrading it into a hamlet.  If the farm is not adjacent to a village sized settlemnt or larger this will take aditional external resources. The farm must spend 4 peasants to to upgrade."
+addstring "Emigrating Peasant"
+addstring "(&)Peasant"
+descr "The settlerss find an isolated Farm and settle a small central community there, upgrading it into a hamlet.  If the farm is not adjacent to a village sized settlemnt or larger this will take aditional external resources. The farm must spend 4 peasants to to upgrade."
 
 newritual "Spread Settlement"
-level                 	2
+level                 	1
 free
 cost              		0 8 # 0 gold
 apcost					-1
 terr                    -13 # farms
 aiwhere					-13
 minmonreq 				2
-addstring "(&)Peasant"
 alterloc             	7 # Hamlet
 soundfx               	57
 nearby1req	           -14 # Must be adjacent to Village or biger
+killtarg 9999
+
 promotion 2
 addstring "Peasant"
-addstring "Spentant"
-descr "The settlers find a large settlement and settle in a nearby farming community, upgrading the farm into a hamlet.  The proximity to other settlements makes setting up the new hamlet much cheaper. The farm must spend 2 peasants to upgrade."
+addstring "Emigrating Peasant"
+addstring "(&)Peasant"
+descr "The settlerss find a large settlement and settle in a nearby farming community, upgrading the farm into a hamlet.  The proximity to other settlements makes setting up the new hamlet much cheaper. The farm must spend 2 peasants to upgrade."
 
 
 newritual "Develop Outlying Settlement"
-	level                 	2
+	level                 	1
 	free
 	cost              		0 20 # 0 gold
 	apcost					-1
 	terr                    -40 # Hamlets
 	aiwhere					-40
-	minmonreq 				5
-	addstring "(&)Peasant"
+	# minmonreq 				5
 	alterloc             	18 # Village
 	soundfx               	57
 	nonearby1req	       -64 # Farms and Hamlets
-
 	promotion 5
 	addstring "Peasant"
-	addstring "Spentant"
-	descr "The settlers find a suitable Hamlet and expand the central community to develop it into a village. If there are no nearby farms or hamlets it takes some additional resources to expand nearby agriculture to support the new community. The hamlet must spend 5 peasants to upgrade."
+	addstring "Emigrating Peasant"
+	addstring "(&)Peasant"
+	killtarg 9999
+	descr "The settlerss find a suitable Hamlet and expand the central community to develop it into a village. If there are no nearby farms or hamlets it takes some additional resources to expand nearby agriculture to support the new community. The hamlet must spend 5 peasants to upgrade."
 
 newritual "Develop Settlement"
 	level                 	2
@@ -134,15 +183,17 @@ newritual "Develop Settlement"
 	terr                    -40 # Hamlets
 	aiwhere					-40
 	minmonreq 				4
-	addstring "(&)Peasant"
 	alterloc             	18 # Village
 	soundfx               	57
 	nearby1req	           -64  # Farms and Hamlets
+	homereq -1
+	killtarg 9999
 
 	promotion 4
 	addstring "Peasant"
-	addstring "Spentant"
-	descr "The settlers find a suitable Hamlet and expand the central community to develop it into a village. Nearby farms and Hamlets can provide some of the needed resources and people to support the new community. The hamlet must spend 4 peasants to upgrade."
+	addstring "Emigrating Peasant"
+	addstring "(&)Peasant"
+	descr "The settlerss find a suitable Hamlet and expand the central community to develop it into a village. Nearby farms and Hamlets can provide some of the needed resources and people to support the new community. The hamlet must spend 4 peasants to upgrade."
 
 newritual "Develop Prosperous Settlement"
 	level                 	2
@@ -152,32 +203,56 @@ newritual "Develop Prosperous Settlement"
 	terr                    -40 # Hamlets
 	aiwhere					-40
 	minmonreq 				3
-	addstring "(&)Peasant"
 	alterloc             	18 # Village
 	soundfx               	57
 	nearby1req	           -13  # Farms
-	nearby1req	           -40  # Hamlets
+	nearby1req	           -32  # Villages or Larger
 	nearby3req	           -31  # Fortified Locations
-
+	killtarg 9999
+	homereq -1
 	promotion 3
 	addstring "Peasant"
-	addstring "Spentant"
-	descr "The settlers find a suitable Hamlet and expand the central community to develop it into a village. Nearby farms and Hamlets will provide much of the needed resources and people to support the new community. Having a foritifed location nearby increase the likelyhood people will want to move to the new village. The hamlet must spend 3 peasants to upgrade."
+	addstring "Emigrating Peasant"
+	addstring "(&)Peasant"
+	descr "The settlerss find a suitable Hamlet and expand the central community to develop it into a village. Nearby farms and settlments will provide much of the needed resources and people to support the new community. Having a foritifed location nearby increase the likelyhood people will want to move to the new village. The hamlet must spend 3 peasants to upgrade."
+
+newritual "Settle Nomads"
+	level                 	2
+	free
+	cost              		0 15 # 0 gold
+	apcost					-1
+	terr                    109 # Hamlets
+	aiwhere					109
+	minmonreq 				3
+	alterloc             	18 # Village
+	killtarg 9999
+	soundfx               	57
+	nearby1req	           -13  # Farms
+	nearby1req	           -29  # Hamlets or Larger
+	homereq -1
+	descr "The settlerss find a tent village near more settled people and convinces enough of thier populace that a settled lifestyle is superior develop it into a village. There must be adjacent examples of farms and larger settlments to sway the inhabitants and provide resources and population to support the new community. "
+
 
 newritual "Create Market Village"
 	level                 	2
 	free
-	cost              		0 10 # 0 gold
+	cost              		0 5 # 0 gold
 	apcost					-1
 	terr                    18 # Village
 	aiwhere					18
-	alterloc             	206 # Market Village
-	soundfx               	57
+	nearby1req	             7  # Hamlets
 	nearby1req	           -13  # Farms
-	nearby1req	           -40  # Hamlets
-	nearby3req	           18   # Village
-
-	descr "The settlers find a densily populated area and set up a market it one of the villages to draw in surround farmers and peasants. Must be adjacent to another Village, Hamlet, and farm. Does not consume any peasants."
+	minmonreq 				1
+	
+	soundfx               	57
+	alterloc             	206 # Market Village
+	homereq -1
+	killtarg 9999
+	promotion 				1
+	addstring "Peasant"
+	addstring "Emigrating Peasant"
+	addstring "(&)Peasant"
+	descr "The settlerss find a densily populated area and set up a market it one of the villages to draw in surround farmers and peasants. Must be adjacent to a farm and a hamlet. Requires one Peasant to administrate the market ."
 
 
 newritual "Promote Regional Trade"
@@ -188,16 +263,17 @@ newritual "Promote Regional Trade"
 	terr                    18 # Village
 	aiwhere					18
 	minmonreq 				2
-	addstring "(&)Peasant"
 	alterloc             	206 # Market Village
 	soundfx               	57
 	nearby3req	           -92  # Trade Locations
 	nearby1req	           -14  # Settlements
-
+	killtarg 9999
+	homereq -1
 	promotion 2
 	addstring "Peasant"
-	addstring "Spentant"
-	descr "The settlers find a village in a populated area a some weeks travel from a source of trade and sets up a trading post there to allow goods to flow more easily through the area. Thev village must be adjacent to at least one other settlement. The village must spend 2 peasants to build the needed regional roads."
+	addstring "Emigrating Peasant"
+	addstring "(&)Peasant"
+	descr "The settlerss find a village in a populated area a some weeks travel from a source of trade and sets up a trading post there to allow goods to flow more easily through the area. Thev village must be adjacent to at least one other settlement. The village must spend 2 peasants to build the needed regional roads."
 
 newritual "Build Town Palisade"
 	level                 	3
@@ -209,19 +285,20 @@ newritual "Build Town Palisade"
 	terr                    206 # Market Village
 	aiwhere					206
 	minmonreq 				4
-	addstring "(&)Peasant"
 	alterloc             	17 # Town
 	soundfx               	57
 	nearby1req	           -64  # Farm/Hamlet
 	nearby1req	           -16  # Village sized seetlment
 	nearby1req             -38  # Forests and Jungles
 	nonearby3req           -31  # Foritified Locations
-
-
+	homereq -1
+	killtarg 9999
 	promotion 4
 	addstring "Peasant"
-	addstring "Spentant"
-	descr "The settlers find a prosperous market village in a populated area and estabilsh a township. To attract more poeple to move in, they erect a wall to protect the new town from bandits and carniverous ungulates. Creating a town requies the market village to have. If the new town is adjacent to a forest to use for timber, less labor and fewer resources will be needed build the wall. The new town wont be able to get enough immigrants if there is an adjacent walled fort or settlment. Establishing a town requires an adjacent village as well as a Hamlet or Farm. The Village must spend 4 peasants to upgrade."
+	addstring "Emigrating Peasant"
+	addstring "(&)Peasant"
+	
+	descr "The settlerss find a prosperous market village in a populated area and estabilsh a township. To attract more poeple to move in, they erect a wall to protect the new town from bandits and carniverous ungulates. Creating a town requies the market village to have. If the new town is adjacent to a forest to use for timber, less labor and fewer resources will be needed build the wall. The new town wont be able to get enough immigrants if there is an adjacent walled fort or settlment. Establishing a town requires an adjacent village as well as a Hamlet or Farm. The Village must spend 4 peasants to upgrade."
 
 newritual "Import Town Palisade"
 	level                 	3
@@ -233,19 +310,46 @@ newritual "Import Town Palisade"
 	terr                    206 # Market Village
 	aiwhere					206
 	minmonreq 				7
-	addstring "(&)Peasant"
 	alterloc             	17 # Town
 	soundfx               	57
 	nearby1req	           -64  # Farm/Hamlet
 	nearby1req	           -16  # Village sized seetlmetn
 	nonearby1req           -38  # Forests and Jungles
 	nonearby1req           -31  # Foritified Locations
-
+	homereq -1
+	killtarg 9999
 
 	promotion 7
 	addstring "Peasant"
-	addstring "Spentant"
-	descr "The settlers find a prosperous market village in a populated area and estabilsh a township. To attract more poeple to move in, they erect a wall to protect the new town from bandits and carniverous ungulates. If the new town is not adjacent to a forest to use for timber, more labor and resources will be needed to import the needed wood. The new town wont be able to get enough immigrants if there is an adjacent walled fort or settlment.  Establishing a town requires an adjacent village as well as a Hamlet or Farm. The Village must spend 7 peasants to upgrade."
+	addstring "Emigrating Peasant"
+	addstring "(&)Peasant"
+	descr "The settlerss find a prosperous market village in a populated area and estabilsh a township. To attract more poeple to move in, they erect a wall to protect the new town from bandits and carniverous ungulates. If the new town is not adjacent to a forest to use for timber, more labor and resources will be needed to import the needed wood. The new town wont be able to get enough immigrants if there is an adjacent walled fort or settlment.  Establishing a town requires an adjacent village as well as a Hamlet or Farm. The Village must spend 7 peasants to upgrade."
+
+newritual "Establish Port"
+	level                 	3
+	free
+	cost              		0 20 # 20 gold
+	cost              		1 10 # 10 Iron
+
+	apcost					-1
+	terr                    17 # Town
+	aiwhere					17
+	minmonreq 				4
+	alterloc             	79 # Port
+	soundfx               	57
+	nearby3req	           -40   # Hamlet
+	nearby3req	           -13   # Farms
+	nearby3req             -12   # Mine
+	nearby3req             -17   # Water
+	nearby3req             -92   # Trade Location
+	homereq -1
+	killtarg 9999
+	promotion 4
+	addstring "Peasant"
+	addstring "Emigrating Peasant"
+	addstring "(&)Peasant"
+	descr "The settlerss find a prosperous Coastal Town situated in a highly populated region and establishes a ship building facility. In order to create a thriving port, the location must be withing 3 tiles of a  a Hamlet, a Farm, and a place of trade, and a forest. The Town must spend 5 peasants to upgrade."
+
 
 newritual "Establish City"
 	level                 	3
@@ -257,7 +361,6 @@ newritual "Establish City"
 	terr                    17 # Town
 	aiwhere					17
 	minmonreq 				10
-	addstring "(&)Peasant"
 	alterloc             	9 # City
 	soundfx               	57
 	nearby3req	           -40   # Hamlet
@@ -265,11 +368,13 @@ newritual "Establish City"
 	nearby3req             -12   # Mine
 	nearby3req             -17   # Water
 	nearby3req             -92   # Trade Location
-
-	promotion 10
+	homereq -1
+	killtarg 9999
+	promotion 6
 	addstring "Peasant"
-	addstring "Spentant"
-	descr "The settlers find a prosperous Town centrally situated in a highly populated region and establishes a regional hub with strong walls and barracks for housing and traing troops. In order to create a thriving city, the location must be withing 3 tiles of a  a Hamlet, a Farm, a place of trade, and a greater mine. The Town must spend 10 peasants to upgrade."
+	addstring "Emigrating Peasant"
+	addstring "(&)Peasant"
+	descr "The settlerss find a prosperous Town centrally situated in a highly populated region and establishes a regional hub with strong walls and barracks for housing and traing troops. In order to create a thriving city, the location must be withing 3 tiles of a  a Hamlet, a Farm, a place of trade, and a greater mine. The Town must spend 6 peasants to upgrade."
 
 newritual "Establish Mercantile City"
 	level                 	3
@@ -280,8 +385,6 @@ newritual "Establish Mercantile City"
 	apcost					-1
 	terr                    17 # Town
 	aiwhere					17
-	minmonreq 				10
-	addstring "(&)Peasant"
 	alterloc             	273 # City of Merchants
 	soundfx               	57
 	nearby3req	            206  # Market Village
@@ -289,12 +392,16 @@ newritual "Establish Mercantile City"
 	nearby3req	           -13   # Farms
 	nearby3req             -12   # Mine
 	nearby3req             -17   # Water
-	nearby3req          	9    # Town
+	homereq -1
+	minmonreq 				6
 
-	promotion 10
+
+	killtarg 9999
+	promotion 6
 	addstring "Peasant"
-	addstring "Spentant"
-	descr "The settlers find a prosperous Town centrally situated in a highly populated region and establishes a regional trading hub with strong walls and barracks for housing and traing troops. In order to create a thriving merchant city, the location must be withing 3 tiles of a market village, a Hamlet, a Farm, another town, a greater mine, and water. The Town must spend 10 peasants to upgrade."
+	addstring "Emigrating Peasant"
+	addstring "(&)Peasant"
+	descr "The settlerss find a prosperous Town centrally situated in a highly populated region and establishes a regional trading hub with strong walls and barracks for housing and traing troops. In order to create a thriving merchant city, the location must be withing 3 tiles of a market village, a Hamlet, a Farm, another town, a greater mine, and water. The Town must spend 6 peasants to upgrade."
 
 newritual "Establish Splendid City"
 	level                 	3
@@ -303,11 +410,10 @@ newritual "Establish Splendid City"
 	cost              		1 40 # 30 Iron
 
 	apcost					-1
-	terr                    17 # Town
+	terr                    17   # Town
 	aiwhere					17
-	minmonreq 				10
-	addstring "(&)Peasant"
-	alterloc             	273 # City of Merchants
+	minmonreq 				6
+	alterloc             	277  # City of Gems & Marvels
 	soundfx               	57
 	nearby3req	           -30   # Gem Deposit
 	nearby3req	           -40   # Hamlet
@@ -315,11 +421,14 @@ newritual "Establish Splendid City"
 	nearby3req             -19   # Silver or Gold Mine
 	nearby3req             -17   # Water
 	nearby3req             -92   # Trade Location
+	homereq -1
+	killtarg 9999
 
-	promotion 10
+	promotion 6
 	addstring "Peasant"
-	addstring "Spentant"
-	descr "The settlers find a prosperous Town centrally situated in a highly populated and gem rich region and establishes a  jewel rich city with strong walls and barracks for housing and traing troops. In order to create a thriving jeweled city, the location must be withing 3 tiles of a Hamlet, a Farm, a precious metal mine, a place of trade, and a gem deposit, and water. The Town must spend 10 peasants to upgrade."
+	addstring "Emigrating Peasant"
+	addstring "(&)Peasant"
+	descr "The settlerss find a prosperous Town centrally situated in a highly populated and gem rich region and establishes a  jewel rich city with strong walls and barracks for housing and traing troops. In order to create a thriving jeweled city, the location must be withing 3 tiles of a Hamlet, a Farm, a precious metal mine, a place of trade, and a gem deposit, and water. The Town must spend 6 peasants to upgrade."
 
 newritual "Establish Dense Cty"
 	level                 	3
@@ -330,22 +439,23 @@ newritual "Establish Dense Cty"
 	apcost					-1
 	terr                    17 # Town
 	aiwhere					17
-	minmonreq 				10
-	addstring "(&)Peasant"
-	alterloc             	279 # City of Vice
-	soundfx               	57
 	nearby1req	           -40   # Hamlet
 	nearby1req	           206   # Market Size
 	nearby1req	           18    # Market Size
 	nearby1req	           -13   # Farms
 	nearby3req             -102  # Fresh Water
 	nearby3req             -4    # Mine
+	homereq -1
+	killtarg 9999
+	minmonreq 				8
 
-
-	promotion 12
+	alterloc             	279 # City of Vice
+	soundfx               	57
+	promotion 8
 	addstring "Peasant"
-	addstring "Spentant"
-	descr "The settlers find a prosperous Town centrally situated in a densily populated region and establishes a regional  dense city with strong walls and barracks for housing and traing troops. In order to create a city of this density, the location must be directly adjacent, a Hamlet, a Farm, a Village, and a Market Village, as well as within 3 tiles of fresh drinking water and any mine. The Town must spend 12 peasants to upgrade."
+	addstring "Emigrating Peasant"
+	addstring "(&)Peasant"
+	descr "The settlerss find a prosperous Town centrally situated in a densily populated region and establishes a regional  dense city with strong walls and barracks for housing and traing troops. In order to create a city of this density, the location must be directly adjacent, a Hamlet, a Farm, a Village, and a Market Village, as well as within 3 tiles of fresh drinking water and any mine. The Town must spend 8 peasants to upgrade."
 
 newritual "Establish Learned City"
 	level                 	3
@@ -356,11 +466,7 @@ newritual "Establish Learned City"
 	apcost					-1
 	terr                    17 # Town
 	aiwhere					17
-	minmonreq 				10
-	addstring "(&)Peasant"
-	alterloc             	274 # City
-	soundfx               	57
-
+	minmonreq 				6
 	nearby3req	           -3    # Library
 	nearby3req	           -40   # Hamlet
 	nearby3req	           -40   # Hamlet
@@ -368,11 +474,16 @@ newritual "Establish Learned City"
 	nearby3req             -12   # Mine
 	nearby3req             -17   # Water
 	nearby3req             -92   # Trade Location
+	homereq -1
 
-	promotion 10
+	alterloc             	274 # City
+	soundfx               	57
+	killtarg 9999
+	promotion 6
 	addstring "Peasant"
-	addstring "Spentant"
-	descr "The settlers find a prosperous Town centrally situated in a highly populated and intellectually rigorous region and establishes a regional intellectual hub with strong walls and barracks for housing and traing troops. In order to create a thriving academic city, the location must be withing 3 tiles of a  a Hamlet, a Farm, a place of trade, a library, and a greater mine. The Town must spend 10 peasants to upgrade."
+	addstring "Emigrating Peasant"
+	addstring "(&)Peasant"
+	descr "The settlerss find a prosperous Town centrally situated in a highly populated and intellectually rigorous region and establishes a regional intellectual hub with strong walls and barracks for housing and traing troops. In order to create a thriving academic city, the location must be withing 3 tiles of a  a Hamlet, a Farm, a place of trade, a library, and a greater mine. The Town must spend 10 peasants to upgrade."
 
 newritual "Establish Horticultural City"
 	level                 	3
@@ -383,10 +494,7 @@ newritual "Establish Horticultural City"
 	apcost					-1
 	terr                    17 # Town
 	aiwhere					17
-	minmonreq 				10
-	addstring "(&)Peasant"
-	alterloc             	275 # City of Herbalists
-	soundfx               	57
+
 	nearby3req	           -40   # Hamlet
 	nearby3req	           -13   # Farms
 	nearby3req             -12   # Mine
@@ -394,11 +502,18 @@ newritual "Establish Horticultural City"
 	nearby3req             -6    # Forests and Jungles
 	nearby3req             -20   # Swamps
 	nearby3req             -92   # Trade Location
+	homereq -1
+	minmonreq 				6
 
-	promotion 10
+
+	alterloc             	275 # City of Herbalists
+	soundfx               	57
+	killtarg 9999
+	promotion 6
 	addstring "Peasant"
-	addstring "Spentant"
-	descr "The settlers find a prosperous Town centrally situated in a highly populated and vegitated region and establishes a regional cultivation hub with strong walls and barracks for housing and traing troops. In order to create a thriving florocultural city, the location must be withing 3 tiles of a Hamlet, a Farm, a place of trade, a forest, and swamp, water, and a greater mine. The Town must spend 10 peasants to upgrade."
+	addstring "Emigrating Peasant"
+	addstring "(&)Peasant"
+	descr "The settlerss find a prosperous Town centrally situated in a highly populated and vegitated region and establishes a regional cultivation hub with strong walls and barracks for housing and traing troops. In order to create a thriving florocultural city, the location must be withing 3 tiles of a Hamlet, a Farm, a place of trade, a forest, and swamp, water, and a greater mine. The Town must spend 7 peasants to upgrade."
 
 newritual "Establish Faithful City"
 	level                 	3
@@ -409,31 +524,63 @@ newritual "Establish Faithful City"
 	apcost					-1
 	terr                    17 # Town
 	aiwhere					17
-	minmonreq 				10
-	addstring "(&)Peasant"
-	alterloc             	278 # Sacred City
-	soundfx               	57
 	nearby3req	           -40   # Hamlet
 	nearby3req	           -13   # Farms
 	nearby3req             -12   # Mine
 	nearby3req             -17   # Water
 	nearby3req             -2    # Temple
+	homereq -1
+	minmonreq 				6
 
-	promotion 10
+	alterloc             	278 # Sacred City
+	soundfx               	57
+
+	promotion 6
 	addstring "Peasant"
-	addstring "Spentant"
-	descr "The settlers find a prosperous Town centrally situated in a highly populated and fervent region and establishes a regional relgious hub with strong walls and barracks for housing and traing troops. In order to create a thriving clerical city, the location must be withing 3 tiles of a Hamlet, a Farm, a temple, water, and a greater mine. The Town must spend 10 peasants to upgrade."
+	addstring "Emigrating Peasant"
+	addstring "(&)Peasant"
+	killtarg 9999
+	descr "The settlerss find a prosperous Town centrally situated in a highly populated and fervent region and establishes a regional relgious hub with strong walls and barracks for housing and traing troops. In order to create a thriving clerical city, the location must be withing 3 tiles of a Hamlet, a Farm, a temple, water, and a greater mine. The Town must spend 10 peasants to upgrade."
 
-newmonster "Settler"
-descr "A small group of farmers and labors looking for a new place to live."
+newmonster "Migrants"
+	descr "A small group of farmers and labors looking for a new place to live. They are not particularly skilled but have the resources to set up a new farm or Hamlet"
 	copystats "Angry Peasant"
+	hp 10
 	clearweapons
-	spr1 "mainsprites/settler.png"
-	spr2 "mainsprites/settler1.png"
+	spr1 "mainsprites/migrants.png"
+	spr2 "mainsprites/migrants1.png"
+	meleeweapon                0  88 # Pitchfork: d4 Pierce damage.
+	meleeweapon                0  88 # Pitchfork: d4 Pierce damage.
+	meleeweapon                0  88 # Pitchfork: d4 Pierce damage.
+	power 0 1
+	mastery 	     		   1
+
+
+newmonster "Settlers"
+	descr "A group of farmers and labors looking for a new place to live. They have picked up a few artisans and tradespeople so that they can form larger communities"
+	copystats "Angry Peasant"
+	hp 10
+	clearweapons
+	spr1 "mainsprites/settlers.png"
+	spr2 "mainsprites/settlers1.png"
 	meleeweapon                0   5 # Staff: d3 Blunt damage.
+	meleeweapon                0   5 # Staff: d3 Blunt damage.
+	meleeweapon                0   5 # Staff: d3 Blunt damage.
+	power 0 2
+	mastery 	     		   1
+
+
+newmonster "Colonists"
+	descr "A Large group of people looking for a new place to live. They have amoung their ranks masons, wheelwright, and carpenters, capable or forming a new town or city"
+	copystats "Angry Peasant"
+	hp 10
+	clearweapons
+	spr1 "mainsprites/colonists.png"
+	spr2 "mainsprites/colonists1.png"
+	meleeweapon                1   4 # Spear: d5 Pierce damage.
+	meleeweapon               -1 142 # Great Maul: d7 Blunt damage.
+	meleeweapon                0   6 # Hammer: d4 Blunt damage.
 	power 0 3
-
-
 
 newritpow "Miner Magic"
 
@@ -782,7 +929,7 @@ playerevent
 	-player  27       
 	-player  29   
 	-player  30
-	+chance 100
+	+chance 20
 	+ownsloctarg -2 -64 # Farms and Hamlets
 
 	newunits -2 "Peasant"
@@ -797,7 +944,7 @@ playerevent
 	-player  27       
 	-player  29   
 	-player  30
-	+chance 50
+	+chance 20
 	+ownsloctarg -2 -16 # Villages sized
 
 	newunits -2 "Peasant"
@@ -812,7 +959,7 @@ playerevent
 	-player  27       
 	-player  29   
 	-player  30
-	+chance 50
+	+chance 20
 	+ownsloctarg -2 -113 # City
 
 	newunits -2 "Peasant"
@@ -827,7 +974,7 @@ playerevent
 	-player  27       
 	-player  29   
 	-player  30
-	+chance 50 
+	+chance 20 
 	+ownsloctarg -2 17 # Town
 
 	newunits -2 "Peasant"
@@ -842,7 +989,7 @@ playerevent
 	-player  27       
 	-player  29   
 	-player  30
-	+chance 50 
+	+chance 20 
 	+ownsloctarg -2 -68 # Capital Prov
 
 	newunits -2 "Peasant"
@@ -857,14 +1004,14 @@ playerevent
 	-player  27       
 	-player  29   
 	-player  30
-	+chance 50 
+	+chance 20 
 	+ownsloctarg -2 -93 # Port
 
 	newunits -2 "Peasant"
 	message -2 "A Port has granted you a peasant"
 endevent
 
-# Settler spawn
+# Settlers spawn
 
 playerevent
 	-player  24
@@ -874,11 +1021,11 @@ playerevent
 	-player  27       
 	-player  29   
 	-player  30
-	+chance 50 
+	+chance 5 
 	+minunits -2 5 0 "Peasant"
 
-	newunits -2 "c*Settler"
-	message -2 "having 5 peasants has granted you a settler"
+	newunits -2 "c*Migrants"
+	message -2 "having 5 peasants has granted you a Migrant"
 endevent
 
 playerevent
@@ -889,10 +1036,10 @@ playerevent
 	-player  27       
 	-player  29   
 	-player  30
-	+chance 50 
+	+chance  5
 	+minunits -2 10 0 "Peasant"
-	newunits -2 "c*Peasant"
-	message -2 "having 10 peasants has granted you a settler"
+	newunits -2 "c*Migrants"
+	message -2 "having 10 peasants has granted you a Migrant"
 endevent
 
 playerevent
@@ -903,11 +1050,11 @@ playerevent
 	-player  27       
 	-player  29   
 	-player  30
-	+chance 50 
+	+chance  5
 	+minunits -2 15 0 "Peasant"
 	
-	newunits -2 "c*Peasant"
-	message -2 "having 15 peasants has granted you a settler"
+	newunits -2 "c*Migrants"
+	message -2 "having 15 peasants has granted you a Migrant"
 endevent
 
 # Downgrades Settlements when controlled by indies one of each per turn
@@ -1308,4 +1455,4 @@ newmonster "Netherstestguy"
 selectclass 29 # Raksharaja
 	addstartcom "Netherstestguy"
 	addstartcom "Miner"
-	addstartcom "Settler"
+	addstartcom "Settlers"
