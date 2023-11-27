@@ -995,6 +995,16 @@ endevent
 
 # Spawns 
 squareevent
+	+turnnbr -1
+	+player 30
+	+squareowner 24
+	+terrain -4 # Mines
+
+	newunits -3 "5*Mine Worker"
+endevent
+
+# Spawns 
+squareevent
 	+player 30
 	+terrain -4 # Mines
 	+chance 10
@@ -1211,6 +1221,7 @@ playerevent
 	+chance 50
 	+plane 0
 	+hasunithere -3 "Bandit"
+
 	alterterrain 7    # Village Becomes a Hamlet
 	addvar 711 1
 	message -1 "The population of a bandit infested village has been reduced"
@@ -1223,6 +1234,7 @@ playerevent
 	+armyowner 24          # And has an army there
 	+chance 50
 	+hasunithere -3 "Bandit"
+	
 	alterterrain 6    # Hamlet Becomes a Farm
 	addvar 711 1
 	message -1 "The population of a bandit infested Hamlet has been reduced"
