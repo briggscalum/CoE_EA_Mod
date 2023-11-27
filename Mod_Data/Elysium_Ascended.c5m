@@ -19,6 +19,15 @@ modprio 2
 ## Units
 ###########
 
+newmonster "Woodsman"
+	spr1 "mainsprites/woodsman.png"
+	spr2 "mainsprites/woodsman1.png"
+	rank                          -1 # Back rank.
+	rearpos							 # Back back
+	stupid
+	forest1
+	jungle1
+
 newmonster "Peasant"
 	copyspr   "Angry Peasant" 
 	copystats "Angry Peasant"
@@ -617,7 +626,7 @@ newritual "Dig for Iron"
 	summoning 
 	addstring "Iron Miner"
 	addstring "(-)Iron Miner"
-	descr "Check the surrounding mountains for mines. This process will cost 5 gold per turn and its uncertain how long it will take to find a mine. The miner is more likely to find a mine the more adjacent mountains there are. Must not be adjecent to an existing mountain mine. A prospects can do this 3 times before its worn out."
+	descr "The miner will search the surrounding mountains for mines. This is not guarunteed The miner is more likely to find a mine the more adjacent mountains there are. Must not be adjecent to an existing mountain mine. A prospects can do this 3 times before its worn out."
 
 newritual "Dig for Coal"
 	level                 	1
@@ -1060,7 +1069,7 @@ endevent
 # Spawns 
 squareevent
 	+turnnbr -1
-	+player 30
+	+player 24
 	+squareowner 30
 	+terrain -1100 # Settlements + Farms
 	newunits -3 "5*Peasant"
@@ -1069,7 +1078,7 @@ endevent
 # Spawns 
 squareevent
 	+turnnbr -1
-	+player 30
+	+player 24
 	+squareowner 24
 	+terrain -1100 # Settlements + Farms
 	newunits -3 "5*Peasant"
@@ -1078,7 +1087,7 @@ endevent
 # Spawns 
 squareevent
 	+turnnbr -1
-	+player 30
+	+player 24
 	+squareowner 24
 	+terrain -4 # Mines
 
@@ -1087,18 +1096,27 @@ endevent
 
 # Spawns 
 squareevent
-	+player 30
+	+player 24
 	+terrain -4 # Mines
 	+chance 10
 	newunits -3 "Mine Worker"
 endevent
 
 squareevent
-	+player 30
+	+player 24
 	+terrain -1100
 	+chance 10
 	newunits -3 "Peasant"
 endevent
+
+squareevent
+	+player 24
+	+terrain -6 #Forests and Jungles
+	+chance 5
+	-squareowner 24 
+	newunits -3 "Woodsman"
+endevent
+
 
 # Settlers spawn
 
