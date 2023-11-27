@@ -582,6 +582,27 @@ newmonster "Colonists"
 
 newritpow "Miner Magic"
 
+newritual "Study Engineering"
+	cost             0 0 # 10 gold
+	cost             1 0 # 10 gold
+	terr              -3 # In a Library
+	newrit                 2 # Caster will learn a new ritual of level 2.
+	levelup                2 # Level up to new monster (determined by mastery command on monster) if below level 2.
+	soundfx               57 # Sound effect when the ritual is cast: orchhit.smp (Summoning).
+	rebatelvl              1 # Ritual can be cast for half price if caster's power level is greater than or equal to 2.
+	free                     # Always start with this ritual in addition to the others.
+	descr "Believing that things such as water wheels and deep mineshafts must be created by magic, the prospectors head to a local library to see about getting a wizard to help them with some more advanced projects. What they find instead tucked between 'Five ways to Blind a Beholder' and 'Making Fiends and Influencing Mammon' are books concerning the magic of triangles, force/torque diagrams, and the making of very large sheets of blue paper. With this newfound knowledge and some new tools, titles. and snazy outfits, they are ready to take on more advanced projects"
+
+newritual "Setup Lumber Yard"
+	level                 	1
+	free
+	cost              		0 10 # 10 gold
+	cost              		1 10 # 10 iron
+	terr					-11  # Forests
+	alterloc                702  # Lumber Mill
+	killtarg 9999
+	descr "The Prospectors cut new roads through the forest and set up a logging enterprize there. This provides both a steady income and an easier path for troops to travel through the forest. A Propsector settles in the province after setting up the lumber yard"
+
 newritual "Dig for Iron"
 	level                 	1
 	free
@@ -590,12 +611,13 @@ newritual "Dig for Iron"
 	aiwhere					12
 	nonearby1req            -12 # Greater Mine
 	nomonplayerreq
-	
+	closewin
 	killtarg 3
+	
 	summoning 
 	addstring "Iron Miner"
 	addstring "(-)Iron Miner"
-	descr "Check the surrounding mountains for mines. This process will cost 5 gold per turn and its uncertain how long it will take to find a mine. The miner is more likely to find a mine the more adjacent mountains there are. Must not be adjecent to an existing mountain mine."
+	descr "Check the surrounding mountains for mines. This process will cost 5 gold per turn and its uncertain how long it will take to find a mine. The miner is more likely to find a mine the more adjacent mountains there are. Must not be adjecent to an existing mountain mine. A prospects can do this 3 times before its worn out."
 
 newritual "Dig for Coal"
 	level                 	1
@@ -605,6 +627,8 @@ newritual "Dig for Coal"
 	aiwhere					73  # AI should cast on hills
 	nonearby1req            105 # Coal Mine
 	nomonplayerreq
+	closewin
+	killtarg 3
 
 	summoning 
 	addstring "c*Coal Miner"
@@ -613,7 +637,7 @@ newritual "Dig for Coal"
 	descr "Check the surrounding hills for coal. Must not be adjecent to an existing coal mine."
 
 newritual "Silver and Gold"
-	level                 	1
+	level                 	2
 	free
 	cost              		0 0 # 10 gold
 	apcost					1
@@ -621,6 +645,8 @@ newritual "Silver and Gold"
 	nonearby1req            15 # Silver Mine
 	nonearby1req            34 # Gold Mine
 	nomonplayerreq
+	closewin
+	killtarg 3
 
 	summoning 
 	addstring "Precious Metal Miner"
@@ -629,7 +655,7 @@ newritual "Silver and Gold"
 	descr "Check surrounding Iron Mines for signs of precious metals. Silver is much more common that Gold"
 
 newritual "Pan for Gold"
-	level                 	1
+	level                 	2
 	free
 	cost              		0 0 # 10 gold
 	apcost					1
@@ -637,6 +663,8 @@ newritual "Pan for Gold"
 	nonearby1req            -12 # Greater Mine
 	nearby1req              67 # River
 	nomonplayerreq
+	closewin
+	killtarg 3
 
 	summoning 
 	addstring "Gold Panner"
@@ -653,35 +681,59 @@ newmonster "Prospectors"
 	copystats "Angry Peasant" 
 	spr1 "mainsprites/miners.png"
 	spr2 "mainsprites/miners1.png"
-
+	rank -1
+	rearpos							 # Back back
 	hp 9
+	noheal
 	size2x2
 	clearweapons
 	meleeweapon               0 441 # Pick Axe: d6 Pierce damage.
 	meleeweapon               0 441 # Pick Axe: d6 Pierce damage.
 	meleeweapon               0 441 # Pick Axe: d6 Pierce damage.
 	noleader 
-	power 0 3
+	power 0 1
+	mastery 1
+
+newmonster "Engineers"
+	copystats "Angry Peasant" 
+	spr1 "mainsprites/engineers.png"
+	spr2 "mainsprites/engineers1.png"
+	rank                      -1
+	noheal
+	rearpos							 # Back back
+	hp 9
+	size2x2
+	clearweapons
+	meleeweapon                0 441 # Pick Axe: d6 Pierce damage.
+	meleeweapon               -1 142 # Great Maul: d7 Blunt damage.
+	meleeweapon                0   6 # Hammer: d4 Blunt damage.
+	noleader 
+	power 0 2
 
 newmonster "Iron Miner"
 	copystats "Slave Worker" 
 	copyspr "Slave Worker" 
-
+	rank -1
+	rearpos							 # Back back
 
 newmonster "Coal Miner"
 	copystats "Slave Worker" 
 	copyspr "Slave Worker" 
+	rank -1
+	rearpos							 # Back back
 
 
 newmonster "Precious Metal Miner"
 	copystats "Slave Worker" 
 	copyspr "Slave Worker" 
-
+	rank -1
+	rearpos							 # Back back
 
 newmonster "Gold Panner"
 	copystats "Slave Worker" 
 	copyspr "Slave Worker" 
-
+	rank -1
+	rearpos							 # Back back
 
 #########
 # Items #
@@ -693,6 +745,28 @@ newmonster "Gold Panner"
 # Terrain Modifications #
 #########################
 
+########
+# Elysium
+########
+
+# Mines should be -1 MM
+
+selectterr 		105 # Coal Mine
+	apcost 1
+
+selectterr       14 # Iron Mine
+	apcost 2
+
+selectterr       15 # Silver Mine
+	apcost 2
+
+selectterr       33 # Gold Stream
+	apcost 2
+
+selectterr       34 # Gold Mine
+	apcost 2
+selectterr       332 # Abandoned Mine
+	apcost 2
 ######
 # Elemetnal Plane
 ######
@@ -782,7 +856,7 @@ squareevent
 endevent
 
 
-#######
+######
 # Void
 ######
 
@@ -798,7 +872,7 @@ selectterr      232 # Corkscrew Towers
 
 ########
 # Primal
-#######
+########
 
 selectterr       89 # Mystical Column
 	ritrebate        20 # All rituals cast on this location will be 10% cheaper.
@@ -834,7 +908,7 @@ batmap           39
 
 selectterr      700
 	name "Frozen Swamp"
-	spr "sprites/frozenswamp.tga"
+	spr "mainsprites/frozenswamp.tga"
 	herbs             1 # Herbs:  1
 	fungus            3 # Fungus:  3
 	lifeforce        20 # 2 Lifeforce can be drained from this square per turn.
@@ -843,13 +917,21 @@ selectterr      700
 
 selectterr      701
 	name "Frozen Iron Bog"
-	spr "sprites/frozenswamp.tga"
+	spr "mainsprites/frozenswamp.tga"
 	iron              1 # Iron:  1
 	herbs             1 # Herbs:  1
 	fungus            2 # Fungus:  2
 	lifeforce        10 # 1 Lifeforce can be drained from this square per turn.
 	lifeforce        20 # 2 Lifeforce can be drained from this square per turn.
 	nosight             # The terrain does not provide vision into adjacent squares when owned.
+	apcost 1            # Action Point cost for moving through the terrain: 3
+
+selectterr      702
+	name "Lumber Yard"
+	spr "mainsprites/lumberyard.png"
+	iron              1 # Iron:  1
+	gold 			  1 # Gold:  1
+	lifeforce        10 # 1 Lifeforce can be drained from this square per turn.
 	apcost 1            # Action Point cost for moving through the terrain: 3
 
 ##################
@@ -1017,97 +1099,6 @@ squareevent
 	+chance 10
 	newunits -3 "Peasant"
 endevent
-
-
-# playerevent
-# 	-player  24
-# 	-player  25       
-# 	-player  26       
-# 	-player  27
-# 	-player  27       
-# 	-player  29   
-# 	-player  30
-# 	+chance 20
-# 	+ownsloctarg -2 -64 # Farms and Hamlets
-
-# 	newunits -2 "Peasant"
-# 	message -2 "A Small Settlment has granted you a peasant"
-# endevent
-
-# playerevent
-# 	-player  24
-# 	-player  25       
-# 	-player  26       
-# 	-player  27
-# 	-player  27       
-# 	-player  29   
-# 	-player  30
-# 	+chance 20
-# 	+ownsloctarg -2 -16 # Villages sized
-
-# 	newunits -2 "Peasant"
-# 	message -2 "A Settlment has granted you a peasant"
-# endevent
-
-# playerevent
-# 	-player  24
-# 	-player  25       
-# 	-player  26       
-# 	-player  27
-# 	-player  27       
-# 	-player  29   
-# 	-player  30
-# 	+chance 20
-# 	+ownsloctarg -2 -113 # City
-
-# 	newunits -2 "Peasant"
-# 	message -2 "A City has granted you a peasant"
-# endevent
-
-# playerevent
-# 	-player  24
-# 	-player  25       
-# 	-player  26       
-# 	-player  27
-# 	-player  27       
-# 	-player  29   
-# 	-player  30
-# 	+chance 20 
-# 	+ownsloctarg -2 17 # Town
-
-# 	newunits -2 "Peasant"
-# 	message -2 "A Town has granted you a peasant"
-# endevent
-
-# playerevent
-# 	-player  24
-# 	-player  25       
-# 	-player  26       
-# 	-player  27
-# 	-player  27       
-# 	-player  29   
-# 	-player  30
-# 	+chance 20 
-# 	+ownsloctarg -2 -68 # Capital Prov
-
-# 	newunits -2 "Peasant"
-# 	message -2 "The captial has granted you a peasant"
-# endevent
-
-# playerevent
-# 	-player  24
-# 	-player  25       
-# 	-player  26       
-# 	-player  27
-# 	-player  27       
-# 	-player  29   
-# 	-player  30
-# 	+chance 20 
-# 	+ownsloctarg -2 -93 # Port
-
-# 	newunits -2 "Peasant"
-# 	message -2 "A Port has granted you a peasant"
-# endevent
 
 # Settlers spawn
 
