@@ -49,7 +49,8 @@ newritual     "Lesser Ritual of Peasantry"                                  #  1
 	soundfx               57 # Sound effect when the ritual is cast: orchhit.smp (Summoning).
 	rebatelvl              1 # Ritual can be cast for half price if caster's power level is greater than or equal to 2.
 	free                     # Always start with this ritual in addition to the others.
-	
+	terr                  -32 # Villages and Larger
+
 
 	descr "The migrants go to a settlement to aquire the basic skills for establishing a more oragnized rural settlement. They recieve training on the shodding of horses and the building of larger and more permanent buildings as well as pick up the supplies to make use of these skills. "
 
@@ -181,13 +182,12 @@ newritual "Develop Settlement"
 	alterloc             	18 # Village
 	soundfx               	57
 	nearby1req	           -64  # Farms and Hamlets
-	killtarg 9999
 	
+	killtarg 9999
 	promotion 				3
 	addstring "Peasant"
 	addstring "Emigrating Peasant"
 	addstring "(&)Peasant"
-	killtarg 9999
 	descr "The settlerss find a suitable Hamlet and expand the central community to develop it into a village. Nearby farms and Hamlets can provide some of the needed resources and people to support the new community. Consumes 3 Peasants."
 
 newritual "Develop Prosperous Settlement"
@@ -204,11 +204,11 @@ newritual "Develop Prosperous Settlement"
 	nearby1req	           -32  # Villages or Larger
 	nearby3req	           -31  # Fortified Locations
 	
+	killtarg 9999
 	promotion 				2
 	addstring "Peasant"
 	addstring "Emigrating Peasant"
 	addstring "(&)Peasant"
-	killtarg 9999
 
 	descr "The settlerss find a suitable Hamlet and expand the central community to develop it into a village. Nearby farms and settlments will provide much of the needed resources and people to support the new community. Having a foritifed location nearby increase the likelyhood people will want to move to the new village. Consumes 2 Peasants."
 
@@ -242,11 +242,11 @@ newritual "Create Market Village"
 	
 	soundfx               	57
 	alterloc             	206 # Market Village
+	killtarg 9999
 	promotion 				1
 	addstring "Peasant"
 	addstring "Emigrating Peasant"
 	addstring "(&)Peasant"
-	killtarg 9999
 
 	descr "The settlerss find a densily populated area and set up a market it one of the villages to draw in surround farmers and peasants. Must be adjacent to a farm and a hamlet. Consumes 1 Peasant."
 
@@ -287,9 +287,9 @@ newritual "Build Town Palisade"
 	nearby1req	           -64  # Farm/Hamlet
 	nearby1req	           -16  # Village sized seetlment
 	nearby1req             -38  # Forests and Jungles
-	nonearby3req           -31  # Foritified Locations
-	killtarg 9999
+	nonearby1req           -31  # Foritified Locations
 
+	killtarg 9999
 	promotion 				4
 	addstring "Peasant"
 	addstring "Emigrating Peasant"
@@ -337,7 +337,7 @@ newritual "Establish Port"
 	nearby3req	           -40   # Hamlet
 	nearby3req	           -13   # Farms
 	nearby3req             -12   # Mine
-	nearby3req             -17   # Water
+	nearby1req             -43   # Water
 	nearby3req             -92   # Trade Location
 	
 	killtarg 9999
@@ -392,12 +392,12 @@ newritual "Establish Mercantile City"
 	nearby3req             -12   # Mine
 	nearby3req             -17   # Water
 	minmonreq 				6
-
+	
+	killtarg 9999
 	promotion 				6
 	addstring "Peasant"
 	addstring "Emigrating Peasant"
 	addstring "(&)Peasant"
-	killtarg 9999
 
 	descr "The settlerss find a prosperous Town centrally situated in a highly populated region and establishes a regional trading hub with strong walls and barracks for housing and traing troops. In order to create a thriving merchant city, the location must be withing 3 tiles of a market village, a Hamlet, a Farm, another town, a greater mine, and water.  Consumes 6 Peasants."
 
@@ -979,6 +979,7 @@ endevent
 squareevent
 	+turnnbr -1
 	+player 30
+	+squareowner 30
 	+terrain -1100 # Settlements + Farms
 	newunits -3 "5*Peasant"
 endevent
@@ -987,8 +988,9 @@ endevent
 squareevent
 	+turnnbr -1
 	+player 30
-	+terrain -4 # Mines
-	newunits -3 "5*Mine Worker"
+	+squareowner 24
+	+terrain -1100 # Settlements + Farms
+	newunits -3 "5*Peasant"
 endevent
 
 # Spawns 
@@ -1109,8 +1111,10 @@ playerevent
 	-player  30
 	+chance 5 
 	+minunits -2 5 0 "Peasant"
+	+hasunit -2 "Peasant"
 
 	newunits -2 "c*Migrants"
+	promoteunits -2 3 "Peasant" "Emigrating Peasant"
 	message -2 "having 5 peasants has granted you a Migrant"
 endevent
 
@@ -1124,7 +1128,10 @@ playerevent
 	-player  30
 	+chance  5
 	+minunits -2 10 0 "Peasant"
+	+hasunit -2 "Peasant"
+
 	newunits -2 "c*Migrants"
+	promoteunits -2 3 "Peasant" "Emigrating Peasant"
 	message -2 "having 10 peasants has granted you a Migrant"
 endevent
 
@@ -1138,8 +1145,10 @@ playerevent
 	-player  30
 	+chance  5
 	+minunits -2 15 0 "Peasant"
-	
+	+hasunit -2 "Peasant"
+
 	newunits -2 "c*Migrants"
+	promoteunits -2 3 "Peasant" "Emigrating Peasant"
 	message -2 "having 15 peasants has granted you a Migrant"
 endevent
 
@@ -1153,7 +1162,9 @@ playerevent
 	-player  30
 	+chance 5 
 	+minunits -2 5 0 "Mine Worker"
-
+	+hasunit -2 "Mine Worker"
+	
+	promoteunits -2 3 "Mine Worker" "Emigrating Peasant"
 	newunits -2 "c*Prospectors"
 	message -2 "having 5 mine workers has granted you some prospectors"
 endevent
@@ -1168,6 +1179,9 @@ playerevent
 	-player  30
 	+chance  5
 	+minunits -2 10 0 "Mine Worker"
+	+hasunit -2 "Mine Worker"
+	
+	promoteunits -2 3 "Mine Worker" "Emigrating Peasant"
 	newunits -2 "c*Prospectors"
 	message -2 "having 10 mine workers has granted you some prospectors"
 endevent
@@ -1182,7 +1196,9 @@ playerevent
 	-player  30
 	+chance  5
 	+minunits -2 15 0 "Mine Worker"
+	+hasunit -2 "Mine Worker"
 	
+	promoteunits -2 3 "Mine Worker" "Emigrating Peasant"
 	newunits -2 "c*Prospectors"
 	message -2 "having 15 mine workers has granted you some prospectors"
 endevent
@@ -1228,16 +1244,17 @@ endevent
 
 # Downgrades Settlements when controlled by Horrors
 
+
 playerevent
 	+player  26        # Occurs on the independant turn
 	+plane 0
-	+ownsloctarg 26  -13    # Horrors own a Village
+	+ownsloctarg 26  -13     # Horrors own a Farm
 	+armyowner 26          # And has an army there
 	+chance 100
 
-	alterterrain 7    # Village Becomes a Hamlet
+	alterterrain 0    # Farm Becomes a Plain (RIP)
+	message -1 "A Farm has been Abandoned due to horrors!"
 	addvar 711 1
-	message -1 "A Village has been diminished by horrors!"
 endevent
 
 playerevent
@@ -1255,13 +1272,13 @@ endevent
 playerevent
 	+player  26        # Occurs on the independant turn
 	+plane 0
-	+ownsloctarg 26  -13     # Horrors own a Farm
+	+ownsloctarg 26  -13    # Horrors own a Village
 	+armyowner 26          # And has an army there
 	+chance 100
 
-	alterterrain 0    # Farm Becomes a Plain (RIP)
-	message -1 "A Farm has been Abandoned due to horrors!"
+	alterterrain 7    # Village Becomes a Hamlet
 	addvar 711 1
+	message -1 "A Village has been diminished by horrors!"
 endevent
 
 playerevent
