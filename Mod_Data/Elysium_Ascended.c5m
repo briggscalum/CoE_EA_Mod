@@ -25,6 +25,9 @@ newmonster "Woodsman"
 	rank                          -1 # Back rank.
 	rearpos							 # Back back
 	stupid
+	wanderrest 0
+	hatesterr -6
+	followstupid
 	forest1
 	jungle1
 
@@ -744,6 +747,24 @@ newmonster "Gold Panner"
 	rank -1
 	rearpos							 # Back back
 
+
+newritpow "Forestry"
+
+newritual "Cultivate Magical Crops "
+	level                 	1
+	free
+	descr "The forester finds a farm and introduces the cultivation of magical crops. Afterwards the farm will no longer produce excess crops for profit but will produce herbs or fungus"
+
+
+newmonster "Foresters"
+	copystats "Scout"
+	hp 10
+	clearweapons
+	meleeweapon                0   3 # Axe: d8 Slash damage.
+	meleeweapon                0   3 # Axe: d8 Slash damage.
+	meleeweapon                0   3 # Axe: d8 Slash damage.
+	size2x2
+	power 0 2
 #########
 # Items #
 #########
@@ -1112,12 +1133,19 @@ endevent
 squareevent
 	+player 24
 	+terrain -6 #Forests and Jungles
-	+chance 5
+	+chance 1
 	-squareowner 24 
 	newunits -3 "Woodsman"
 endevent
 
-
+squareevent
+	+player 24
+	+terrain -6 #Forests and Jungles
+	+chance 3
+	-squareowner 24 
+	+hasunithere -3 "Woodsman"
+	newunits -3 "Woodsman"
+endevent
 # Settlers spawn
 
 playerevent
@@ -1169,6 +1197,57 @@ playerevent
 	newunits -2 "c*Migrants"
 	promoteunits -2 3 "Peasant" "Emigrating Peasant"
 	message -2 "having 15 peasants has granted you a Migrant"
+endevent
+
+playerevent
+	-player  24
+	-player  25       
+	-player  26       
+	-player  27
+	-player  27       
+	-player  29   
+	-player  30
+	+chance 5 
+	+minunits -2 5 0 "Woodsman"
+	+hasunit -2 "Woodsman"
+
+	newunits -2 "c*Foresters"
+	promoteunits -2 3 "Woodsman" "Emigrating Peasant"
+	message -2 "having 5 Woodsman has granted you some Foresters"
+endevent
+
+playerevent
+	-player  24
+	-player  25       
+	-player  26       
+	-player  27
+	-player  27       
+	-player  29   
+	-player  30
+	+chance  5
+	+minunits -2 10 0 "Woodsman"
+	+hasunit -2 "Woodsman"
+
+	newunits -2 "c*Foresters"
+	promoteunits -2 3 "Woodsman" "Emigrating Peasant"
+	message -2 "having 10 woodsmen has granted you some Foresters"
+endevent
+
+playerevent
+	-player  24
+	-player  25       
+	-player  26       
+	-player  27
+	-player  27       
+	-player  29   
+	-player  30
+	+chance  5
+	+minunits -2 15 0 "Woodsman"
+	+hasunit -2 "Woodsman"
+
+	newunits -2 "c*Foresters"
+	promoteunits -2 3 "Woodsman" "Emigrating Peasant"
+	message -2 "having 15 woodsman has granted you a Migrant"
 endevent
 
 playerevent
