@@ -19,6 +19,62 @@ modprio 2
 ## Units
 ###########
 
+newritpow "Garrison Magic"
+
+newmonster "Garrison Commander"
+	copystats"Captain"
+	copyspr "Captain"
+	power 0 1
+	rank                          -1 # Back rank.
+	rearpos							 # Back back
+
+newmonster "Garrison Archer"
+	dmgonterr
+	copystats "Archer"
+	copyspr  "Archer"
+	stationary
+
+newmonster "Garrison Spearmen"
+	copystats"Spearman"
+	copyspr "Spearman"
+	stationary
+
+
+newmonster "Activated Garrison Archer"
+	copystats "Archer"
+	copyspr  "Archer"
+	# gold -1
+
+newmonster "Activated Garrison Spearmen"
+	copystats"Spearman"
+	copyspr "Spearman"
+	# gold -1
+
+	
+
+newritual     "Call up Reserves"                                  #  18
+	descr "Activates the Reserve troops of the local city to active duty. They are not fitted out or well suited for campaigning and will slowly attrition until they are returned to their base"
+	level 1
+	apcost -1
+	promotion 5
+	addstring "Garrison Archer"
+	addstring "Activated Garrison Archer"
+	addstring "Garrison Spearmen"
+	addstring "Activated Garrison Spearmen"
+
+newritual     "Stand down Reserves"                                  #  18
+	descr "Activates the Reserve troops of the local city to active duty. They are not fitted out to campain"
+	level 1
+	apcost -1
+	promotion 5
+	addstring "Activated Garrison Archer"
+	addstring "Garrison Archer"
+	addstring "Activated Garrison Spearmen"
+	addstring "Garrison Spearmen"
+
+
+
+
 newmonster "Woodsman"
 	spr1 "mainsprites/woodsman.png"
 	spr2 "mainsprites/woodsman1.png"
@@ -49,7 +105,9 @@ newmonster "Emigrating Peasant"
 	dmgonterr -1 # Dead Everywhere
 	dmgonterrbonus 9999
 
-newritpow "Settlers magic"
+
+
+newritpow "Settlers Magic"
 
 newritual     "Lesser Ritual of Peasantry"                                  #  18
 	level                  1
@@ -1008,6 +1066,22 @@ endevent
 # Events #
 ##########
 
+playerevent
+	+hasunit -2 "Garrison Commander"
+	targetunitloc
+	+terrain -31 # Fortified Locations
+	+newunits "Garrison Archer"
+endevent
+
+playerevent
+	+hasunit -2 "Garrison Commander"
+	targetunitloc
+	+terrain -31 # Fortified Locations
+	+newunits "Garrison Spearmen"
+endevent
+
+
+
 # Miner Mining Mines
 playerevent
 	+hasunit -2 "Iron Miner"
@@ -1741,6 +1815,7 @@ newmonster "Netherstestguy"
 
 # addcomrec "Netherstestguy" 100 0 0 0
 selectclass 29 # Raksharaja
+	addstartcom "Garrison Commander"
 	addstartcom "Netherstestguy"
 	addstartcom "Prospectors"
 	addstartcom "Settlers"
