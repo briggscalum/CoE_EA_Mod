@@ -1081,6 +1081,17 @@ playerevent
 endevent
 
 
+playerevent
+	+hasunit -2 "Activated Garrison Spearmen"
+	+newunits "Garrison Archer"
+endevent
+
+playerevent
+	+hasunit -2 "Activated Garrison Spearmen"
+	+newunits "Garrison Spearmen"
+endevent
+
+
 
 # Miner Mining Mines
 playerevent
