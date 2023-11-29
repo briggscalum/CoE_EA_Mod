@@ -668,6 +668,14 @@ newritual "Setup Mine Town"
 	# killtarg 9999
 	descr "The Prospectors goes to a village bordering a mine and sets up a ore mining and refining operation. "
 
+
+newritual "Re-open mine"
+	level                 	1
+	free
+
+# Random Mine, level 2
+# Consumes Many Miners
+
 newritual "Dig for Iron"
 	level                 	1
 	free
