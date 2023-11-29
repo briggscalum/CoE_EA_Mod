@@ -22,57 +22,41 @@ modprio 2
 newritpow "Garrison Magic"
 
 newmonster "Garrison Commander"
-	copystats"Captain"
+	copystats "Captain"
 	copyspr "Captain"
 	power 0 1
 	rank                          -1 # Back rank.
 	rearpos							 # Back back
 
 newmonster "Garrison Archer"
-	dmgonterr
 	copystats "Archer"
 	copyspr  "Archer"
-	stationary
+	dmgonterr -1
+	fastheal
+	noheal
+	healonterr -9 # Fortified citadels
 
 newmonster "Garrison Spearmen"
-	copystats"Spearman"
+	copystats "Spearman"
 	copyspr "Spearman"
-	stationary
+	dmgonterr -1
+	fastheal
+	noheal
+	healonterr -9  # Fortified citadels
 
-
-newmonster "Activated Garrison Archer"
-	copystats "Archer"
-	copyspr  "Archer"
-	# gold -1
-
-newmonster "Activated Garrison Spearmen"
-	copystats"Spearman"
-	copyspr "Spearman"
-	# gold -1
-
-	
-
-newritual     "Call up Reserves"                                  #  18
+newritual     "Hire Defense Infantry"                                  #  18
 	descr "Activates the Reserve troops of the local city to active duty. They are not fitted out or well suited for campaigning and will slowly attrition until they are returned to their base"
 	level 1
-	apcost -1
-	promotion 5
-	addstring "Garrison Archer"
-	addstring "Activated Garrison Archer"
-	addstring "Garrison Spearmen"
-	addstring "Activated Garrison Spearmen"
+	free
+	summoning
+	addstring     "5*Garrison Spearmen"
 
-newritual     "Stand down Reserves"                                  #  18
-	descr "Activates the Reserve troops of the local city to active duty. They are not fitted out to campain"
+newritual     "Hire Defense Archers"                                  #  18
+	descr "Activates the Reserve troops of the local city to active duty. They are not fitted out or well suited for campaigning and will slowly attrition until they are returned to their base"
 	level 1
-	apcost -1
-	promotion 5
-	addstring "Activated Garrison Archer"
-	addstring "Garrison Archer"
-	addstring "Activated Garrison Spearmen"
-	addstring "Garrison Spearmen"
-
-
+	free
+	summoning
+	addstring     "5*Garrison Archer"
 
 
 newmonster "Woodsman"
@@ -673,6 +657,17 @@ newritual "Setup Lumber Yard"
 	killtarg 9999
 	descr "The Prospectors cut new roads through the forest and set up a logging enterprize there. This provides both a steady income and an easier path for troops to travel through the forest. A Propsector settles in the province after setting up the lumber yard"
 
+newritual "Setup Mine Town"
+	level                 	1
+	free
+	cost              		0 10 # 10 gold
+	cost              		1 10 # 10 iron
+	terr					40  # Forests
+	nearby1req            -12 # Greater Mine
+	alterloc                703  # Mine Town
+	# killtarg 9999
+	descr "The Prospectors goes to a village bordering a mine and sets up a ore mining and refining operation. "
+
 newritual "Dig for Iron"
 	level                 	1
 	free
@@ -808,11 +803,27 @@ newmonster "Gold Panner"
 
 newritpow "Forestry"
 
-newritual "Cultivate Magical Crops "
-	level                 	1
-	free
-	descr "The forester finds a farm and introduces the cultivation of magical crops. Afterwards the farm will no longer produce excess crops for profit but will produce herbs or fungus"
+newmonster "Cultivation Lodge"
+	spr1 "mainsprites/lodge.png"
+	hp 20
+	stationary
+	immobile
+	rank -1
+	rearpos							 # Back back
+	fireres -50
+	fungi  1
+	herbs  1
+	descr "This Lodge Creates stuff"
 
+
+newritual "Build Cultivation Lodge"
+	level                 	1
+	cost 0 5
+	cost 1 5
+	free
+	summoning
+	addstring "Cultivation Lodge"
+	descr "The Forester sets up a lodge in a forest near a settlement to help with the garthering, preserving, and storage of magical herbs and fungus. Only one of these is needed in each forest to maximize production"
 
 newmonster "Foresters"
 	copystats "Scout"
@@ -992,8 +1003,10 @@ citadel
 town2
 batmap           39 
 
-# New Terrain, Frozen Swamp
 
+###############
+# New Terrain
+###############
 selectterr      700
 	name "Frozen Swamp"
 	spr "mainsprites/frozenswamp.tga"
@@ -1021,6 +1034,19 @@ selectterr      702
 	gold 			  1 # Gold:  1
 	lifeforce        10 # 1 Lifeforce can be drained from this square per turn.
 	apcost 1            # Action Point cost for moving through the terrain: 3
+
+
+selectterr      703
+	name "Mine Town"
+	spr "mainsprites/minetown.png"
+	gems              4096
+	gold              2 # Gold:  2
+	iron              1
+	sacr              1 # Sacrifices:  1
+	hands             1 # Hands:  1
+	lifeforce        10 # 1 Lifeforce can be drained from this square per turn.
+	apcost 1            # Action Point cost for moving through the terrain: 3
+	smoke
 
 ##################
 # Terrain Events #
@@ -1065,33 +1091,6 @@ endevent
 ##########
 # Events #
 ##########
-
-playerevent
-	+hasunit -2 "Garrison Commander"
-	targetunitloc
-	+terrain -31 # Fortified Locations
-	+newunits "Garrison Archer"
-endevent
-
-playerevent
-	+hasunit -2 "Garrison Commander"
-	targetunitloc
-	+terrain -31 # Fortified Locations
-	+newunits "Garrison Spearmen"
-endevent
-
-
-playerevent
-	+hasunit -2 "Activated Garrison Spearmen"
-	+newunits "Garrison Archer"
-endevent
-
-playerevent
-	+hasunit -2 "Activated Garrison Spearmen"
-	+newunits "Garrison Spearmen"
-endevent
-
-
 
 # Miner Mining Mines
 playerevent
@@ -1829,4 +1828,4 @@ selectclass 29 # Raksharaja
 	addstartcom "Garrison Commander"
 	addstartcom "Netherstestguy"
 	addstartcom "Prospectors"
-	addstartcom "Settlers"
+	addstartcom "Foresters"
