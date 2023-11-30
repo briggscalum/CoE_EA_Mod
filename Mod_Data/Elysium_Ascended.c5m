@@ -665,15 +665,32 @@ newritual "Setup Mine Town"
 	terr					40  # Forests
 	nearby1req            -12 # Greater Mine
 	alterloc                703  # Mine Town
-	# killtarg 9999
+	killtarg 9999
 	descr "The Prospectors goes to a village bordering a mine and sets up a ore mining and refining operation. "
 
 
 newritual "Re-open mine"
 	level                 	1
 	free
+	cost              		0 10 # 10 gold
+	cost              		1 10 # 10 iron
+	terr                  332 # Abandoned Mine
+	ornext2 5
+	alterloc 34               # 5% chance of a Gold mine
+	killtarg 9999
 
-# Random Mine, level 2
+	ornext2 15
+	alterloc 15               # 15% Silver Mine
+	killtarg 9999
+	
+	ornext2 50
+	alterloc 14               # Otherwise an Iron Mine
+	killtarg 9999
+
+
+	descr "The Prospectors Spend some time and money re-opening an abandoned mine. If they managed to find a vein worth extracting they will settle down an set up a new mine. Most abandoned mine were just for iron, iron is everywhere after all. But who knows?"
+
+
 # Consumes Many Miners
 
 newritual "Dig for Iron"
@@ -749,6 +766,7 @@ newmonster "Mine Worker"
 	copystats "Slave Worker"
 	copyspr "Slave Worker" 
 	ironcarrier 5
+	descr "Mine Workers extract ore and gems from mine. When enough of them collect, they will organize into a travelling group of workers who are able to go find new mine or other infastructure projects. Mine workers mainly come from towns and cities, and will acumulate faster if you own them."
 
 newmonster "Prospectors"
 	copystats "Angry Peasant" 
@@ -821,6 +839,7 @@ newmonster "Cultivation Lodge"
 	fireres -50
 	fungi  1
 	herbs  1
+	fewmonreq 0
 	descr "This Lodge Creates stuff"
 
 
@@ -829,8 +848,10 @@ newritual "Build Cultivation Lodge"
 	cost 0 5
 	cost 1 5
 	free
+	fewmonreq 0
 	summoning
 	addstring "Cultivation Lodge"
+	addstring "(-)Cultivation Lodge"
 	descr "The Forester sets up a lodge in a forest near a settlement to help with the garthering, preserving, and storage of magical herbs and fungus. Only one of these is needed in each forest to maximize production"
 
 newmonster "Foresters"
@@ -1208,10 +1229,25 @@ squareevent
 endevent
 
 # Spawns 
-squareevent
-	+player 24
-	+terrain -4 # Mines
+playerevent
+	+ownsloctarg -2 -4 # Owns a Mines
+	+chance 5
+	newunits -3 "Mine Worker"
+endevent
+
+# Spawns 
+playerevent
+	+ownsloc -2 17   # If you Own a Town
+	+ownsloctarg -2 -4 # Owns a Mines
 	+chance 10
+	newunits -3 "Mine Worker"
+endevent
+
+# Spawns 
+playerevent
+	+ownsloc -2 -113   # If you Own a City
+	+ownsloctarg -2 -4 # Owns a Mines
+	+chance 20
 	newunits -3 "Mine Worker"
 endevent
 
