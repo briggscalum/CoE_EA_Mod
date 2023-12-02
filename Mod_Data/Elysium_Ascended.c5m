@@ -15,6 +15,62 @@ modprio 2
 # Populates ritpower 68-100
 
 
+###############
+# New Terrain
+###############
+selectterr      700
+	name "Frozen Swamp"
+	spr "mainsprites/frozenswamp.tga"
+	herbs             1 # Herbs:  1
+	fungus            3 # Fungus:  3
+	lifeforce        20 # 2 Lifeforce can be drained from this square per turn.
+	nosight             # The terrain does not provide vision into adjacent squares when owned.
+	apcost 1            # Action Point cost for moving through the terrain: 3
+
+selectterr      701
+	name "Frozen Iron Bog"
+	spr "mainsprites/frozenswamp.tga"
+	iron              1 # Iron:  1
+	herbs             1 # Herbs:  1
+	fungus            2 # Fungus:  2
+	lifeforce        10 # 1 Lifeforce can be drained from this square per turn.
+	lifeforce        20 # 2 Lifeforce can be drained from this square per turn.
+	nosight             # The terrain does not provide vision into adjacent squares when owned.
+	apcost 1            # Action Point cost for moving through the terrain: 3
+
+selectterr      702
+	name "Lumber Yard"
+	spr "mainsprites/lumberyard.png"
+	iron              1 # Iron:  1
+	gold 			  1 # Gold:  1
+	lifeforce        10 # 1 Lifeforce can be drained from this square per turn.
+	apcost 1            # Action Point cost for moving through the terrain: 3
+
+
+selectterr      703
+	name "Mine Town"
+	spr "mainsprites/minetown.png"
+	gems              4096   # One Random
+	gold              2 	 # Gold:  2
+	iron              1
+	sacr              1 	 # Sacrifices:  1
+	hands             1 	 # Hands:  1
+	lifeforce        10 	 # 1 Lifeforce can be drained from this square per turn.
+	apcost 1            	 # Action Point cost for moving through the terrain: 3
+	smoke
+
+
+selectterr      704
+	name "Enchanted River"
+	lifeforce         5 # 0.5 Lifeforce can be drained from this square per turn.
+	apcost            2 # Action Point cost for moving through the terrain: 2
+	water               # The terrain is water and cannot be passed, unless it is frozen or the monsters moving through it are amphibian or aquatic.
+	invisible           # Terrain on top of the background is not drawn, but the grass will still be drawn.
+	nostart             # This type of terrain cannot be overwritten by a start citadel from a player.
+	seepast             # Remote Horizon (can see 1 square past this one when adjacent to it).
+	misty
+
+
 ########### 
 ## Units
 ###########
@@ -637,13 +693,13 @@ newmonster "Colonists"
 newritpow "Miner Magic"
 
 newritual "Study Engineering"
-	cost             0 0 # 10 gold
-	cost             1 0 # 10 gold
-	terr              -3 # In a Library
+	cost                 0 0 # 10 gold
+	cost                 1 0 # 10 gold
+	terr                  -3 # In a Library
 	newrit                 2 # Caster will learn a new ritual of level 2.
 	levelup                2 # Level up to new monster (determined by mastery command on monster) if below level 2.
 	soundfx               57 # Sound effect when the ritual is cast: orchhit.smp (Summoning).
-	rebatelvl              1 # Ritual can be cast for half price if caster's power level is greater than or equal to 2.
+	rebatelvl              1s # Ritual can be cast for half price if caster's power level is greater than or equal to 2.
 	free                     # Always start with this ritual in addition to the others.
 	descr "Believing that things such as water wheels and deep mineshafts must be created by magic, the prospectors head to a local library to see about getting a wizard to help them with some more advanced projects. What they find instead tucked between 'Five ways to Blind a Beholder' and 'Making Fiends and Influencing Mammon' are books concerning the magic of triangles, force/torque diagrams, and the making of very large sheets of blue paper. With this newfound knowledge and some new tools, titles. and snazy outfits, they are ready to take on more advanced projects"
 
@@ -654,6 +710,8 @@ newritual "Setup Lumber Yard"
 	cost              		1 10 # 10 iron
 	terr					-11  # Forests
 	alterloc                702  # Lumber Mill
+	soundfx               57 # Sound effect when the ritual is cast: orchhit.smp (Summoning).
+
 	killtarg 9999
 	descr "The Prospectors cut new roads through the forest and set up a logging enterprize there. This provides both a steady income and an easier path for troops to travel through the forest. A Propsector settles in the province after setting up the lumber yard"
 
@@ -662,19 +720,22 @@ newritual "Setup Mine Town"
 	free
 	cost              		0 10 # 10 gold
 	cost              		1 10 # 10 iron
-	terr					40  # Forests
+	terr					40  # Village
 	nearby1req            -12 # Greater Mine
 	alterloc                703  # Mine Town
+	soundfx               57 # Sound effect when the ritual is cast: orchhit.smp (Summoning).
 	killtarg 9999
 	descr "The Prospectors goes to a village bordering a mine and sets up a ore mining and refining operation. "
 
 
 newritual "Re-open mine"
-	level                 	1
+	level                 	2
 	free
 	cost              		0 10 # 10 gold
 	cost              		1 10 # 10 iron
 	terr                  332 # Abandoned Mine
+	soundfx               57 # Sound effect when the ritual is cast: orchhit.smp (Summoning).
+
 	ornext2 5
 	alterloc 34               # 5% chance of a Gold mine
 	killtarg 9999
@@ -684,7 +745,7 @@ newritual "Re-open mine"
 	killtarg 9999
 	
 	ornext2 50
-	alterloc 14               # Otherwise an Iron Mine
+	alterloc 14               # Otherwise 50% Iron Mine
 	killtarg 9999
 
 
@@ -1002,9 +1063,85 @@ selectterr      232 # Corkscrew Towers
 # Primal
 ########
 
+
+
 selectterr       89 # Mystical Column
-	ritrebate        20 # All rituals cast on this location will be 10% cheaper.
+	ritrebate        20 # All rituals cast on this location will be 20% cheaper.
 	farsight
+
+# Fill the Primal plane with silver
+squareevent
+	+turnnbr   -1	#pre-game
+	+player    24 
+	+plane     	7  # Primal Plane	
+	+terrain   12  # Rock Ground
+	+chance 10
+	alterterrain 15 # Gem Deposits
+endevent
+
+# Enchants the primal plane
+squareevent
+	+turnnbr   -1	#pre-game
+	+player    24 
+	+plane     	7  # Primal Plane	
+	+terrain   -96   # Lakes
+	+chance 100
+	alterterrain 295 # Enchanted Lakes
+endevent
+
+# Enchants the primal plane
+squareevent
+	+turnnbr   -1	 # Pre-game
+	+player    24 
+	+plane     	7    # Primal Plane	
+	+terrain   67    # River
+	+chance 100
+	alterterrain 704 # Enchanted River
+endevent
+
+# Enchants the primal plane
+squareevent
+	+turnnbr   -1	 # Pre-game
+	+player    24 
+	+plane     	7    # Primal Plane	
+	+terrain   2     # Forest
+	+chance 10
+	alterterrain 8 # Enchanted River
+endevent
+
+# Enchants the primal plane
+squareevent
+	+turnnbr   -1	 # Pre-game
+	+player    24 
+	+plane     	7    # Primal Plane	
+	+terrain   48     # Bridge
+	+chance 100
+	newunits 24 "Troll"
+
+endevent
+
+# Enchants the primal plane
+squareevent
+	+turnnbr   -1	 # Pre-game
+	+player    24 
+	+plane     	7    # Primal Plane	
+	+terrain   49    # Bridge
+	+chance 100
+	newunits 24 "Troll"
+endevent
+
+#######
+# Atzlan
+######
+
+squareevent
+	+turnnbr   -1	 # Pre-game
+	+player    24 
+	+plane     	6    # Atzlan
+	+terrain   50    # Bridge
+	+chance 100
+	alterterrain 27
+endevent
 
 
 selectterrgroup -1100
@@ -1032,50 +1169,6 @@ citadel
 town2
 batmap           39 
 
-
-###############
-# New Terrain
-###############
-selectterr      700
-	name "Frozen Swamp"
-	spr "mainsprites/frozenswamp.tga"
-	herbs             1 # Herbs:  1
-	fungus            3 # Fungus:  3
-	lifeforce        20 # 2 Lifeforce can be drained from this square per turn.
-	nosight             # The terrain does not provide vision into adjacent squares when owned.
-	apcost 1            # Action Point cost for moving through the terrain: 3
-
-selectterr      701
-	name "Frozen Iron Bog"
-	spr "mainsprites/frozenswamp.tga"
-	iron              1 # Iron:  1
-	herbs             1 # Herbs:  1
-	fungus            2 # Fungus:  2
-	lifeforce        10 # 1 Lifeforce can be drained from this square per turn.
-	lifeforce        20 # 2 Lifeforce can be drained from this square per turn.
-	nosight             # The terrain does not provide vision into adjacent squares when owned.
-	apcost 1            # Action Point cost for moving through the terrain: 3
-
-selectterr      702
-	name "Lumber Yard"
-	spr "mainsprites/lumberyard.png"
-	iron              1 # Iron:  1
-	gold 			  1 # Gold:  1
-	lifeforce        10 # 1 Lifeforce can be drained from this square per turn.
-	apcost 1            # Action Point cost for moving through the terrain: 3
-
-
-selectterr      703
-	name "Mine Town"
-	spr "mainsprites/minetown.png"
-	gems              4096
-	gold              2 # Gold:  2
-	iron              1
-	sacr              1 # Sacrifices:  1
-	hands             1 # Hands:  1
-	lifeforce        10 # 1 Lifeforce can be drained from this square per turn.
-	apcost 1            # Action Point cost for moving through the terrain: 3
-	smoke
 
 ##################
 # Terrain Events #
@@ -1639,10 +1732,6 @@ playerevent
 	addvar 711 -1
 endevent
 
-
-
-
-
 # --------------SuperTestGuy--------------
 #This is just a simple OP debug monster to cheat/test stuff.
 
@@ -1651,6 +1740,15 @@ endevent
 
 
 newritpow "Test/Debug Rituals"
+
+
+newritual "Sea"
+	level                 	1
+	free
+	apcost					-1
+	alterloc             	27 # Farm
+	soundfx               	57
+	descr "The settlerss set out to create an indepentant farming community, Because there are no nearby settlements, this will require some additional funding"
 
 newritual "Nether's Super Scry"
 	level 1
