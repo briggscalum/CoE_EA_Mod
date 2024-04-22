@@ -89,7 +89,7 @@ newmonster    "Murder Monkey"
 	animal                           # Vulnerable to weapons and spells that only affect animals; leaves an animal corpse on death.
 	descr "Winged Monkeys are the creations of some twisted magic. The Raksharaja found them not twisted enough."
 
-newmonster "Yogini Aspirant"
+newmonster "Yogini "
 	spr1 "sprites/yoginiaspirant.png"
 	spr2 "sprites/yoginiaspirant1.png"
 	gatherweed
@@ -387,5 +387,5 @@ newritual 		"Monkey Buisness"
 playerevent
 	+class -2 "Raksharaja"
 	+hasunit -2 "Yogini"
-	promoteunits -2 1 "Yogini" "Yogini Aspirant"
+	promoteunits -2 1 "Yogini" "Yogini "
 endevent
