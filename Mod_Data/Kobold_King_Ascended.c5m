@@ -10,16 +10,6 @@ newritpow #Kobold Krafting
 
 # Variables used
 # Dragon Invortion
-# 700 - Fire Dragon Currently Incentivised
-# 701 - Fire Dragon Guaranteed turns of Invigoration
-# 702 - Frost Dragon Currently Incentivised
-# 703 - Frost Dragon Guaranteed turns of Invigoration
-# 704 - Storm Dragon Currently Incentivised
-# 705 - Storm Dragon Guaranteed turns of Invigoration
-# 706 - Bile Dragon Currently Incentivised
-# 707 - Bile Dragon Guaranteed turns of Invigoration
-# 708 - Dusk Dragon Currently Incentivised
-# 709 - Dusk Dragon Guaranteed turns of Invigoration
 # 710 - Tiamat Summoning
 
 #################
@@ -770,6 +760,35 @@ newmonster "Incentivised Fire Dragon"
 	randommisc                    50 # 50% chance to spawn with a random misc magic item.
 	dragon                         1 # Non-elder dragon.
 	greedy                         1 # This unit will never give away its magic items voluntarily.
+	growtime					   3 # Becomes spent in 3 turns
+	growoffs 					   1 # Become next unit
+
+newmonster "Spent Fire Dragon"
+	descr "This Fire Dragon has been enlivened by the Kobolds with fresh meat and magical gems. It is faster and more active than most of its kin, but will eventually return to its mostly sedentary state"
+	copyspr "Fire Dragon"
+
+	armor                          3 # Armor.
+	hp                           105 # Hit Points.
+	str                            9 # Strength.
+	mor                            7 # Morale.
+	mr                             9 # Magic Resistance.
+	rank                           1 # Front rank.
+	rangedweapon50s           10  85 # Fiery Breath: d10 Fire damage.
+	meleeweapon               25  11 # Bite: d25 Slash damage.
+	meleeweapon               20  12 # Claw: d20 Slash damage.
+	meleeweapon                5 485 # Tail Sweep: d5 Blunt damage.
+	flying        
+	stupid                 
+	huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
+	fireres                      100 # Fire immunity.
+	acutesenses                      # Can see units with Stealth or Forest Stealth.
+	fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
+	nametype                      15 # Old Nordic male.
+	randommisc                    50 # 50% chance to spawn with a random misc magic item.
+	dragon                         1 # Non-elder dragon.
+	greedy                         1 # This unit will never give away its magic items voluntarily.
+
+
 
 newmonster "Awakened Frost Dragon"
 	descr "Just like knights hunt the Fire Dragons in our part of the realm, barbarians in the northern wastes will try to hunt down their fabled Frost Dragons. In stark contrast to the Fire Dragon's diet of bold knights, the northern barbarians are less of a treat for the Frost Dragons. This is most likely due to their custom of smearing themselves with thick layers of rancid seal blubber to protect against the cold."
@@ -818,6 +837,33 @@ newmonster "Incentivised Frost Dragon"
 	nametype                      15 # Old Nordic male.
 	randommisc                    50 # 50% chance to spawn with a random misc magic item.
 	greedy                         1 # This unit will never give away its magic items voluntarily.
+	growtime					   3 # Becomes spent in 3 turns
+	growoffs 					   1 # Become next unit
+
+newmonster "Spent Frost Dragon"
+	descr "This Frost Dragon has been enlivened by the Kobolds with fresh meat and magical gems. It is faster and more active than most of its kin, but will eventually return to its mostly sedentary state"
+	copyspr "Frost Dragon"
+
+	armor                          3 # Armor.
+	hp                           105 # Hit Points.
+	str                            9 # Strength.
+	mor                            7 # Morale.
+	mr                             9 # Magic Resistance.
+	rank                           1 # Front rank.
+	rangedweapon50s           10 276 # Icy Breath: d10 Cold damage.
+	meleeweapon               25  11 # Bite: d25 Slash damage.
+	meleeweapon               20  12 # Claw: d20 Slash damage.
+	meleeweapon                5 485 # Tail Sweep: d5 Blunt damage.
+	flying                          
+	huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
+	coldres                      100 # Cold immunity.
+	acutesenses                      # Can see units with Stealth or Forest Stealth.
+	fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
+	nametype                      15 # Old Nordic male.
+	randommisc                    50 # 50% chance to spawn with a random misc magic item.
+	greedy                         1 # This unit will never give away its magic items voluntarily.
+
+
 
 newmonster "Awakened Storm Dragon"
 	descr "The Storm Dragon is associated with air, and sharing the same domain as the Cloud Lords, they have become a great nuisance in the cloud realms of late. While the rest of dragon kind is too cumbersome to travel the clouds without falling through, the Storm Dragon hunts and nests there with ease. It is reported that their nests are made up with feathers from cloud people, so it is assumed that they are also their preferred prey. Some attempts have been made to ascertain the diet of the Storm Dragons, but so far the Cloud Lords have refused whatever reasonable requests to borrow some of his subjects to try out the theory. He even refuses to tell us how many from his realm have been taken by dragons."
@@ -867,7 +913,37 @@ newmonster "Incentivised Storm Dragon"
 	stupid
 	nametype                      15 # Old Nordic male.
 	randommisc                    50 # 50% chance to spawn with a random misc magic item.
-	greedy                         1 # This unit will never give away its magic items voluntarily.
+	greedy                         1 # This unit will never give away its magic items voluntarily
+	growtime					   3 # Becomes spent in 3 turns
+	growoffs 					   1 # Become next unit
+
+newmonster "Spent Storm Dragon"
+	descr "This Storm Dragon has been enlivened by the Kobolds with fresh meat and magical gems. It is faster and more active than most of its kin, but will eventually return to its mostly sedentary state"
+	copyspr "Storm Dragon"
+
+	descr  # sprite number            21022
+	armor                          3 # Armor.
+	hp                           110 # Hit Points.
+	str                            9 # Strength.
+	mor                            7 # Morale.
+	mr                             9 # Magic Resistance.
+	rank                           1 # Front rank.
+	rangedweapon50s           10 858 # Lightning Breath: d10 Shock damage.
+	meleeweapon               25  11 # Bite: d25 Slash damage.
+	meleeweapon               20  12 # Claw: d20 Slash damage.
+	meleeweapon                5 485 # Tail Sweep: d5 Blunt damage.
+	flying                          
+	huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
+	shockres                     100 # Shock immunity.
+	acutesenses                      # Can see units with Stealth or Forest Stealth.
+	fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
+	stupid
+	nametype                      15 # Old Nordic male.
+	randommisc                    50 # 50% chance to spawn with a random misc magic item.
+	greedy                         1 # This unit will never give away its magic items voluntarily
+
+
+
 
 newmonster "Awakened Bile Dragon"
 	descr "In some of the deepest marshes, within clouds of dense miasma, dwells the Bile Dragon. It breathes poison and seems to thrive in the vile humors promoted in the swamps. It is uncertain what their immature form looks like, but in my opinion it is clear that the poison and miasma they exude indicates a twisted association to the element of earth. Some studies of defeated Bile Dragons have shown that they have wide cracks and large chafings in their otherwise thick and stone-like hide, and Basilea suggests in her Opus Draconica that the mud of the marshes may ease the itches the Bile Dragons suffer from, but that the vile humors of the swamp will seep into the cracks and be absorbed by the flesh beneath."
@@ -914,6 +990,32 @@ newmonster "Incentivised Bile Dragon"
 	nametype                      15 # Old Nordic male.
 	randommisc                    50 # 50% chance to spawn with a random misc magic item.
 	greedy                         1 # This unit will never give away its magic items voluntarily.
+	growtime					   3 # Becomes spent in 3 turns
+	growoffs 					   1 # Become next unit
+
+newmonster "Spent Bile Dragon"
+	descr "This Bile Dragon has been enlivened by the Kobolds with fresh meat and magical gems. It is faster and more active than most of its kin, but will eventually return to its mostly sedentary state"
+	copyspr "Bile Dragon"
+	armor                          3 # Armor.
+	hp                           105 # Hit Points.
+	str                            9 # Strength.
+	mor                            7 # Morale.
+	mr                             9 # Magic Resistance.
+	rank                           1 # Front rank.
+	rangedweapon50s           10  38 # Poison Breath: d10 Poison damage.
+	meleeweapon               25  11 # Bite: d25 Slash damage.
+	meleeweapon               20  12 # Claw: d20 Slash damage.
+	meleeweapon                5 485 # Tail Sweep: d5 Blunt damage.
+	flying                          
+	huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
+	stupid                           # Cannot be controlled by players and will move automatically like an independent unit.
+	poisonres                    100 # Poison immunity.
+	acutesenses                      # Can see units with Stealth or Forest Stealth.
+	fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
+	nametype                      15 # Old Nordic male.
+	randommisc                    50 # 50% chance to spawn with a random misc magic item.
+	greedy                         1 # This unit will never give away its magic items voluntarily.
+
 
 newmonster "Awakened Dusk Dragon"
 	descr "Made from shadow and regret, the darkest dragon of them all is the Dusk Dragon. It comes in the night and calls forth tearing shadows and manifest darkness. Still like most dragons it can be defeated by the valiant knights of the realm. Their scales are highly fashionable, and most nobles in the southern trade cities pay dearly for a Dusk Dragon scale mail, and it really is a must for the many masquerades in Ravezia. Much so that the prices have soared, and some sell sooted sturgeon scales, as those of the Dusk Dragon."
@@ -962,6 +1064,36 @@ newmonster "Incentivised Dusk Dragon"
 	randommisc                    50 # 50% chance to spawn with a random misc magic item.
 	lairgoldpen                   50 # 50% Gold income penalty for this monster's home square.
 	greedy                         1 # This unit will never give away its magic items voluntarily.
+	growtime					   3 # Becomes spent in 3 turns
+	growoffs 					   1 # Become next unit
+
+newmonster "Spent Dusk Dragon"
+	descr "This Dusk Dragon has been enlivened by the Kobolds with fresh meat and magical gems. It is faster and more active than most of its kin, but will eventually return to its mostly sedentary state"
+	copyspr "Dusk Dragon"
+	armor                          3 # Armor.
+	hp                           105 # Hit Points.
+	str                            9 # Strength.
+	mor                            7 # Morale.
+	mr                             9 # Magic Resistance.
+	rank                           1 # Front rank.
+	spellweapon50s             9   2 # Dark Magic at level 2.
+	meleeweapon               25  11 # Bite: d25 Slash damage.
+	meleeweapon               20  12 # Claw: d20 Slash damage.
+	meleeweapon                5 485 # Tail Sweep: d5 Blunt damage.
+	flying                          
+	huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
+	stupid                           # Cannot be controlled by players and will move automatically like an independent unit.
+	acutesenses                      # Can see units with Stealth or Forest Stealth.
+	stealth                          # Can only be seen by units with Acute Senses or Spirit Sight.
+	fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
+	nametype                      15 # Old Nordic male.
+	randommisc                    50 # 50% chance to spawn with a random misc magic item.
+	lairgoldpen                   50 # 50% Gold income penalty for this monster's home square.
+	greedy                         1 # This unit will never give away its magic items voluntarily.
+	growtime					   3 # Becomes spent in 3 turns
+	growoffs 					   1 # Become next unit
+
+
 
 newweapon  "Silver Swordword"                                               
 	trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
@@ -995,70 +1127,70 @@ newmonster "Silver Dragon Spawn"
 # Debug Rituals
 #####
 
-# newritual     "Debug Summon Fire Dragon"                                             # 471
-# 	descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
-# 	ritpow                0 # Kobold, Red
-# 	level                  1
-# 	free
-# 	cost              0   1 # 50 Gold
-# 	cost             16   1 # 25 Kobolds
-# 	terr                 -1 # Required terrain: proper mines.
-# 	# fx1031             431 # Unhandled trait 1031 with argument 431.
-# 	summoning                # The ritual will summon the monsters specified in a random string.
-# 	aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
-# 	addstring     "c*Fire Dragon"
+newritual     "Debug Summon Fire Dragon"                                             # 471
+	descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
+	#ritpow                0 # Kobold, Red
+	level                  1
+	free
+	cost              0   1 # 50 Gold
+	cost             16   1 # 25 Kobolds
+	terr                 -1 # Required terrain: proper mines.
+	# fx1031             431 # Unhandled trait 1031 with argument 431.
+	summoning                # The ritual will summon the monsters specified in a random string.
+	aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
+	addstring     "c*Fire Dragon"
 
-# newritual     "Debug Summon Frost Dragon"                                             # 471
-# 	descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
-# 	ritpow                0 # Kobold, Red
-# 	level                  1
-# 	free
-# 	cost              0   1 # 50 Gold
-# 	cost             16   1 # 25 Kobolds
-# 	terr                 -1 # Required terrain: proper mines.
-# 	# fx1031             431 # Unhandled trait 1031 with argument 431.
-# 	summoning                # The ritual will summon the monsters specified in a random string.
-# 	aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
-# 	addstring     "c*Frost Dragon"
+newritual     "Debug Summon Frost Dragon"                                             # 471
+	descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
+	#ritpow                0 # Kobold, Red
+	level                  1
+	free
+	cost              0   1 # 50 Gold
+	cost             16   1 # 25 Kobolds
+	terr                 -1 # Required terrain: proper mines.
+	# fx1031             431 # Unhandled trait 1031 with argument 431.
+	summoning                # The ritual will summon the monsters specified in a random string.
+	aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
+	addstring     "c*Frost Dragon"
 
-# newritual     "Debug Summon Storm Dragon"                                             # 471
-# 	descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
-# 	ritpow                0 # Kobold, Red
-# 	level                  1
-# 	free
-# 	cost              0   1 # 50 Gold
-# 	cost             16   1 # 25 Kobolds
-# 	terr                 -1 # Required terrain: proper mines.
-# 	# fx1031             431 # Unhandled trait 1031 with argument 431.
-# 	summoning                # The ritual will summon the monsters specified in a random string.
-# 	aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
-# 	addstring     "c*Storm Dragon"
+newritual     "Debug Summon Storm Dragon"                                             # 471
+	descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
+	#ritpow                0 # Kobold, Red
+	level                  1
+	free
+	cost              0   1 # 50 Gold
+	cost             16   1 # 25 Kobolds
+	terr                 -1 # Required terrain: proper mines.
+	# fx1031             431 # Unhandled trait 1031 with argument 431.
+	summoning                # The ritual will summon the monsters specified in a random string.
+	aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
+	addstring     "c*Storm Dragon"
 
-# newritual     "Debug Summon Bile Dragon"                                             # 471
-# 	descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
-# 	ritpow                0 # Kobold, Red
-# 	level                  1
-# 	free
-# 	cost              0   1 # 50 Gold
-# 	cost             16   1 # 25 Kobolds
-# 	terr                 -1 # Required terrain: proper mines.
-# 	# fx1031             431 # Unhandled trait 1031 with argument 431.
-# 	summoning                # The ritual will summon the monsters specified in a random string.
-# 	aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
-# 	addstring     "c*Bile Dragon"
+newritual     "Debug Summon Bile Dragon"                                             # 471
+	descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
+	#ritpow                0 # Kobold, Red
+	level                  1
+	free
+	cost              0   1 # 50 Gold
+	cost             16   1 # 25 Kobolds
+	terr                 -1 # Required terrain: proper mines.
+	# fx1031             431 # Unhandled trait 1031 with argument 431.
+	summoning                # The ritual will summon the monsters specified in a random string.
+	aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
+	addstring     "c*Bile Dragon"
 
-# newritual     "Debug Summon Dusk Dragon"                                             # 471
-# 	descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
-# 	ritpow                0 # Kobold, Red
-# 	level                  1
-# 	free
-# 	cost              0   1 # 50 Gold
-# 	cost             16   1 # 25 Kobolds
-# 	terr                 -1 # Required terrain: proper mines.
-# 	# fx1031             431 # Unhandled trait 1031 with argument 431.
-# 	summoning                # The ritual will summon the monsters specified in a random string.
-# 	aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
-# 	addstring     "c*Dusk Dragon"
+newritual     "Debug Summon Dusk Dragon"                                             # 471
+	descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
+	#ritpow                0 # Kobold, Red
+	level                  1
+	free
+	cost              0   1 # 50 Gold
+	cost             16   1 # 25 Kobolds
+	terr                 -1 # Required terrain: proper mines.
+	# fx1031             431 # Unhandled trait 1031 with argument 431.
+	summoning                # The ritual will summon the monsters specified in a random string.
+	aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
+	addstring     "c*Dusk Dragon"
 
 # newritual     "Debug Summon Spectral Dragon"                                             # 471
 # 	descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
@@ -1181,12 +1313,6 @@ newritual     "Summon Tiamat"                                             # 471
 newritual     "Incentivise Fire Dragon"   
 	descr "By feeding a dragon a few Kobolds and gems, is it persuaded to follow the instructions of the Kolbald King for a few turns. This effect will last for at least a season, but could last longer. You may only Incentivise one dragon of each type at a time "
 	ritpow                 52 # Kobold, Red
-	noeventvarreq         700 # There must not be any currently Incentivised Red Dragon
-	seteventvar			  700
-	seteventvar			  701
-	addeventvar           701 # Sets event var to 3. Dragon should last at minimum 3 turns
-	addeventvar           701
-	addeventvar           701
 	
 	level					1
 	cost             16    10 # 25 Kobolds
@@ -1198,12 +1324,6 @@ newritual     "Incentivise Fire Dragon"
 newritual     "Incentivise Frost Dragon"   
 	descr "By feeding a dragon a few Kobolds and gems, it becomes Incentivised, becoming much faster and more aggressive as well as more likely to venture further. This effect will last for at least a season, but could last longer. You may only Incentivise one dragon of each type at a time "
 	ritpow                 53 # Kobold, Blue
-	noeventvarreq         702 # There must not be any currently Incentivised Red Dragon
-	seteventvar			  702
-	seteventvar			  703
-	addeventvar           703 # Sets event var to 3. Dragon should last at minimum 3 turns
-	addeventvar           703
-	addeventvar           703
 	
 	level					1
 	cost             16    10 # 25 Kobolds
@@ -1215,12 +1335,6 @@ newritual     "Incentivise Frost Dragon"
 newritual     "Incentivise Storm Dragon"   
 	descr "By feeding a dragon a few Kobolds and gems, it becomes Incentivised, becoming much faster and more aggressive as well as more likely to venture further. This effect will last for at least a season, but could last longer. You may only Incentivise one dragon of each type at a time "
 	ritpow                 54 # Kobold, White
-	noeventvarreq         704 # There must not be any currently Incentivised Red Dragon
-	seteventvar			  704
-	seteventvar			  705
-	addeventvar           705 # Sets event var to 3. Dragon should last at minimum 3 turns
-	addeventvar           705
-	addeventvar           705
 	free
 	level					1
 	cost             16    10 # 10 Kobolds
@@ -1232,12 +1346,6 @@ newritual     "Incentivise Storm Dragon"
 newritual     "Incentivise Bile Dragon"   
 	descr "By feeding a dragon a few Kobolds and gems, it becomes Incentivised, becoming much faster and more aggressive as well as more likely to venture further. This effect will last for at least a season, but could last longer. You may only Incentivise one dragon of each type at a time "
 	ritpow                 55 # Kobold, Green
-	noeventvarreq         706 # There must not be any currently Incentivised Bile Dragon
-	seteventvar			  706
-	seteventvar			  707
-	addeventvar           707 # Sets event var to 3. Dragon should last at minimum 3 turns
-	addeventvar           707
-	addeventvar           707
 	level				    1
 	cost             16    10 # 25 Kobolds
 	cost             10     5 # 25 Emeralds
@@ -1248,12 +1356,6 @@ newritual     "Incentivise Bile Dragon"
 newritual     "Incentivise Dusk Dragon"   
 	descr "By feeding a dragon a few Kobolds and gems, it becomes Incentivised, becoming much faster and more aggressive as well as more likely to venture further. This effect will last for at least a season, but could last longer. You may only Incentivise one dragon of each type at a time "
 	ritpow                 51 # Kobold, Red
-	noeventvarreq         708 # There must not be any currently Incentivised Red Dragon
-	seteventvar			  708
-	seteventvar			  709
-	addeventvar           709 # Sets event var to 3. Dragon should last at minimum 3 turns
-	addeventvar           709
-	addeventvar           709
 	level				  1
 	cost             16   10 # 25 Kobolds
 	cost             15   5 # 50 Gems
@@ -1435,163 +1537,70 @@ endevent
 # Fire Dragon Events
 ####
 
-# Counts Down Turns
-playerevent
-	+minturnnbr 1  			#Any turn
-	+class -2 "Kobold King"
-	+hascom  -2 "Incentivised Fire Dragon"
-	+vargreater 701 0
-	+chance 100
-	
-	addvar 701 -1
-endevent
 
 # Turn the Awake Dragon Back into a Dragon After 3 or more turns
 playerevent
 	+minturnnbr 1  			#Any turn
 	+class -2 "Kobold King"
-	+hascom -2 "Incentivised Fire Dragon"
-	+chance 50
-	+varequal 701 0 # If it has been 3 turn
-	
-	setvar 700 0
-	promoteunits -2 1 "Incentivised Fire Dragon" "Fire Dragon"
+	+hasunit -2 "Spent Fire Dragon"
+	+chance 50	
+	targetunitloc
+	promoteunits -2 1"Spent Fire Dragon" "Fire Dragon"
 	message -2 "The effects of your incentivisation has worn off, your Fire Dragon will return to its mostly sedentary existance"
 endevent
 
-# If your Fire Dragon Dies while its active
-playerevent
-	+minturnnbr 1  			#Any turn
-	+class -2 "Kobold King"
-	-hascom -2  "Incentivised Fire Dragon"
-	+varequal 700 1 # If I have an Incentivised Fire Dragon
-	+chance 100
-	
-	setvar 700 0
-	message -2 "Your Fire Dragon has burnt itself out"
-endevent
-
-####
 # Frost Dragon Events
 ####
-
-# Counts Down Turns
-playerevent
-	+minturnnbr 1  			#Any turn
-	+class -2 "Kobold King"
-	+hascom  -2 "Incentivised Frost Dragon"
-	+vargreater 703 0
-	+chance 100
-	addvar 703 -1
-endevent
 
 # Turn the Awake Dragon Back into a Dragon After 3 or more turns
 playerevent
 	+minturnnbr 1  			#Any turn
 	+class -2 "Kobold King"
-	+hascom -2 "Incentivised Frost Dragon"
+	+hasunit -2 "Spent Frost Dragon"
 	+chance 50
-	+varequal 703 0 # If it has been 3 turn
-	setvar 702 0
-	promoteunits -2 1 "Incentivised Frost Dragon" "Frost Dragon"
+	targetunitloc
+	promoteunits -2 1 "Spent Frost Dragon" "Frost Dragon"
 	message -2 "The effects of your incentivisation has worn off, your Frost Dragon will return to its mostly sedentary existance"
 endevent
 
-playerevent
-	+minturnnbr 1  			#Any turn
-	+class -2 "Kobold King"
-	-hascom -2   "Incentivised Frost Dragon"
-	+varequal 702 1 # Frost Dragon active 
-	+chance 100
-	setvar 702 0
-	message -2 "Your Frost Dragon has been iced"
-endevent
 
 ####
 # Storm Dragon Events
 ####
 
-# Counts Down Turns
-playerevent
-	+minturnnbr 1  			#Any turn
-	+class -2 "Kobold King"
-	+hascom -2 "Incentivised Storm Dragon"
-	+vargreater 705 0
-	+chance 100
-	addvar 705 -1
-endevent
-
 # Turn the Awake Dragon Back into a Dragon After 3 or more turns
 playerevent
 	+minturnnbr 1  			#Any turn
 	+class -2 "Kobold King"
-	+hascom  -2 "Incentivised Storm Dragon"
+	+hasunit  -2 "Spent Storm Dragon"
 	+chance 50
-	+varequal 705 0 # If it has been 3 turn
-	setvar 704 0
-	promoteunits -2 1 "Incentivised Storm Dragon" "Storm Dragon"
+	targetunitloc
+	promoteunits -2 1 "Spent Storm Dragon" "Storm Dragon"
 	message -2 "The effects of your incentivisation has worn off, your Storm Dragon will return to its mostly sedentary existance"
-endevent
-
-playerevent
-	+minturnnbr 1  			#Any turn
-	+class -2 "Kobold King"
-	-hascom  -2 "Incentivised Storm Dragon"
-	+varequal 704 1 # If it has been 3 turn
-	+chance 100
-	setvar 704 0
-	message -2 "Your Storm Dragon has been blown away"
 endevent
 
 ####
 # Bile Dragon Events
 ####
 
-# Counts Down Turns
-playerevent
-	+minturnnbr 1  			#Any turn
-	+class -2 "Kobold King"
-	+hasunit -2 "Incentivised Bile Dragon"
-	+vargreater 707 0
-	+chance 100
-	addvar 707 -1
-endevent
 
 # Turn the Awake Dragon Back into a Dragon After 3 or more turns
 playerevent
 	+minturnnbr 1  			#Any turn
 	+class -2 "Kobold King"
-	+hascom  -2 "Incentivised Bile Dragon"
+	+hasunit  -2 "Spent Bile Dragon"
 	+chance 50
-	+varequal 707 0 # If it has been 3 turn
-	setvar 706 0
-	promoteunits -2 1 "Incentivised Bile Dragon" "Bile Dragon"
+	targetunitloc
+	promoteunits -2 1 "Spent Bile Dragon" "Bile Dragon"
 	message -2 "The effects of your incentivisation has worn off, your Bile Dragon will return to its mostly sedentary existance"
 endevent
 
-playerevent
-	+minturnnbr 1  			#Any turn
-	+class -2 "Kobold King"
-	-hascom -2 "Incentivised Bile Dragon"
-	+varequal 706 1 # If Dragon is set to be done
-	+chance 100
-	setvar 706 0
-	message -2 "Your Bile Dragon is disolved"
-endevent
+
 
 ####
 # Dusk Dragon Events
 ####
 
-# Counts Down Turns
-playerevent
-	+minturnnbr 1  			#Any turn
-	+class -2 "Kobold King"
-	+hasunit -2 "Incentivised Dusk Dragon"
-	+vargreater 709 0
-	+chance 100
-	addvar 709 -1
-endevent
 
 # Turn the Awake Dragon Back into a  Dragon After 3 or more turns
 playerevent
@@ -1599,18 +1608,9 @@ playerevent
 	+class -2 "Kobold King"	
 	+hascom -2 "Incentivised Dusk Dragon"
 	+chance 50
-	+varequal 709 0 # If it has been 3 turn
-	setvar 708 0
-	promoteunits -2 1 "Incentivised Dusk Dragon" "Dusk Dragon"
+
+	promoteunits -2 1 "Spent Dusk Dragon" "Dusk Dragon"
 	message -2 "The effects of your incentivisation has worn off, your Dusk Dragon will return to its mostly sedentary existance"
 endevent
 
-playerevent
-	+minturnnbr 1  			#Any turn
-	+class -2 "Kobold King"
-	-hasunit -2 "Incentivised Dusk Dragon"
-	+varequal 708 1 # If it has been 3 turn
-	+chance 100
-	setvar 708 0
-	message -2 "Your Dusk Dragon has given up the ghost"
-endevent
+
