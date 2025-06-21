@@ -42,13 +42,62 @@ selectmonster "Dusk Dragon"
 	wanderrest 75
 
 
+newweapon  "Toss Rock"
+	trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
+	range                4
+	init                 2
+	dmgtype              2 # Blunt.
+	dmg                  1 # Base damage (added to dmg value where this weapon is used).
+	aoe                  0 # Area: single target.
+	mundane                # Non-magic. Ethereal units have a 75% chance to be unaffected.
+	arrow                  # Can be negated by air shield.
+	flymode              1 # Missile sprite, one for each strike or square hit.
+	flylook              2
+	flysound            15 # Sling
+
+newweapon "Bucket" 
+	trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
+	range                1
+	init                 3
+	dmgtype              2 # Blunt.
+	dmg                  1 # Base damage (added to dmg value where this weapon is used).
+	aoe                  0 # Area: single target.
+	mundane                # Non-magic. Ethereal units have a 75% chance to be unaffected.
+	sound               11 # spear.smp (Spear)
+
+newweapon  "Toss Wrench"
+	trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
+	range                4
+	init                 2
+	dmgtype              3 # Blunt.
+	dmg                  3 # Base damage (added to dmg value where this weapon is used).
+	aoe                  0 # Area: single target.
+	mundane                # Non-magic. Ethereal units have a 75% chance to be unaffected.
+	arrow                  # Can be negated by air shield.
+	flymode              1 # Missile sprite, one for each strike or square hit.
+	flylook              8
+	flysound            66 # Wind
+
+newweapon "Wrench" 
+	trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
+	range                1
+	init                 3
+	dmgtype              2 # Blunt.
+	dmg                  3 # Base damage (added to dmg value where this weapon is used).
+	aoe                  0 # Area: single target.
+	mundane                # Non-magic. Ethereal units have a 75% chance to be unaffected.
+	sound               11 # spear.smp (Spear)
+
 newmonster "Kobold Grease Fetcher"
 	copystats "Red Kobold Chief"
+	clearweapons
 	spr1 "sprites/koboldtinker.png"
 	spr2 "sprites/koboldtinker1.png"
 	fireres 					   0
 	armor                          0 # Armor.
-	power                          0 1 # Level 1 Kobold Krafts
+	power                          0 1 # Level 1 Kobold Kraft
+	meleeweapon  				   1 "Bucket"
+	rangedweapon                   1 "Toss Rock" 
 	mastery                        1
 
 newmonster "Kobold Make Thinger"
@@ -58,12 +107,15 @@ newmonster "Kobold Make Thinger"
 	power                          0 2 # Level 1 Kobold Krafts
 	fireres 		               0
 	armor                          1 # Armor.
+	meleeweapon  				   1 "Wrench"
+	rangedweapon                   1 "Toss Wrench" 
 	mastery                        1
 
 newmonster "Kobold Big Boomer"
 	copystats "Red Kobold Chief"
 	spr1 "sprites/koboldinventer.png"
 	spr2 "sprites/koboldinventer.png"
+	flying
 	power                          0 3 # Level 1 Kobold Krafts
 	fireres 		               0
 	armor                          2 # Armor.
@@ -84,7 +136,7 @@ newweapon  "Kobold Launcher"
 	range                16
 	init                 2
 	dmgtype              3 # Pierce.
-	dmg                 20 # Base damage (added to dmg value where this weapon is used).
+	dmg                 15 # Base damage (added to dmg value where this weapon is used).
 	aoe                  0 # Area: single target.
 	lob                    # Arcing trajectory.
 	rangepen               # Does half damage if distance >= half range.
@@ -98,7 +150,7 @@ newmonster "Full Kobolpult"
 	descr "A millitary unit only kobolds would consider fielding. Some kobolds are born with a deathwish bordering on fearlessness and those are given a helmet and a breastplate and shot out of a catapult at high speeds. The Bombardiers try to break their fall by impailing an enemy on their sword, and if this is successful they pull it out of their enemies corpse and continue the fight. This one has plenty of Bombardiers and wont be restocked. The first shot of any new kobopult is done with a normal boulder to calibrate "
 
 	hp                             30 # Hit Points.
-	siegeweapon                    20 237 # Boulder: d20 Blunt damage.
+	rangedweapon                   2   "Kobold Launcher" 
 	rangedweapon    		       0   "Kobold Loader"
 	noheal
 	fastheal
@@ -131,11 +183,29 @@ newmonster "Kobolpult"
 	immobile                         # Immobile (cannot move in battle).
 	slow                             # The monster only has 2 AP.
 	size2x2                          # Takes up 2x2 squares on the battlefield (overrides sprite size).
+	shrinkhp 				       3
+
+newmonster "Spent Kobolpult"
+	spr1 "sprites/kobolpult_empty.png"
+	spr2 "sprites/kobolpult1.png"
+	descr "A millitary unit only kobolds would consider fielding. Some kobolds are born with a deathwish bordering on fearlessness and those are given a helmet and a breastplate and shot out of a catapult at high speeds. The Bombardiers try to break their fall by impailing an enemy on their sword, and if this is successful they pull it out of their enemies corpse and continue the fight."
+	hp                             30 # Hit Points.
+	noheal
+	fastheal
+	armor                          0 # Armor.
+	str                            4 # Strength.
+	mor                            4 # Morale.
+	mr                             5 # Magic Resistance.
+	rank                          -1 # Back rank.
+	meleeweapon                0   8 # Shortsword: d5 Slash damage.
+	immobile                         # Immobile (cannot move in battle).
+	slow                             # The monster only has 2 AP.
+	size2x2                          # Takes up 2x2 squares on the battlefield (overrides sprite size).
 
 newmonster "Kobold Bombardier"
 	spr1 "sprites/koboldammo.png"
 	spr2 "sprites/koboldammo1.png"
-	descr "The most fanatical of all Kobolds are loaded with as much armor as the nation can muster and shot out of a catapult into the enemy ranks"
+	descr "The most fanatical of all Kobolds are loaded with as much armor as the nation can muster and shot out of a catapult into the enemy ranks. The drugs they take before battle to let them survive the impact means they will usualy die soon after."
 	armor                          3 # Armor.
 	hp                             3 # Hit Points.
 	str                            3 # Strength.
@@ -144,6 +214,7 @@ newmonster "Kobold Bombardier"
 	rank                           1 # Front rank.
 	meleeweapon                0   8 # Shortsword: d5 Slash damage.
 	allitemslots                     # Has the full set of item slots.
+	alone 						  10 # Kills itself after combat (unless there is just one)
 	kobold                         1 # This unit is an expendable kobold.
 
 newweapon  "Fire Blob"
@@ -254,6 +325,8 @@ newmonster "New Kobold Battering Ram"
 	size2x2                          # Takes up 2x2 squares on the battlefield (overrides sprite size).
 	shrinkhp 49
 
+
+
 newmonster "Kobold Battering Ram"
 	spr1 "sprites/koboldram.png"
 	spr2 "sprites/koboldram1.png"
@@ -272,19 +345,28 @@ newmonster "Kobold Battering Ram"
 	slow                             # The monster only has 2 AP.
 	size2x2                          # Takes up 2x2 squares on the battlefield (overrides sprite size).
 
+
+
+newweapon "Refuel"
+	trgrank              0 # Target: Selfdmgtype              3
+	dmg                  1       
+	reload2
+
 newmonster "New Dragon Can"
 	spr1 "sprites/dragoninnacan.png"
 	spr2 "sprites/dragoninnacan1.png"
 	descr "The best a Grease Fetcher can do in terms of a seige weapon. This weapon can fire a blob of ingited semi-congealed hydrocarbon a short distance and somehow still be ignited when it hits the ground. The ball then splashs all nearby surfaces with fire. Quite effective at attacking wooden structures although the device cannot shoot the ball far enough to be fired at seige range. The paint on this Dragon Can is shiney and new so it wont be repaired"
 	fireexpl 6
-	fastheal
+	noheal
+	healonterr -12
 	armor                          0 # Armor.
-	hp                            10 # Hit Points.
+	hp                            15 # Hit Points.
 	str                            4 # Strength.
 	mor                            4 # Morale.
 	mr                             5 # Magic Resistance.
 	rank                          -1 # Back rank.
 	rangedweapon                   5 "Fire Blob" 
+	rangedweapon 			       0 "Refuel"
 	meleeweapon                0   8 # Shortsword: d5 Slash damage.
 	slow                             # The monster only has 2 AP.
 	battleslow                       # Moves only 1 square per 2 turns in combat.
@@ -295,20 +377,43 @@ newmonster "Dragon Can"
 	spr2 "sprites/dragoninnacan1.png"
 	descr "The best a Grease Fetcher can do in terms of a seige weapon. This weapon can fire a blob of ingited semi-congealed hydrocarbon a short distance and somehow still be ignited when it hits the ground. The ball then splashs all nearby surfaces with fire. Quite effective at attacking wooden structures although the device cannot shoot the ball far enough to be fired at seige range."
 	fireexpl 6
+	noheal
+	healonterr -12
 	armor                          0 # Armor.
-	hp                            10 # Hit Points.
+	hp                            15 # Hit Points.
 	str                            4 # Strength.
 	mor                            4 # Morale.
 	mr                             5 # Magic Resistance.
 	rank                          -1 # Back rank.
 	rangedweapon                   5 "Fire Blob" 
+	rangedweapon 			   	   0 "Refuel"
+	meleeweapon                0   8 # Shortsword: d5 Slash damage.
+	slow                             # The monster only has 2 AP.
+	battleslow                       # Moves only 1 square per 2 turns in combat.
+	shrinkhp 2
+
+newmonster "Spent Dragon Can"
+	spr1 "sprites/dragoninnacan.png"
+	spr2 "sprites/dragoninnacan1.png"
+	descr "The best a Grease Fetcher can do in terms of a seige weapon. This weapon can fire a blob of ingited semi-congealed hydrocarbon a short distance and somehow still be ignited when it hits the ground. The ball then splashs all nearby surfaces with fire. Quite effective at attacking wooden structures although the device cannot shoot the ball far enough to be fired at seige range."
+	fireexpl 6
+	noheal
+	healonterr -12
+	armor                          0 # Armor.
+	hp                            15 # Hit Points.
+	str                            4 # Strength.
+	mor                            4 # Morale.
+	mr                             5 # Magic Resistance.
+	rank                          -1 # Back rank.
 	meleeweapon                0   8 # Shortsword: d5 Slash damage.
 	slow                             # The monster only has 2 AP.
 	battleslow                       # Moves only 1 square per 2 turns in combat.
 
+
 newweapon "Percussive Maintenance"
 	trgrank              0 # Target: Selfdmgtype              3
 	dmg                  1       
+	reload1 
 
 newweapon     "Rime Arrow"                                  # 539
 	trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
@@ -317,7 +422,7 @@ newweapon     "Rime Arrow"                                  # 539
 	dmgtype              3 # Pierce.
 	dmg                  0 # Base damage (added to dmg value where this weapon is used).
 	aoe                  1 # Area: burst 1.
-	reload3                # Takes 3 rounds to reload.
+	reload1                # Takes 3 rounds to reload.
 	scatter                # May deviate one square from intended target.
 	flymode              1 # Missile sprite, one for each strike or square hit.
 	flylook              7
@@ -370,6 +475,7 @@ newmonster "New Ultimate War Machine"
 	mr                             6 # Magic Resistance.
 	rank                          -1 # Back rank.
 	noheal
+	healonterr -12
 	immobile
 	siegeweapon               15 "Earth Arrow" # Giant Earth Branded Arrow: d15 Pierce damage.
 	rangedweapon              15 "Earth Arrow" # Giant Earth Branded Arrow: d15 Pierce damage.
@@ -392,6 +498,7 @@ newmonster "Ultimate War Machine"
 	spr2 "sprites/koboldwarmachine1.png"
 	descr "The apex of Kobold Engineering, this machine boasts unparalleled firepower at the cost of any kind of armor or in fact even the structural integrety to maintain fire on its own battery of weapons. Requires constants maintenance from its large crew of technicians but in order to keep it running but it will slowly break down and needs a master artificer to occasionally repair it. It is so large and cumbersome that is requires a pair of stone drakes to pull."
 	huge
+	healonterr -12
 	armor                          1 # Armor.
 	hp                            40 # Hit Points.
 	str                            6 # Strength.
@@ -414,6 +521,7 @@ newmonster "Ultimate War Machine"
 	meleeweapon                8  11 # Bite: d8 Slash damage.
 	siegeweapon               0 "Percussive Maintenance"
 	rangedweapon    		  0 "Percussive Maintenance"
+	growhp 38
 	shrinkhp 30
 
 newmonster "Scuffed War Machine"
@@ -439,8 +547,11 @@ newmonster "Scuffed War Machine"
 	siegeweapon               0 "Percussive Maintenance"
 	rangedweapon    		  0  "Percussive Maintenance"
 	noheal
-	shrinkhp 20
+	healonterr -12
 	growhp 31
+	shrinkhp 20
+
+
 
 newmonster "Damaged War Machine"
 	spr1 "sprites/damagedwarmachine.png"
@@ -461,6 +572,7 @@ newmonster "Damaged War Machine"
 	siegeweapon               0 "Percussive Maintenance"
 	rangedweapon    		  0  "Percussive Maintenance"
 	noheal
+	healonterr -12
 	growhp 21
 	shrinkhp 10
 
@@ -477,8 +589,9 @@ newmonster "Disabled War Machine"
 	meleeweapon                8  11 # Bite: d8 Slash damage.
 	meleeweapon                8  11 # Bite: d8 Slash damage.
 	immobile
-	growhp 11
 	noheal
+	healonterr -12
+	growhp 11
 
 ######
 # New Dragons
@@ -1127,70 +1240,70 @@ newmonster "Silver Dragon Spawn"
 # Debug Rituals
 #####
 
-newritual     "Debug Summon Fire Dragon"                                             # 471
-	descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
-	#ritpow                0 # Kobold, Red
-	level                  1
-	free
-	cost              0   1 # 50 Gold
-	cost             16   1 # 25 Kobolds
-	terr                 -1 # Required terrain: proper mines.
-	# fx1031             431 # Unhandled trait 1031 with argument 431.
-	summoning                # The ritual will summon the monsters specified in a random string.
-	aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
-	addstring     "c*Fire Dragon"
+# newritual     "Debug Summon Fire Dragon"                                             # 471
+# 	descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
+# 	#ritpow                0 # Kobold, Red
+# 	level                  1
+# 	free
+# 	cost              0   1 # 50 Gold
+# 	cost             16   1 # 25 Kobolds
+# 	terr                 -1 # Required terrain: proper mines.
+# 	# fx1031             431 # Unhandled trait 1031 with argument 431.
+# 	summoning                # The ritual will summon the monsters specified in a random string.
+# 	aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
+# 	addstring     "c*Fire Dragon"
 
-newritual     "Debug Summon Frost Dragon"                                             # 471
-	descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
-	#ritpow                0 # Kobold, Red
-	level                  1
-	free
-	cost              0   1 # 50 Gold
-	cost             16   1 # 25 Kobolds
-	terr                 -1 # Required terrain: proper mines.
-	# fx1031             431 # Unhandled trait 1031 with argument 431.
-	summoning                # The ritual will summon the monsters specified in a random string.
-	aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
-	addstring     "c*Frost Dragon"
+# newritual     "Debug Summon Frost Dragon"                                             # 471
+# 	descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
+# 	#ritpow                0 # Kobold, Red
+# 	level                  1
+# 	free
+# 	cost              0   1 # 50 Gold
+# 	cost             16   1 # 25 Kobolds
+# 	terr                 -1 # Required terrain: proper mines.
+# 	# fx1031             431 # Unhandled trait 1031 with argument 431.
+# 	summoning                # The ritual will summon the monsters specified in a random string.
+# 	aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
+# 	addstring     "c*Frost Dragon"
 
-newritual     "Debug Summon Storm Dragon"                                             # 471
-	descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
-	#ritpow                0 # Kobold, Red
-	level                  1
-	free
-	cost              0   1 # 50 Gold
-	cost             16   1 # 25 Kobolds
-	terr                 -1 # Required terrain: proper mines.
-	# fx1031             431 # Unhandled trait 1031 with argument 431.
-	summoning                # The ritual will summon the monsters specified in a random string.
-	aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
-	addstring     "c*Storm Dragon"
+# newritual     "Debug Summon Storm Dragon"                                             # 471
+# 	descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
+# 	#ritpow                0 # Kobold, Red
+# 	level                  1
+# 	free
+# 	cost              0   1 # 50 Gold
+# 	cost             16   1 # 25 Kobolds
+# 	terr                 -1 # Required terrain: proper mines.
+# 	# fx1031             431 # Unhandled trait 1031 with argument 431.
+# 	summoning                # The ritual will summon the monsters specified in a random string.
+# 	aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
+# 	addstring     "c*Storm Dragon"
 
-newritual     "Debug Summon Bile Dragon"                                             # 471
-	descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
-	#ritpow                0 # Kobold, Red
-	level                  1
-	free
-	cost              0   1 # 50 Gold
-	cost             16   1 # 25 Kobolds
-	terr                 -1 # Required terrain: proper mines.
-	# fx1031             431 # Unhandled trait 1031 with argument 431.
-	summoning                # The ritual will summon the monsters specified in a random string.
-	aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
-	addstring     "c*Bile Dragon"
+# newritual     "Debug Summon Bile Dragon"                                             # 471
+# 	descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
+# 	#ritpow                0 # Kobold, Red
+# 	level                  1
+# 	free
+# 	cost              0   1 # 50 Gold
+# 	cost             16   1 # 25 Kobolds
+# 	terr                 -1 # Required terrain: proper mines.
+# 	# fx1031             431 # Unhandled trait 1031 with argument 431.
+# 	summoning                # The ritual will summon the monsters specified in a random string.
+# 	aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
+# 	addstring     "c*Bile Dragon"
 
-newritual     "Debug Summon Dusk Dragon"                                             # 471
-	descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
-	#ritpow                0 # Kobold, Red
-	level                  1
-	free
-	cost              0   1 # 50 Gold
-	cost             16   1 # 25 Kobolds
-	terr                 -1 # Required terrain: proper mines.
-	# fx1031             431 # Unhandled trait 1031 with argument 431.
-	summoning                # The ritual will summon the monsters specified in a random string.
-	aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
-	addstring     "c*Dusk Dragon"
+# newritual     "Debug Summon Dusk Dragon"                                             # 471
+# 	descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
+# 	#ritpow                0 # Kobold, Red
+# 	level                  1
+# 	free
+# 	cost              0   1 # 50 Gold
+# 	cost             16   1 # 25 Kobolds
+# 	terr                 -1 # Required terrain: proper mines.
+# 	# fx1031             431 # Unhandled trait 1031 with argument 431.
+# 	summoning                # The ritual will summon the monsters specified in a random string.
+# 	aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
+# 	addstring     "c*Dusk Dragon"
 
 # newritual     "Debug Summon Spectral Dragon"                                             # 471
 # 	descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
@@ -1212,10 +1325,7 @@ newritual     "Debug Summon Dusk Dragon"                                        
 newritual "Summon Great Dragon of Desolation"
 	ritpow                51 # Kobold, Blue
 	level                  3
-	planereq               5 # Primal Plane
-	cost              0   50 # 50 Gold
-	cost             16   50 # 50 Kobolds
-	cost             15   150 # 150 Emeralds
+	cost             15   150 # 100 Emeralds
 	terr                  37 # Shadow Wood
 
 	nomonworldreq
@@ -1226,10 +1336,9 @@ newritual "Summon Great Dragon of Desolation"
 newritual "Summon Great Dragon of Bile"
 	ritpow                55 # Kobold, Green
 	level                  3
-	planereq               7 # Primal Plane
+	noplanereq             0 # Not Elysium
 	cost              0   50 # 50 Gold
-	cost             16   50 # 50 Kobolds
-	cost             10   150 # 150 Emeralds
+	cost             10   100 # 100 Emeralds
 
 	terr                -20 # Ancient Forest
 	nomonworldreq
@@ -1240,12 +1349,9 @@ newritual "Summon Great Dragon of Bile"
 newritual "Summon Great Dragon of Storms"
 	ritpow                54 # Kobold, Blue
 	level                  3
-	planereq               8 # Elemental Plane
-	cost              0   50 # 50 Gold
-	cost             16   50 # 50 Kobolds
-	cost             9   150 # 150 Sapphires
+	cost             9   100 # 100 Diamonds
 
-	terr                -50 # Fire Fort
+	terr                -50 # Air Fort
 	nomonworldreq
 		addstring    "(-)Great Wyrm of Tumult"
 	summoning
@@ -1255,10 +1361,7 @@ newritual "Summon Great Dragon of Storms"
 newritual "Summon Great Dragon of Fire"
 	ritpow                52 # Kobold, Blue
 	level                  3
-	planereq               8 # Elemental Plane
-	cost              0   50 # 50 Gold
-	cost             16   50 # 50 Kobolds
-	cost             7   150 # 150 Sapphires
+	cost             7   100 # 150 Rubies
 
 	terr                -48 # Fire Fort
 	nomonworldreq
@@ -1271,12 +1374,9 @@ newritual "Summon Great Dragon of Ice"
 	
 	ritpow                53 # Kobold, Blue
 	level                  3
-	planereq               8 # Elemental Plane
-	cost              0   50 # 50 Gold
-	cost             16   50 # 50 Kobolds
-	cost             8   150 # 150 Sapphires
+	cost             8   100 # 100 Sapphires
 
-	terr                139 # Fimbul Fort
+	terr                -52 # Ice Fort
 	nomonworldreq
 		addstring    "(-)Great Wyrm of Rime"
 	summoning
@@ -1297,18 +1397,18 @@ newritual     "Summon Dragon Turtle"                                            
 	summoning                # The ritual will summon the monsters specified in a random string.
 	addstring     "c*Dragon Turtle"
 
-newritual     "Summon Tiamat"                                             # 471
-	descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
-	ritpow                52 # Kobold, Red
-	level                  2
-	free
-	cost              0   1 # 50 Gold
-	cost             16   1 # 25 Kobolds
-	terr                 -1 # Required terrain: proper mines.
-	# fx1031             431 # Unhandled trait 1031 with argument 431.
-	summoning                # The ritual will summon the monsters specified in a random string.
-	aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
-	addstring     "c*Tiamat"
+# newritual     "Summon Tiamat"                                             # 471
+# 	descr "This ritual summons a dragon to a greater mine. The dragon demands gold and consumes several dozens of kobolds when it arrives. After having settled in the mine the dragon will occasionally fly out and attack nearby settlements, mines and citadels not controlled by the kobolds."
+# 	ritpow                52 # Kobold, Red
+# 	level                  2
+# 	free
+# 	cost              0   1 # 50 Gold
+# 	cost             16   1 # 25 Kobolds
+# 	terr                 -1 # Required terrain: proper mines.
+# 	# fx1031             431 # Unhandled trait 1031 with argument 431.
+# 	summoning                # The ritual will summon the monsters specified in a random string.
+# 	aialways              90 # Extra 90% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
+# 	addstring     "c*Tiamat"
 
 newritual     "Incentivise Fire Dragon"   
 	descr "By feeding a dragon a few Kobolds and gems, is it persuaded to follow the instructions of the Kolbald King for a few turns. This effect will last for at least a season, but could last longer. You may only Incentivise one dragon of each type at a time "
@@ -1316,7 +1416,7 @@ newritual     "Incentivise Fire Dragon"
 	
 	level					1
 	cost             16    10 # 25 Kobolds
-	cost              7     5 # 25 Rubies
+	cost              7     5 # 5 Rubies
 	promotion				1
 	addstring "Fire Dragon"
 	addstring "Incentivised Fire Dragon"
@@ -1327,7 +1427,7 @@ newritual     "Incentivise Frost Dragon"
 	
 	level					1
 	cost             16    10 # 25 Kobolds
-	cost              8     5 # 25 Sapphires
+	cost              8     5 # 5 Sapphires
 	promotion				1
 	addstring "Frost Dragon"
 	addstring "Incentivised Frost Dragon"
@@ -1441,6 +1541,8 @@ newritual "Find new Ammo"
 	promotion             1
 	addstring "Kobolpult"
 	addstring "Full Kobolpult"     
+	addstring "Spent Kobolpult"
+	addstring "Full Kobolpult"
 	descr "Finds a few likely lads to get into the catapult and fits them with the appropriate armor"
 
 newritual "Repair Basic Machine"
@@ -1450,6 +1552,9 @@ newritual "Repair Basic Machine"
 	cost             1   3 # 3 Iron
 	cost             0   3 # 3 Iron
 	promotion				1
+
+	addstring "Spent Dragon Can"
+	addstring "New Dragon Can"
 	addstring "Dragon Can"
 	addstring "New Dragon Can"
 	addstring "Mobile Kobold Wall"
@@ -1465,18 +1570,104 @@ newritual "Repair Advanced Machine"
 	addstring "Kobold Battering Ram"
 	addstring "New Kobold Battering Ram"
 	addstring "Damaged War Machine"
-	addstring "New War Machine"
+	addstring "New Ultimate War Machine"
 	addstring "Scuffed War Machine"
-	addstring "New War Machine"
+	addstring "New Ultimate War Machine"
 	addstring "Disabled War Machine"
-	addstring "New War Machine"
+	addstring "New Ultimate War Machine"
 	addstring "Ultimate War Machine"
 	addstring "New Ultimate War Machine"
 
-newritual "Pok's Portal Portal"
+newritual "Construct Battering Ram"
+	level                 1
+	# cost            16   10 # 10 Kobolds
+	# cost             1   10 # 10 Iron
+	# cost             0   20 # 20 Gold
+	# cost             7   5  # 5 Rubies
+	summoning 
+	addstring "New Kobold Battering Ram"
+
+newritual "Construct Shield wall"
+	level                1
+	# cost            16   10 # 10 Kobolds
+	# cost             1   5 # 5 Iron
+	# cost             0   10 # 30 Gold
+	summoning 
+	addstring "New Mobile Kobold Wall"
+
+
+newritual "Construct Canned Dragon"
+	level                1
+	# cost            16   10 # 10 Kobolds
+	# cost             1   5 # 5 Iron
+	# cost             0   10 # 30 Gold
+	# cost             7   5  # 5 Rubies
+	summoning 
+	addstring "New Dragon Can"
+
+
+
+newritual "Construct Kobolpult"
+	level                2
+	# cost            16   20 # 20 Kobolds
+	# cost             1   20 # 20 Iron
+	# cost             0   30 # 30 Gold
+	summoning 
+	addstring "Full Kobolpult"
+
+
+
+newritual "Skarks Sky Shot"
 	level                 2
+	# free
+	# cost            16   25 # 25 Kobolds
+	# cost             9   25 # 25 Diamons
+	# cost             0   50 # 50 Gold
+	portalroom				194 # Near Clouds
+	noportalreq				1
+
+	descr "Skart dreamt of flying above the clouds, this portal will teleport you to a very high place in the clouds, "
+
+newritual "Carok's Crystal Conifers"
+	level                 2
+	# free
+	# cost            16   25 # 25 Kobolds
+	# cost            10   25 # 25 Emeralds
+	# cost             0   50 # 50 Gold
+	portalroom			-30 # Crystal places
+	noportalreq				1
+
+	descr "Carok is able to tap into the power of crystals to catalyize a stable portal."
+
+
+
+
+newritual "Rek-rak's Red Route"
+	level                 3
+	# free
+	cost            16   25 # 25 Kobolds
+	cost             7   25 # 25 Rubies
+	cost             0   50 # 50 Gold
+	portalroom				53 # near magma
+	noportalreq				1
+
+	descr "Rek-rak Found heat an excellent catalyist. This portal will take you somewhere hot!"
+
+newritual "Burk's Chilly Chase"
+	level                 3
+	# free
+	cost            16   25 # 25 Kobolds
+	cost             8   25 # 25 Sapphires
+	cost             0   50 # 50 Gold
+	portalroom				54 # Near frozen waste
+	noportalreq				1
+
+	descr "Super cooled fluid let burk's portal zip to somewhere icy"
+
+newritual "Pok's Portal Portal"
+	level                 3
 	free
-	cost            16   50 # 50 Kobolds
+	cost            16   25 # 25 Kobolds
 	cost             1   50 # 50 Iron
 	cost             0   50 # 50 Gold
 	portalroom				204 # near a gateway
@@ -1484,7 +1675,9 @@ newritual "Pok's Portal Portal"
 
 	descr "The great artificer Pok discoved that the transmittance space around esablished gateways was consderbly more fluid than the background rate. By setting up a gateway to lock in on and establish a tether to an already stable gateway, a portal could be created with considerablly less energy than usual. Its very difficult to aim the device and the process involves guessing where a portal might be, sending a kobold through, and checking to see how many pieces it turns into when it gets there."
 
-newritual "Built Ultimate War Machine"
+
+
+newritual "Build Ultimate War Machine"
 	level 3
 	summoning 
 	addstring "New Ultimate War Machine"
@@ -1494,17 +1687,17 @@ newritual "Built Ultimate War Machine"
 
 selectclass 27
 	addstartcom "Kobold Grease Fetcher"
-	addstartcom "Black Kobold Slayer Shaman"
-	addstartunits "New Dragon Can" 10
-	addstartunits "New Ultimate War Machine" 1
-	addstartunits "New Kobold Battering Ram" 2
-	addstartunits "New Mobile Kobold Wall"   2
-	addstartunits "Full Kobolpult"   2
+	# addstartcom "Black Kobold Slayer Shaman"
+	# addstartunits "New Dragon Can" 10
+	# addstartunits "New Ultimate War Machine" 1
+	# addstartunits "New Kobold Battering Ram" 2
+	# addstartunits "New Mobile Kobold Wall"   2
+	# addstartunits "Full Kobolpult"   2
 	
 	addunitrec  "Silver Dragon Spawn"    100  10   125   0    0 # only where Emerald income.
 	recxcost     8  10                            # 10 Sapphires additional cost.
 	recterr      15
-	reclimiter  "+Silver Dragon"           # Owning a Green Kobold Prophet enables the preceding offer.
+	reclimiter  "+Silver Dragon"           # Owning a Silver Dragon enables the preceding offer.
 	addcomrec   "Kobold Grease Fetcher"  6    45  10    0 # once per offer; extra.
 	libraryrec                                    # +2% to chance per library point owned, to a max of +20% for 10+ library points.
 	addcomrec   "Kobold Make Thinger"    1    120  10    0 # once per offer; extra.
