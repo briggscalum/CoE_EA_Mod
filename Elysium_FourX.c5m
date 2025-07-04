@@ -1,0 +1,1973 @@
+icon "sprites/banner.png"
+
+description "The Main Ascended Mod"
+
+
+# Load Second so clearrec does not impact other mods but so it loads after Overhaul
+modprio 2 
+
+# Variables used
+# 711 Homelessness rate
+
+
+# I think I can just call this a bunch and its fine. 
+# Should just unlock new ritual paths
+# Populates ritpower 68-100
+
+
+###############
+# New Terrain
+###############
+selectterr      700
+	name "Frozen Swamp"
+	spr "mainsprites/frozenswamp.tga"
+	herbs             1 # Herbs:  1
+	fungus            3 # Fungus:  3
+	lifeforce        20 # 2 Lifeforce can be drained from this square per turn.
+	nosight             # The terrain does not provide vision into adjacent squares when owned.
+	apcost 1            # Action Point cost for moving through the terrain: 3
+
+selectterr      701
+	name "Frozen Iron Bog"
+	spr "mainsprites/frozenswamp.tga"
+	iron              1 # Iron:  1
+	herbs             1 # Herbs:  1
+	fungus            2 # Fungus:  2
+	lifeforce        10 # 1 Lifeforce can be drained from this square per turn.
+	lifeforce        20 # 2 Lifeforce can be drained from this square per turn.
+	nosight             # The terrain does not provide vision into adjacent squares when owned.
+	apcost 1            # Action Point cost for moving through the terrain: 3
+
+selectterr      702
+	name "Lumber Yard"
+	spr "mainsprites/lumberyard.png"
+	iron              1 # Iron:  1
+	gold 			  1 # Gold:  1
+	lifeforce        10 # 1 Lifeforce can be drained from this square per turn.
+	apcost 1            # Action Point cost for moving through the terrain: 3
+
+
+selectterr      703
+	name "Mine Town"
+	spr "mainsprites/minetown.png"
+	gems              4096   # One Random
+	gold              2 	 # Gold:  2
+	iron              1
+	sacr              1 	 # Sacrifices:  1
+	hands             1 	 # Hands:  1
+	lifeforce        10 	 # 1 Lifeforce can be drained from this square per turn.
+	apcost 1            	 # Action Point cost for moving through the terrain: 3
+	smoke
+
+
+selectterr      704
+	name "Enchanted River"
+	lifeforce         5 # 0.5 Lifeforce can be drained from this square per turn.
+	apcost            2 # Action Point cost for moving through the terrain: 2
+	water               # The terrain is water and cannot be passed, unless it is frozen or the monsters moving through it are amphibian or aquatic.
+	invisible           # Terrain on top of the background is not drawn, but the grass will still be drawn.
+	nostart             # This type of terrain cannot be overwritten by a start citadel from a player.
+	seepast             # Remote Horizon (can see 1 square past this one when adjacent to it).
+	misty
+
+
+########### 
+## Units
+###########
+
+newritpow "Garrison Magic"
+
+newmonster "Garrison Commander"
+	copystats "Captain"
+	copyspr "Captain"
+	power 0 1
+	rank                          -1 # Back rank.
+	rearpos							 # Back back
+
+newmonster "Garrison Archer"
+	copystats "Archer"
+	copyspr  "Archer"
+	dmgonterr -1
+	fastheal
+	noheal
+	healonterr -9 # Fortified citadels
+
+newmonster "Garrison Spearmen"
+	copystats "Spearman"
+	copyspr "Spearman"
+	dmgonterr -1
+	fastheal
+	noheal
+	healonterr -9  # Fortified citadels
+
+newritual     "Hire Defense Infantry"                                  #  18
+	descr "Activates the Reserve troops of the local city to active duty. They are not fitted out or well suited for campaigning and will slowly attrition until they are returned to their base"
+	level 1
+	free
+	summoning
+	addstring     "5*Garrison Spearmen"
+
+newritual     "Hire Defense Archers"                                  #  18
+	descr "Activates the Reserve troops of the local city to active duty. They are not fitted out or well suited for campaigning and will slowly attrition until they are returned to their base"
+	level 1
+	free
+	summoning
+	addstring     "5*Garrison Archer"
+
+
+newmonster "Woodsman"
+	spr1 "mainsprites/woodsman.png"
+	spr2 "mainsprites/woodsman1.png"
+	rank                          -1 # Back rank.
+	rearpos							 # Back back
+	stupid
+	wanderrest 0
+	hatesterr -6
+	followstupid
+	forest1
+	jungle1
+
+newmonster "Peasant"
+	copyspr   "Angry Peasant" 
+	copystats "Angry Peasant"
+	rank                          -1 # Back rank.
+	rearpos							 # Back back
+	stationary
+	goldcarrier 5
+
+
+newmonster "Emigrating Peasant"
+	descr "These peasants are packing their bags and getting ready to join the caravan. They will be gone next turn."
+	copyspr   "Angry Peasant" 
+	copystats "Angry Peasant"
+	nocombat
+	stationary
+	dmgonterr -1 # Dead Everywhere
+	dmgonterrbonus 9999
+
+
+
+newritpow "Settlers Magic"
+
+newritual     "Lesser Ritual of Peasantry"                                  #  18
+	level                  1
+	cost              	   0 5 # 5 gold
+	cost              	   1 5 # 5 resources
+
+	newrit                 2 # Caster will learn a new ritual of level 2.
+	levelup                2 # Level up to new monster (determined by mastery command on monster) if below level 2.
+	soundfx               57 # Sound effect when the ritual is cast: orchhit.smp (Summoning).
+	rebatelvl              1 # Ritual can be cast for half price if caster's power level is greater than or equal to 2.
+	free                     # Always start with this ritual in addition to the others.
+	terr                  -32 # Villages and Larger
+
+
+	descr "The migrants go to a settlement to aquire the basic skills for establishing a more oragnized rural settlement. They recieve training on the shodding of horses and the building of larger and more permanent buildings as well as pick up the supplies to make use of these skills. "
+
+newritual     "Greater Ritual of Peasantry"                                  #  18
+	level                  1
+	cost              	   0 10 # 5 gold
+	cost              	   1 10 # 5 resources
+
+	newrit                 3 # Caster will learn a new ritual of level 2.
+	levelup                3 # Level up to new monster (determined by mastery command on monster) if below level 2.
+	soundfx               57 # Sound effect when the ritual is cast: orchhit.smp (Summoning).
+	rebatelvl              1 # Ritual can be cast for half price if caster's power level is greater than or equal to 2.
+	free                     # Always start with this ritual in addition to the others.
+	terr                  -28 #cities and towns
+	
+	descr "The settlers go to a city or town to get proper supplies for protecting, and centralizing a settlement. They recieve training in the makeing of walls and the maintaining of roads as well as aquire the tools to use their new skills. "
+
+newritual "Setup Farmstead"
+	level                 	1
+	free
+	cost              		0 15 # 15 gold
+	apcost					1
+	terr                    -103 # Plain-alikes
+	aiwhere					0
+	killtarg 9999
+
+	alterloc             	6 # Farm
+	nonearby1req	        -14 # Mostly just to prevent Mistaking pressing this
+	soundfx               	57
+	descr "The settlerss set out to create an indepentant farming community, Because there are no nearby settlements, this will require some additional funding"
+
+newritual "Form Farming Community"
+	level                 	1
+	free
+	cost              		0 8 # 8 gold
+	apcost					1
+	terr                    -103 # Plain-alikes
+	aiwhere					0
+	nearby1req	           -14 # Must be adjacent to some settlement
+
+	alterloc             	6 # Farm
+	soundfx               	57
+	killtarg 9999
+	descr "The settlerss create a farm in a fertile area near an established settlement. The locals are happy to help assist with the cost of settup."
+
+newritual "Provide needed Farmers"
+	level                 	1
+	free
+	cost              		0 0 # 0 gold
+	apcost					1
+	terr                    -103 # Plain-alikes
+	aiwhere					0
+	nonearby1req	       -13 # Must not be farm adjacent
+	nearby1req	           -16 # Must be adjacent to Village or biger
+
+	soundfx               	57
+	alterloc             	6 # Farm
+	killtarg 9999
+
+	descr "The settlerss create a farm in a fertile area near an large settlement. The locals are happy to completely fund the devoplment if there is no nearby farm."
+
+
+newritual "Expand Farm"
+	level                 	1
+	free
+	cost              		0 15 # 15 gold
+	apcost					-1
+	terr                    -13 # farms
+	aiwhere					-13
+	minmonreq 				4
+	alterloc             	7 # Hamlet
+	killtarg 9999
+	soundfx               	57
+	minmonreq 				3
+	promotion 				3
+	addstring "Peasant"
+	addstring "Emigrating Peasant"
+	addstring "(&)Peasant"
+
+	descr "The settlerss find an isolated Farm and settle a small central community there, upgrading it into a hamlet.  If the farm is not adjacent to a village sized settlemnt or larger this will take aditional external resources. Consumes 3 Peasants."
+
+newritual "Spread Settlement"
+	level                 	1
+	free
+	cost              		0 8 # 0 gold
+	apcost					-1
+	terr                    -13 # farms
+	aiwhere					-13
+	minmonreq 				2
+	alterloc             	7 # Hamlet
+	soundfx               	57
+	nearby1req	           -14 # Must be adjacent to Village or biger
+	killtarg 9999
+
+	promotion 				2
+	addstring "Peasant"
+	addstring "Emigrating Peasant"
+	addstring "(&)Peasant"
+	descr "The settlerss find a large settlement and settle in a nearby farming community, upgrading the farm into a hamlet.  The proximity to other settlements makes setting up the new hamlet much cheaper. Consumes 2 Peasants."
+
+
+newritual "Develop Outlying Settlement"
+	level                 	2
+	free
+	cost              		0 20 # 0 gold
+	apcost					-1
+	terr                    -40 # Hamlets
+	aiwhere					-40
+	minmonreq 				4
+	alterloc             	18 # Village
+	soundfx               	57
+	nonearby1req	       -64 # Farms and Hamlets
+
+	promotion 				4
+	addstring "Peasant"
+	addstring "Emigrating Peasant"
+	addstring "(&)Peasant"
+	killtarg 9999
+	descr "The settlerss find a suitable Hamlet and expand the central community to develop it into a village. If there are no nearby farms or hamlets it takes some additional resources to expand nearby agriculture to support the new community. Consumes 4 Peasants."
+
+newritual "Develop Settlement"
+	level                 	2
+	free
+	cost              		0 13 # 0 gold
+	apcost					-1
+	terr                    -40 # Hamlets
+	aiwhere					-40
+	minmonreq 				3
+	alterloc             	18 # Village
+	soundfx               	57
+	nearby1req	           -64  # Farms and Hamlets
+	
+	killtarg 9999
+	promotion 				3
+	addstring "Peasant"
+	addstring "Emigrating Peasant"
+	addstring "(&)Peasant"
+	descr "The settlerss find a suitable Hamlet and expand the central community to develop it into a village. Nearby farms and Hamlets can provide some of the needed resources and people to support the new community. Consumes 3 Peasants."
+
+newritual "Develop Prosperous Settlement"
+	level                 	2
+	free
+	cost              		0 8 # 0 gold
+	apcost					-1
+	terr                    -40 # Hamlets
+	aiwhere					-40
+	minmonreq 				2
+	alterloc             	18 # Village
+	soundfx               	57
+	nearby1req	           -13  # Farms
+	nearby1req	           -32  # Villages or Larger
+	nearby3req	           -31  # Fortified Locations
+	
+	killtarg 9999
+	promotion 				2
+	addstring "Peasant"
+	addstring "Emigrating Peasant"
+	addstring "(&)Peasant"
+
+	descr "The settlerss find a suitable Hamlet and expand the central community to develop it into a village. Nearby farms and settlments will provide much of the needed resources and people to support the new community. Having a foritifed location nearby increase the likelyhood people will want to move to the new village. Consumes 2 Peasants."
+
+newritual "Settle Nomads"
+	level                 	2
+	free
+	cost              		0 15 # 0 gold
+	apcost					-1
+	terr                    109 # Hamlets
+	aiwhere					109
+	minmonreq 				3
+
+	alterloc             	18 # Village
+	killtarg 9999
+	soundfx               	57
+	nearby1req	           -13  # Farms
+	nearby1req	           -29  # Hamlets or Larger
+	descr "The settlerss find a tent village near more settled people and convinces enough of thier populace that a settled lifestyle is superior develop it into a village. There must be adjacent examples of farms and larger settlments to sway the inhabitants and provide resources and population to support the new community. "
+
+
+newritual "Create Market Village"
+	level                 	2
+	free
+	cost              		0 5 # 0 gold
+	apcost					-1
+	terr                    18 # Village
+	aiwhere					18
+	nearby1req	             7  # Hamlets
+	nearby1req	           -13  # Farms
+	minmonreq 				1
+	
+	soundfx               	57
+	alterloc             	206 # Market Village
+	killtarg 9999
+	promotion 				1
+	addstring "Peasant"
+	addstring "Emigrating Peasant"
+	addstring "(&)Peasant"
+
+	descr "The settlerss find a densily populated area and set up a market it one of the villages to draw in surround farmers and peasants. Must be adjacent to a farm and a hamlet. Consumes 1 Peasant."
+
+
+newritual "Promote Regional Trade"
+	level                 	2
+	free
+	cost              		0 15 # 0 gold
+	apcost					-1
+	terr                    18 # Village
+	aiwhere					18
+	minmonreq 				2
+	alterloc             	206 # Market Village
+	soundfx               	57
+	nearby3req	           -92  # Trade Locations
+	nearby1req	           -14  # Settlements
+
+	killtarg 9999
+	promotion 				2
+	addstring "Peasant"
+	addstring "Emigrating Peasant"
+	addstring "(&)Peasant"
+
+	descr "The settlerss find a village in a populated area a some weeks travel from a source of trade and sets up a trading post there to allow goods to flow more easily through the area. Thev village must be adjacent to at least one other settlement. Consumes 2 Peasants."
+
+newritual "Build Town Palisade"
+	level                 	3
+	free
+	cost              		0 30 # 30 gold
+	cost              		1 10 # 30 Iron
+
+	apcost					-1
+	terr                    206 # Market Village
+	aiwhere					206
+	minmonreq 				4
+	alterloc             	17 # Town
+	soundfx               	57
+	nearby1req	           -64  # Farm/Hamlet
+	nearby1req	           -16  # Village sized seetlment
+	nearby1req             -38  # Forests and Jungles
+	nonearby1req           -31  # Foritified Locations
+
+	killtarg 9999
+	promotion 				4
+	addstring "Peasant"
+	addstring "Emigrating Peasant"
+	addstring "(&)Peasant"
+	
+	descr "The settlerss find a prosperous market village in a populated area and estabilsh a township. To attract more poeple to move in, they erect a wall to protect the new town from bandits and carniverous ungulates. Creating a town requies the market village to have. If the new town is adjacent to a forest to use for timber, less labor and fewer resources will be needed build the wall. The new town wont be able to get enough immigrants if there is an adjacent walled fort or settlment. Establishing a town requires an adjacent village as well as a Hamlet or Farm. Consumes 4 Peasants."
+
+newritual "Import Town Palisade"
+	level                 	3
+	free
+	cost              		0 30 # 30 gold
+	cost              		1 30 # 30 Iron
+
+	apcost					-1
+	terr                    206 # Market Village
+	aiwhere					206
+	minmonreq 				6
+	alterloc             	17 # Town
+	soundfx               	57
+	nearby1req	           -64  # Farm/Hamlet
+	nearby1req	           -16  # Village sized seetlmetn
+	nonearby1req           -38  # Forests and Jungles
+	nonearby1req           -31  # Foritified Locations
+	
+	killtarg 9999
+	promotion 				6
+	addstring "Peasant"
+	addstring "Emigrating Peasant"
+	addstring "(&)Peasant"
+
+	descr "The settlerss find a prosperous market village in a populated area and estabilsh a township. To attract more poeple to move in, they erect a wall to protect the new town from bandits and carniverous ungulates. If the new town is not adjacent to a forest to use for timber, more labor and resources will be needed to import the needed wood. The new town wont be able to get enough immigrants if there is an adjacent walled fort or settlment.  Establishing a town requires an adjacent village as well as a Hamlet or Farm. Consumes 6 Peasants."
+
+newritual "Establish Port"
+	level                 	3
+	free
+	cost              		0 20 # 20 gold
+	cost              		1 10 # 10 Iron
+
+	apcost					-1
+	terr                    17 # Town
+	aiwhere					17
+	minmonreq 				4
+	alterloc             	79 # Port
+	soundfx               	57
+	nearby3req	           -40   # Hamlet
+	nearby3req	           -13   # Farms
+	nearby3req             -12   # Mine
+	nearby1req             -43   # Water
+	nearby3req             -92   # Trade Location
+	
+	killtarg 9999
+	promotion 				4
+	addstring "Peasant"
+	addstring "Emigrating Peasant"
+	addstring "(&)Peasant"
+
+	descr "The settlerss find a prosperous Coastal Town situated in a highly populated region and establishes a ship building facility. In order to create a thriving port, the location must be withing 3 tiles of a  a Hamlet, a Farm, and a place of trade, and a forest.  Consumes 4 Peasants."
+
+
+newritual "Establish City"
+	level                 	3
+	free
+	cost              		0 40 # 30 gold
+	cost              		1 40 # 30 Iron
+
+	apcost					-1
+	terr                    17 # Town
+	aiwhere					17
+	minmonreq 				8
+	alterloc             	9 # City
+	soundfx               	57
+	nearby3req	           -40   # Hamlet
+	nearby3req	           -13   # Farms
+	nearby3req             -12   # Mine
+	nearby3req             -17   # Water
+	nearby3req             -92   # Trade Location
+	
+	killtarg 9999
+	promotion 				8
+	addstring "Peasant"
+	addstring "Emigrating Peasant"
+	addstring "(&)Peasant"
+
+	descr "The settlerss find a prosperous Town centrally situated in a highly populated region and establishes a regional hub with strong walls and barracks for housing and traing troops. In order to create a thriving city, the location must be withing 3 tiles of a  a Hamlet, a Farm, a place of trade, and a greater mine.  Consumes 8 Peasants."
+
+newritual "Establish Mercantile City"
+	level                 	3
+	free
+	cost              		0 40 # 30 gold
+	cost              		1 40 # 30 Iron
+
+	apcost					-1
+	terr                    17 # Town
+	aiwhere					17
+	alterloc             	273 # City of Merchants
+	soundfx               	57
+	nearby3req	            206  # Market Village
+	nearby3req	           -40   # Hamlet
+	nearby3req	           -13   # Farms
+	nearby3req             -12   # Mine
+	nearby3req             -17   # Water
+	minmonreq 				6
+	
+	killtarg 9999
+	promotion 				6
+	addstring "Peasant"
+	addstring "Emigrating Peasant"
+	addstring "(&)Peasant"
+
+	descr "The settlerss find a prosperous Town centrally situated in a highly populated region and establishes a regional trading hub with strong walls and barracks for housing and traing troops. In order to create a thriving merchant city, the location must be withing 3 tiles of a market village, a Hamlet, a Farm, another town, a greater mine, and water.  Consumes 6 Peasants."
+
+newritual "Establish Splendid City"
+	level                 	3
+	free
+	cost              		0 40 # 30 gold
+	cost              		1 40 # 30 Iron
+
+	apcost					-1
+	terr                    17   # Town
+	aiwhere					17
+	minmonreq 				6
+	alterloc             	277  # City of Gems & Marvels
+	soundfx               	57
+	nearby3req	           -30   # Gem Deposit
+	nearby3req	           -40   # Hamlet
+	nearby3req	           -13   # Farms
+	nearby3req             -19   # Silver or Gold Mine
+	nearby3req             -17   # Water
+	nearby3req             -92   # Trade Location
+	
+	killtarg 9999
+	promotion 6
+	addstring "Peasant"
+	addstring "Emigrating Peasant"
+	addstring "(&)Peasant"
+	descr "The settlerss find a prosperous Town centrally situated in a highly populated and gem rich region and establishes a  jewel rich city with strong walls and barracks for housing and traing troops. In order to create a thriving jeweled city, the location must be withing 3 tiles of a Hamlet, a Farm, a precious metal mine, a place of trade, and a gem deposit, and water.  Consumes 6 Peasants."
+
+newritual "Establish Dense Cty"
+	level                 	3
+	free
+	cost              		0 40 # 30 gold
+	cost              		1 40 # 30 Iron
+
+	apcost					-1
+	terr                    17 # Town
+	aiwhere					17
+	nearby1req	           -40   # Hamlet
+	nearby1req	           206   # Market Size
+	nearby1req	           18    # Market Size
+	nearby1req	           -13   # Farms
+	nearby3req             -102  # Fresh Water
+	nearby3req             -4    # Mine
+	killtarg 9999
+	minmonreq 				8
+	
+	alterloc             	279 # City of Vice
+	soundfx               	57
+	promotion 8
+	addstring "Peasant"
+	addstring "Emigrating Peasant"
+	addstring "(&)Peasant"
+	descr "The settlerss find a prosperous Town centrally situated in a densily populated region and establishes a regional  dense city with strong walls and barracks for housing and traing troops. In order to create a city of this density, the location must be directly adjacent, a Hamlet, a Farm, a Village, and a Market Village, as well as within 3 tiles of fresh drinking water and any mine. Consumes 6 Peasants."
+
+newritual "Establish Learned City"
+	level                 	3
+	free
+	cost              		0 40 # 30 gold
+	cost              		1 40 # 30 Iron
+
+	apcost					-1
+	terr                    17 # Town
+	aiwhere					17
+	minmonreq 				6
+	nearby3req	           -3    # Library
+	nearby3req	           -40   # Hamlet
+	nearby3req	           -40   # Hamlet
+	nearby3req	           -13   # Farms
+	nearby3req             -12   # Mine
+	nearby3req             -17   # Water
+	nearby3req             -92   # Trade Location
+
+	alterloc             	274 # City
+	soundfx               	57
+	killtarg 9999
+	promotion 6
+	addstring "Peasant"
+	addstring "Emigrating Peasant"
+	addstring "(&)Peasant"
+	descr "The settlerss find a prosperous Town centrally situated in a highly populated and intellectually rigorous region and establishes a regional intellectual hub with strong walls and barracks for housing and traing troops. In order to create a thriving academic city, the location must be withing 3 tiles of a  a Hamlet, a Farm, a place of trade, a library, and a greater mine. Consumes 6 Peasants."
+
+newritual "Establish Horticultural City"
+	level                 	3
+	free
+	cost              		0 40 # 30 gold
+	cost              		1 40 # 30 Iron
+
+	apcost					-1
+	terr                    17 # Town
+	aiwhere					17
+
+	nearby3req	           -40   # Hamlet
+	nearby3req	           -13   # Farms
+	nearby3req             -12   # Mine
+	nearby3req             -17   # Water
+	nearby3req             -6    # Forests and Jungles
+	nearby3req             -20   # Swamps
+	nearby3req             -92   # Trade Location
+	minmonreq 				6
+
+
+	alterloc             	275 # City of Herbalists
+	soundfx               	57
+	killtarg 9999
+	promotion 6
+	addstring "Peasant"
+	addstring "Emigrating Peasant"
+	addstring "(&)Peasant"
+	descr "The settlerss find a prosperous Town centrally situated in a highly populated and vegitated region and establishes a regional cultivation hub with strong walls and barracks for housing and traing troops. In order to create a thriving florocultural city, the location must be withing 3 tiles of a Hamlet, a Farm, a place of trade, a forest, and swamp, water, and a greater mine.  Consumes 6 Peasants."
+
+newritual "Establish Faithful City"
+	level                 	3
+	free
+	cost              		0 40 # 30 gold
+	cost              		1 40 # 30 Iron
+
+	apcost					-1
+	terr                    17 # Town
+	aiwhere					17
+	nearby3req	           -40   # Hamlet
+	nearby3req	           -13   # Farms
+	nearby3req             -12   # Mine
+	nearby3req             -17   # Water
+	nearby3req             -2    # Temple
+	minmonreq 				6
+
+	alterloc             	278 # Sacred City
+	soundfx               	57
+
+	promotion 6
+	addstring "Peasant"
+	addstring "Emigrating Peasant"
+	addstring "(&)Peasant"
+	killtarg 9999
+	descr "The settlerss find a prosperous Town centrally situated in a highly populated and fervent region and establishes a regional relgious hub with strong walls and barracks for housing and traing troops. In order to create a thriving clerical city, the location must be withing 3 tiles of a Hamlet, a Farm, a temple, water, and a greater mine. Consumes 6 Peasants." 
+
+newmonster "Migrants"
+	descr "A small group of farmers and labors looking for a new place to live. They are not particularly skilled but have the resources to set up a new farm or Hamlet"
+	copystats "Angry Peasant"
+	hp 10
+	clearweapons
+	spr1 "mainsprites/migrants.png"
+	spr2 "mainsprites/migrants1.png"
+	meleeweapon                0  88 # Pitchfork: d4 Pierce damage.
+	meleeweapon                0  88 # Pitchfork: d4 Pierce damage.
+	meleeweapon                0  88 # Pitchfork: d4 Pierce damage.
+	power 0 1
+	mastery 	     		   1
+	size2x2
+	noleader 
+
+newmonster "Settlers"
+	descr "A group of farmers and labors looking for a new place to live. They have picked up a few artisans and tradespeople so that they can form larger communities"
+	copystats "Angry Peasant"
+	hp 10
+	clearweapons
+	spr1 "mainsprites/settlers.png"
+	spr2 "mainsprites/settlers1.png"
+	meleeweapon                0   5 # Staff: d3 Blunt damage.
+	meleeweapon                0   5 # Staff: d3 Blunt damage.
+	meleeweapon                0   5 # Staff: d3 Blunt damage.
+	power 0 2
+	mastery 	     		   1
+	size2x2
+	noleader 
+
+
+newmonster "Colonists"
+	descr "A Large group of people looking for a new place to live. They have amoung their ranks masons, wheelwright, and carpenters, capable or forming a new town or city"
+	copystats "Angry Peasant"
+	hp 10
+	clearweapons
+	spr1 "mainsprites/colonists.png"
+	spr2 "mainsprites/colonists1.png"
+	meleeweapon                1   4 # Spear: d5 Pierce damage.
+	meleeweapon               -1 142 # Great Maul: d7 Blunt damage.
+	meleeweapon                0   6 # Hammer: d4 Blunt damage.
+	power 0 3
+	size2x2
+	noleader 
+
+newritpow "Miner Magic"
+
+newritual "Study Engineering"
+	cost                 0 0 # 10 gold
+	cost                 1 0 # 10 gold
+	terr                  -3 # In a Library
+	newrit                 2 # Caster will learn a new ritual of level 2.
+	levelup                2 # Level up to new monster (determined by mastery command on monster) if below level 2.
+	soundfx               57 # Sound effect when the ritual is cast: orchhit.smp (Summoning).
+	rebatelvl              1s # Ritual can be cast for half price if caster's power level is greater than or equal to 2.
+	free                     # Always start with this ritual in addition to the others.
+	descr "Believing that things such as water wheels and deep mineshafts must be created by magic, the prospectors head to a local library to see about getting a wizard to help them with some more advanced projects. What they find instead tucked between 'Five ways to Blind a Beholder' and 'Making Fiends and Influencing Mammon' are books concerning the magic of triangles, force/torque diagrams, and the making of very large sheets of blue paper. With this newfound knowledge and some new tools, titles. and snazy outfits, they are ready to take on more advanced projects"
+
+newritual "Setup Lumber Yard"
+	level                 	1
+	free
+	cost              		0 10 # 10 gold
+	cost              		1 10 # 10 iron
+	terr					-11  # Forests
+	alterloc                702  # Lumber Mill
+	soundfx               57 # Sound effect when the ritual is cast: orchhit.smp (Summoning).
+
+	killtarg 9999
+	descr "The Prospectors cut new roads through the forest and set up a logging enterprize there. This provides both a steady income and an easier path for troops to travel through the forest. A Propsector settles in the province after setting up the lumber yard"
+
+newritual "Setup Mine Town"
+	level                 	1
+	free
+	cost              		0 10 # 10 gold
+	cost              		1 10 # 10 iron
+	terr					40  # Village
+	nearby1req            -12 # Greater Mine
+	alterloc                703  # Mine Town
+	soundfx               57 # Sound effect when the ritual is cast: orchhit.smp (Summoning).
+	killtarg 9999
+	descr "The Prospectors goes to a village bordering a mine and sets up a ore mining and refining operation. "
+
+
+newritual "Re-open mine"
+	level                 	2
+	free
+	cost              		0 10 # 10 gold
+	cost              		1 10 # 10 iron
+	terr                  332 # Abandoned Mine
+	soundfx               57 # Sound effect when the ritual is cast: orchhit.smp (Summoning).
+
+	ornext2 5
+	alterloc 34               # 5% chance of a Gold mine
+	killtarg 9999
+
+	ornext2 15
+	alterloc 15               # 15% Silver Mine
+	killtarg 9999
+	
+	ornext2 50
+	alterloc 14               # Otherwise 50% Iron Mine
+	killtarg 9999
+
+
+	descr "The Prospectors Spend some time and money re-opening an abandoned mine. If they managed to find a vein worth extracting they will settle down an set up a new mine. Most abandoned mine were just for iron, iron is everywhere after all. But who knows?"
+
+
+# Consumes Many Miners
+
+newritual "Dig for Iron"
+	level                 	1
+	free
+	cost              		0 0 # 10 gold
+	apcost					2
+	aiwhere					12
+	nonearby1req            -12 # Greater Mine
+	nomonplayerreq
+	closewin
+	killtarg 3
+	
+	summoning 
+	addstring "Iron Miner"
+	addstring "(-)Iron Miner"
+	descr "The miner will search the surrounding mountains for mines. This is not guarunteed The miner is more likely to find a mine the more adjacent mountains there are. Must not be adjecent to an existing mountain mine. A prospects can do this 3 times before its worn out."
+
+newritual "Dig for Coal"
+	level                 	1
+	free
+	cost              		0 0 # 10 gold
+	apcost					1
+	aiwhere					73  # AI should cast on hills
+	nonearby1req            105 # Coal Mine
+	nomonplayerreq
+	closewin
+	killtarg 3
+
+	summoning 
+	addstring "c*Coal Miner"
+	addstring "(-)Coal Miner"
+
+	descr "Check the surrounding hills for coal. Must not be adjecent to an existing coal mine."
+
+newritual "Silver and Gold"
+	level                 	2
+	free
+	cost              		0 0 # 10 gold
+	apcost					1
+	aiwhere					-12 # AI should cast on Mountains
+	nonearby1req            15 # Silver Mine
+	nonearby1req            34 # Gold Mine
+	nomonplayerreq
+	closewin
+	killtarg 3
+
+	summoning 
+	addstring "Precious Metal Miner"
+	addstring "(-)Precious Metal Miner"
+
+	descr "Check surrounding Iron Mines for signs of precious metals. Silver is much more common that Gold"
+
+newritual "Pan for Gold"
+	level                 	2
+	free
+	cost              		0 0 # 10 gold
+	apcost					1
+	aiwhere					12
+	nonearby1req            -12 # Greater Mine
+	nearby1req              67 # River
+	nomonplayerreq
+	closewin
+	killtarg 3
+
+	summoning 
+	addstring "Gold Panner"
+	addstring "(-)Gold Panner"
+
+	descr "Check the mountains streams by a river for signs of gold in the water. Must be adjecent to a river and not adjacent to a mountain mine"
+
+newmonster "Mine Worker"
+	copystats "Slave Worker"
+	copyspr "Slave Worker" 
+	ironcarrier 5
+	descr "Mine Workers extract ore and gems from mine. When enough of them collect, they will organize into a travelling group of workers who are able to go find new mine or other infastructure projects. Mine workers mainly come from towns and cities, and will acumulate faster if you own them."
+
+newmonster "Prospectors"
+	copystats "Angry Peasant" 
+	spr1 "mainsprites/miners.png"
+	spr2 "mainsprites/miners1.png"
+	rank -1
+	rearpos							 # Back back
+	hp 9
+	noheal
+	size2x2
+	clearweapons
+	meleeweapon               0 441 # Pick Axe: d6 Pierce damage.
+	meleeweapon               0 441 # Pick Axe: d6 Pierce damage.
+	meleeweapon               0 441 # Pick Axe: d6 Pierce damage.
+	noleader 
+	power 0 1
+	mastery 1
+
+newmonster "Engineers"
+	copystats "Angry Peasant" 
+	spr1 "mainsprites/engineers.png"
+	spr2 "mainsprites/engineers1.png"
+	rank                      -1
+	noheal
+	rearpos							 # Back back
+	hp 9
+	size2x2
+	clearweapons
+	meleeweapon                0 441 # Pick Axe: d6 Pierce damage.
+	meleeweapon               -1 142 # Great Maul: d7 Blunt damage.
+	meleeweapon                0   6 # Hammer: d4 Blunt damage.
+	noleader 
+	power 0 2
+
+newmonster "Iron Miner"
+	copystats "Slave Worker" 
+	copyspr "Slave Worker" 
+	rank -1
+	rearpos							 # Back back
+
+newmonster "Coal Miner"
+	copystats "Slave Worker" 
+	copyspr "Slave Worker" 
+	rank -1
+	rearpos							 # Back back
+
+
+newmonster "Precious Metal Miner"
+	copystats "Slave Worker" 
+	copyspr "Slave Worker" 
+	rank -1
+	rearpos							 # Back back
+
+newmonster "Gold Panner"
+	copystats "Slave Worker" 
+	copyspr "Slave Worker" 
+	rank -1
+	rearpos							 # Back back
+
+
+newritpow "Forestry"
+
+newmonster "Cultivation Lodge"
+	spr1 "mainsprites/lodge.png"
+	hp 20
+	stationary
+	immobile
+	rank -1
+	rearpos							 # Back back
+	fireres -50
+	fungi  1
+	herbs  1
+	fewmonreq 0
+	descr "This Lodge Creates stuff"
+
+
+newritual "Build Cultivation Lodge"
+	level                 	1
+	cost 0 5
+	cost 1 5
+	free
+	fewmonreq 0
+	summoning
+	addstring "Cultivation Lodge"
+	addstring "(-)Cultivation Lodge"
+	descr "The Forester sets up a lodge in a forest near a settlement to help with the garthering, preserving, and storage of magical herbs and fungus. Only one of these is needed in each forest to maximize production"
+
+newmonster "Foresters"
+	copystats "Scout"
+	hp 10
+	clearweapons
+	meleeweapon                0   3 # Axe: d8 Slash damage.
+	meleeweapon                0   3 # Axe: d8 Slash damage.
+	meleeweapon                0   3 # Axe: d8 Slash damage.
+	size2x2
+	power 0 2
+#########
+# Items #
+#########
+
+
+
+#########################
+# Terrain Modifications #
+#########################
+
+########
+# Elysium
+########
+
+# Mines should be -1 MM
+
+selectterr 		105 # Coal Mine
+	apcost 1
+
+selectterr       14 # Iron Mine
+	apcost 2
+
+selectterr       15 # Silver Mine
+	apcost 2
+
+selectterr       33 # Gold Stream
+	apcost 2
+
+selectterr       34 # Gold Mine
+	apcost 2
+selectterr       332 # Abandoned Mine
+	apcost 2
+######
+# Elemetnal Plane
+######
+
+selectterr      139 	# Fimbul Fortress
+	gems 		 32 		# 3 Sapphires
+	gold          3         # 3 Gold
+	misty
+
+selectterr      213 # Fire Citadel
+	gems 		 4 		# 3 Rubies
+
+selectterr      212 # Fire Citadel
+	gems 		 4 		# 3 Rubies
+
+selectterr      214 # Fire Citadel
+	gems 		 4 		# 3 Rubies
+
+# Fill the elemental plane of water with Gem Deposits
+squareevent
+	+turnnbr   -1	#pre-game
+	+player    24 
+	+plane     	8  # Elemental Plane	
+	+terrain   68  # Deep Sea
+	+chance 15
+	alterterrain 171 # Saphire Gem Deposits
+endevent
+
+# Fill the elemental plane of Air with Thunderstorms
+squareevent
+	+turnnbr   -1	#pre-game
+	+player    24 
+	+plane     	8  # Elemental Plane	
+	+terrain   194  # Cloud
+	+chance 15
+	alterterrain 307 # Storm Cloud
+endevent
+
+# Fill the elemental plane of Fire with Eruptions
+squareevent
+	+turnnbr   -1	#pre-game
+	+player    24 
+	+plane     	8  # Elemental Plane	
+	+terrain   53  # Magma
+	+chance 25
+	alterterrain 334 # Eruptions
+endevent
+
+# Fill the elemental plane of Earth with Depos
+squareevent
+	+turnnbr   -1	#pre-game
+	+player    24 
+	+plane     	8  # Elemental Plane	
+	+terrain   47  # Rock Ground
+	+chance 5
+	alterterrain 174 # Gem Deposits
+endevent
+
+# Fill the elemental plane of Earth with Depos
+squareevent
+	+turnnbr   -1	#pre-game
+	+player    24 
+	+plane     	8  # Elemental Plane	
+	+terrain   47  # Rock Ground
+	+chance 5
+	alterterrain 175 # Gem Deposits
+endevent
+
+# Fill the elemental plane of Earth with Depos
+squareevent
+	+turnnbr   -1	#pre-game
+	+player    24 
+	+plane     	8  # Elemental Plane	
+	+terrain   47  # Rock Ground
+	+chance 5
+	alterterrain 176 # Gem Deposits
+endevent
+
+# Fill the elemental plane of Earth with Depos
+squareevent
+	+turnnbr   -1	#pre-game
+	+player    24 
+	+plane     	8  # Elemental Plane	
+	+terrain   47  # Rock Ground
+	+chance 5
+	alterterrain 177 # Gem Deposits
+endevent
+
+
+######
+# Void
+######
+
+selectterr      229  # Forest of Cubes
+	iron              2  # Iron:  1
+	gems           12288 # 3 random gems
+
+selectterr      250 # Color out of Space
+	ownable
+
+selectterr      232 # Corkscrew Towers
+	farsight
+
+########
+# Primal
+########
+
+
+
+selectterr       89 # Mystical Column
+	ritrebate        20 # All rituals cast on this location will be 20% cheaper.
+	farsight
+
+# Fill the Primal plane with silver
+squareevent
+	+turnnbr   -1	#pre-game
+	+player    24 
+	+plane     	7  # Primal Plane	
+	+terrain   12  # Rock Ground
+	+chance 10
+	alterterrain 15 # Gem Deposits
+endevent
+
+# Enchants the primal plane
+squareevent
+	+turnnbr   -1	#pre-game
+	+player    24 
+	+plane     	7  # Primal Plane	
+	+terrain   -96   # Lakes
+	+chance 100
+	alterterrain 295 # Enchanted Lakes
+endevent
+
+# Enchants the primal plane
+squareevent
+	+turnnbr   -1	 # Pre-game
+	+player    24 
+	+plane     	7    # Primal Plane	
+	+terrain   67    # River
+	+chance 100
+	alterterrain 704 # Enchanted River
+endevent
+
+# Enchants the primal plane
+squareevent
+	+turnnbr   -1	 # Pre-game
+	+player    24 
+	+plane     	7    # Primal Plane	
+	+terrain   2     # Forest
+	+chance 10
+	alterterrain 8 # Enchanted River
+endevent
+
+# Enchants the primal plane
+squareevent
+	+turnnbr   -1	 # Pre-game
+	+player    24 
+	+plane     	7    # Primal Plane	
+	+terrain   48     # Bridge
+	+chance 100
+	newunits 24 "Troll"
+
+endevent
+
+# Enchants the primal plane
+squareevent
+	+turnnbr   -1	 # Pre-game
+	+player    24 
+	+plane     	7    # Primal Plane	
+	+terrain   49    # Bridge
+	+chance 100
+	newunits 24 "Troll"
+endevent
+
+#######
+# Atzlan
+######
+
+squareevent
+	+turnnbr   -1	 # Pre-game
+	+player    24 
+	+plane     	6    # Atzlan
+	+terrain   50    # Bridge
+	+chance 100
+	alterterrain 27
+endevent
+
+
+selectterrgroup -1100
+	setname "Farms and Settlments"
+	addallsettlements
+	addterr 5
+	addterr 6
+
+# Gives Farms Weed
+selectterr 				5
+weed 					1
+
+# Gives other farms Weed (illwinter plz)
+selectterr 				6
+weed 					1
+
+# Gives Atavi Tribe Village Weed
+selectterr      348 # Atavi Tribe Village
+weed 					1
+
+# Makes City of the First Men Good
+selectterr      284
+weed 			4
+citadel 
+town2
+batmap           39 
+
+
+##################
+# Terrain Events #
+##################
+
+# Make Swamps Freeze in the Winter
+squareevent
+	+minturnnbr 1  			#Any turn
+	+terrain  -101 # "Snowey"
+	+terrain   107 # "Swamp"
+	+chance 100
+	alterterrain 700  # Freeze Swamp
+endevent
+
+# And Thaw in the Spring
+squareevent
+	+minturnnbr 1  			#Any turn
+	-terrain  -101 # "Snowey"
+	+terrain   700 # "Frozen Swamp"
+	+chance 100
+	alterterrain 107 # Back to Swamp
+endevent
+
+# Make Swamps Freeze in the Winter
+squareevent
+	+minturnnbr 1  			#Any turn
+	+terrain  -101 # "Snowey"
+	+terrain   97 # "Iron Bog"
+	+chance 100
+	alterterrain 701  # Freeze Bog
+endevent
+
+# And Thaw in the Spring
+squareevent
+	+minturnnbr 1  			#Any turn
+	-terrain  -101 # "Snowey"
+	+terrain   701 #"Frozen Swamp"
+	+chance 100
+	alterterrain 97 # Back to Bog
+endevent
+
+##########
+# Events #
+##########
+
+# Miner Mining Mines
+playerevent
+	+hasunit -2 "Iron Miner"
+	targetunitloc
+	scatterloc 1
+	+terrain 12
+	alterterrain 14
+	message -2 "Your Miner has found Iron!"
+endevent
+
+# Miner Mining Mines
+playerevent
+	+hasunit -2 "Coal Miner"
+	targetunitloc
+	scatterloc 1
+	+terrain 73
+	alterterrain 105
+	message -2 "Your Miner has found Coal!"
+endevent
+
+# Miner Mining Mines
+playerevent
+	+hasunit -2 "Precious Metal Miner"
+	targetunitloc
+	scatterloc 1
+	+terrain 14 "Iron Mine"
+	alterterrain 15
+	message -2 "Your Miner has found Silver!"
+endevent
+
+# Miner Mining Mines
+playerevent
+	+hasunit -2 "Precious Metal Miner"
+	targetunitloc
+	scatterloc 1
+	+terrain 14 "Iron Mine"
+	+chance 15
+	alterterrain 34
+	message -2 "Your Miner has found Gold!!!"
+endevent
+
+# Panner Panning Pans
+playerevent
+	+hasunit -2 "Gold Panner"
+	targetunitloc 
+	scatterloc 1
+	+terrain 12 # Mountains
+	+chance 25
+	alterterrain 33
+	message -2 "Your Miner has found a Gold Stream!"
+endevent
+
+
+# Lasts One turn
+playerevent
+	+hasunit -2 "Iron Miner"
+	killunit 1000
+endevent
+
+# Lasts One turn
+playerevent
+	+hasunit -2 "Precious Metal Miner"
+	killunit 1000
+endevent
+
+# Lasts One turn
+playerevent
+	+hasunit -2 "Coal Miner"
+	killunit 1000
+endevent
+
+# Lasts One turn
+playerevent
+	+hasunit -2 "Gold Panner"
+	killunit 1000
+endevent
+
+# Spawns Peasants slowly in settles provinces, The more different kinds of building you own the more peasants you get
+
+# Spawns 
+squareevent
+	+turnnbr -1
+	+player 24
+	+squareowner 30
+	+terrain -1100 # Settlements + Farms
+	newunits -3 "5*Peasant"
+endevent
+
+# Spawns 
+squareevent
+	+turnnbr -1
+	+player 24
+	+squareowner 24
+	+terrain -1100 # Settlements + Farms
+	newunits -3 "5*Peasant"
+endevent
+
+# Spawns 
+squareevent
+	+turnnbr -1
+	+player 24
+	+squareowner 24
+	+terrain -4 # Mines
+
+	newunits -3 "5*Mine Worker"
+endevent
+
+# Spawns 
+playerevent
+	+ownsloctarg -2 -4 # Owns a Mines
+	+chance 5
+	newunits -3 "Mine Worker"
+endevent
+
+# Spawns 
+playerevent
+	+ownsloc -2 17   # If you Own a Town
+	+ownsloctarg -2 -4 # Owns a Mines
+	+chance 10
+	newunits -3 "Mine Worker"
+endevent
+
+# Spawns 
+playerevent
+	+ownsloc -2 -113   # If you Own a City
+	+ownsloctarg -2 -4 # Owns a Mines
+	+chance 20
+	newunits -3 "Mine Worker"
+endevent
+
+squareevent
+	+player 24
+	+terrain -1100
+	+chance 10
+	newunits -3 "Peasant"
+endevent
+
+squareevent
+	+player 24
+	+terrain -6 #Forests and Jungles
+	+chance 1
+	-squareowner 24 
+	newunits -3 "Woodsman"
+endevent
+
+squareevent
+	+player 24
+	+terrain -6 #Forests and Jungles
+	+chance 3
+	-squareowner 24 
+	+hasunithere -3 "Woodsman"
+	newunits -3 "Woodsman"
+endevent
+# Settlers spawn
+
+playerevent
+	-player  24
+	-player  25       
+	-player  26       
+	-player  27
+	-player  27       
+	-player  29   
+	-player  30
+	+chance 5 
+	+minunits -2 5 0 "Peasant"
+	+hasunit -2 "Peasant"
+
+	newunits -2 "c*Migrants"
+	promoteunits -2 3 "Peasant" "Emigrating Peasant"
+	message -2 "having 5 peasants has granted you a Migrant"
+endevent
+
+playerevent
+	-player  24
+	-player  25       
+	-player  26       
+	-player  27
+	-player  27       
+	-player  29   
+	-player  30
+	+chance  5
+	+minunits -2 10 0 "Peasant"
+	+hasunit -2 "Peasant"
+
+	newunits -2 "c*Migrants"
+	promoteunits -2 3 "Peasant" "Emigrating Peasant"
+	message -2 "having 10 peasants has granted you a Migrant"
+endevent
+
+playerevent
+	-player  24
+	-player  25       
+	-player  26       
+	-player  27
+	-player  27       
+	-player  29   
+	-player  30
+	+chance  5
+	+minunits -2 15 0 "Peasant"
+	+hasunit -2 "Peasant"
+
+	newunits -2 "c*Migrants"
+	promoteunits -2 3 "Peasant" "Emigrating Peasant"
+	message -2 "having 15 peasants has granted you a Migrant"
+endevent
+
+playerevent
+	-player  24
+	-player  25       
+	-player  26       
+	-player  27
+	-player  27       
+	-player  29   
+	-player  30
+	+chance 5 
+	+minunits -2 5 0 "Woodsman"
+	+hasunit -2 "Woodsman"
+
+	newunits -2 "c*Foresters"
+	promoteunits -2 3 "Woodsman" "Emigrating Peasant"
+	message -2 "having 5 Woodsman has granted you some Foresters"
+endevent
+
+playerevent
+	-player  24
+	-player  25       
+	-player  26       
+	-player  27
+	-player  27       
+	-player  29   
+	-player  30
+	+chance  5
+	+minunits -2 10 0 "Woodsman"
+	+hasunit -2 "Woodsman"
+
+	newunits -2 "c*Foresters"
+	promoteunits -2 3 "Woodsman" "Emigrating Peasant"
+	message -2 "having 10 woodsmen has granted you some Foresters"
+endevent
+
+playerevent
+	-player  24
+	-player  25       
+	-player  26       
+	-player  27
+	-player  27       
+	-player  29   
+	-player  30
+	+chance  5
+	+minunits -2 15 0 "Woodsman"
+	+hasunit -2 "Woodsman"
+
+	newunits -2 "c*Foresters"
+	promoteunits -2 3 "Woodsman" "Emigrating Peasant"
+	message -2 "having 15 woodsman has granted you a Migrant"
+endevent
+
+playerevent
+	-player  24
+	-player  25       
+	-player  26       
+	-player  27
+	-player  27       
+	-player  29   
+	-player  30
+	+chance 5 
+	+minunits -2 5 0 "Mine Worker"
+	+hasunit -2 "Mine Worker"
+	
+	promoteunits -2 3 "Mine Worker" "Emigrating Peasant"
+	newunits -2 "c*Prospectors"
+	message -2 "having 5 mine workers has granted you some prospectors"
+endevent
+
+playerevent
+	-player  24
+	-player  25       
+	-player  26       
+	-player  27
+	-player  27       
+	-player  29   
+	-player  30
+	+chance  5
+	+minunits -2 10 0 "Mine Worker"
+	+hasunit -2 "Mine Worker"
+	
+	promoteunits -2 3 "Mine Worker" "Emigrating Peasant"
+	newunits -2 "c*Prospectors"
+	message -2 "having 10 mine workers has granted you some prospectors"
+endevent
+
+playerevent
+	-player  24
+	-player  25       
+	-player  26       
+	-player  27
+	-player  27       
+	-player  29   
+	-player  30
+	+chance  5
+	+minunits -2 15 0 "Mine Worker"
+	+hasunit -2 "Mine Worker"
+	
+	promoteunits -2 3 "Mine Worker" "Emigrating Peasant"
+	newunits -2 "c*Prospectors"
+	message -2 "having 15 mine workers has granted you some prospectors"
+endevent
+
+# Downgrades Settlements when controlled by indies one of each per turn
+playerevent
+	+player  24       # Occurs on the independant turn
+	+ownsloctarg  24 -13   # Indies own a Village
+	+armyowner 24          # And has an army there
+	+chance 50
+	+plane 0
+	+hasunithere -3 "Bandit"
+
+	alterterrain 7    # Village Becomes a Hamlet
+	addvar 711 1
+	message -1 "The population of a bandit infested village has been reduced"
+endevent
+
+playerevent
+	+player  24       # Occurs on the independant turn
+	+ownsloctarg 24 -40      # Indies own a 
+	+plane 0
+	+armyowner 24          # And has an army there
+	+chance 50
+	+hasunithere -3 "Bandit"
+	
+	alterterrain 6    # Hamlet Becomes a Farm
+	addvar 711 1
+	message -1 "The population of a bandit infested Hamlet has been reduced"
+
+endevent
+
+playerevent
+	+player  24       # Occurs on the independant turn
+	+plane 0
+	+ownsloctarg 24 6     # Indies own a Farm
+	+armyowner 24          # And has an army there
+	+chance 50
+	+hasunithere -3 "Bandit"
+
+	alterterrain 0    # Village Becomes a Plain (RIP)
+	addvar 711 1
+	message -1 "A bandit infested Farm has been Abandoned"
+endevent
+
+# Downgrades Settlements when controlled by Horrors
+
+
+playerevent
+	+player  26        # Occurs on the independant turn
+	+plane 0
+	+ownsloctarg 26  -13     # Horrors own a Farm
+	+armyowner 26          # And has an army there
+	+chance 100
+
+	alterterrain 0    # Farm Becomes a Plain (RIP)
+	message -1 "A Farm has been Abandoned due to horrors!"
+	addvar 711 1
+endevent
+
+playerevent
+	+player  26            # Occurs on the independant turn
+	+plane 0
+	+ownsloctarg 26  -40   # Horrors own a Hamlet
+	+armyowner 26          # And has an army there
+	+chance 100
+
+	alterterrain 6         # Hamlet Becomes a Farm
+	addvar 711 1
+	message -1 "A Hamlet has been diminished by horrors!"
+endevent
+
+playerevent
+	+player  26        # Occurs on the independant turn
+	+plane 0
+	+ownsloctarg 26  -13    # Horrors own a Village
+	+armyowner 26          # And has an army there
+	+chance 100
+
+	alterterrain 7    # Village Becomes a Hamlet
+	addvar 711 1
+	message -1 "A Village has been diminished by horrors!"
+endevent
+
+playerevent
+	+player  26        # Occurs on the independant turn
+	+plane 0
+	+ownsloctarg 28   -13    # Devils own a Village
+	+armyowner 26          # And has an army there
+	+chance 100
+
+	alterterrain 7    # Village Becomes a Hamlet
+	addvar 711 1
+	message -1 "A Village has been diminished by devils!"
+endevent
+
+playerevent
+	+player  26            # Occurs on the independant turn
+	+plane 0
+	+ownsloctarg 28   -40   # Devils own a Hamlet
+	+armyowner 26          # And has an army there
+	+chance 100
+
+	alterterrain 6         # Hamlet Becomes a Farm
+	addvar 711 1
+	message -1 "A Hamlet has been diminished by devils!"
+endevent
+
+playerevent
+	+player  26        # Occurs on the independant turn
+	+plane 0
+	+ownsloctarg 28   -13     # Devils own a Farm
+	+armyowner 26          # And has an army there
+	+chance 100
+
+	alterterrain 0    # Farm Becomes a Plain (RIP)
+	message -1 "A Farm has been Abandoned due to devils!"
+	addvar 711 1
+endevent
+
+
+
+#####
+# Growth Events
+#####
+
+# Cities grow Nearby Villages into Market Villages
+playerevent
+	+chance 25
+	+vargreater 711 0
+	-player  24
+	-player  25       
+	-player  26       
+	-player  27
+	-player  27       
+	-player  29   
+	-player  30
+	+ownsloctarg -2 -113
+	+plane 0
+	scatterloc 1
+	+terrain 18   # Villages
+	+squareowner -2
+
+	alterterrain 206 # Market Village
+	message -2 "One of your villages has taken up more aggressive trade policies"
+	addvar 711 -1
+endevent
+
+# Cities and Towns Grow Nearby Hamlets into Villages
+playerevent
+	+chance 25
+	+vargreater 711 0
+	-player  24
+	-player  25       
+	-player  26       
+	-player  27
+	-player  27       
+	-player  29   
+	-player  30
+	+ownsloctarg -2 -28  #Towns and Cities
+	+plane 0
+	scatterloc 1
+	+terrain -40   #Hamlets
+	+squareowner -2
+
+	alterterrain 18 # Village
+	message -2 "A hamlet near one of your cities has grown in population"
+	addvar 711 -1
+endevent
+
+# Cities and Towns Grow Nearbishby Farms into Hamlets
+playerevent
+	+chance 25
+	+vargreater 711 0
+	-player  24
+	-player  25       
+	-player  26       
+	-player  27
+	-player  27       
+	-player  29   
+	-player  30
+	+ownsloctarg -2 -28  #Towns and Cities
+	scatterloc 2
+	+plane 0
+	+terrain -13 # Farms
+	+squareowner -2
+
+	alterterrain 7 # Hamlet
+	message -2 "A farm near one of your cities has grown into a small hamlet"
+	addvar 711 -1
+endevent
+
+# Settlments Spawn Farms
+playerevent
+	+chance 25
+	+vargreater 711 0
+	-player  24
+	-player  25       
+	-player  26       
+	-player  27
+	-player  27       
+	-player  29   
+	-player  30
+	+ownsloctarg -2 -14  #Settlments
+	scatterloc 1
+	+plane 0
+	+terrain -103 # Planeslike
+	+squareowner -2
+
+	alterterrain 6 # Farm
+	message -2 "A group of displaced farmer have homesteaded near one of your settlments"
+	addvar 711 -1
+endevent
+
+# --------------SuperTestGuy--------------
+#This is just a simple OP debug monster to cheat/test stuff.
+
+#Add one of the following to the end of any classdef and you'll be able to recruit or start with the debug guy.
+
+
+
+newritpow "Test/Debug Rituals"
+
+
+newritual "Sea"
+	level                 	1
+	free
+	apcost					-1
+	alterloc             	27 # Farm
+	soundfx               	57
+	descr "The settlerss set out to create an indepentant farming community, Because there are no nearby settlements, this will require some additional funding"
+
+newritual "Nether's Super Scry"
+	level 1
+	apcost -1
+	free
+	scryloc 10000
+	closewin
+	descr "Reveals the whole map of the current plane, make sure to have show indepentaent moves off first unless you have all day."
+	
+newritual "Nether's Teleport"
+	level 1
+	free
+	apcost -1
+	chooseterrloc -1
+	teleportloc 2
+	centercaster
+	closewin
+	descr "Select a destination in any plane and this ritual brings everyone under the casters command there."
+	
+newritual "Nether's Random Teleport (Random)"
+	level 1
+	free
+	apcost -1
+	setplane -1
+	#setplane 1
+	randomloc 1
+	teleportloc 2
+	centercaster
+	closewin
+	descr "Teleports to a random tile in a random plane, useful for getting to other planes in the first place. Caution; can and will teleport you into enemies. Will sometimes get you 100% stuck in plane10."
+	
+
+	
+#newritual "Enchant Test 1"
+#	level 1
+#	free
+#	apcost -1
+#	squareench 21
+#	descr "Tests enchantment values."
+
+newritual "Nether's Random Teleport (Elysium)"
+	level 2
+	free
+	apcost -1
+	setplane 0
+	randomloc 1
+	teleportloc 2
+	centercaster
+	closewin
+	descr "Teleports to a random tile in the named plane, useful for getting to other planes in the first place. Caution; can and will teleport you into enemies."
+	
+newritual "Nether's Random Teleport (Celestial)"
+	level 2
+	free
+	apcost -1
+	setplane 1
+	randomloc 1
+	teleportloc 2
+	centercaster
+	closewin
+	descr "Teleports to a random tile in the named plane, useful for getting to other planes in the first place. Caution; can and will teleport you into enemies."
+	
+newritual "Nether's Random Teleport (Sky)"
+	level 2
+	free
+	apcost -1
+	setplane 2
+	randomloc 1
+	teleportloc 2
+	centercaster
+	closewin
+	descr "Teleports to a random tile in the named plane, useful for getting to other planes in the first place. Caution; can and will teleport you into enemies."
+	
+newritual "Nether's Random Teleport (Agartha)"
+	level 2
+	free
+	apcost -1
+	setplane 3
+	randomloc 1
+	teleportloc 2
+	centercaster
+	closewin
+	descr "Teleports to a random tile in the named plane, useful for getting to other planes in the first place. Caution; can and will teleport you into enemies."
+	
+newritual "Nether's Random Teleport (Inferno)"
+	level 2
+	free
+	apcost -1
+	setplane 4
+	randomloc 1
+	teleportloc 2
+	centercaster
+	closewin
+	descr "Teleports to a random tile in the named plane, useful for getting to other planes in the first place. Caution; can and will teleport you into enemies."
+	
+newritual "Nether's Random Teleport (Hades)"
+	level 2
+	free
+	apcost -1
+	setplane 5
+	randomloc 1
+	teleportloc 2
+	centercaster
+	closewin
+	descr "Teleports to a random tile in the named plane, useful for getting to other planes in the first place. Caution; can and will teleport you into enemies."
+	
+newritual "Nether's Random Teleport (Atzlan)"
+	level 2
+	free
+	apcost -1
+	setplane 6
+	randomloc 1
+	teleportloc 2
+	centercaster
+	closewin
+	descr "Teleports to a random tile in the named plane, useful for getting to other planes in the first place. Caution; can and will teleport you into enemies."
+		
+newritual "Nether's Random Teleport (Primal)"
+	level 2
+	free
+	apcost -1
+	setplane 7
+	randomloc 1
+	teleportloc 2
+	centercaster
+	closewin
+	descr "Teleports to a random tile in the named plane, useful for getting to other planes in the first place. Caution; can and will teleport you into enemies."
+		
+newritual "Nether's Random Teleport (Elemental)"
+	level 2
+	free
+	apcost -1
+	setplane 8
+	randomloc 1
+	teleportloc 2
+	centercaster
+	closewin
+	descr "Teleports to a random tile in the named plane, useful for getting to other planes in the first place. Caution; can and will teleport you into enemies."
+	
+newritual "Nether's Random Teleport (Void)"
+	level 2
+	free
+	apcost -1
+	setplane 9
+	randomloc 1
+	teleportloc 2
+	centercaster
+	closewin
+	descr "Teleports to a random tile in the named plane, useful for getting to other planes in the first place. Caution; can and will teleport you into enemies."
+	
+#newritual "Nether's Random Teleport (plane10?)"
+#	level 2
+#	free
+#	apcost -1
+#	setplane 10
+#	randomloc 1
+#	teleportloc 2
+#	centercaster
+#	closewin
+#	descr "This plane exists, but you'll get stuck there. Coming content confirmed? Pobably just a bug with teleporting to planes not actually populated."
+	
+newweapon "Nether's Total Destruction"
+	range 99
+	aoe 999
+	dmg 999
+	an
+	init 9
+	dmgtype 7 #magic
+
+newmonster "Netherstestguy"
+	copyspr "Bard"
+	rank 1
+	frontpos
+	hp 2500
+	armor 20
+	str 30
+	mor 30
+	mr 30
+	regeneration
+	affres 100
+	diseaseres
+	voidsanity 20
+	water
+	tunnel
+	spiritsight
+	farsight 1
+	flying
+	#rangedweaponbonus 1 "Conversion"
+	prebatweapon 0 "Nether's Total Destruction"
+	rangedweaponbonus 0 "Nether's Total Destruction"
+	meleeweapon 100 "Soul Scythe"
+	meleeweapon 100 "Soul Scythe"
+	hadesres 100
+	unaging
+	gold 15000
+	iron 2000
+	trade 2000
+	relics 500
+	hands 500
+	fungi 500
+	weed 500
+	gatherherbs
+	gatherfungus
+	gathersacr
+	gatherhands
+	gatherweed
+	gathergems
+	gatherrelics
+	fast
+	teleport
+	nametype 39
+	power 0 2
+	immortal
+	immortalap 1
+	descr "Is he the true god of this realm? No; he's the debug guy sent to test and explore. Gathers everything, generates enough gold and trade to buy any resource, has powerful debug rituals and is immortal to the highest degree. Not indended for a normal game. Make sure you remove the code that added him when you're done."
+
+# addcomrec "Netherstestguy" 100 0 0 0
+selectclass 27 # Kobold
+	addstartcom "Garrison Commander"
+	addstartcom "Netherstestguy"
+	addstartcom "Prospectors"
+	addstartcom "Foresters"

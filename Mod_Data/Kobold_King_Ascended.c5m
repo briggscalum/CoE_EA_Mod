@@ -10,7 +10,7 @@ newritpow #Kobold Krafting
 
 # Variables used
 # Dragon Invortion
-# 710 - Tiamat Summoning
+# 710, 711 - Tiamat Summoning
 
 #################
 # Monster Edits #
@@ -19,16 +19,16 @@ newritpow #Kobold Krafting
 selectmonster "Black Kobold Slayer Shaman"   
 	sensedead 					1
 	acutesenses
-	hadesres
+	hadesres 100
 
 selectmonster "Black Kobold Slayer Prophet"  
 	sensedead 					1
 	planeshift 1
 	acutesenses
-	hadesres
+	hadesres 100
 
 selectmonster "Black Dragon Spawn"   
-	hadesres
+	hadesres 100
 
 selectmonster "Bile Dragon"  
 	wanderrest 75
@@ -153,7 +153,7 @@ newmonster "Full Kobolpult"
 	rangedweapon                   2   "Kobold Launcher" 
 	rangedweapon    		       0   "Kobold Loader"
 	noheal
-	fastheal
+	
 	armor                          0 # Armor.
 	str                            4 # Strength.
 	mor                            4 # Morale.
@@ -173,7 +173,6 @@ newmonster "Kobolpult"
 	rangedweapon                   2   "Kobold Launcher" 
 	rangedweapon    		       0   "Kobold Loader"
 	noheal
-	fastheal
 	armor                          0 # Armor.
 	str                            4 # Strength.
 	mor                            4 # Morale.
@@ -191,7 +190,6 @@ newmonster "Spent Kobolpult"
 	descr "A millitary unit only kobolds would consider fielding. Some kobolds are born with a deathwish bordering on fearlessness and those are given a helmet and a breastplate and shot out of a catapult at high speeds. The Bombardiers try to break their fall by impailing an enemy on their sword, and if this is successful they pull it out of their enemies corpse and continue the fight."
 	hp                             30 # Hit Points.
 	noheal
-	fastheal
 	armor                          0 # Armor.
 	str                            4 # Strength.
 	mor                            4 # Morale.
@@ -244,7 +242,6 @@ newmonster "New Mobile Kobold Wall"
 	spr1 "sprites/koboldshieldwall.png"
 	spr2 "sprites/koboldshieldwall1.png"
 	descr "The kobold's answer to opposing archer fire. This is little more than a large wooden plank that has been put on wheels and slowly rolled toward the enemy. A few ranged kobolds server to both push it and return a little bit of fire. Primarily used to protect those leading from the back from arrowfire once the front rank collapses. The reason its not places on the front rank itself is because its quite flamable and Kobold weapons are known for their fiery properties. The planks on this one are all at the right angles and no one has gotten a splinter yet. This wont be repaired"
-	fastheal
 	hp                            30 # Hit Points.
 	rangedweapon              -1 626 # Small Poison Bow: d2 Pierce damage.
 	rangedweapon              -1  27 # Sling: d1 Blunt damage.
@@ -261,6 +258,7 @@ newmonster "New Mobile Kobold Wall"
 	battleslow2                      # Immobile (cannot move in battle).
 	slow                             # The monster only has 2 AP.
 	size2x2                          # Takes up 2x2 squares on the battlefield (overrides sprite size).
+	healonterr -12
 	shrinkhp 				      29
 
 newmonster "Mobile Kobold Wall"
@@ -283,6 +281,7 @@ newmonster "Mobile Kobold Wall"
 	battleslow2                      # Immobile (cannot move in battle).
 	slow                             # The monster only has 2 AP.
 	size2x2                          # Takes up 2x2 squares on the battlefield (overrides sprite size).
+	healonterr -12
 
 newweapon  "Fiery Battering Ram"                                              #  98
 	trgrank              1 # Target: any enemy in range.
@@ -311,7 +310,7 @@ newmonster "New Kobold Battering Ram"
 	descr "The Journeykobold knows that not getting killed with arrows is not only a question of blocking them, but also about solving the problem of getting to the place where the arrows are coming from and stopping them from coming. The battering ram handily combines both goals into one lumbering metal box. As an added touch, the middle of the battering ram is filled with flamable liquid and a little sloshs out every time it is swung, doing serious damage to wood gates. The liquid on this one is topped up and the dragon head design is newly polished. It wont be repaired"
 	hp                            50 # Hit Points.
 	noheal
-	fastheal
+	healonterr -12
 	shield
 	armor                          2 # Armor.
 	str                            6 # Strength.
@@ -333,6 +332,7 @@ newmonster "Kobold Battering Ram"
 	descr "The Journeykobold knows that not getting killed with arrows is not only a question of blocking them, but also about solving the problem of getting to the place where the arrows are coming from and stopping them from coming. The battering ram handily combines both goals into one lumbering metal box. As an added touch, the middle of the battering ram is filled with flamable liquid and a little sloshs out of a fetching dragon shapped head every time it is swung, doing serious damage to wood gates."
 	hp                            50 # Hit Points.
 	noheal
+	healonterr -12
 	shield
 	armor                          2 # Armor.
 	str                            6 # Strength.
@@ -466,7 +466,6 @@ newmonster "New Ultimate War Machine"
 	spr1 "sprites/koboldwarmachine.png"
 	spr2 "sprites/koboldwarmachine1.png"
 	descr "The apex of Kobold Engineering, this machine boasts unparalleled firepower at the cost of any kind of armor or in fact even the structural integrety to maintain fire on its own battery of weapons. Requires constants maintenance from its large crew of technicians but in order to keep it running but it will slowly break down and needs a master artificer to occasionally repair it. It is so large and cumbersome that is requires a pair of stone drakes to pull. The paint on this one is new and the bolts have not even started to juggle. It will not be repaired"
-	fastheal
 	huge
 	armor                          1 # Armor.
 	hp                            40 # Hit Points.
@@ -642,10 +641,14 @@ newmonster "Great Wyrm of Conflagration"
 	rank                           2 # Mid rank.
 	meleeweapon               20  11 # Bite: d33 Slash damage.
 	spellweapon                3   3 # Pyromancy at level 3.
-	huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
+	flying
+	float
+	size2x2                             
 	mines1                           # Loves mines (if an independent or stupid commander, will not leave its loved terrains).
 	fireres                      100 # Fire immunity.
 	fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
+	homeplane                      1 # Celestial
+	reformloc   			 	 198 # Flames
 
 # Summoned on Ice Fortress in Water Plane
 newmonster "Great Wyrm of Rime"
@@ -658,10 +661,14 @@ newmonster "Great Wyrm of Rime"
 	rank                           2 # Mid rank.
 	meleeweapon               20  11 # Bite: d20 Slash damage.
 	spellweapon               27   3 # Frost Magic at level 3.
-	huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
+	flying
+	float
+	size2x2                            
 	mines1                           # Loves mines (if an independent or stupid commander, will not leave its loved terrains).
 	coldres                      100 # Cold immunity.
 	fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
+	homeplane                      1 # Celestial
+	reformloc                    194 # Clouds
 
 # Summoned on Fortess in Air Plane
 newmonster "Great Wyrm of Tumult"
@@ -675,10 +682,13 @@ newmonster "Great Wyrm of Tumult"
 	rank                           2 # Mid rank.
 	spellweaponbonus           5   3 # Storm Magic at level 3.
 	meleeweapon               20  11 # Bite: d20 Slash damage.
-	huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
-	mines1                           # Loves mines (if an independent or stupid commander, will not leave its loved terrains).
-	shockres                    100 # Poison immunity.
+	flying
+	float
+	size2x2                            # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
+	shockres                    100  # Shock immunity.
 	fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
+	homeplane                      1 # Celesital
+	reformloc                    194 # Clouds
 
 # Summoned on Swamp in Primal Plane
 newmonster "Great Wyrm of Decay"
@@ -692,12 +702,15 @@ newmonster "Great Wyrm of Decay"
 	rank                           2 # Mid rank.
 	spellweapon               63   3 # Bile Magic at level 3.
 	meleeweapon               20  11 # Bite: d20 Slash damage.
-	huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
-	mines1                           # Loves mines (if an independent or stupid commander, will not leave its loved terrains).
+	flying
+	float
+	size2x2
 	poisonres                    100 # Poison immunity.
 	fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
+	homeplane                      1 # Celesital
+	reformloc                    194 # Clouds
 
-# Summoned on Shadow Wood in Hades
+# Summoned on dark Tower in Hades
 newmonster "Great Wyrm of Desolation"
 	spr1 "sprites/desolationwyrm.png"
 	unique                         1
@@ -707,12 +720,15 @@ newmonster "Great Wyrm of Desolation"
 	mor                           10 # Morale.
 	mr                            11 # Magic Resistance.
 	rank                           2 # Mid rank.
+	flying
+	float
 	meleeweapon               20  11 # Bite: d20 Slash damage.
 	spellweapon                9   3 # Dark at level 3.
-	huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
-	mines1                           # Loves mines (if an independent or stupid commander, will not leave its loved terrains).
+	size2x2
 	fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
 	hadesres
+	homeplane                      1 # Celesital
+	reformloc                    194 # Clouds
 
 # Summoned on Silver Mines
 newmonster "Silver Dragon"
@@ -1323,64 +1339,57 @@ newmonster "Silver Dragon Spawn"
 #####
 
 newritual "Summon Great Dragon of Desolation"
-	ritpow                51 # Kobold, Blue
-	level                  3
-	cost             15   150 # 100 Emeralds
-	terr                  37 # Shadow Wood
-
-	nomonworldreq
-		addstring    "(-)Great Wyrm of Desolation"
+	ritpow                51 # Kobold, Black
+	level                  2
+	cost             15   100 # 100 Gems
+	terr                  151 # Dark Tower
 	summoning
-		addstring    "c*Great Wyrm of Desolation"
+	addstring    "c*Great Wyrm of Desolation"
+	descr "Long ago, the five great wyrms were struck down from the celestial plane and imprisoned separately, each in a great fortress. The dragon of Destruction was put under the watch of the Wraith Lords in their great citadels. "
+
 
 newritual "Summon Great Dragon of Bile"
 	ritpow                55 # Kobold, Green
-	level                  3
-	noplanereq             0 # Not Elysium
+	level                  2
 	cost              0   50 # 50 Gold
 	cost             10   100 # 100 Emeralds
+	terr                209 # Granite Citadel
 
-	terr                -20 # Ancient Forest
-	nomonworldreq
-		addstring    "(-)Great Wyrm of Decay"
 	summoning
-		addstring    "c*Great Wyrm of Decay"
+	addstring    "c*Great Wyrm of Decay"
+	descr "Long ago, the five great wyrms were struck down from the celestial plane and imprisoned separately, each in a great fortress. The dragon of poison was put under the watch of the Earth Elementals in their great citadels." 
 
 newritual "Summon Great Dragon of Storms"
-	ritpow                54 # Kobold, Blue
-	level                  3
+	ritpow                54 # Kobold, White
+	level                  2
 	cost             9   100 # 100 Diamonds
 
 	terr                -50 # Air Fort
-	nomonworldreq
-		addstring    "(-)Great Wyrm of Tumult"
 	summoning
-		addstring    "c*Great Wyrm of Tumult"
-
+	addstring    "c*Great Wyrm of Tumult"
+	descr "Long ago, the five great wyrms were struck down from the celestial plane and imprisoned separately, each in a great fortress. The dragon of Wind was put under the watch of the Air Elementals in their great citadels. "
 
 newritual "Summon Great Dragon of Fire"
-	ritpow                52 # Kobold, Blue
-	level                  3
-	cost             7   100 # 150 Rubies
-
+	ritpow                52 # Kobold, Red
+	level                  2
+	cost             7   100 # 100 Rubies
 	terr                -48 # Fire Fort
-	nomonworldreq
-		addstring    "(-)Great Wyrm of Conflagration"
 	summoning
-		addstring    "c*Great Wyrm of Conflagration"
+	descr "Long ago, the five great wyrms were struck down from the celestial plane and imprisoned separately, each in a great fortress. The dragon of flame was put under the watch of the Fire Giants in their great citadels. "
 
 
 newritual "Summon Great Dragon of Ice"
 	
 	ritpow                53 # Kobold, Blue
-	level                  3
+	level                  2
 	cost             8   100 # 100 Sapphires
 
-	terr                -52 # Ice Fort
-	nomonworldreq
-		addstring    "(-)Great Wyrm of Rime"
+	# terr                -52 # Ice Fort
+	# nomonworldreq
+	# 	addstring    "(-)Great Wyrm of Rime"
 	summoning
 		addstring    "c*Great Wyrm of Rime"
+	descr "Long ago, the five great wyrms were struck down from the celestial plane and imprisoned separately, each in a great fortress. The dragon of Ice was put under the watch of the Frost Giants in their great citadels. "
 
 newritual     "Summon Dragon Turtle"                                             # 471
 	descr "This ritual summons a dragon Turtle to a port. It will patrol nearby waters and capture gem deposits for its patron"
@@ -1606,7 +1615,6 @@ newritual "Construct Canned Dragon"
 	addstring "New Dragon Can"
 
 
-
 newritual "Construct Kobolpult"
 	level                2
 	# cost            16   20 # 20 Kobolds
@@ -1614,7 +1622,6 @@ newritual "Construct Kobolpult"
 	# cost             0   30 # 30 Gold
 	summoning 
 	addstring "Full Kobolpult"
-
 
 
 newritual "Skarks Sky Shot"
@@ -1638,8 +1645,6 @@ newritual "Carok's Crystal Conifers"
 	noportalreq				1
 
 	descr "Carok is able to tap into the power of crystals to catalyize a stable portal."
-
-
 
 
 newritual "Rek-rak's Red Route"
@@ -1682,11 +1687,36 @@ newritual "Build Ultimate War Machine"
 	summoning 
 	addstring "New Ultimate War Machine"
 
-# TODO
-# Portal - 
+
+# Cheaper rituals, taken from Elysium Remastered
+
+selectritual "Ritual of Mastery" 26
+cost 7 40
+
+selectritual "Ritual of Mastery" 27
+cost 10 40
+
+selectritual "Ritual of Mastery" 28
+cost 8 40
+
+selectritual "Ritual of Mastery" 29
+cost 9 40
+
+selectritual "Ritual of Grand Mastery" 22
+cost 7 160
+
+selectritual "Ritual of Grand Mastery" 23
+cost 10 160
+
+selectritual "Ritual of Grand Mastery" 24
+cost 8 160
+
+selectritual "Ritual of Grand Mastery" 25
+cost 9 160
+
 
 selectclass 27
-	addstartcom "Kobold Grease Fetcher"
+	# addstartcom "Kobold Grease Fetcher"
 	# addstartcom "Black Kobold Slayer Shaman"
 	# addstartunits "New Dragon Can" 10
 	# addstartunits "New Ultimate War Machine" 1
@@ -1702,10 +1732,49 @@ selectclass 27
 	libraryrec                                    # +2% to chance per library point owned, to a max of +20% for 10+ library points.
 	addcomrec   "Kobold Make Thinger"    1    120  10    0 # once per offer; extra.
 	libraryrec                                    # +2% to chance per library point owned, to a max of +20% for 10+ library points.
+	
 
 #####
-# Kobald Mage Rituals
+# Kobald Events
 #####
+
+
+# # Populate planes with Dragons
+
+# # Fill the elemental plane of water with Maelstorms
+# playerevent
+# 	+turnnbr   -1	#pre-game
+# 	+player    24 
+# 	+chance 100
+# 	randloc 8 194 # Random Elemental Cloud
+# 	newunits -2 "c*Great Wyrm of Tumult"
+# endevent
+
+# playerevent
+# 	+turnnbr   -1	#pre-game
+# 	+player    24 
+# 	+chance 100
+# 	randloc 8 53 # Random Elemental Mamga
+# 	newunits -2 "c*Great Wyrm of Conflagration"
+# endevent
+
+
+# playerevent
+# 	+turnnbr   -1	#pre-game
+# 	+player    24 
+# 	+chance 100
+# 	randloc 8 54 # Random Elemental Frozen plane
+# 	newunits -2 "c*Great Wyrm of Rime"
+# endevent
+
+# playerevent
+# 	+turnnbr   -1	#pre-game
+# 	+player    24 
+# 	+chance 100
+# 	randloc 8 196 # Random Elemental Crystal forest
+# 	newunits -2 "c*Great Wyrm of Decay"
+# endevent
+
 
 # Summon Tiamat
 playerevent
@@ -1724,7 +1793,20 @@ playerevent
 
 	newunits -2 "c*Tiamat"
 	setvar 710 0
+	setvar 711 1
 endevent
+
+# Tiamat Dies
+playerevent
+	+minturnnbr 1  			#Any turn
+	+class -2 "Kobold King"
+	+varequal 711 1 # Has Tiamat Been called?
+    -hasunit "Tiamat" # But Tiamat is dead?
+	setvar 711 0 # RIP
+endevent
+
+
+
 
 ####
 # Fire Dragon Events
@@ -1756,6 +1838,40 @@ playerevent
 	message -2 "The effects of your incentivisation has worn off, your Frost Dragon will return to its mostly sedentary existance"
 endevent
 
+# Tiamat Dies, Dragon Sad
+playerevent
+	+minturnnbr 1  			#Any turn
+	+class -2 "Kobold King"
+	+varequal 711 0 # Tiamat is Gone
+	+hasunit -2 "Mastered Fire Dragon"
+	+chance 100
+	changeowner 24 # Dragon Revolts
+	message -2 "The Dragons are Masterless!"
+endevent
+
+
+# Tiamat owns all Dragons
+playerevent
+	+minturnnbr 1  			#Any turn
+	+class -2 "Kobold King"
+	+hasunit -2 "Frost Dragon"
+	+chance 100
+	+varequal 711 1 # Tiamat is in the world
+	targetunitloc
+	promoteunits -2 1 "Frost Dragon" "Mastered Frost Dragon"
+	message -2 "The Lesser Dragons heed the call of their Master"
+endevent
+
+# Tiamat Dies, Dragon Sad
+playerevent
+	+minturnnbr 1  			#Any turn
+	+class -2 "Kobold King"
+	+varequal 711 0 # Tiamat is Gone
+	+hasunit -2 "Mastered Frost Dragon"
+	+chance 100
+	changeowner 24 # Dragon Revolts
+	message -2 "The Dragons are Masterless!"
+endevent
 
 ####
 # Storm Dragon Events
@@ -1770,6 +1886,29 @@ playerevent
 	targetunitloc
 	promoteunits -2 1 "Spent Storm Dragon" "Storm Dragon"
 	message -2 "The effects of your incentivisation has worn off, your Storm Dragon will return to its mostly sedentary existance"
+endevent
+
+# Tiamat owns all Dragons
+playerevent
+	+minturnnbr 1  			#Any turn
+	+class -2 "Kobold King"
+	+hasunit -2 "Storm Dragon"
+	+chance 100
+	+varequal 711 1 # Tiamat is in the world
+	targetunitloc
+	promoteunits -2 1 "Storm Dragon" "Mastered Storm Dragon"
+	message -2 "The Lesser Dragons heed the call of their Master"
+endevent
+
+# Tiamat Dies, Dragon Sad
+playerevent
+	+minturnnbr 1  			#Any turn
+	+class -2 "Kobold King"
+	+varequal 711 0 # Tiamat is Gone
+	+hasunit -2 "Mastered Storm Dragon"
+	+chance 100
+	changeowner 24 # Dragon Revolts
+	message -2 "The Dragons are Masterless!"
 endevent
 
 ####
@@ -1788,6 +1927,28 @@ playerevent
 	message -2 "The effects of your incentivisation has worn off, your Bile Dragon will return to its mostly sedentary existance"
 endevent
 
+# Tiamat owns all Dragons
+playerevent
+	+minturnnbr 1  			#Any turn
+	+class -2 "Kobold King"
+	+hasunit -2 "Bile Dragon"
+	+chance 100
+	+varequal 711 1 # Tiamat is in the world
+	targetunitloc
+	promoteunits -2 1 "Bile Dragon" "Mastered Bile Dragon"
+	message -2 "The Lesser Dragons heed the call of their Master"
+endevent
+
+# Tiamat Dies, Dragon Sad
+playerevent
+	+minturnnbr 1  			#Any turn
+	+class -2 "Kobold King"
+	+varequal 711 0 # Tiamat is Gone
+	+hasunit -2 "Mastered Bile Dragon"
+	+chance 100
+	changeowner 24 # Dragon Revolts
+	message -2 "The Dragons are Masterless!"
+endevent
 
 
 ####
@@ -1795,7 +1956,7 @@ endevent
 ####
 
 
-# Turn the Awake Dragon Back into a  Dragon After 3 or more turns
+# Turn the Awake Dragon Back into a Dragon After 3 or more turns
 playerevent
 	+minturnnbr 1  			#Any turn
 	+class -2 "Kobold King"	
@@ -1807,3 +1968,26 @@ playerevent
 endevent
 
 
+# Tiamat owns all Dragons
+playerevent
+	+minturnnbr 1  			#Any turn
+	+class -2 "Kobold King"
+	+hasunit -2 "Dusk Dragon"
+	+chance 100
+	+varequal 711 1 # Tiamat is in the world
+	targetunitloc
+	promoteunits -2 1 "Dusk Dragon" "Mastered Dusk Dragon"
+	message -2 "The Lesser Dragons heed the call of their Master"
+endevent
+
+
+# Tiamat Dies, Dragon Sad
+playerevent
+	+minturnnbr 1  			#Any turn
+	+class -2 "Kobold King"
+	+varequal 711 0 # Tiamat is Gone
+	+hasunit -2 "Mastered Dusk Dragon"
+	+chance 100
+	changeowner 24 # Dragon Revolts
+	message -2 "The Dragons are Masterless!"
+endevent
